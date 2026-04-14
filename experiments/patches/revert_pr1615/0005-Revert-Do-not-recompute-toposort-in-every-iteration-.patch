@@ -1,0 +1,83 @@
+From 21ea73558bbaf63ab5c4e2798b72da7698fc6626 Mon Sep 17 00:00:00 2001
+From: ricardoV94 <ricardo.vieira1994@gmail.com>
+Date: Mon, 13 Apr 2026 11:35:27 +0200
+Subject: [PATCH 05/10] Revert "Do not recompute toposort in every iteration of
+ FusionOptimizer"
+
+This reverts commit 71618f60f723f81b1b4aed3ab2a1265a3fb7930e.
+---
+ pytensor/tensor/rewriting/elemwise.py | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/pytensor/tensor/rewriting/elemwise.py b/pytensor/tensor/rewriting/elemwise.py
+index 56552189f6..3c3b20f6f7 100644
+--- a/pytensor/tensor/rewriting/elemwise.py
++++ b/pytensor/tensor/rewriting/elemwise.py
+@@ -626,10 +626,10 @@ class FusionOptimizer(GraphRewriter):
+ 
+             def find_fuseable_subgraph(
+                 *,
++                fg: FunctionGraph,
+                 visited_nodes: set[Apply],
+                 fuseable_clients: FUSEABLE_MAPPING,
+                 unfuseable_clients: UNFUSEABLE_MAPPING,
+-                toposort_index: dict[Apply, int],
+             ) -> tuple[list[Variable], list[Variable]]:
+                 KT = TypeVar("KT")
+                 VT = TypeVar("VT", list, set)
+@@ -649,7 +649,8 @@ class FusionOptimizer(GraphRewriter):
+                         for a in ancestors(variables, blockers=stop_search_at)
+                     )
+ 
+-                for starting_node in toposort_index:
++                toposort = fg.toposort()
++                for starting_node in toposort:
+                     if starting_node in visited_nodes:
+                         continue
+ 
+@@ -791,7 +792,7 @@ class FusionOptimizer(GraphRewriter):
+                                     and inp.owner not in visited_nodes
+                                 )
+                             ),
+-                            key=lambda inp: toposort_index[inp.owner],
++                            key=lambda inp: toposort.index(inp.owner),
+                             reverse=True,
+                         ):
+                             fuseable_nodes_to_visit.appendleft(inp.owner)
+@@ -803,7 +804,7 @@ class FusionOptimizer(GraphRewriter):
+                                 for node in fuseable_clients_temp.get(next_out, ())
+                                 if node not in visited_nodes
+                             ),
+-                            key=lambda node: toposort_index[node],
++                            key=lambda node: toposort.index(node),
+                         ):
+                             fuseable_nodes_to_visit.append(next_node)
+ 
+@@ -877,22 +878,20 @@ class FusionOptimizer(GraphRewriter):
+             # client (those that don't fit into 1))
+             fuseable_clients, unfuseable_clients = initialize_fuseable_mappings(fg=fg)
+             visited_nodes: set[Apply] = set()
+-            toposort_index = {node: i for i, node in enumerate(fgraph.toposort())}
+             while True:
++                starting_nodes = fg.apply_nodes.copy()
+                 try:
+                     subgraph_inputs, subgraph_outputs = find_fuseable_subgraph(
++                        fg=fg,
+                         visited_nodes=visited_nodes,
+                         fuseable_clients=fuseable_clients,
+                         unfuseable_clients=unfuseable_clients,
+-                        toposort_index=toposort_index,
+                     )
+                 except ValueError:
+                     return
+                 else:
+                     # The caller is now expected to update fg in place,
+                     # by replacing the subgraph with a Composite Op
+-                    starting_nodes = fg.apply_nodes.copy()
+-
+                     yield subgraph_inputs, subgraph_outputs
+ 
+                     # This is where we avoid repeated work by using a stateful
+-- 
+2.53.0
+

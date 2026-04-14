@@ -1,0 +1,144 @@
+From dbbc1bf4fb4b52035a00e3f0f20f3e9e04e37b4b Mon Sep 17 00:00:00 2001
+From: ricardoV94 <ricardo.vieira1994@gmail.com>
+Date: Mon, 13 Apr 2026 11:35:27 +0200
+Subject: [PATCH 10/10] Revert "Test more FusionOptimizer graphs"
+
+This reverts commit 5f8cee6b1027758ab7f25b37e08286abbb19416c.
+---
+ pytensor/tensor/rewriting/elemwise.py   | 12 +++----
+ tests/tensor/rewriting/test_elemwise.py | 45 ++++---------------------
+ 2 files changed, 11 insertions(+), 46 deletions(-)
+
+diff --git a/pytensor/tensor/rewriting/elemwise.py b/pytensor/tensor/rewriting/elemwise.py
+index 234225802d..d33d7dca6c 100644
+--- a/pytensor/tensor/rewriting/elemwise.py
++++ b/pytensor/tensor/rewriting/elemwise.py
+@@ -570,6 +570,8 @@ class FusionOptimizer(GraphRewriter):
+         return scalar_inputs, scalar_outputs
+ 
+     def apply(self, fgraph):
++        nb_replacement = 0
++
+         if fgraph.profile:
+             validate_before = fgraph.profile.validate_time
+             callbacks_before = fgraph.execute_callbacks_times.copy()
+@@ -924,8 +926,6 @@ class FusionOptimizer(GraphRewriter):
+                         starting_nodes=starting_nodes,
+                     )
+ 
+-        nb_fused = 0
+-        nb_replacement = 0
+         for inputs, outputs in find_next_fuseable_subgraph(fgraph):
+             if (len(inputs) + len(outputs)) > max_operands:
+                 warn(
+@@ -944,13 +944,11 @@ class FusionOptimizer(GraphRewriter):
+                 if old_out.name:
+                     composite_out.name = old_out.name
+ 
+-            starting_nodes = len(fgraph.apply_nodes)
+             fgraph.replace_all_validate(
+                 list(zip(outputs, composite_outputs, strict=True)),
+                 reason=self.__class__.__name__,
+             )
+-            nb_fused += 1
+-            nb_replacement += (starting_nodes - len(fgraph.apply_nodes)) + 1
++            nb_replacement += 1
+ 
+         if fgraph.profile:
+             validate_time = fgraph.profile.validate_time - validate_before
+@@ -968,7 +966,7 @@ class FusionOptimizer(GraphRewriter):
+ 
+         return (
+             self,
+-            nb_fused,
++            1,  # nb_iter
+             nb_replacement,
+             0,  # nb_inconsintency_replace
+             validate_time,
+@@ -981,7 +979,7 @@ class FusionOptimizer(GraphRewriter):
+     def print_profile(stream, prof, level=0):
+         blanc = "    " * level
+         print(blanc, "FusionOptimizer", file=stream)
+-        print(blanc, " nb_fused", prof[1], file=stream)
++        print(blanc, " nb_iter", prof[1], file=stream)
+         print(blanc, " nb_replacement", prof[2], file=stream)
+         print(blanc, " nb_inconsistency_replace", prof[3], file=stream)
+         print(blanc, " validate_time", prof[4], file=stream)
+diff --git a/tests/tensor/rewriting/test_elemwise.py b/tests/tensor/rewriting/test_elemwise.py
+index 359107f7f0..7c16cfd5dc 100644
+--- a/tests/tensor/rewriting/test_elemwise.py
++++ b/tests/tensor/rewriting/test_elemwise.py
+@@ -272,8 +272,7 @@ class TestFusion:
+     fwx = fw + fx
+     ftanx = tan(fx)
+ 
+-    @staticmethod
+-    def large_fuseable_graph(n):
++    def large_fuseable_graph(self, n):
+         factors = []
+         sd = dscalar()
+         means = dvector()
+@@ -296,28 +295,6 @@ class TestFusion:
+         dlogp = [pytensor.grad(logp, v) for v in vars]
+         return vars, dlogp
+ 
+-    @staticmethod
+-    def deep_small_kernels(n):
+-        x = pt.matrix("x")
+-        out = x
+-        for _ in range(n):
+-            out = pt.sin(out.T) + pt.cos(out)
+-
+-        return [x], [out]
+-
+-    @staticmethod
+-    def test_diamond_graph():
+-        a = pt.matrix("a")
+-        b = pt.exp(a)
+-        c = pt.log(b)
+-        d = pt.sin(c)
+-        e = c + d
+-
+-        fg = FunctionGraph([a], [e], clone=False)
+-        _, nb_fused, nb_replacement, *_ = FusionOptimizer().apply(fg)
+-        assert nb_fused == 1
+-        assert nb_replacement == 4
+-
+     @pytest.mark.parametrize(
+         "case",
+         [
+@@ -1351,26 +1328,16 @@ class TestFusion:
+         benchmark(func)
+ 
+     @pytest.mark.skipif(not config.cxx, reason="No cxx compiler")
+-    @pytest.mark.parametrize(
+-        "graph_fn, n, expected_n_repl",
+-        [
+-            ("deep_small_kernels", 20, (20, 60)),
+-            ("large_fuseable_graph", 25, (103, 876)),
+-        ],
+-    )
+-    def test_rewrite_benchmark(self, graph_fn, n, expected_n_repl, benchmark):
+-        inps, outs = getattr(self, graph_fn)(n)
++    def test_rewrite_benchmark(self, benchmark):
++        inps, outs = self.large_fuseable_graph(n=25)
+         fg = FunctionGraph(inps, outs)
+         opt = FusionOptimizer()
+ 
+         def rewrite_func():
+-            fg_clone = fg.clone()
+-            _, nb_fused, nb_replacement, *_ = opt.apply(fg_clone)
+-            # fg_clone.dprint()
+-            return nb_fused, nb_replacement
++            nb_replacement = opt.apply(fg.clone())[2]
++            return nb_replacement
+ 
+-        assert rewrite_func() == expected_n_repl
+-        benchmark.pedantic(rewrite_func, rounds=7, iterations=5)
++        assert benchmark(rewrite_func) == 103
+ 
+     def test_no_warning_from_old_client(self):
+         # There used to be a warning issued when creating fuseable mapping
+-- 
+2.53.0
+
