@@ -1,7 +1,7 @@
 name: revert_pr1615
 description: >
   Revert the 10 substantive commits of pytensor#1615 ("Speedup
-  FusionOptimizer") on top of pytensor@v3. The cosmetic 11th commit
+  FusionOptimizer") on top of pytensor@main. The cosmetic 11th commit
   ("Use more direct imports in rewriting/elemwise.py") is excluded.
 
   The patches under experiments/patches/revert_pr1615/ were generated
@@ -15,7 +15,7 @@ description: >
   is worth ~60% on both compile and eval for elemwise-heavy graphs.
 pytensor:
   repo: pymc-devs/pytensor
-  ref: v3
+  ref: main
   patches:
     - experiments/patches/revert_pr1615/0001-Revert-Avoid-backtracking-in-FusionOptimizer.patch
     - experiments/patches/revert_pr1615/0002-Revert-Use-bitset-to-check-ancestors-more-efficientl.patch

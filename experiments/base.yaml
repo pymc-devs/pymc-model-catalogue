@@ -1,12 +1,12 @@
 name: base
 description: >
-  Baseline: pytensor@v3 + pymc@v6 with no modifications. Used as the
+  Baseline: pytensor@main + pymc@v6 with no modifications. Used as the
   control arm for experiments. Every other YAML should use the same
   pytensor/pymc refs so the only variable between experiments is the
   revert_commits list.
 pytensor:
   repo: pymc-devs/pytensor
-  ref: v3
+  ref: main
 pymc:
   repo: pymc-devs/pymc
   ref: v6
