@@ -27,6 +27,7 @@ pytensor:
     - experiments/patches/revert_pr1615/0008-Revert-Speedup-supports-c_code.patch
     - experiments/patches/revert_pr1615/0009-Revert-Short-circuit-as_scalar-common-cases-faster.patch
     - experiments/patches/revert_pr1615/0010-Revert-Test-more-FusionOptimizer-graphs.patch
+    - experiments/patches/revert_pr1615/0011-Fix-supports_c_code-remove-compute_test_value.patch
 pymc:
   repo: pymc-devs/pymc
   ref: v6
