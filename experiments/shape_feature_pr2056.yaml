@@ -8,6 +8,11 @@ description: >
 pytensor:
   repo: ricardoV94/pytensor
   ref: shape_feature
+  revert_commits:
+    - d6b4023b47eabc9a308eb66ee3b117ace41b2075  # Improve Feature hook API and pickle round-trip (#2099)
+    - 69d7ccca0262ebe86c02c16d36a026608769fde9  # Don't constant-fold Alloc consumed by Subtensor
+    - ba646cf2533cfd15b7c2a2e692ed9780925f9784  # Drop fgraph parameter from Op.infer_shape signature
+    - eb789d6f5997b9802fd916304a3ee6de9ca77fbd  # Break aliasing cycles when materializing core shapes for numba
 pymc:
   repo: pymc-devs/pymc
   ref: v6
