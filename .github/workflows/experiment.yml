@@ -124,6 +124,7 @@ jobs:
               --bench "$regex" \
               --machine ci
 
+            rm -rf .asv/results
             asv publish
             rm -rf .asv/results
             rm -rf ".gh-pages/experiments/$name/$short"
