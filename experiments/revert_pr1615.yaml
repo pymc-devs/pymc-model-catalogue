@@ -1,33 +1,18 @@
 name: revert_pr1615
 description: >
-  Revert the 10 substantive commits of pytensor#1615 ("Speedup
-  FusionOptimizer") on top of pytensor@main. The cosmetic 11th commit
-  ("Use more direct imports in rewriting/elemwise.py") is excluded.
+  Revert the FusionOptimizer algorithm changes from pytensor#1615
+  ("Speedup FusionOptimizer") on top of pytensor@main.
 
-  The patches under experiments/patches/revert_pr1615/ were generated
-  from a manual ``git revert -X theirs`` pass (conflicts in elemwise.py
-  and test_elemwise.py were resolved in favour of the pre-PR state),
-  then captured with ``git format-patch`` so CI can reproduce the
-  state deterministically without re-running conflict resolution.
-
-  Previous local run (base vs reverted, small models) showed BEST
-  compile_time +57% and time_eval +58% under the revert — i.e. PR #1615
-  is worth ~60% on both compile and eval for elemwise-heavy graphs.
+  Restores the pre-PR#1615 backtracking/deque-based algorithm in
+  elemwise.py. The scalar/basic.py changes from the same PR are NOT
+  reverted as they are incompatible with the refactored Composite
+  class hierarchy on main. Imports are adapted for the current
+  codebase (direct imports instead of ps.X aliases).
 pytensor:
   repo: pymc-devs/pytensor
   ref: main
   patches:
-    - experiments/patches/revert_pr1615/0001-Revert-Avoid-backtracking-in-FusionOptimizer.patch
-    - experiments/patches/revert_pr1615/0002-Revert-Use-bitset-to-check-ancestors-more-efficientl.patch
-    - experiments/patches/revert_pr1615/0003-Revert-Copy-on-write-in-FusionOptimizer.patch
-    - experiments/patches/revert_pr1615/0004-Revert-Cleanup-FusionOptimizer-code.patch
-    - experiments/patches/revert_pr1615/0005-Revert-Do-not-recompute-toposort-in-every-iteration-.patch
-    - experiments/patches/revert_pr1615/0006-Revert-Avoid-double-cloning-of-Composite-Ops-created.patch
-    - experiments/patches/revert_pr1615/0007-Revert-Speedup-FusionOptimizer.elemwise_to_scalar.patch
-    - experiments/patches/revert_pr1615/0008-Revert-Speedup-supports-c_code.patch
-    - experiments/patches/revert_pr1615/0009-Revert-Short-circuit-as_scalar-common-cases-faster.patch
-    - experiments/patches/revert_pr1615/0010-Revert-Test-more-FusionOptimizer-graphs.patch
-    - experiments/patches/revert_pr1615/0011-Fix-supports_c_code-remove-compute_test_value.patch
+    - experiments/patches/revert_pr1615/0001-Revert-FusionOptimizer-algorithm-from-PR-1615.patch
 pymc:
   repo: pymc-devs/pymc
   ref: v6
