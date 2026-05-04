@@ -1,12 +1,9 @@
 name: shape_feature_pr2056_base
 description: >
-  Control arm for shape_feature_pr2056. Same tree with only
-  the PR #2056 commit reverted.
+  Control arm for shape_feature_pr2056. Parent of the PR commit.
 pytensor:
   repo: ricardoV94/pytensor
-  ref: 68e16430b83b99a8d9b346a0da23133db976486b
-  revert_commits:
-    - 68e16430b83b99a8d9b346a0da23133db976486b  # Do not leak stale variables in ShapeFeature
+  ref: eb789d6f5997b9802fd916304a3ee6de9ca77fbd
 pymc:
   repo: pymc-devs/pymc
   ref: v6
