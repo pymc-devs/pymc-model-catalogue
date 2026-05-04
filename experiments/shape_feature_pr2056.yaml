@@ -1,18 +1,12 @@
 name: shape_feature_pr2056
+base: shape_feature_pr2056_base
 description: >
   Test pytensor#2056 ("Rewrite ShapeFeature to not hold live variables").
   Replaces the eager per-variable dict in ShapeFeature with a lazy
-  FrozenFunctionGraph-based shape kernel cache. Eliminates stale-XRV
-  bugs and should speed up rewrite time on models with many shaped
-  variables (reported -30% on radon_repeat, -9% on radon_variants).
+  FrozenFunctionGraph-based shape kernel cache.
 pytensor:
   repo: ricardoV94/pytensor
-  ref: shape_feature
-  revert_commits:
-    - d6b4023b47eabc9a308eb66ee3b117ace41b2075  # Improve Feature hook API and pickle round-trip (#2099)
-    - 69d7ccca0262ebe86c02c16d36a026608769fde9  # Don't constant-fold Alloc consumed by Subtensor
-    - ba646cf2533cfd15b7c2a2e692ed9780925f9784  # Drop fgraph parameter from Op.infer_shape signature
-    - eb789d6f5997b9802fd916304a3ee6de9ca77fbd  # Break aliasing cycles when materializing core shapes for numba
+  ref: 68e16430b83b99a8d9b346a0da23133db976486b
 pymc:
   repo: pymc-devs/pymc
   ref: v6

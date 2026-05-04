@@ -1,0 +1,9 @@
+name: revert_pr1615_base
+description: >
+  Control arm for revert_pr1615. pytensor@main with no modifications.
+pytensor:
+  repo: pymc-devs/pytensor
+  ref: main
+pymc:
+  repo: pymc-devs/pymc
+  ref: v6

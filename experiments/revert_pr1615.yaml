@@ -1,13 +1,9 @@
 name: revert_pr1615
+base: revert_pr1615_base
 description: >
   Revert the FusionOptimizer algorithm changes from pytensor#1615
-  ("Speedup FusionOptimizer") on top of pytensor@main.
-
-  Restores the pre-PR#1615 backtracking/deque-based algorithm in
-  elemwise.py. The scalar/basic.py changes from the same PR are NOT
-  reverted as they are incompatible with the refactored Composite
-  class hierarchy on main. Imports are adapted for the current
-  codebase (direct imports instead of ps.X aliases).
+  ("Speedup FusionOptimizer"). Restores the pre-PR backtracking/deque
+  algorithm in elemwise.py.
 pytensor:
   repo: pymc-devs/pytensor
   ref: main
