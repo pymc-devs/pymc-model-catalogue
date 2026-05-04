@@ -79,6 +79,36 @@ jobs:
             exit 0
           fi
 
+          # Expand YAMLS: if a YAML has a "base:" field, prepend its base
+          # YAML so both run on the same runner for a fair comparison.
+          # Base YAMLs pulled in this way are force-rerun even if already
+          # published, since stale results from a different runner are not
+          # comparable.
+          EXPANDED=$(python3 -c "
+          import yaml, sys, os
+          seen, result, force_rerun = set(), [], set()
+          for path in sys.argv[1:]:
+              if not os.path.isfile(path):
+                  continue
+              data = yaml.safe_load(open(path))
+              base = data.get('base', '')
+              if base:
+                  bp = f'experiments/{base}.yaml'
+                  if bp not in seen and os.path.isfile(bp):
+                      seen.add(bp)
+                      result.append(bp)
+                      force_rerun.add(bp)
+              if path not in seen:
+                  seen.add(path)
+                  result.append(path)
+          print(' '.join(result))
+          print(' '.join(force_rerun), file=sys.stderr)
+          " $YAMLS 2>.force_rerun_bases)
+          YAMLS="$EXPANDED"
+          FORCE_RERUN_BASES=$(cat .force_rerun_bases)
+          echo "expanded targets: $YAMLS"
+          echo "force-rerun bases: $FORCE_RERUN_BASES"
+
           # Fetch existing gh-pages once for hash lookups.
           git clone --quiet --branch gh-pages --depth 1 \
             "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" .gh-pages || mkdir -p .gh-pages
@@ -95,7 +125,10 @@ jobs:
             short=$(git rev-parse --short=10 "$yaml_sha")
             outdir=".gh-pages/experiments/$name/$short"
 
-            if [ "$FORCE" != "true" ] && [ -d "$outdir" ]; then
+            is_force_base=false
+            echo "$FORCE_RERUN_BASES" | grep -qF "$yaml_path" && is_force_base=true
+
+            if [ "$FORCE" != "true" ] && [ "$is_force_base" != "true" ] && [ -d "$outdir" ]; then
               echo "== $name@$short already published — skipping"
               continue
             fi
