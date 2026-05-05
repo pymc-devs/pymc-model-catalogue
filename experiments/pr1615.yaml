@@ -1,0 +1,12 @@
+name: pr1615
+base: pr1615_base
+description: >
+  pytensor@main, which has pytensor#1615 ("Speedup FusionOptimizer")
+  merged. Compared against pr1615_base (same main with the PR reverted)
+  to isolate the FusionOptimizer algorithm change.
+pytensor:
+  repo: pymc-devs/pytensor
+  ref: main
+pymc:
+  repo: pymc-devs/pymc
+  ref: v6
