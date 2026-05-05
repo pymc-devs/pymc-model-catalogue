@@ -9,4 +9,4 @@ pytensor:
   ref: main
 pymc:
   repo: pymc-devs/pymc
-  ref: v6
+  ref: main

@@ -9,4 +9,4 @@ pytensor:
   ref: 68e16430b83b99a8d9b346a0da23133db976486b
 pymc:
   repo: pymc-devs/pymc
-  ref: v6
+  ref: main

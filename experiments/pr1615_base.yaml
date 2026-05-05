@@ -11,4 +11,4 @@ pytensor:
     - experiments/patches/pr1615_base/0001-Revert-FusionOptimizer-algorithm-from-PR-1615.patch
 pymc:
   repo: pymc-devs/pymc
-  ref: v6
+  ref: main
