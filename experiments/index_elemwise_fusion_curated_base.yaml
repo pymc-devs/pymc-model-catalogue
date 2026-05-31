@@ -1,0 +1,41 @@
+name: index_elemwise_fusion_curated_base
+description: >
+  Control arm for index_elemwise_fusion_curated. The parent of the first
+  commit in the gather_scatter_fusion range (e927333b6f45^), i.e. pytensor
+  just before any index/Elemwise fusion work landed. Must list the same
+  models as its paired feature arm so the dashboard compares them on an
+  identical set.
+pytensor:
+  repo: ricardoV94/pytensor
+  ref: eb73f6279d7dbc3a6d2571e7219028e5c49e8640
+pymc:
+  repo: pymc-devs/pymc
+  ref: main
+models:
+  - models.bayesian_var_hierarchical
+  - models.missing_data_chained_uniform
+  - models.missing_data_chained_normal
+  - models.mv_gaussian_random_walk
+  - models.sr15_social_network_giving_receiving
+  - models.missing_data_hierarchical_team
+  - models.sr14_correlated_varying_effects
+  - models.sr18_missing_data_primates
+  - models.bayesian_var_fake
+  - models.bayesian_var_ireland
+  - models.item_response_nba
+  - models.sr11_ordered_logistic_education
+  - models.sr13_district_urban_contraception
+  - models.longitudinal_external_polynomial_gender
+  - models.multilevel_varying_intercept_slope_noncentered
+smoke_test: |
+  # The fusion work lives in pytensor.tensor.rewriting.indexed_elemwise,
+  # which does not exist in the base. Its absence confirms the control
+  # arm really predates the feature.
+  try:
+      import pytensor.tensor.rewriting.indexed_elemwise  # noqa: F401
+  except ImportError:
+      print("smoke: indexed_elemwise module absent (expected)")
+  else:
+      raise SystemExit(
+          "indexed_elemwise module unexpectedly present in base arm"
+      )
