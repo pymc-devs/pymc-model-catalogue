@@ -1,0 +1,23 @@
+name: index_elemwise_fusion_base
+description: >
+  Control arm for index_elemwise_fusion. The parent of the first commit
+  in the gather_scatter_fusion range (e927333b6f45^), i.e. pytensor just
+  before any of the index/Elemwise fusion work landed.
+pytensor:
+  repo: ricardoV94/pytensor
+  ref: eb73f6279d7dbc3a6d2571e7219028e5c49e8640
+pymc:
+  repo: pymc-devs/pymc
+  ref: main
+smoke_test: |
+  # The fusion work lives in pytensor.tensor.rewriting.indexed_elemwise,
+  # which does not exist in the base. Its absence confirms the control
+  # arm really predates the feature.
+  try:
+      import pytensor.tensor.rewriting.indexed_elemwise  # noqa: F401
+  except ImportError:
+      print("smoke: indexed_elemwise module absent (expected)")
+  else:
+      raise SystemExit(
+          "indexed_elemwise module unexpectedly present in base arm"
+      )

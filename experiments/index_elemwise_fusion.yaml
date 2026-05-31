@@ -1,0 +1,33 @@
+name: index_elemwise_fusion
+base: index_elemwise_fusion_base
+description: >
+  Test the index/Elemwise fusion work on pytensor's gather_scatter_fusion
+  branch (commits e927333b6f45..cb1e83df518d). Adds IndexedElemwise plus
+  the FuseIndexedElemwise rewriter ("fuse_indexed_into_elemwise"), which
+  folds AdvancedSubtensor1/AdvancedSubtensor reads and
+  AdvancedIncSubtensor1/AdvancedIncSubtensor writes into a single
+  vectorized numba Elemwise loop, avoiding intermediate materialization.
+  Compared against index_elemwise_fusion_base (the parent of the first
+  commit in the range) to isolate the fusion change.
+pytensor:
+  repo: ricardoV94/pytensor
+  ref: cb1e83df518d8471015e77d1916867a94911f35d
+pymc:
+  repo: pymc-devs/pymc
+  ref: main
+smoke_test: |
+  import pytensor
+  import pytensor.tensor as pt
+  from pytensor.compile.mode import get_mode
+  from pytensor.tensor.subtensor import advanced_subtensor1
+  from pytensor.tensor.rewriting.indexed_elemwise import IndexedElemwise
+
+  s = pt.vector("s", shape=(10,))
+  idx = pt.lvector("idx")
+  fn = pytensor.function([s, idx], advanced_subtensor1(s, idx) * 2.0,
+                         mode=get_mode("NUMBA"))
+  ops = [n.op for n in fn.maker.fgraph.toposort()]
+  assert any(isinstance(op, IndexedElemwise) for op in ops), (
+      f"IndexedElemwise missing from fused graph; got {ops}"
+  )
+  print("smoke: IndexedElemwise present")
