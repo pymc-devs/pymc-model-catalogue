@@ -1,0 +1,43 @@
+name: fuse_reduction_curated_base
+description: >
+  Control arm for fuse_reduction_curated. The parent of the first
+  reduction commit (aad541bf4^ = 56139e4cd): pytensor with the
+  IndexedElemwise read/write fusion already present but before any
+  reduction fusion landed. Must list the same models as its paired
+  feature arm so the dashboard compares them on an identical set.
+pytensor:
+  repo: ricardoV94/pytensor
+  ref: 56139e4cd5ca127b7a5e88e155d4cb8fa9cdff77
+pymc:
+  repo: pymc-devs/pymc
+  ref: main
+models:
+  - models.bayesian_var_hierarchical
+  - models.missing_data_chained_uniform
+  - models.missing_data_chained_normal
+  - models.mv_gaussian_random_walk
+  - models.sr15_social_network_giving_receiving
+  - models.missing_data_hierarchical_team
+  - models.sr14_correlated_varying_effects
+  - models.sr18_missing_data_primates
+  - models.bayesian_var_fake
+  - models.bayesian_var_ireland
+  - models.item_response_nba
+  - models.sr11_ordered_logistic_education
+  - models.sr13_district_urban_contraception
+  - models.longitudinal_external_polynomial_gender
+  - models.multilevel_varying_intercept_slope_noncentered
+smoke_test: |
+  # IndexedElemwise read/write fusion is already present here (the module
+  # is still named indexed_elemwise); the reduction-fusion rename to
+  # fused_elemwise has not happened yet. Its absence confirms the control
+  # arm predates the reduction work.
+  import pytensor.tensor.rewriting.indexed_elemwise  # noqa: F401  (present)
+  try:
+      import pytensor.tensor.rewriting.fused_elemwise  # noqa: F401
+  except ImportError:
+      print("smoke: fused_elemwise module absent (expected); indexed_elemwise present")
+  else:
+      raise SystemExit(
+          "fused_elemwise module unexpectedly present in base arm"
+      )

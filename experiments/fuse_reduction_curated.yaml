@@ -1,0 +1,54 @@
+name: fuse_reduction_curated
+base: fuse_reduction_curated_base
+description: >
+  Same reduction-fusion comparison as the fuse_reduction pair (pytensor
+  fuse_reduction tip 5a5637c93 vs its pre-reduction parent 56139e4cd, on
+  top of the already-merged IndexedElemwise feature), but run over the
+  curated set of indexing-hot models where the FusedElemwise rewriter
+  folds a trailing CAReduce into the fused loop. A local probe
+  (scripts/rewrite_probe/fuse_reduction_count.py) over this set fires
+  reduction fusion on all 15/15 models — 199 FusedElemwise ops carry a
+  fused reduction, covering 445 reductions total. Annotations below are
+  "<ops-with-reduction>/<total-fused-reductions>" from that probe
+  (as-built form). Same 15 models as index_elemwise_fusion_curated so the
+  two experiments stay comparable.
+pytensor:
+  repo: ricardoV94/pytensor
+  ref: 5a5637c931e659eee2a8fc936d6f889d0d4ae534
+pymc:
+  repo: pymc-devs/pymc
+  ref: main
+models:
+  - models.bayesian_var_hierarchical                       # 82/220
+  - models.missing_data_chained_uniform                    # 12/23
+  - models.missing_data_chained_normal                     # 12/33
+  - models.mv_gaussian_random_walk                         # 10/18
+  - models.sr15_social_network_giving_receiving            # 7/14
+  - models.missing_data_hierarchical_team                  # 10/15
+  - models.sr14_correlated_varying_effects                 # 4/7
+  - models.sr18_missing_data_primates                      # 8/18
+  - models.bayesian_var_fake                               # 11/18
+  - models.bayesian_var_ireland                            # 11/18
+  - models.item_response_nba                               # 4/7
+  - models.sr11_ordered_logistic_education                 # 16/21
+  - models.sr13_district_urban_contraception               # 4/7
+  - models.longitudinal_external_polynomial_gender         # 5/20
+  - models.multilevel_varying_intercept_slope_noncentered  # 3/6
+smoke_test: |
+  import pytensor
+  import pytensor.tensor as pt
+  from pytensor.compile.mode import get_mode
+  from pytensor.tensor.subtensor import advanced_subtensor1
+  from pytensor.tensor.rewriting.fused_elemwise import FusedElemwise
+
+  s = pt.vector("s", shape=(10,))
+  idx = pt.lvector("idx")
+  out = (advanced_subtensor1(s, idx) * 2.0).sum()
+  fn = pytensor.function([s, idx], out, mode=get_mode("NUMBA"))
+  ops = [n.op for n in fn.maker.fgraph.toposort()]
+  fused = [op for op in ops if isinstance(op, FusedElemwise)]
+  assert fused, f"FusedElemwise missing from fused graph; got {ops}"
+  assert any(
+      any(spec is not None for spec in op.reduced_outputs) for op in fused
+  ), f"FusedElemwise present but no fused reduction; ops={ops}"
+  print("smoke: FusedElemwise with fused reduction present")
