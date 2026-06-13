@@ -1,0 +1,43 @@
+name: reduction_fusion_with_scope_markers_base
+description: >
+  Control arm for reduction_fusion_with_scope_markers. The fuse_reduction
+  tip (5a5637c93) with no patch applied — reduction fusion is present but
+  the alias-scope/noalias metadata commit is not. The numba vectorize
+  codegen here emits no alias-scope markers and the _llvmlite_self_ref
+  shim module does not exist; its absence confirms the control predates
+  the metadata change. Must list the same models as its paired feature
+  arm so the dashboard compares them on an identical set.
+pytensor:
+  repo: ricardoV94/pytensor
+  ref: 5a5637c931e659eee2a8fc936d6f889d0d4ae534
+pymc:
+  repo: pymc-devs/pymc
+  ref: main
+models:
+  - models.bayesian_var_hierarchical
+  - models.missing_data_chained_uniform
+  - models.missing_data_chained_normal
+  - models.mv_gaussian_random_walk
+  - models.sr15_social_network_giving_receiving
+  - models.missing_data_hierarchical_team
+  - models.sr14_correlated_varying_effects
+  - models.sr18_missing_data_primates
+  - models.bayesian_var_fake
+  - models.bayesian_var_ireland
+  - models.item_response_nba
+  - models.sr11_ordered_logistic_education
+  - models.sr13_district_urban_contraception
+  - models.longitudinal_external_polynomial_gender
+  - models.multilevel_varying_intercept_slope_noncentered
+smoke_test: |
+  # Reduction fusion is present (fuse_reduction tip), but the alias-scope
+  # metadata patch is not applied here, so the shim module it adds is absent.
+  import pytensor.tensor.rewriting.fused_elemwise  # noqa: F401  (present)
+  try:
+      import pytensor.link.numba.dispatch._llvmlite_self_ref  # noqa: F401
+  except ImportError:
+      print("smoke: _llvmlite_self_ref absent (expected); fused_elemwise present")
+  else:
+      raise SystemExit(
+          "_llvmlite_self_ref unexpectedly present in base arm"
+      )

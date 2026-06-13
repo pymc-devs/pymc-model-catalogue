@@ -1,0 +1,67 @@
+name: reduction_fusion_with_scope_markers
+base: reduction_fusion_with_scope_markers_base
+description: >
+  Test the alias-scope / noalias LLVM metadata work on pytensor's
+  reduction_fusion_with_scope_markers branch — a single commit
+  (9d1a36186) on top of the fuse_reduction tip (5a5637c93). It tags the
+  input loads and output stores emitted by the numba vectorize codegen
+  with self-referential alias-scope/noalias metadata so LLVM can
+  disambiguate fused-loop buffers without runtime overlap checks or loop
+  versioning; a small import-time shim (_llvmlite_self_ref.py) backports
+  the self-referential metadata API to released llvmlite. Applied as a
+  patch on top of the fetchable fuse_reduction ref so the change is
+  isolated against reduction_fusion_with_scope_markers_base (the same
+  fuse_reduction tip without the metadata commit). Run over the curated
+  indexing-hot model set, where fused loops are dense and any runtime
+  (time_eval) benefit from the noalias metadata should be visible.
+pytensor:
+  repo: ricardoV94/pytensor
+  ref: 5a5637c931e659eee2a8fc936d6f889d0d4ae534
+  patches:
+    - experiments/patches/reduction_fusion_with_scope_markers/0001-Emit-alias-scope-noalias-metadata-in-vectorize_codeg.patch
+pymc:
+  repo: pymc-devs/pymc
+  ref: main
+models:
+  - models.bayesian_var_hierarchical
+  - models.missing_data_chained_uniform
+  - models.missing_data_chained_normal
+  - models.mv_gaussian_random_walk
+  - models.sr15_social_network_giving_receiving
+  - models.missing_data_hierarchical_team
+  - models.sr14_correlated_varying_effects
+  - models.sr18_missing_data_primates
+  - models.bayesian_var_fake
+  - models.bayesian_var_ireland
+  - models.item_response_nba
+  - models.sr11_ordered_logistic_education
+  - models.sr13_district_urban_contraception
+  - models.longitudinal_external_polynomial_gender
+  - models.multilevel_varying_intercept_slope_noncentered
+smoke_test: |
+  import numpy as np
+  import pytensor
+  import pytensor.tensor as pt
+  from pytensor.compile.mode import get_mode
+  from pytensor.tensor.subtensor import advanced_subtensor1
+  from pytensor.tensor.rewriting.fused_elemwise import FusedElemwise
+
+  # The patch adds this import-time shim module; its presence confirms the
+  # alias-scope metadata commit applied on top of the fuse_reduction tip.
+  import pytensor.link.numba.dispatch._llvmlite_self_ref  # noqa: F401
+
+  s = pt.vector("s", shape=(10,))
+  idx = pt.lvector("idx")
+  out = (advanced_subtensor1(s, idx) * 2.0).sum()
+  fn = pytensor.function([s, idx], out, mode=get_mode("NUMBA"))
+  ops = [n.op for n in fn.maker.fgraph.toposort()]
+  assert any(
+      isinstance(op, FusedElemwise)
+      and any(spec is not None for spec in op.reduced_outputs)
+      for op in ops
+  ), f"fused reduction missing; ops={ops}"
+  # The metadata is emitted during codegen; compiling and running the fused
+  # loop exercises that path and checks it produces a finite result.
+  r = fn(np.arange(10.0), np.array([0, 1, 2, 3]))
+  assert np.isfinite(r), f"fused-reduction result not finite: {r}"
+  print("smoke: _llvmlite_self_ref shim present; fused-reduction loop compiles and runs")
