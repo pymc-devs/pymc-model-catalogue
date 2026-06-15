@@ -217,6 +217,12 @@ _HTML_TEMPLATE = r"""<!doctype html>
          letter-spacing: 0.3px; color: #666; border-bottom: 2px solid #ddd;
          cursor: pointer; user-select: none; }
     th:hover { color: #222; }
+    th.metric-group { text-align: center; border-left: 2px solid #e0e0e0;
+                      cursor: default; }
+    th.metric-group:hover { color: #666; }
+    th.grp-start, td.grp-start { border-left: 2px solid #e0e0e0; }
+    th small { display: block; text-transform: none; font-weight: 400;
+               font-size: 10px; color: #999; letter-spacing: 0; }
     th.sort-asc::after { content: ' \25b2'; }
     th.sort-desc::after { content: ' \25bc'; }
     td:first-child, th:first-child { text-align: left; width: 220px; }
@@ -433,15 +439,21 @@ function renderTable(comparison, baseName, compareName) {
   const thead = document.querySelector('#table thead');
   const tbody = document.querySelector('#table tbody');
 
-  // Header
-  let hhtml = '<tr><th data-col="model">model</th>';
+  // Header — two rows: metric name once (spanning its 3 sub-columns), then
+  // short base/compare/ratio labels. The full experiment names are shown in
+  // the base/compare dropdowns and chart titles, so repeating them per column
+  // (and overflowing the fixed layout) is unnecessary.
+  let h1 = '<tr><th data-col="model" rowspan="2">model</th>';
+  let h2 = '<tr>';
   METRICS.forEach(metric => {
-    hhtml += `<th data-col="${metric}_base">${METRIC_LABELS[metric]}<br><small>${baseName}</small></th>`;
-    hhtml += `<th data-col="${metric}_compare">${METRIC_LABELS[metric]}<br><small>${compareName}</small></th>`;
-    hhtml += `<th data-col="${metric}_ratio">${METRIC_LABELS[metric]}<br><small>ratio</small></th>`;
+    h1 += `<th class="metric-group" colspan="3">${METRIC_LABELS[metric]}</th>`;
+    h2 += `<th data-col="${metric}_base" class="grp-start"><small>base</small></th>`;
+    h2 += `<th data-col="${metric}_compare"><small>compare</small></th>`;
+    h2 += `<th data-col="${metric}_ratio"><small>ratio</small></th>`;
   });
-  hhtml += '</tr>';
-  thead.innerHTML = hhtml;
+  h1 += '</tr>';
+  h2 += '</tr>';
+  thead.innerHTML = h1 + h2;
 
   function renderRows(rows) {
     let html = '';
@@ -450,7 +462,7 @@ function renderTable(comparison, baseName, compareName) {
     METRICS.forEach(metric => {
       const gm = comparison.summary[metric];
       const cls = ratioClass(gm, metric);
-      html += '<td></td><td></td>';
+      html += '<td class="grp-start"></td><td></td>';
       html += `<td class="${cls}">${gm != null ? gm.toFixed(3) + 'x' : 'n/a'}</td>`;
     });
     html += '</tr>';
@@ -460,7 +472,7 @@ function renderTable(comparison, baseName, compareName) {
       METRICS.forEach(metric => {
         const d = row[metric];
         const cls = ratioClass(d.ratio, metric);
-        html += `<td>${formatValue(metric, d.base)}</td>`;
+        html += `<td class="grp-start">${formatValue(metric, d.base)}</td>`;
         html += `<td>${formatValue(metric, d.compare)}</td>`;
         html += `<td class="${cls}">${d.ratio != null ? d.ratio.toFixed(3) + 'x' : 'n/a'}</td>`;
       });
@@ -475,6 +487,7 @@ function renderTable(comparison, baseName, compareName) {
   thead.querySelectorAll('th').forEach(th => {
     th.addEventListener('click', () => {
       const col = th.dataset.col;
+      if (!col) return;  // metric-group spanning header is not sortable
       if (sortCol === col) { sortAsc = !sortAsc; }
       else { sortCol = col; sortAsc = true; }
       thead.querySelectorAll('th').forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
