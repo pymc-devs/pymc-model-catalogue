@@ -102,20 +102,19 @@ class _BaseModelBenchBuild:
 
 class _BaseModelBenchEval:
     MODEL: str = ""  # overridden per generated subclass
-    timeout = 1200.0
+    # The heavy VAR-family models compile (in setup) for 15-20 min on the
+    # 2-vCPU CI runner — bayesian_var_hierarchical sat right at the old 1200 s
+    # ceiling — so give the per-benchmark budget generous headroom.
+    timeout = 2400.0
 
-    # Tighten steady-state timing, especially for the small (~10-40 us) models
-    # whose run-to-run scatter otherwise swamps the effect under test. asv
-    # auto-fills `number` so each sample spans `sample_time`; `repeat`
-    # ``(min, max, max_time_s)`` then takes many samples (capped at 30 s) and
-    # reports their median. Cheap models reach the 100-sample cap in well under
-    # a second, so they get the most averaging — exactly where it's needed.
-    # This shrinks the point-to-point jitter on the timeline and, for paired
-    # experiments (both arms in one CI job), the cross-arm ratio's residual
-    # error.
-    repeat = (20, 100, 30.0)
-    sample_time = 0.02
-    warmup_time = 0.2
+    # Tighten steady-state timing for the small (~10-40 us) models whose
+    # run-to-run scatter otherwise swamps the effect under test. We raise
+    # `sample_time` so asv auto-fills a larger `number` — i.e. each sample
+    # averages many more calls — which shrinks the estimate's variance WITHOUT
+    # re-running setup. We deliberately do NOT raise `repeat`: under
+    # --launch-method=spawn more samples can re-run the (very expensive) numba
+    # compile in setup, which is what pushed a VAR model past the timeout.
+    sample_time = 0.1
 
     def setup(self):
         self._call = build_and_measure(self.MODEL)["call"]
