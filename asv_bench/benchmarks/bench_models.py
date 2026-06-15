@@ -104,6 +104,19 @@ class _BaseModelBenchEval:
     MODEL: str = ""  # overridden per generated subclass
     timeout = 1200.0
 
+    # Tighten steady-state timing, especially for the small (~10-40 us) models
+    # whose run-to-run scatter otherwise swamps the effect under test. asv
+    # auto-fills `number` so each sample spans `sample_time`; `repeat`
+    # ``(min, max, max_time_s)`` then takes many samples (capped at 30 s) and
+    # reports their median. Cheap models reach the 100-sample cap in well under
+    # a second, so they get the most averaging — exactly where it's needed.
+    # Both arms of a paired experiment run in the same CI job, so the shared
+    # between-run drift cancels and this directly shrinks the cross-arm ratio's
+    # residual error.
+    repeat = (20, 100, 30.0)
+    sample_time = 0.02
+    warmup_time = 0.2
+
     def setup(self):
         self._call = build_and_measure(self.MODEL)["call"]
 
