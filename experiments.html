@@ -156,6 +156,7 @@ function readHash() {
   const b = params.get('base');
   const c = params.get('compare');
   if (b && ALL_EXPERIMENTS.includes(b)) baseSel.value = b;
+  else if (ALL_EXPERIMENTS.includes('base')) baseSel.value = 'base';
   if (c && ALL_EXPERIMENTS.includes(c)) compareSel.value = c;
   else {
     const nonBase = ALL_EXPERIMENTS.find(e => e !== baseSel.value);
