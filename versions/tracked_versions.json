@@ -1,4 +1,161 @@
 {
-  "description": "Ordered list of pymc releases tracked by the ASV timeline. Each entry becomes one synthetic commit and one data point in the dashboard. Only X.Y.0 releases are tracked — patch releases (X.Y.N with N > 0) are skipped because they do not meaningfully move the pytensor pin. Major bumps are treated the same as minor bumps (nothing hardcodes a major). Each commit's asv env installs whatever pymc version appears last in this list at that commit; pytensor comes along as a transitive dependency, resolved as-of the entry's released_at date so historical data points stay reproducible.",
-  "minor_releases": []
+  "description": "Ordered list of pymc releases tracked by the ASV timeline. Each entry becomes one synthetic commit and one data point in the dashboard. Only X.Y.0 releases are tracked \u2014 patch releases (X.Y.N with N > 0) are skipped because they do not meaningfully move the pytensor pin. Major bumps are treated the same as minor bumps (nothing hardcodes a major). Each commit's asv env installs whatever pymc version appears last in this list at that commit; pytensor comes along as a transitive dependency, resolved as-of the entry's released_at date so historical data points stay reproducible.",
+  "minor_releases": [
+    {
+      "pymc": "2.0",
+      "released_at": "2009-01-06"
+    },
+    {
+      "pymc": "2.2",
+      "released_at": "2012-05-07"
+    },
+    {
+      "pymc": "2.3",
+      "released_at": "2013-10-20"
+    },
+    {
+      "pymc": "4.0.0",
+      "released_at": "2022-06-03"
+    },
+    {
+      "pymc": "4.1.0",
+      "released_at": "2022-07-03"
+    },
+    {
+      "pymc": "4.2.0",
+      "released_at": "2022-09-19"
+    },
+    {
+      "pymc": "4.3.0",
+      "released_at": "2022-10-31"
+    },
+    {
+      "pymc": "4.4.0",
+      "released_at": "2022-11-19"
+    },
+    {
+      "pymc": "5.0.0",
+      "released_at": "2022-12-12"
+    },
+    {
+      "pymc": "5.1.0",
+      "released_at": "2023-03-03"
+    },
+    {
+      "pymc": "5.2.0",
+      "released_at": "2023-03-30"
+    },
+    {
+      "pymc": "5.3.0",
+      "released_at": "2023-04-14"
+    },
+    {
+      "pymc": "5.4.0",
+      "released_at": "2023-05-23"
+    },
+    {
+      "pymc": "5.5.0",
+      "released_at": "2023-06-09"
+    },
+    {
+      "pymc": "5.6.0",
+      "released_at": "2023-07-04"
+    },
+    {
+      "pymc": "5.7.0",
+      "released_at": "2023-07-31"
+    },
+    {
+      "pymc": "5.8.0",
+      "released_at": "2023-09-04"
+    },
+    {
+      "pymc": "5.9.0",
+      "released_at": "2023-10-04"
+    },
+    {
+      "pymc": "5.10.0",
+      "released_at": "2023-11-25"
+    },
+    {
+      "pymc": "5.11.0",
+      "released_at": "2024-03-15"
+    },
+    {
+      "pymc": "5.12.0",
+      "released_at": "2024-03-28"
+    },
+    {
+      "pymc": "5.13.0",
+      "released_at": "2024-04-08"
+    },
+    {
+      "pymc": "5.14.0",
+      "released_at": "2024-04-30"
+    },
+    {
+      "pymc": "5.15.0",
+      "released_at": "2024-05-13"
+    },
+    {
+      "pymc": "5.16.0",
+      "released_at": "2024-06-25"
+    },
+    {
+      "pymc": "5.17.0",
+      "released_at": "2024-10-03"
+    },
+    {
+      "pymc": "5.18.0",
+      "released_at": "2024-11-04"
+    },
+    {
+      "pymc": "5.19.0",
+      "released_at": "2024-12-03"
+    },
+    {
+      "pymc": "5.20.0",
+      "released_at": "2025-01-08"
+    },
+    {
+      "pymc": "5.21.0",
+      "released_at": "2025-02-26"
+    },
+    {
+      "pymc": "5.22.0",
+      "released_at": "2025-04-03"
+    },
+    {
+      "pymc": "5.23.0",
+      "released_at": "2025-05-28"
+    },
+    {
+      "pymc": "5.24.0",
+      "released_at": "2025-07-16"
+    },
+    {
+      "pymc": "5.25.0",
+      "released_at": "2025-07-22"
+    },
+    {
+      "pymc": "5.26.0",
+      "released_at": "2025-10-16"
+    },
+    {
+      "pymc": "5.27.0",
+      "released_at": "2025-12-21"
+    },
+    {
+      "pymc": "5.28.0",
+      "released_at": "2026-02-21"
+    },
+    {
+      "pymc": "6.0.0",
+      "released_at": "2026-05-13"
+    },
+    {
+      "pymc": "6.1.0",
+      "released_at": "2026-07-07"
+    }
+  ]
 }
