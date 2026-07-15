@@ -115,6 +115,20 @@ jobs:
           for sha in $commits; do
             short=$(git rev-parse --short=10 "$sha")
             echo "::group::benchmark $short"
+
+            # Ensure this commit carries a pymc-<ver> tag so asv's x-axis
+            # shows the version, not a bare SHA. backfill_history.py tags its
+            # own synthetic commits, but a detect-releases PR merged into
+            # timeline arrives untagged — derive the tag from the ledger's top
+            # version at this commit. Idempotent: skips if already tagged, and
+            # never aborts the walk (the tag is cosmetic).
+            ver=$(git show "$sha:versions/tracked_versions.json" 2>/dev/null \
+              | python -c "import json,sys;from packaging.version import Version;r=json.load(sys.stdin).get('minor_releases') or [];print(max(r,key=lambda e:Version(e['pymc']))['pymc'] if r else '')" \
+              || true)
+            if [ -n "$ver" ] && ! git rev-parse -q --verify "refs/tags/pymc-$ver" >/dev/null 2>&1; then
+              git tag "pymc-$ver" "$sha" && new_tags=1
+            fi
+
             if ! asv run -v --show-stderr --launch-method=spawn --skip-existing-successful --machine ci --bench "$BENCH" "${sha}^!"; then
               echo "::warning::commit $short had benchmark failures — publishing partial results"
               failed_commits="${failed_commits} ${short}"
@@ -142,6 +156,13 @@ jobs:
 
           if [ -n "$failed_commits" ]; then
             echo "::warning::commits with at least one failed benchmark:$failed_commits"
+          fi
+
+          # Publish any pymc-<ver> tags minted above so future runs (and the
+          # asv x-axis) see them. Best-effort — a tag-push race must not fail
+          # the benchmark run.
+          if [ -n "${new_tags:-}" ]; then
+            git push -q origin --tags 2>/dev/null || true
           fi
 
       - name: Regenerate custom dashboard

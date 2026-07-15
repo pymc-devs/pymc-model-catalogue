@@ -13,6 +13,14 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Read (and branch the PR from) the populated `timeline` ledger,
+          # not main's intentionally-empty one. bump_release.py appends only
+          # releases newer than the ledger's max, so against timeline it
+          # proposes at most the genuinely-new minor(s) instead of the entire
+          # back-catalogue.
+          ref: timeline
+          fetch-depth: 0
 
       - uses: actions/setup-python@v6
         with:
@@ -35,10 +43,14 @@ jobs:
         if: steps.bump.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
+          base: timeline
           commit-message: "Track new pymc minor release(s)"
           title: "Track new pymc minor release(s)"
           body: |
-            Automated update of `versions/tracked_versions.json` from PyPI.
-            Merging this PR adds one data point to the ASV benchmark timeline.
+            Automated update of `versions/tracked_versions.json` from PyPI,
+            branched from `timeline`. Merging appends the new pymc release to
+            the benchmarked ledger; the push to `timeline` triggers
+            `benchmark.yml`, which walks the new commit and adds one data
+            point to the dashboard.
           branch: auto/track-pymc-release
           delete-branch: true
