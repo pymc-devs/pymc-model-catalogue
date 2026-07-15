@@ -3,7 +3,7 @@ name: Benchmark
 # Regular timeline benchmark run. Triggered on push to `timeline` (usually
 # from merging a detect-releases PR) plus manual dispatch and a weekly
 # safety-net cron. Walks all synthetic commits on the current branch in
-# order and runs each under asv with --skip-existing-commits, so any
+# order and runs each under asv with --skip-existing-successful, so any
 # already-measured commit is a no-op. Publishes to gh-pages after each
 # commit so partial progress is durable — if the install hook breaks on
 # one pymc version, everything before it is still visible on the
@@ -26,7 +26,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           fetch-tags: true  # pymc-<ver> tags feed asv's x-axis labels
@@ -47,6 +47,19 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Overlay main onto working tree
+        run: |
+          # The walk runs asv against the host working tree, which on
+          # a push-to-timeline trigger sits on the timeline branch. If
+          # timeline's base predates changes on main (new workflows,
+          # updated core list, refactored bench_models), the walk uses
+          # stale code. Overlay every tracked file from origin/main so
+          # asv discovers the current benchmark module + filter,
+          # without rebasing timeline's commits (which would invalidate
+          # all existing results by changing their SHAs).
+          git fetch origin main:refs/remotes/origin/main
+          git checkout origin/main -- .
 
       - name: Register machine
         run: asv machine --yes --machine ci
@@ -94,15 +107,31 @@ jobs:
             git config user.name 'github-actions[bot]' && \
             git config user.email 'github-actions[bot]@users.noreply.github.com')
 
-          failed=""
+          # Track failures across the walk but never abort. Asv writes
+          # results incrementally — when a single benchmark in a commit
+          # crashes, the other 39 are still on disk and worth
+          # publishing. See backfill.yml for the full rationale.
+          failed_commits=""
           for sha in $commits; do
             short=$(git rev-parse --short=10 "$sha")
             echo "::group::benchmark $short"
-            if ! asv run -v --show-stderr --skip-existing-commits --machine ci --bench "$BENCH" "${sha}^!"; then
-              echo "::warning::commit $short failed; stopping walk"
-              failed=$sha
-              echo "::endgroup::"
-              break
+
+            # Ensure this commit carries a pymc-<ver> tag so asv's x-axis
+            # shows the version, not a bare SHA. backfill_history.py tags its
+            # own synthetic commits, but a detect-releases PR merged into
+            # timeline arrives untagged — derive the tag from the ledger's top
+            # version at this commit. Idempotent: skips if already tagged, and
+            # never aborts the walk (the tag is cosmetic).
+            ver=$(git show "$sha:versions/tracked_versions.json" 2>/dev/null \
+              | python -c "import json,sys;from packaging.version import Version;r=json.load(sys.stdin).get('minor_releases') or [];print(max(r,key=lambda e:Version(e['pymc']))['pymc'] if r else '')" \
+              || true)
+            if [ -n "$ver" ] && ! git rev-parse -q --verify "refs/tags/pymc-$ver" >/dev/null 2>&1; then
+              git tag "pymc-$ver" "$sha" && new_tags=1
+            fi
+
+            if ! asv run -v --show-stderr --launch-method=spawn --skip-existing-successful --machine ci --bench "$BENCH" "${sha}^!"; then
+              echo "::warning::commit $short had benchmark failures — publishing partial results"
+              failed_commits="${failed_commits} ${short}"
             fi
             asv publish
 
@@ -125,7 +154,41 @@ jobs:
             echo "::endgroup::"
           done
 
-          if [ -n "$failed" ]; then
-            echo "::error::halted at $failed"
-            exit 1
+          if [ -n "$failed_commits" ]; then
+            echo "::warning::commits with at least one failed benchmark:$failed_commits"
           fi
+
+          # Publish any pymc-<ver> tags minted above so future runs (and the
+          # asv x-axis) see them. Best-effort — a tag-push race must not fail
+          # the benchmark run.
+          if [ -n "${new_tags:-}" ]; then
+            git push -q origin --tags 2>/dev/null || true
+          fi
+
+      - name: Regenerate custom dashboard
+        if: always()
+        env:
+          REMOTE: "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+        run: |
+          set -euo pipefail
+          rm -rf .gh-pages-dash
+          if ! git clone --quiet --branch gh-pages --depth 1 "$REMOTE" .gh-pages-dash; then
+            echo "gh-pages not yet created — skipping dashboard regen"
+            exit 0
+          fi
+          if [ ! -f .gh-pages-dash/index.json ]; then
+            echo "no asv data on gh-pages — skipping dashboard regen"
+            exit 0
+          fi
+          python scripts/make_dashboard.py .gh-pages-dash .gh-pages-dash/dashboard.html
+          cd .gh-pages-dash
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add dashboard.html
+          if git diff --cached --quiet; then
+            echo "dashboard.html unchanged"
+            exit 0
+          fi
+          git commit -q -m "Regenerate custom dashboard"
+          git pull --rebase --autostash -q origin gh-pages 2>/dev/null || true
+          git push -q origin gh-pages

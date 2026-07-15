@@ -5,7 +5,7 @@ name: Backfill timeline
 # one at a time, and publishes after each commit — so partial progress
 # is durable and a single failing pymc release stops the run at the
 # failing commit without losing everything before it. Re-running is
-# cheap (asv --skip-existing-commits no-ops already-measured commits),
+# cheap (asv --skip-existing-successful no-ops already-measured benchmarks),
 # so "Run workflow" can be clicked repeatedly until the timeline is
 # caught up.
 
@@ -38,7 +38,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 0
@@ -108,6 +108,21 @@ jobs:
             git push --follow-tags origin timeline
           fi
 
+      - name: Overlay main onto working tree
+        run: |
+          # The walk runs asv against the host working tree, which at
+          # this point sits on the timeline branch. If timeline's base
+          # predates changes on main (new workflows, updated core list,
+          # refactored bench_models), the walk uses stale code. Overlay
+          # every tracked file from origin/main into the working tree
+          # so asv discovers the current benchmark module + filter,
+          # without rebasing timeline's commits (which would invalidate
+          # all existing results by changing their SHAs).
+          #
+          # Must run after backfill_history.py (which requires a clean
+          # working tree) and before asv discovery.
+          git checkout origin/main -- .
+
       - name: Register machine
         run: asv machine --yes --machine ci
 
@@ -123,8 +138,8 @@ jobs:
           set -euo pipefail
           if [ "$RESET" = "true" ]; then
             # reset=true means "throw away the previous timeline". We
-            # skip the results restore so --skip-existing-commits doesn't
-            # reuse measurements from the thrown-away runs. The wipe of
+            # skip the results restore so --skip-existing-successful
+            # doesn't reuse measurements from the thrown-away runs. The wipe of
             # gh-pages/results/ happens inside the walk loop on first
             # publish so ``asv publish`` observes the fresh state.
             echo "reset=true — not restoring prior results"
@@ -172,15 +187,31 @@ jobs:
             rm -rf .gh-pages-push/results
           fi
 
-          failed=""
+          # Track failures across the walk but never abort. Asv writes
+          # results incrementally — when a single benchmark in a commit
+          # crashes, the other 39 are still on disk and worth
+          # publishing. Stopping the walk on a non-zero exit (as the
+          # earlier version did) threw away work and left the dashboard
+          # showing pre-walk data. Now we publish after every commit
+          # regardless and raise the failures as a single warning at
+          # the end so the run is annotated but never fails the rest of
+          # the timeline because of one broken model.
+          failed_commits=""
           for sha in $commits; do
             short=$(git rev-parse --short=10 "$sha")
             echo "::group::benchmark $short"
-            if ! asv run -v --show-stderr --skip-existing-commits --machine ci --bench "$BENCH" "${sha}^!"; then
-              echo "::warning::commit $short failed; stopping walk"
-              failed=$sha
-              echo "::endgroup::"
-              break
+            # Isolate numba/pytensor caches per commit so earlier iterations
+            # in the walk don't give later ones free cache hits. PyTensor's
+            # compiledir is shared across successive releases in practice,
+            # so without this the timeline is contaminated by cross-version
+            # cache reuse.
+            commit_cache_dir="$(pwd)/.cache/$short"
+            mkdir -p "$commit_cache_dir"
+            export NUMBA_CACHE_DIR="$commit_cache_dir/numba"
+            export PYTENSOR_FLAGS="compiledir=$commit_cache_dir/pytensor"
+            if ! asv run -v --show-stderr --launch-method=spawn --skip-existing-successful --machine ci --bench "$BENCH" "${sha}^!"; then
+              echo "::warning::commit $short had benchmark failures — publishing partial results"
+              failed_commits="${failed_commits} ${short}"
             fi
             asv publish
 
@@ -204,7 +235,37 @@ jobs:
             echo "::endgroup::"
           done
 
-          if [ -n "$failed" ]; then
-            echo "::error::halted at $failed — inspect logs and re-dispatch after fixing"
-            exit 1
+          if [ -n "$failed_commits" ]; then
+            echo "::warning::commits with at least one failed benchmark:$failed_commits"
           fi
+
+      - name: Regenerate custom dashboard
+        if: always()
+        env:
+          REMOTE: "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+        run: |
+          set -euo pipefail
+          # Re-clone gh-pages fresh (the walk's working copy may be in an
+          # intermediate state). This step runs even on walk failure so a
+          # partial timeline still gets a refreshed dashboard.
+          rm -rf .gh-pages-dash
+          if ! git clone --quiet --branch gh-pages --depth 1 "$REMOTE" .gh-pages-dash; then
+            echo "gh-pages not yet created — skipping dashboard regen"
+            exit 0
+          fi
+          if [ ! -f .gh-pages-dash/index.json ]; then
+            echo "no asv data on gh-pages — skipping dashboard regen"
+            exit 0
+          fi
+          python scripts/make_dashboard.py .gh-pages-dash .gh-pages-dash/dashboard.html
+          cd .gh-pages-dash
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add dashboard.html
+          if git diff --cached --quiet; then
+            echo "dashboard.html unchanged"
+            exit 0
+          fi
+          git commit -q -m "Regenerate custom dashboard"
+          git pull --rebase --autostash -q origin gh-pages 2>/dev/null || true
+          git push -q origin gh-pages

@@ -1,0 +1,83 @@
+name: Republish
+
+# Re-run `asv publish` over the existing gh-pages results and push the
+# refreshed index.json + custom dashboard. No new measurements — useful
+# when something asv reads at publish time changed without any benchmark
+# run (retroactive tag fixes, asv version bumps, dashboard generator
+# tweaks). Manual-only; benchmark.yml / backfill.yml already cover the
+# normal "publish after each commit" path.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: republish
+  cancel-in-progress: false
+
+jobs:
+  republish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          fetch-tags: true  # pymc-<ver> tags feed asv's x-axis labels
+
+      - name: Create local timeline ref
+        # asv.conf.json lists `branches: ["timeline"]` and asv rev-parses
+        # that name; checkout only creates a local branch for the ref
+        # under test (main here), so mirror origin/timeline locally.
+        run: git branch -f timeline origin/timeline
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Install tools
+        run: |
+          uv tool install asv
+          pip install pyyaml packaging
+
+      - name: Register machine
+        run: asv machine --yes --machine ci
+
+      - name: Republish and push
+        env:
+          REMOTE: "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+        run: |
+          set -euo pipefail
+          rm -rf .gh-pages
+          if ! git clone --quiet --branch gh-pages --depth 1 "$REMOTE" .gh-pages; then
+            echo "gh-pages branch does not exist yet — nothing to republish"
+            exit 0
+          fi
+          if [ ! -d .gh-pages/results ]; then
+            echo "no results/ on gh-pages — nothing to republish"
+            exit 0
+          fi
+
+          mkdir -p .asv/results
+          cp -a .gh-pages/results/. .asv/results/
+          asv publish
+
+          # Wipe everything except .git, results/ (regenerated below from
+          # .asv/results/) and experiments/ (owned by experiment.yml), then
+          # overlay the freshly-published html/index.json.
+          (cd .gh-pages && find . -mindepth 1 -maxdepth 1 \
+            ! -name .git ! -name experiments ! -name results -exec rm -rf {} +)
+          cp -a .asv/html/. .gh-pages/
+
+          # Custom dashboard reads the index.json we just rewrote.
+          python scripts/make_dashboard.py .gh-pages .gh-pages/dashboard.html
+
+          cd .gh-pages
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes after republish"
+            exit 0
+          fi
+          git commit -q -m "Republish"
+          git pull --rebase --autostash -q origin gh-pages 2>/dev/null || true
+          git push -q origin gh-pages

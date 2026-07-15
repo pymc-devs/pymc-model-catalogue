@@ -28,7 +28,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0  # need history for git diff on push events
 
@@ -110,17 +110,28 @@ jobs:
             # only — experiment.yml never pushes tags.
             git tag -f "exp-$name" "$yaml_sha"
 
+            # Isolate numba/pytensor caches per experiment so earlier runs
+            # in the loop don't give later ones free cache hits.
+            exp_cache_dir="$(pwd)/.cache/$name"
+            mkdir -p "$exp_cache_dir"
+            export NUMBA_CACHE_DIR="$exp_cache_dir/numba"
+            export PYTENSOR_FLAGS="compiledir=$exp_cache_dir/pytensor"
+
             regex=$(python scripts/core_models.py "$yaml_path")
-            asv run -v --show-stderr \
+            asv run -v --show-stderr --launch-method=spawn \
               --environment="existing:$venv_py" \
               --set-commit-hash "$yaml_sha" \
               --bench "$regex" \
               --machine ci
 
             asv publish
+            rm -rf .asv/results
             rm -rf ".gh-pages/experiments/$name/$short"
             mkdir -p "$outdir"
             cp -a .asv/html/. "$outdir/"
+
+            # Write experiment metadata for the comparison dashboard.
+            python scripts/write_experiment_meta.py "$yaml_path" "$outdir/meta.json"
           done
 
       - name: Push experiment results to gh-pages
@@ -129,9 +140,38 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add experiments
-          git commit -m "Publish experiment results" || echo "no changes"
-          # Rebase onto any concurrent gh-pages update (e.g. a benchmark.yml
-          # push) so our push stays fast-forward. We only staged experiments/
-          # above, so there's nothing to conflict with the timeline top level.
-          git pull --rebase --autostash -q origin gh-pages 2>/dev/null || true
-          git push
+          git commit -m "Publish experiment results" || echo "no experiment changes"
+          # Rebase onto any concurrent gh-pages update so our push stays
+          # fast-forward. Concurrent experiment.yml runs add disjoint
+          # experiments/<name>/<sha>/ paths so the subtree itself never
+          # conflicts. experiments.html is regenerated separately below
+          # from up-to-date remote state to avoid the conflict that
+          # caused 3-of-4 concurrent dispatches to fail.
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase --autostash -q origin gh-pages 2>/dev/null || true
+            if git push -q origin HEAD:gh-pages; then break; fi
+            sleep $((RANDOM % 5 + 1))
+          done
+
+      - name: Regenerate experiments.html
+        run: |
+          cd .gh-pages
+          # experiments.html is fully derivable from the experiments/
+          # subtree, so always regenerate against current remote state.
+          # This is a separate commit (not bundled with the experiments/
+          # add above) so concurrent runs don't conflict on the HTML
+          # blob — each refetches, regenerates, and commits in turn.
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin gh-pages
+            git reset --hard -q origin/gh-pages
+            if [ ! -d experiments ]; then break; fi
+            python ../scripts/make_experiment_dashboard.py . experiments.html
+            git add experiments.html
+            if git diff --cached --quiet; then
+              echo "experiments.html unchanged"
+              break
+            fi
+            git commit -q -m "Regenerate experiment dashboard"
+            if git push -q origin HEAD:gh-pages; then break; fi
+            sleep $((RANDOM % 5 + 1))
+          done
