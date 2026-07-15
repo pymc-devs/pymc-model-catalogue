@@ -1,7 +1,7 @@
 {
     "version": 1,
     "project": "pymc-model-catalogue",
-    "project_url": "https://github.com/ricardoV94/pymc-model-catalogue",
+    "project_url": "https://github.com/pymc-devs/pymc-model-catalogue",
     "repo": ".",
     "branches": ["timeline"],
     "dvcs": "git",
@@ -12,7 +12,7 @@
     "uninstall_command": [],
     "build_command": [],
     "install_timeout": 1200,
-    "show_commit_url": "https://github.com/ricardoV94/pymc-model-catalogue/commit/",
+    "show_commit_url": "https://github.com/pymc-devs/pymc-model-catalogue/commit/",
     "benchmark_dir": "asv_bench/benchmarks",
     "env_dir": ".asv/env",
     "results_dir": ".asv/results",

@@ -108,8 +108,8 @@ Authoring conventions and the extraction template live in
 The catalogue backs an ASV suite that tracks four metrics — `rewrite_time`,
 `compile_time`, `n_rewrites`, `time_eval` — on a curated 25-model core
 ([`BENCHMARK_CORE.md`](./BENCHMARK_CORE.md)) across every pymc release, published
-to a [dashboard](https://ricardov94.github.io/pymc-model-catalogue/dashboard.html).
-A separate [experiments](https://ricardov94.github.io/pymc-model-catalogue/experiments.html)
+to a [dashboard](https://pymc-devs.github.io/pymc-model-catalogue/dashboard.html).
+A separate [experiments](https://pymc-devs.github.io/pymc-model-catalogue/experiments.html)
 track runs the models against patched pymc/pytensor to A/B specific changes.
 
 Full details — metrics, the branch/CI layout, running asv locally, and adding an
