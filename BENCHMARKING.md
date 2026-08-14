@@ -23,7 +23,7 @@ Each model is wrapped in an asv `ModelBench` class that captures four metrics:
 - **`time_eval`** — steady-state per-call time, measured by asv's native timing
   machinery.
 
-The four metrics are tracked on a curated subset of 25 models listed in
+The four metrics are tracked on a curated subset of 26 models listed in
 [`BENCHMARK_CORE.md`](./BENCHMARK_CORE.md), chosen to give broad coverage
 (hierarchical, GP, scan, linear algebra, survival, ODE, mixtures, discrete).
 

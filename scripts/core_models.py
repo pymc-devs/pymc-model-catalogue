@@ -8,11 +8,11 @@ here rather than hardcoding a duplicate regex.
 from __future__ import annotations
 
 CORE_MODELS: tuple[str, ...] = (
-    # Trimmed to 10 diverse models, picked to keep broad coverage
-    # across the 25-model catalogue described in BENCHMARK_CORE.md
-    # while keeping a single backfill dispatch cheap enough to finish
-    # in reasonable time on a 2-vCPU runner. One per category:
-    # tiny/hierarchical/linalg/time-series/GP/mixture/ODE/discrete.
+    # Trimmed to 11 diverse models, picked to keep broad coverage
+    # across the catalogue described in BENCHMARK_CORE.md while keeping
+    # a single backfill dispatch cheap enough to finish in reasonable
+    # time on a 2-vCPU runner. One per category:
+    # tiny/hierarchical/linalg/time-series/GP/mixture/survey/discrete.
     "models.eight_schools_noncentered",                     # tiny hierarchical
     "models.BEST",                                          # trivial two-group
     "models.GLM_hierarchical_binomial_rat_tumor",           # hierarchical binomial
@@ -22,6 +22,7 @@ CORE_MODELS: tuple[str, ...] = (
     "models.bayesian_var_ireland",                          # VAR (scan + linalg)
     "models.gp_marginal_matern52",                          # small marginal GP
     "models.marginalized_gaussian_mixture_model",           # mixture
+    "models.mrp_survey_zerosum_categorical",                # zero-sum tables + categorical
     "models_discrete.occupancy_crossbill",                  # logp-only discrete path
 )
 

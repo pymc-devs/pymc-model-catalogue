@@ -1,10 +1,10 @@
-# Benchmark Core (25 models)
+# Benchmark Core (26 models)
 
 A curated subset of the catalogue chosen to give diverse coverage for
 benchmarking and optimization research: small ↔ large, centered ↔ noncentered
 hierarchical, dense linear algebra, `scan`-based time series and ODEs, GPs,
-mixtures, spatial CAR, survival, and one discrete-vars model so the logp-only
-codepath is exercised.
+mixtures, spatial CAR, survival, wide gather-heavy survey models, and one
+discrete-vars model so the logp-only codepath is exercised.
 
 ## Tiny / canonical baselines
 1. `models/eight_schools_noncentered.py` — smallest hierarchical, noncentered reparameterization
@@ -44,5 +44,9 @@ codepath is exercised.
 23. `models/nyc_bym_traffic.py` — CAR/BYM spatial, large
 24. `models/excess_deaths.py` — larger real dataset, structural model
 
+## Survey / categorical
+25. `models/mrp_survey_zerosum_categorical.py` — many zero-sum effect tables gathered
+    per respondent, Categorical likelihood over a wide (N, G, K) logit array
+
 ## Discrete free variables
-25. `models_discrete/occupancy_crossbill.py` — exercises the logp-only path
+26. `models_discrete/occupancy_crossbill.py` — exercises the logp-only path
