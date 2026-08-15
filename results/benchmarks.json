@@ -3989,6 +3989,36 @@
         "unit": "seconds",
         "version": "c6e86ad562577142071d8a29b68a086d07299700c23343ea5cafd6fc8396d39a"
     },
+    "bench_models.ModelBenchBuild_models_mrp_survey_zerosum_categorical.track_compile_time": {
+        "code": "class _BaseModelBenchBuild:\n    def track_compile_time(self):\n        return self._result[\"compile_time\"]\n\n    def setup(self):\n        _prewarm()\n        self._result = build_and_measure(self.MODEL)",
+        "name": "bench_models.ModelBenchBuild_models_mrp_survey_zerosum_categorical.track_compile_time",
+        "param_names": [],
+        "params": [],
+        "timeout": 1200.0,
+        "type": "track",
+        "unit": "seconds",
+        "version": "6917d9e187ee30db62ada0d10fa7535a56740118fb3d0b6c0ce63b6d753b1b71"
+    },
+    "bench_models.ModelBenchBuild_models_mrp_survey_zerosum_categorical.track_n_rewrites": {
+        "code": "class _BaseModelBenchBuild:\n    def track_n_rewrites(self):\n        return self._result[\"n_rewrites\"]\n\n    def setup(self):\n        _prewarm()\n        self._result = build_and_measure(self.MODEL)",
+        "name": "bench_models.ModelBenchBuild_models_mrp_survey_zerosum_categorical.track_n_rewrites",
+        "param_names": [],
+        "params": [],
+        "timeout": 1200.0,
+        "type": "track",
+        "unit": "count",
+        "version": "e73db0ecd86bdae07aefc5f5274a47b63bc3b3afc2be1555497b468373174a2e"
+    },
+    "bench_models.ModelBenchBuild_models_mrp_survey_zerosum_categorical.track_rewrite_time": {
+        "code": "class _BaseModelBenchBuild:\n    def track_rewrite_time(self):\n        return self._result[\"rewrite_time\"]\n\n    def setup(self):\n        _prewarm()\n        self._result = build_and_measure(self.MODEL)",
+        "name": "bench_models.ModelBenchBuild_models_mrp_survey_zerosum_categorical.track_rewrite_time",
+        "param_names": [],
+        "params": [],
+        "timeout": 1200.0,
+        "type": "track",
+        "unit": "seconds",
+        "version": "c6e86ad562577142071d8a29b68a086d07299700c23343ea5cafd6fc8396d39a"
+    },
     "bench_models.ModelBenchBuild_models_multilevel_contextual_effect.track_compile_time": {
         "code": "class _BaseModelBenchBuild:\n    def track_compile_time(self):\n        return self._result[\"compile_time\"]\n\n    def setup(self):\n        _prewarm()\n        self._result = build_and_measure(self.MODEL)",
         "name": "bench_models.ModelBenchBuild_models_multilevel_contextual_effect.track_compile_time",
@@ -8085,6 +8115,22 @@
         "code": "class _BaseModelBenchEval:\n    def time_eval(self):\n        self._call()\n\n    def setup(self):\n        self._call = build_and_measure(self.MODEL)[\"call\"]",
         "min_run_count": 2,
         "name": "bench_models.ModelBenchEval_models_mogp_lcm.time_eval",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.1,
+        "timeout": 2400.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "d68790fb64a5cc81c72a1449e3a3315308df2fdffb78c107e5656ca3374a00bd",
+        "warmup_time": -1
+    },
+    "bench_models.ModelBenchEval_models_mrp_survey_zerosum_categorical.time_eval": {
+        "code": "class _BaseModelBenchEval:\n    def time_eval(self):\n        self._call()\n\n    def setup(self):\n        self._call = build_and_measure(self.MODEL)[\"call\"]",
+        "min_run_count": 2,
+        "name": "bench_models.ModelBenchEval_models_mrp_survey_zerosum_categorical.time_eval",
         "number": 0,
         "param_names": [],
         "params": [],
