@@ -8,11 +8,11 @@ unreadable on a single shared plot even in log scale.
 Each model gets two sibling classes:
 
 - ``ModelBenchBuild_<model>`` — regular ``setup()`` calls
-  ``build_and_measure`` to collect three scalar metrics
-  (``rewrite_time``, ``compile_time``, ``n_rewrites``). Each
+  ``build_and_measure`` to collect four scalar metrics
+  (``rewrite_time``, ``compile_time``, ``n_rewrites``, ``peak_rss``). Each
   ``track_*`` method runs in its own asv subprocess, so the rebuild
-  cost is paid three times per (commit, model). We deliberately
-  accept that 3× cost instead of caching: every caching strategy we
+  cost is paid four times per (commit, model). We deliberately
+  accept that 4× cost instead of caching: every caching strategy we
   tried (asv ``setup_cache``, disk cache keyed by git SHA, disk cache
   keyed by pymc version) had a subtle scoping trap that produced flat
   identical timelines. Re-measuring is slower but obviously correct.
@@ -20,7 +20,7 @@ Each model gets two sibling classes:
   compiled function and keeps it on ``self`` so ``time_eval`` can
   call it repeatedly for asv's native steady-state timing.
 
-Total rebuilds per (commit, model): 3 (Build) + 1 (Eval) = 4.
+Total rebuilds per (commit, model): 4 (Build) + 1 (Eval) = 5.
 
 Alphabetical class ordering puts ``Build`` before ``Eval`` (``B < E``),
 so ``track_compile_time`` is measured against a cold pytensor NUMBA
@@ -35,7 +35,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from asv_bench._runner import build_and_measure  # noqa: E402
+from asv_bench._runner import _ru_maxrss_bytes, build_and_measure  # noqa: E402
 
 
 def _prewarm() -> None:
@@ -98,6 +98,12 @@ class _BaseModelBenchBuild:
         return self._result["n_rewrites"]
 
     track_n_rewrites.unit = "count"
+
+    def track_peak_rss(self):
+        """Whole-process high-water mark: asv spawns per benchmark, so it is this model's."""
+        return max(self._result["peak_rss"], _ru_maxrss_bytes())
+
+    track_peak_rss.unit = "bytes"
 
 
 class _BaseModelBenchEval:
