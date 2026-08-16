@@ -27,6 +27,7 @@ METRIC_ORDER = [
     ("track_rewrite_time", "rewrite_time", "seconds"),
     ("track_compile_time", "compile_time", "seconds"),
     ("track_n_rewrites", "n_rewrites", "count"),
+    ("track_peak_rss", "peak_rss", "bytes"),
     ("time_eval", "eval", "seconds"),
 ]
 
@@ -310,6 +311,11 @@ window.addEventListener('hashchange', () => { readHash(); update(); });
 function formatValue(metric, v) {
   if (v == null || Number.isNaN(v)) return 'n/a';
   if (metric === 'track_n_rewrites') return v.toFixed(0);
+  if (METRIC_UNITS[metric] === 'bytes') {
+    if (v >= 1073741824) return (v / 1073741824).toFixed(2) + ' GB';
+    if (v >= 1048576) return (v / 1048576).toFixed(0) + ' MB';
+    return (v / 1024).toFixed(0) + ' KB';
+  }
   if (v < 1e-3) return (v * 1e6).toFixed(1) + ' µs';
   if (v < 1) return (v * 1e3).toFixed(0) + ' ms';
   return v.toFixed(3) + ' s';
@@ -323,7 +329,7 @@ function ratioClass(ratio, metric) {
     if (ratio < 0.95) return 'good';
     return 'neutral';
   }
-  // For time metrics, lower is better
+  // Lower time and memory are better.
   if (ratio > 1.05) return 'bad';
   if (ratio < 0.95) return 'good';
   return 'neutral';

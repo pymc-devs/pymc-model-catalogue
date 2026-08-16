@@ -8,7 +8,7 @@ branch/CI layout, and how to run or extend it. For the model set itself see the
 
 ## Metrics
 
-Each model is wrapped in an asv `ModelBench` class that captures four metrics:
+Each model is wrapped in an asv `ModelBench` class that captures five metrics:
 
 - **`rewrite_time`** — wall-clock from calling `logp_dlogp_function` (or
   `compile_logp` for discrete models) to the moment it returns. Covers graph
@@ -20,10 +20,37 @@ Each model is wrapped in an asv `ModelBench` class that captures four metrics:
 - **`n_rewrites`** — number of `rewriting: ...` lines emitted under
   `pytensor.config.optimizer_verbose = True`. A proxy for how many rewrites the
   graph went through; shifts when rewrite rules are added or removed.
+- **`peak_rss`** — the highest resident set size, in bytes, that building and
+  compiling this model drove the process to. A whole-process high-water mark,
+  not a window: asv spawns a fresh process per benchmark, so it covers imports,
+  `_prewarm`, graph construction, rewrites and the NUMBA JIT together. That
+  makes it the "will this fit on the box" number. Memory moves independently of
+  time — the numba backend has had regressions where peak RSS grew several-fold
+  on a model whose compile time barely moved, and on a CI runner that is the
+  difference between a slow benchmark and an OOM-killed one.
 - **`time_eval`** — steady-state per-call time, measured by asv's native timing
   machinery.
 
-The four metrics are tracked on a curated subset of 26 models listed in
+### On the RSS metric
+
+Compile is where the memory goes: a model that needs gigabytes needs them
+during the JIT, not while evaluating, and evaluation is dominated by the same
+logp/dlogp work whether a sampler is driving it or not. So one number covers
+the run rather than splitting build and eval.
+
+It is **absolute**, deliberately — the question is whether a machine can run
+the model, and the interpreter and imports are part of that. `build_and_measure`
+also returns the compile-window peak and its delta over the pre-compile
+baseline, for when the split matters, but those are not plotted.
+
+The value comes from `resource.getrusage(...).ru_maxrss`, which cannot miss a
+transient, floored by a `/proc/self/statm` sampler (200 ms) over the compile
+window so the metric stays meaningful if a process is ever reused instead of
+spawned. `tracemalloc` is no help either way: the spike is LLVM/numba native
+memory, not Python allocations. On non-Linux there is no sampler and
+`ru_maxrss` is used alone.
+
+The five metrics are tracked on a curated subset of 26 models listed in
 [`BENCHMARK_CORE.md`](./BENCHMARK_CORE.md), chosen to give broad coverage
 (hierarchical, GP, scan, linear algebra, survival, ODE, mixtures, discrete).
 
