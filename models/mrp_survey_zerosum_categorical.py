@@ -1,20 +1,27 @@
 """
-Model: Survey MRP step - zero-sum demographic effects with a categorical rating likelihood
+Model: Survey MRP step - many scaled zero-sum tables with a categorical rating likelihood
 Source: synthetic stress test written for this catalogue, shaped after an MRP-style survey
-    step: a "feeling thermometer" battery where every respondent rates every party on a
-    fixed answer scale.
+    step; sized as a numba compile-cost sentinel.
 Authors: pymc-model-catalogue
-Description: N = 2500 respondents rate G = 8 parties on a K = 10 point scale. The latent
-    rating per (respondent, question) sums 10 demographic main effects and 9 pairwise
-    interactions, each a ZeroSumNormal (levels x G) table scaled by its own HalfNormal and
-    gathered at the respondent's category. A monotone loading built from the cumulative sums
-    of a Dirichlet maps that latent onto K logits, which are added to zero-sum per-question
-    base rates and fed to a Categorical likelihood over (N, G, K). 1429 parameters.
+Description: N = 1000 respondents rate G = 2 questions on a K = 3 scale. The latent
+    rating per (respondent, question) sums 8 binary demographic main effects and all 28
+    pairwise interactions: 36 tables of at most 4 rows, each a ZeroSumNormal scaled by
+    its own HalfNormal and gathered at the respondent's category. A monotone loading
+    built from the cumulative sums of a Dirichlet maps that latent onto K logits, added
+    to zero-sum per-question base rates and fed to a Categorical likelihood over
+    (N, G, K). 170 parameters.
+
+    Sizing note: numba compile cost is superlinear in the count of scaled gathered
+    tables, ``(sd_t * table_t)[idx_t]``, and nearly independent of their sizes. 36 tables
+    with per-table scales is the smallest form with an unambiguous signal (317 s to build
+    against 168 s on a fixed stack); sharing one scale across tables defuses it.
 
 Benchmark results:
-- Original:  logp = -47408.0753, grad norm = 146.9804, 7460.3 us/call (2069 evals)
-- Frozen:    logp = -47408.0753, grad norm = 146.9804, 7655.0 us/call (2036 evals)
+- Original:  logp = -2348.8118, grad norm = 33.9790, 1431.2 us/call (10559 evals)
+- Frozen:    logp = -2348.8118, grad norm = 33.9790, 1596.3 us/call (9454 evals)
 """
+
+from itertools import combinations
 
 import numpy as np
 import pymc as pm
@@ -22,34 +29,29 @@ import pytensor.tensor as pt
 
 
 def build_model():
-    N, G, K = 2500, 8, 10  # respondents, rating questions each answers, scale points
-    MAIN = {"age": 7, "gender": 2, "education": 4, "nationality": 3, "urban": 2,
-            "income": 6, "region": 24, "methods": 3, "vote_intent": 8, "party_pref": 10}
-    INTER = [("age", "education"), ("gender", "nationality"), ("age", "gender"),
-             ("age", "nationality"), ("education", "nationality"), ("nationality", "urban"),
-             ("gender", "urban"), ("age", "urban"), ("education", "urban")]
+    N, G, K = 1000, 2, 3  # respondents, rating questions each answers, scale points
+    DEMOS = ["urban", "employed", "female", "married",
+             "parent", "student", "religious", "homeowner"]  # all binary
 
     rng = np.random.default_rng(0)
-    codes = {d: rng.integers(0, L, size=N) for d, L in MAIN.items()}
+    codes = {d: rng.integers(0, 2, size=N) for d in DEMOS}
     y = rng.integers(0, K, size=(N, G))  # respondent i's scale point for question j
 
     with pm.Model(check_bounds=False) as model:
-        # 1. hierarchical block: one zero-sum effect table per demographic, gathered per respondent
+        # 1. hierarchical block: one scaled zero-sum table per demographic and per pair
         mu = pt.zeros((N, G))
-        tables = [(d, MAIN[d], codes[d]) for d in MAIN]
-        tables += [(f"{a}_x_{b}", MAIN[a] * MAIN[b], codes[a] * MAIN[b] + codes[b])
-                   for a, b in INTER]
+        tables = [(d, 2, codes[d]) for d in DEMOS]
+        tables += [(f"{a}_x_{b}", 4, codes[a] * 2 + codes[b])
+                   for a, b in combinations(DEMOS, 2)]
         for name, levels, idx in tables:
-            sd = pm.HalfNormal(f"sd_{name}", 0.3)  # how much this demographic matters at all
+            sd = pm.HalfNormal(f"sd_{name}", 0.3)
             off = pm.ZeroSumNormal(f"a_{name}", sigma=1.0, shape=(levels, G), n_zerosum_axes=1)
             mu = mu + (sd * off)[idx]  # (N, G) latent rating
-        # No per-question intercept: adding one shifts the logits by c_g * phi_g, whose
-        # mean over the scale cancels under the softmax and whose remainder is already
-        # in alpha's zero-sum space, so it would be a redundant degree of freedom.
 
-        # 2. likelihood: a monotone loading phi turns the single latent into K logits.
-        # phi_g = (0, ..., 1) from a Dirichlet's cumulative sums, so mu orders the scale points
-        # rather than shifting all of them equally (a constant shift cancels under the softmax).
+        # No per-question intercept: it would duplicate a dof already in alpha's span.
+
+        # 2. likelihood: phi_g = (0, ..., 1) from a Dirichlet's cumulative sums, so mu
+        # orders the scale points instead of shifting them all (which softmax cancels).
         phi_diffs = pm.Dirichlet("phi_diffs", np.ones(K - 1), shape=(G, K - 1))
         phi = pt.concatenate([pt.zeros((G, 1)), pt.cumsum(phi_diffs, axis=-1)], axis=-1)  # (G, K)
         # Per-question base rates, zero-sum over the scale so they don't fight the softmax.

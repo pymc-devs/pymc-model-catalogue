@@ -45,8 +45,9 @@ discrete-vars model so the logp-only codepath is exercised.
 24. `models/excess_deaths.py` — larger real dataset, structural model
 
 ## Survey / categorical
-25. `models/mrp_survey_zerosum_categorical.py` — many zero-sum effect tables gathered
-    per respondent, Categorical likelihood over a wide (N, G, K) logit array
+25. `models/mrp_survey_zerosum_categorical.py` — many *scaled* zero-sum effect tables
+    gathered per respondent, Categorical likelihood over an (N, G, K) logit array; sized
+    as a numba compile-cost sentinel (the cost is superlinear in table count)
 
 ## Discrete free variables
 26. `models_discrete/occupancy_crossbill.py` — exercises the logp-only path
