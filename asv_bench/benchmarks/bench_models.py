@@ -35,7 +35,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from asv_bench._runner import build_and_measure  # noqa: E402
+from asv_bench._runner import _ru_maxrss_bytes, build_and_measure  # noqa: E402
 
 
 def _prewarm() -> None:
@@ -98,6 +98,12 @@ class _BaseModelBenchBuild:
         return self._result["n_rewrites"]
 
     track_n_rewrites.unit = "count"
+
+    def track_peak_rss(self):
+        """Whole-process high-water mark: asv spawns per benchmark, so it is this model's."""
+        return max(self._result["peak_rss"], _ru_maxrss_bytes())
+
+    track_peak_rss.unit = "bytes"
 
 
 class _BaseModelBenchEval:

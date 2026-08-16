@@ -8,8 +8,9 @@ asv publish output directory (typically ``.asv/html`` during CI or
 ``.gh-pages-push`` / a freshly-cloned gh-pages checkout) and writes a
 self-contained HTML file with embedded data and Plotly plots.
 
-The generated page is a dense sparkline grid: one row per model, five
-columns (model name + four metrics). No horizontal scroll, no chart
+The generated page is a dense sparkline grid: one row per model, one
+column per metric plus the model name (the grid sizes itself from
+METRIC_ORDER). No horizontal scroll, no chart
 chrome, hover tooltips show (pymc tag, formatted value, commit
 short-hash). Counts only pymc versions that actually have data, not
 just tagged commits.
@@ -32,6 +33,7 @@ METRIC_ORDER = [
     ("track_rewrite_time", "rewrite_time", "seconds"),
     ("track_compile_time", "compile_time", "seconds"),
     ("track_n_rewrites", "n_rewrites", "count"),
+    ("track_peak_rss", "peak_rss", "bytes"),
     ("time_eval", "eval", "seconds"),
 ]
 
@@ -120,11 +122,11 @@ _HTML_TEMPLATE = """<!doctype html>
     header .links { margin-left: auto; display: flex; gap: 12px; }
     header .links a { color: #1f77b4; text-decoration: none; font-size: 12px; }
     header .links a:hover { text-decoration: underline; }
-    main { padding: 16px 20px; max-width: 1400px; margin: 0 auto; }
+    main { padding: 16px 20px; max-width: 1700px; margin: 0 auto; }
     .model-row {
       margin-bottom: 14px;
       display: grid;
-      grid-template-columns: 200px repeat(4, 1fr);
+      grid-template-columns: 200px repeat(var(--n-metrics), 1fr);
       gap: 8px;
       align-items: center;
       border-bottom: 1px solid #f1f1f1;
@@ -195,6 +197,12 @@ function formatValue(metric, v) {
   // entire render loop before it reaches the next model row.
   if (v == null || Number.isNaN(v)) return 'n/a';
   if (metric === 'track_n_rewrites') return v.toFixed(0);
+  // Without this, bytes fall through to the seconds ladder below.
+  if (PAYLOAD.metric_units[metric] === 'bytes') {
+    if (v >= 1073741824) return (v / 1073741824).toFixed(2) + ' GB';
+    if (v >= 1048576) return (v / 1048576).toFixed(0) + ' MB';
+    return (v / 1024).toFixed(0) + ' KB';
+  }
   if (v < 1e-3) return (v * 1e6).toFixed(1) + ' μs';
   if (v < 1) return (v * 1e3).toFixed(0) + ' ms';
   return v.toFixed(2) + ' s';
@@ -222,6 +230,8 @@ function makeSparkline(div, pts, metric) {
 function render() {
   const root = document.getElementById('root');
   root.innerHTML = '';
+  // One grid column per metric, so adding one needs no CSS change.
+  document.documentElement.style.setProperty('--n-metrics', PAYLOAD.metrics.length);
   PAYLOAD.models.forEach(model => {
     const row = document.createElement('div');
     row.className = 'model-row';
