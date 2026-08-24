@@ -22,7 +22,7 @@ CORE_MODELS: tuple[str, ...] = (
     "models.bayesian_var_ireland",                          # VAR (scan + linalg)
     "models.gp_marginal_matern52",                          # small marginal GP
     "models.marginalized_gaussian_mixture_model",           # mixture
-    "models.mrp_survey_zerosum_categorical",                # zero-sum tables + categorical
+    "models.irt_survey_zerosum_categorical",                # zero-sum tables + categorical
     "models_discrete.occupancy_crossbill",                  # logp-only discrete path
 )
 
