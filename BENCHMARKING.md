@@ -74,6 +74,11 @@ updates therefore include the custom pages throughout a benchmark or backfill
 run. If rendering fails, that update is not pushed and the previous site remains
 published.
 
+The custom dashboard plots each benchmark environment separately, with labels
+and consistent colors. A run on a newer Python version therefore keeps the
+historical series visible rather than replacing it or joining measurements from
+different Python versions into a single line.
+
 The timeline CI uses a custom install hook (`asv_bench/_provision.py`) that
 installs `pymc==<pinned>` with `uv pip install --exclude-newer <released_at + 1
 day>`, so pytensor and every transitive dep resolve to what was latest on each
