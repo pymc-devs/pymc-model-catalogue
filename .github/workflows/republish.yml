@@ -67,8 +67,11 @@ jobs:
             ! -name .git ! -name experiments ! -name results -exec rm -rf {} +)
           cp -a .asv/html/. .gh-pages/
 
-          # Custom dashboard reads the index.json we just rewrote.
+          # Include both custom pages in the same commit as the ASV data.
           python scripts/make_dashboard.py .gh-pages .gh-pages/dashboard.html
+          if [ -d .gh-pages/experiments ]; then
+            python scripts/make_experiment_dashboard.py .gh-pages .gh-pages/experiments.html
+          fi
 
           cd .gh-pages
           git config user.name 'github-actions[bot]'

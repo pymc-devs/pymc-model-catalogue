@@ -68,6 +68,12 @@ asv run --launch-method=spawn --environment=existing:$(which python) \
 | `detect-releases.yml` | daily cron | Polls PyPI for new pymc minors, opens a PR against `timeline`. Merging the PR kicks off `benchmark.yml`. |
 | `experiment.yml` | push on `experiments`, manual dispatch | Runs each changed YAML, keyed by the YAML file's last-touching git SHA for dedup. |
 
+Each timeline publish regenerates `dashboard.html` and, when experiment data
+exists, `experiments.html` before committing and pushing the site. Intermediate
+updates therefore include the custom pages throughout a benchmark or backfill
+run. If rendering fails, that update is not pushed and the previous site remains
+published.
+
 The timeline CI uses a custom install hook (`asv_bench/_provision.py`) that
 installs `pymc==<pinned>` with `uv pip install --exclude-newer <released_at + 1
 day>`, so pytensor and every transitive dep resolve to what was latest on each

@@ -142,6 +142,13 @@ jobs:
             mkdir -p .gh-pages-push/results
             cp -a .asv/results/. .gh-pages-push/results/
 
+            # Publish a complete site each time. Waiting until the walk ends
+            # to recreate these pages leaves their URLs returning 404.
+            python scripts/make_dashboard.py .gh-pages-push .gh-pages-push/dashboard.html
+            if [ -d .gh-pages-push/experiments ]; then
+              python scripts/make_experiment_dashboard.py .gh-pages-push .gh-pages-push/experiments.html
+            fi
+
             # Rebase onto any concurrent gh-pages update (e.g. an
             # experiment.yml push) so our push stays fast-forward. The
             # experiments/ subtree was excluded from the wipe above, so
