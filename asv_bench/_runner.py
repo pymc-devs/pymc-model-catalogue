@@ -126,17 +126,23 @@ class PeakRSS:
         return max(0, self.peak - self.baseline)
 
 
-def build_and_measure(model_path: str, *, mode: str = "NUMBA") -> dict:
+def build_and_measure(model_path: str, *, mode: str = "NUMBA", posterior: str | None = None) -> dict:
     discrete = model_path.startswith("models_discrete.")
     buf = io.StringIO()
 
     with PeakRSS() as tracker:
         module = importlib.import_module(model_path)
-        model, ip = module.build_model()
+        if posterior is None:
+            model, ip = module.build_model()
+        else:
+            model, ip = module.build_model(posterior=posterior)
+        with_grad = bool(model.value_vars) and not discrete and not any(
+            np.dtype(var.dtype).kind in "biu" for var in model.value_vars
+        )
 
         t0 = perf_counter()
         with config.change_flags(optimizer_verbose=True), contextlib.redirect_stdout(buf):
-            fn, x = build_logp_fn(model, ip, mode=mode, with_grad=not discrete)
+            fn, x = build_logp_fn(model, ip, mode=mode, with_grad=with_grad)
         rewrite_time = perf_counter() - t0
 
         # covers the first call on purpose: that is when NUMBA JITs
@@ -148,7 +154,7 @@ def build_and_measure(model_path: str, *, mode: str = "NUMBA") -> dict:
         1 for line in buf.getvalue().splitlines() if line.startswith(_REWRITE_PREFIX)
     )
 
-    if discrete:
+    if not with_grad:
         (logp,) = out
         assert np.isfinite(logp), f"logp is not finite: {logp}"
     else:

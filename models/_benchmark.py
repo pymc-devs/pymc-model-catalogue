@@ -31,6 +31,7 @@ import timeit
 
 import numpy as np
 import pytensor.tensor as pt
+from pytensor.compile.mode import Mode
 from pymc.blocking import DictToArrayBijection
 from pymc.model.transform.optimization import freeze_dims_and_data
 from pymc.pytensorf import join_nonshared_inputs, rewrite_pregrad
@@ -56,6 +57,7 @@ def build_logp_fn(model, ip, *, mode: str = "NUMBA", with_grad: bool = True):
         values than the ones the model was authored with.
     mode :
         PyTensor compile mode to pass through to ``pymc.compile``.
+        FAST_RUN uses an explicit CVM linker.
     with_grad :
         If True, output is ``[logp, dlogp_raveled]``; if False, output is
         ``[logp]`` only. Discrete models must pass ``with_grad=False``.
@@ -80,9 +82,15 @@ def build_logp_fn(model, ip, *, mode: str = "NUMBA", with_grad: bool = True):
         outputs = [logp]
 
     new_outputs, joined = join_nonshared_inputs(
-        point=ip, outputs=outputs, inputs=value_vars,
+        point=ip,
+        outputs=outputs,
+        inputs=value_vars,
     )
-    fn = pymc_compile([joined], new_outputs, mode=mode)
+    # Use CVM explicitly because the automatic linker can select NUMBA.
+    compile_mode = (
+        Mode(linker="cvm", optimizer="fast_run") if mode == "FAST_RUN" else mode
+    )
+    fn = pymc_compile([joined], new_outputs, mode=compile_mode)
     fn.trust_input = True
 
     raveled = DictToArrayBijection.map({v.name: ip[v.name] for v in value_vars})

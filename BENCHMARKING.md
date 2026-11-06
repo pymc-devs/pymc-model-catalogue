@@ -10,13 +10,12 @@ branch/CI layout, and how to run or extend it. For the model set itself see the
 
 Each model is wrapped in an asv `ModelBench` class that captures five metrics:
 
-- **`rewrite_time`** — wall-clock from calling `logp_dlogp_function` (or
-  `compile_logp` for discrete models) to the moment it returns. Covers graph
-  construction and the full rewriter pipeline.
-- **`compile_time`** — wall-clock from the end of the rewrite phase to the end
-  of the first `f(x)` call. Captures the NUMBA JIT cost, which is triggered on
-  first call; the one eval's worth of arithmetic inside is microseconds, so the
-  metric reflects compile cost in practice.
+- **`rewrite_time`** measures the call to `models._benchmark.build_logp_fn`.
+  It includes graph construction, gradients, rewrites, and backend compilation before return.
+  NUMBA defers JIT compilation until the first call.
+- **`compile_time`** keeps its historical identifier and measures the first function call.
+  NUMBA includes JIT compilation and one evaluation in this metric.
+  FAST_RUN measures only its first evaluation here.
 - **`n_rewrites`** — number of `rewriting: ...` lines emitted under
   `pytensor.config.optimizer_verbose = True`. A proxy for how many rewrites the
   graph went through; shifts when rewrite rules are added or removed.
@@ -107,6 +106,57 @@ asv run --launch-method=spawn --environment=existing:$(which python) \
   --set-commit-hash $(git rev-parse HEAD) \
   --bench "$(python scripts/core_models.py)"
 ```
+
+## Optional native PyMC6 workloads
+
+The optional package contains 121 native PyMC models, 148 model/data pairs,
+and 91 bundled processed datasets.
+The registry supplies each workload's module, canonical posterior ID, and backend.
+Model construction and dataset loading occur outside timed compilation.
+
+```bash
+# List canonical pairs without constructing models.
+pixi run python -c 'from models.posteriordb import list_posteriors; print(*list_posteriors(), sep="\n")'
+
+# Evaluate the original and frozen graphs without inference.
+pixi run python -m models.posteriordb.blr --posterior sblri-blr
+
+# Select one exact posterior/backend pair.
+pixi run asv run --launch-method=spawn \
+  --environment="existing:$(pixi run python -c 'import sys; print(sys.executable)')" \
+  --set-commit-hash "$(git rev-parse HEAD)" \
+  --bench 'ModelBench(?:Build|Eval)_models_posteriordb__sblri__blr__NUMBA\.'
+
+# Select all 148 optional pairs.
+pixi run asv run --launch-method=spawn \
+  --environment="existing:$(pixi run python -c 'import sys; print(sys.executable)')" \
+  --set-commit-hash "$(git rev-parse HEAD)" \
+  --bench 'ModelBench(?:Build|Eval)_models_posteriordb__'
+```
+
+The ASV suffix replaces the posterior hyphen with double underscores and appends the declared backend.
+For example, `sblri-blr` uses `ModelBenchBuild_models_posteriordb__sblri__blr__NUMBA`.
+The dashboards restore the canonical posterior and show the backend separately.
+
+NUMBA is the default backend. Some native operations need FAST_RUN.
+The registry declares those workloads explicitly.
+A backend failure never selects another backend.
+
+`FAST_RUN` uses an explicit CVM linker because PyTensor's automatic linker can select NUMBA.
+Native ODE callbacks use the same explicit CVM linker.
+Their compilation occurs during model construction, before the measured phases.
+
+FAST_RUN compiles during `rewrite_time`.
+Its `compile_time` measures first evaluation, not NUMBA JIT compilation.
+The historical metric key stays `track_compile_time`. Its visible dashboard label is `first_call_time`.
+
+Keep backend identities separate when you interpret results.
+New workloads derive gradient eligibility from actual value-variable dtypes.
+Existing `models_discrete/` workloads retain their logp-only contract.
+Observed discrete outcomes do not disable gradients.
+
+These timings do not measure inference or posterior accuracy.
+
 
 ## Branches
 
