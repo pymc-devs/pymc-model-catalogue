@@ -32,6 +32,45 @@ The four metrics are tracked on a curated subset of 26 models listed in
 
 ## Running locally
 
+CI pins ASV to 0.6.6 and `asv-runner` to 0.2.5. Newer runners changed timing
+benchmarks with `setup()` hooks to one call per sample, which defeats the eval
+benchmark's steady-state batching. `sample_time = 0.1` averages many calls per
+sample with the pinned runner; it does not fix batching with newer runners.
+
+Both the ASV tool and the runner inside benchmark environments must use the
+constraint. Before a local run, set:
+
+```bash
+export PIP_CONSTRAINT="$PWD/asv_bench/runner-constraints.txt"
+export UV_CONSTRAINT="$PIP_CONSTRAINT"
+uv tool install --force 'asv==0.6.6' --constraint "$PIP_CONSTRAINT"
+```
+
+CI copies that file from `main` into the runner's temporary directory so the
+constraint survives switching branches and checking out historical commits.
+These are tooling pins; release-date resolution of model dependencies is kept.
+
+The pin does not refresh saved results: `--skip-existing-successful` will still
+skip earlier single-call measurements. Refresh those with an eval-only run over
+the selected releases, omitting that skip flag. This preserves the saved rewrite
+and compile metrics and avoids repeating the Build benchmarks.
+
+The manual **Refresh eval timings** workflow automates that refresh. It selects
+successful core eval measurements with one call per sample and a per-call time
+below the 0.1-second batching target, restricted to tagged releases. It verifies
+that replacements are batched and that other measurements are unchanged before
+publishing a complete site. A failed refresh leaves the published site intact.
+
+After pushing these changes to `main`, run:
+
+```bash
+gh workflow run refresh-eval.yml --repo pymc-devs/pymc-model-catalogue --ref main
+```
+
+Add `-f dry_run=true` to list affected records without measuring or publishing.
+The workflow uses Python 3.12 and 3.14 to repair both saved environments. Each
+eval setup still compiles its function; the Build benchmarks are not run.
+
 ```bash
 # Smoke-test a single model directly (no asv, no timeline):
 python models/stochastic_volatility.py
@@ -66,6 +105,7 @@ asv run --launch-method=spawn --environment=existing:$(which python) \
 | `backfill.yml` | manual dispatch | Walks the timeline a `step` at a time. First dispatch creates the branch; `reset=true` wipes it back to main. |
 | `benchmark.yml` | push on `timeline`, weekly cron | Walks any new commits with `asv run --skip-existing-commits` and publishes after each — partial progress is durable across a single failing release. |
 | `detect-releases.yml` | daily cron | Polls PyPI for new pymc minors, opens a PR against `timeline`. Merging the PR kicks off `benchmark.yml`. |
+| `refresh-eval.yml` | manual dispatch | Replaces single-call core eval timings in tagged releases, verifies other measurements are unchanged, then publishes. Optional dry run lists the affected records. |
 | `experiment.yml` | push on `experiments`, manual dispatch | Runs each changed YAML, keyed by the YAML file's last-touching git SHA for dedup. |
 
 Each timeline publish regenerates `dashboard.html` and, when experiment data
