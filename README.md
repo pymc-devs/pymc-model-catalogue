@@ -1,11 +1,9 @@
 # pymc-model-catalogue
 
-A database of around 200 [PyMC](https://github.com/pymc-devs/pymc) models,
-collected for research on the PyMC / [PyTensor](https://github.com/pymc-devs/pytensor)
-stack. Each model is packaged as a `build_model()` function with the same
-signature, so you can load and run them in bulk — to test work on rewrites,
-compilation, sampling, or logp/grad performance against many models at once
-instead of a few hand-picked ones.
+This catalogue contains [PyMC](https://github.com/pymc-devs/pymc) models for
+research on the PyMC and [PyTensor](https://github.com/pymc-devs/pytensor) stack.
+Each model builder returns a model and its initial point.
+The optional native PyMC6 package also accepts canonical posterior IDs for exact dataset selection.
 
 The same model set also backs an ASV benchmark suite that tracks PyMC/PyTensor
 performance across releases (see
@@ -13,8 +11,8 @@ performance across releases (see
 
 ## How the models are packaged
 
-Every file under `models/` and `models_discrete/` defines one `build_model()`
-that returns a PyMC model and a matching initial point:
+The existing top-level files under `models/` and `models_discrete/` define
+`build_model()` and return a PyMC model with its initial point:
 
 ```python
 def build_model() -> tuple[pm.Model, dict]:
@@ -50,6 +48,63 @@ For the exact logp/dlogp compilation used by the benchmarks (raveled input,
 NUMBA mode, version-robust across old pymc releases) reuse
 `models/_benchmark.py:build_logp_fn`.
 
+## Native PyMC6 posterior workloads
+
+The optional `models.posteriordb` package contains 121 native PyMC models,
+148 model/data pairs, and 91 bundled processed datasets.
+The registry preserves canonical posterior identities and source metadata.
+The builders use local data without network access.
+
+The package supports PyMC 6.4 and compatible PyTensor versions.
+Choose a canonical posterior to select its exact dataset.
+The module default uses its smallest bundled dataset.
+
+Run `pixi install` to create the pinned local environment.
+
+```python
+from models.posteriordb import build_model, get_posterior, list_posteriors
+
+pairs = list_posteriors("blr")
+metadata = get_posterior("sblri-blr")
+model, ip = build_model("sblri-blr")
+
+# Reuse one model with another canonical dataset.
+from models.posteriordb.blr import build_model as build_blr
+other_model, other_ip = build_blr(posterior="sblrc-blr")
+```
+
+No command below samples a posterior.
+
+```bash
+pixi run python -m models.posteriordb.blr --posterior sblri-blr
+
+pixi run asv run --launch-method=spawn \
+  --environment="existing:$(pixi run python -c 'import sys; print(sys.executable)')" \
+  --set-commit-hash "$(git rev-parse HEAD)" \
+  --bench 'ModelBench(?:Build|Eval)_models_posteriordb__sblri__blr__NUMBA\.'
+```
+
+The ASV example uses the configured `timeline` branch.
+For a different branch, use a separate ASV configuration with `--config`.
+
+The existing core selector and historical benchmark names stay unchanged.
+Each optional ASV workload includes its posterior ID and declared backend.
+See [backend timing details](./BENCHMARKING.md#optional-native-pymc6-workloads).
+
+### Intended-model corrections
+
+The native ports correct these confirmed defects in the source definitions.
+
+| Models | Native mathematical correction | Evidence |
+| --- | --- | --- |
+| `hmm_gaussian` | Use the first observation's state-specific emission density. | [Original HMM definition](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271) |
+| `iohmm_reg` | Use destination-state gating weights. Native Gaussian mixtures eliminate the conditionally independent states. | [Original description and generator](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L840-L875) |
+| `dogs_nonhierarchical` | Use the declared covariance `diag(sigma) @ Omega @ diag(sigma)`. | [Native module and source notes](models/posteriordb/dogs_nonhierarchical.py) |
+| `2pl_latent_reg_irt`, `gpcm_latent_reg_irt` | Scale binary covariates by their range, not twice their sample standard deviation. | [Furr's model description, sections 1.1 and 1.3](https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html) |
+
+The shared scaling correction also covers `grsm_latent_reg_irt`. Its bundled intercept-only dataset does not change.
+Canonical identifiers retain the source model/data identity. See the corresponding module docstrings for correction details and references.
+
 ## What it's useful for
 
 - Seeing how a PyTensor rewrite change affects rewrite count, compile time, and
@@ -68,7 +123,7 @@ NUMBA mode, version-robust across old pymc releases) reuse
 
 ## What's inside
 
-~200 model files, grouped roughly by area:
+The existing top-level catalogue contains about 200 model files across these areas.
 
 - **GLMs & regression** — logistic, Poisson, negative-binomial, ordinal, robust,
   truncated/censored, discrete-choice, rolling.
@@ -96,6 +151,7 @@ Layout:
   Observed discrete likelihoods stay in `models/`, since the continuous latents
   still have well-defined gradients.
 - `models/data/`, `models_discrete/data/` — bundled `.npz` datasets.
+- `models/posteriordb/` — reusable native PyMC6 models, a pair registry, and bundled processed ZIP datasets.
 
 Most models are extracted from
 [pymc-examples](https://github.com/pymc-devs/pymc-examples); the rest come from
@@ -106,8 +162,8 @@ Authoring conventions and the extraction template live in
 ## Benchmarking & the timeline
 
 The catalogue backs an ASV suite that tracks four metrics — `rewrite_time`,
-`compile_time`, `n_rewrites`, `time_eval` — on a curated 26-model core
-([`BENCHMARK_CORE.md`](./BENCHMARK_CORE.md)) across every pymc release, published
+`compile_time`, `n_rewrites`, `time_eval` — on a curated core subset
+([`BENCHMARK_CORE.md`](./BENCHMARK_CORE.md)) across PyMC releases, published
 to a [dashboard](https://pymc-devs.github.io/pymc-model-catalogue/dashboard.html).
 A separate [experiments](https://pymc-devs.github.io/pymc-model-catalogue/experiments.html)
 track runs the models against patched pymc/pytensor to A/B specific changes.

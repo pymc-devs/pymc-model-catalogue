@@ -13,12 +13,9 @@ Metric definitions (intentional, don't "correct" these):
   construction and the full rewriter pipeline. Pytensor's NUMBA
   backend does not JIT in this phase; code generation is deferred to
   the first call.
-- ``compile_time`` — wall-clock from the end of ``rewrite_time`` to the
-  end of the first ``f(x)`` call. This deliberately includes one eval's
-  arithmetic because that is when numba JIT compilation happens. For
-  practical models the JIT dominates (seconds) and the arithmetic is
-  microseconds, so calling this ``compile_time`` reflects what it
-  actually measures.
+- ``compile_time`` measures the first function call. NUMBA includes JIT
+  compilation and one evaluation. FAST_RUN measures the first evaluation.
+  FAST_RUN compilation occurs inside ``rewrite_time``.
 - ``eval_time`` — steady-state per-call timing via asv's native timing
   machinery, implemented in ``bench_models.py``.
 - ``n_rewrites`` — count of ``rewriting: ...`` lines printed by pytensor
@@ -49,27 +46,41 @@ from models._benchmark import build_logp_fn  # noqa: E402
 _REWRITE_PREFIX = "rewriting: "
 
 
-def build_and_measure(model_path: str, *, mode: str = "NUMBA") -> dict:
-    discrete = model_path.startswith("models_discrete.")
+def build_and_measure(
+    model_path: str,
+    *,
+    mode: str = "NUMBA",
+    posterior: str | None = None,
+) -> dict:
+    """Measure compilation and evaluation with the selected dataset and backend."""
     module = importlib.import_module(model_path)
-    model, ip = module.build_model()
+    if posterior is None:
+        model, ip = module.build_model()
+    else:
+        model, ip = module.build_model(posterior=posterior)
+    discrete = any(np.dtype(var.dtype).kind in "biu" for var in model.value_vars)
+    # Existing discrete-folder workloads also include operations without gradients.
+    with_grad = (
+        bool(model.value_vars)
+        and not discrete
+        and not model_path.startswith("models_discrete.")
+    )
 
     buf = io.StringIO()
     t0 = perf_counter()
     with config.change_flags(optimizer_verbose=True), contextlib.redirect_stdout(buf):
-        fn, x = build_logp_fn(model, ip, mode=mode, with_grad=not discrete)
+        fn, x = build_logp_fn(model, ip, mode=mode, with_grad=with_grad)
     rewrite_time = perf_counter() - t0
     n_rewrites = sum(
         1 for line in buf.getvalue().splitlines() if line.startswith(_REWRITE_PREFIX)
     )
 
-    # "compile_time" here intentionally covers the first call — see the
-    # module docstring. NUMBA JIT happens on first call.
+    # NUMBA compiles on this call. FAST_RUN measures its first evaluation.
     t0 = perf_counter()
     out = fn(x)
     compile_time = perf_counter() - t0
 
-    if discrete:
+    if not with_grad:
         (logp,) = out
         assert np.isfinite(logp), f"logp is not finite: {logp}"
     else:

@@ -1,0 +1,19 @@
+{
+  "name": "sir-sir",
+  "keywords": [
+    "stan benchmark"
+  ],
+  "urls": ["https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/sir"],
+  "model_name": "sir",
+  "data_name": "sir",
+  "reference_posterior_name": null,
+  "references": [],
+  "dimensions": {
+    "beta": 1,
+    "gamma": 1,
+    "xi": 1,
+    "delta": 1
+  },
+  "added_date": "2019-11-20",
+  "added_by": "Mans Magnusson"
+}

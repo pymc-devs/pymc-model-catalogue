@@ -25,7 +25,7 @@ from pathlib import Path
 
 METRIC_ORDER = [
     ("track_rewrite_time", "rewrite_time", "seconds"),
-    ("track_compile_time", "compile_time", "seconds"),
+    ("track_compile_time", "first_call_time", "seconds"),
     ("track_n_rewrites", "n_rewrites", "count"),
     ("time_eval", "eval", "seconds"),
 ]
@@ -44,11 +44,19 @@ def _parse_benchmark_name(stem: str) -> tuple[str, str] | None:
     if not m:
         return None
     sanitized_model, metric = m.groups()
-    model = sanitized_model
-    for prefix in ("models_discrete_", "models_"):
-        if sanitized_model.startswith(prefix):
-            model = prefix.rstrip("_") + "." + sanitized_model[len(prefix) :]
-            break
+    pair_prefix = "models_posteriordb__"
+    if sanitized_model.startswith(pair_prefix):
+        posterior, mode = sanitized_model[len(pair_prefix) :].rsplit("__", 1)
+        model = f"models.posteriordb/{posterior.replace('__', '-')} [{mode}]"
+    else:
+        model = sanitized_model
+        for prefix, package in (
+            ("models_discrete_", "models_discrete"),
+            ("models_", "models"),
+        ):
+            if sanitized_model.startswith(prefix):
+                model = package + "." + sanitized_model[len(prefix) :]
+                break
     return model, metric
 
 
@@ -258,6 +266,7 @@ _HTML_TEMPLATE = r"""<!doctype html>
     <label>Compare:</label>
     <select id="compare-select"></select>
   </div>
+  <p>NUMBA first-call time includes JIT compilation. FAST_RUN first-call time measures evaluation.</p>
   <div class="exp-info" id="exp-info"></div>
   <div class="summary" id="summary"></div>
   <div class="charts-section" id="charts"></div>
@@ -589,10 +598,10 @@ def main() -> int:
 
     render(exp_data, out, repo_url)
     n_exp = len(exp_data["data"])
-    n_models = len(
-        {m for d in exp_data["data"].values() for m in d}
+    n_models = len({m for d in exp_data["data"].values() for m in d})
+    print(
+        f"Wrote {out} ({out.stat().st_size // 1024} KB; {n_exp} experiments, {n_models} models)"
     )
-    print(f"Wrote {out} ({out.stat().st_size // 1024} KB; {n_exp} experiments, {n_models} models)")
     return 0
 
 

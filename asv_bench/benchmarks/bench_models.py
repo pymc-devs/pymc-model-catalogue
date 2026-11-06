@@ -26,6 +26,9 @@ Alphabetical class ordering puts ``Build`` before ``Eval`` (``B < E``),
 so ``track_compile_time`` is measured against a cold pytensor NUMBA
 disk cache. ``ModelBenchEval`` subsequently rebuilds with a warm cache,
 which is fine — ``time_eval`` only cares about steady-state arithmetic.
+
+Optional registry workloads add a canonical posterior ID and explicit backend to each class name.
+Their dataset loading occurs before the measured phases.
 """
 
 import sys
@@ -38,31 +41,23 @@ if str(REPO_ROOT) not in sys.path:
 from asv_bench._runner import build_and_measure  # noqa: E402
 
 
-def _prewarm() -> None:
-    """Build + call a trivial pymc model to warm the fresh-process caches.
+def _prewarm(mode: str = "NUMBA") -> None:
+    """Warm the selected backend with a one-variable graph.
 
-    asv runs every benchmark in a forked subprocess, so each
-    ``ModelBenchBuild`` setup pays cold-start cost for pytensor's
-    rewriter and NUMBA's LLVM init. On small models that cold-start
-    overhead (~200ms rewrite, ~2s NUMBA init) dominates the measurement
-    and drowns out the model-specific signal.
+    ASV starts each benchmark in a fresh subprocess.
+    This call reduces process-start costs before the measured build phase.
+    It uses the workload backend without a fallback.
 
-    Running the full pipeline (``build_logp_fn`` + first call) on a
-    throwaway one-var model exercises the same code paths as the real
-    build, so the subsequent ``build_and_measure`` call runs against
-    warm caches and the reported metrics reflect model-specific cost
-    rather than process startup.
-
-    Only ``ModelBenchBuild`` uses this — ``ModelBenchEval`` measures
-    steady-state arithmetic after its setup's first call, which doesn't
-    care whether NUMBA was cold or warm.
+    Only build benchmarks use this warmup.
+    Evaluation benchmarks measure steady-state calls after setup.
     """
     import pymc as pm
 
     from models._benchmark import build_logp_fn
+
     with pm.Model() as m:
         pm.Normal("x")
-    fn, x = build_logp_fn(m, m.initial_point(), mode="NUMBA", with_grad=True)
+    fn, x = build_logp_fn(m, m.initial_point(), mode=mode, with_grad=True)
     fn(x)
 
 
@@ -78,11 +73,17 @@ def _discover_models() -> list[str]:
 
 class _BaseModelBenchBuild:
     MODEL: str = ""  # overridden per generated subclass
+    POSTERIOR: str | None = None
+    MODE: str = "NUMBA"
     timeout = 1200.0
 
     def setup(self):
-        _prewarm()
-        self._result = build_and_measure(self.MODEL)
+        _prewarm(self.MODE)
+        self._result = build_and_measure(
+            self.MODEL,
+            mode=self.MODE,
+            posterior=self.POSTERIOR,
+        )
 
     def track_rewrite_time(self):
         return self._result["rewrite_time"]
@@ -102,6 +103,8 @@ class _BaseModelBenchBuild:
 
 class _BaseModelBenchEval:
     MODEL: str = ""  # overridden per generated subclass
+    POSTERIOR: str | None = None
+    MODE: str = "NUMBA"
     # The heavy VAR-family models compile (in setup) for 15-20 min on the
     # 2-vCPU CI runner — bayesian_var_hierarchical sat right at the old 1200 s
     # ceiling — so give the per-benchmark budget generous headroom.
@@ -117,7 +120,11 @@ class _BaseModelBenchEval:
     sample_time = 0.1
 
     def setup(self):
-        self._call = build_and_measure(self.MODEL)["call"]
+        self._call = build_and_measure(
+            self.MODEL,
+            mode=self.MODE,
+            posterior=self.POSTERIOR,
+        )["call"]
 
     def time_eval(self):
         self._call()
@@ -145,3 +152,29 @@ for _model in _discover_models():
     )
 
 del _model, _name
+
+
+# Each optional workload names its posterior pair and explicit backend.
+# Double underscores preserve the canonical posterior's hyphen.
+from models.posteriordb import get_posterior, list_posteriors  # noqa: E402
+
+for _posterior in list_posteriors():
+    _record = get_posterior(_posterior)
+    _mode = _record["benchmark_mode"]
+    _name = f"models_posteriordb__{_posterior.replace('-', '__')}__{_mode}"
+    for _phase, _base in (
+        ("Build", _BaseModelBenchBuild),
+        ("Eval", _BaseModelBenchEval),
+    ):
+        _class_name = f"ModelBench{_phase}_{_name}"
+        globals()[_class_name] = type(
+            _class_name,
+            (_base,),
+            {
+                "MODEL": _record["module"],
+                "POSTERIOR": _posterior,
+                "MODE": _mode,
+            },
+        )
+
+del _posterior, _record, _mode, _name, _phase, _base, _class_name

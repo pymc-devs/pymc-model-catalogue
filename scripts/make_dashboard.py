@@ -33,10 +33,25 @@ from pathlib import Path
 
 METRIC_ORDER = [
     ("track_rewrite_time", "rewrite_time", "seconds"),
-    ("track_compile_time", "compile_time", "seconds"),
+    ("track_compile_time", "first_call_time", "seconds"),
     ("track_n_rewrites", "n_rewrites", "count"),
     ("time_eval", "eval", "seconds"),
 ]
+
+
+def _decode_workload_name(name: str) -> str:
+    """Decode workload names without importing model packages."""
+    pair_prefix = "models_posteriordb__"
+    if name.startswith(pair_prefix):
+        posterior, mode = name[len(pair_prefix) :].rsplit("__", 1)
+        return f"models.posteriordb/{posterior.replace('__', '-')} [{mode}]"
+    for prefix, package in (
+        ("models_discrete_", "models_discrete"),
+        ("models_", "models"),
+    ):
+        if name.startswith(prefix):
+            return package + "." + name[len(prefix) :]
+    return name
 
 
 def load_data(src: Path) -> tuple[dict, dict]:
@@ -65,17 +80,17 @@ def load_data(src: Path) -> tuple[dict, dict]:
         if not m:
             continue
         sanitized_model, metric = m.groups()
-        model = sanitized_model
-        for prefix in ("models_discrete_", "models_"):
-            if sanitized_model.startswith(prefix):
-                model = prefix.rstrip("_") + "." + sanitized_model[len(prefix):]
-                break
+        model = _decode_workload_name(sanitized_model)
         series = json.loads(gf.read_text())
-        environment = " · ".join(
-            "Python " + part.removeprefix("python-")
-            if part.startswith("python-") else part.removeprefix("machine-")
-            for part in gf.parent.relative_to(graphs_root).parts
-        ) or "default"
+        environment = (
+            " · ".join(
+                "Python " + part.removeprefix("python-")
+                if part.startswith("python-")
+                else part.removeprefix("machine-")
+                for part in gf.parent.relative_to(graphs_root).parts
+            )
+            or "default"
+        )
         # Keep only measurements at SHAs that a current tag points to.
         # Orphans from previous timeline force-push generations are
         # silently dropped — the user can run reset=true to clean them
@@ -88,10 +103,14 @@ def load_data(src: Path) -> tuple[dict, dict]:
             tag = sha_to_tag.get(sha)
             if tag is None:
                 continue
-            points.append({
-                "tag": tag, "hash": sha, "value": value,
-                "environment": environment,
-            })
+            points.append(
+                {
+                    "tag": tag,
+                    "hash": sha,
+                    "value": value,
+                    "environment": environment,
+                }
+            )
         if points:
             # ASV writes a separate graph per environment. Keep all of them;
             # assigning here used to replace the entire historical series
@@ -183,6 +202,7 @@ _HTML_TEMPLATE = """<!doctype html>
     <a href="./">default asv view</a>
   </div>
 </header>
+<p>NUMBA first-call time includes JIT compilation. FAST_RUN first-call time measures evaluation.</p>
 <main id="root"></main>
 <script>
 const PAYLOAD = __PAYLOAD__;
@@ -283,7 +303,9 @@ render();
 
 
 def render(data: dict, idx: dict, out: Path) -> None:
-    points = [pt for metrics in data.values() for series in metrics.values() for pt in series]
+    points = [
+        pt for metrics in data.values() for series in metrics.values() for pt in series
+    ]
     measured_tags = sorted(
         {pt["tag"] for pt in points},
         key=lambda tag: tuple(int(x) for x in tag.removeprefix("pymc-").split(".")),
