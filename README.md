@@ -158,8 +158,6 @@ Layout:
 Most models are extracted from
 [pymc-examples](https://github.com/pymc-devs/pymc-examples); the rest come from
 Statistical Rethinking and from papers (provenance is in each file's docstring).
-Authoring conventions and the extraction template live in
-[`PLAN.md`](./PLAN.md); extraction status in [`PROGRESS.md`](./PROGRESS.md).
 
 ## Benchmarking & the timeline
 
