@@ -1,0 +1,15 @@
+Posteriordb source materials
+
+The data archives, embedded metadata, bibliography, citation file, and upstream license notice come from posteriordb.
+The source revision is 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
+The source repository is https://github.com/stan-dev/posteriordb.
+
+The registry embeds original metadata with upstream source paths and SHA-256 digests.
+The copied_files registry lists bundled data archives, the license notice, the citation file, and the bibliography.
+The copied materials retain the upstream BSD 3-Clause notice in LICENCE.md.
+
+Original metadata retains source URLs, references, authors, and source implementation license fields.
+Those implementation license fields describe upstream code provenance.
+They do not declare a license for the independent native PyMC implementations in this package.
+
+No Stan implementation source, raw source dataset, or reference posterior draws appear in this package.

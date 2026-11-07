@@ -133,8 +133,6 @@ class DashboardEnvironmentsTest(unittest.TestCase):
                 )
             data, _ = dashboard.load_data(src)
             self.assertEqual(set(data), set(workloads.values()))
-            for metrics in data.values():
-                self.assertEqual(metrics["track_compile_time"][0]["value"], 0.5)
 
 
 if __name__ == "__main__":

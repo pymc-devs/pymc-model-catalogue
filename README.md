@@ -52,8 +52,10 @@ NUMBA mode, version-robust across old pymc releases) reuse
 
 The optional `models.posteriordb` package contains 121 native PyMC models,
 148 model/data pairs, and 91 bundled processed datasets.
-The registry preserves canonical posterior identities and source metadata.
+The registry preserves canonical posterior identities and embeds upstream metadata, source paths, and hashes.
 The builders use local data without network access.
+
+The package does not duplicate metadata in separate JSON files.
 
 The package supports PyMC 6.4 and compatible PyTensor versions.
 Choose a canonical posterior to select its exact dataset.
