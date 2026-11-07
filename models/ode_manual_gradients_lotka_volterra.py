@@ -23,8 +23,7 @@ Changes from original:
   helpers, and data inside build_model() per catalogue rules.
 - Removed sampling/plotting code.
 - Added ip capture + initval-clearing boilerplate at end of build_model().
-- Under NUMBA mode PyTensor falls back to object mode for this Python Op,
-  which is acceptable per PROGRESS.md.
+- Under NUMBA mode, PyTensor uses object mode for this Python Op.
 
 Benchmark results:
 - Original:  logp = -176.1439, grad norm = 207.7586, 15.2 us/call (100000 evals)
