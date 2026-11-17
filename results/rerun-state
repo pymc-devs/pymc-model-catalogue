@@ -157,6 +157,13 @@
       "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "34b339db09424271f8d98abab84ed1aaef480a1ebfaafe83608e0e64a1ffd13a",
       "bench_models.ModelBenchEval_models_multilevel_varying_intercept_slope_noncentered.time_eval": "839518b033fdf92934738d4c75c517969a0ec2073a8474925037dfd8415c4ff1"
     },
+    "3f70524a1654d1b21c918f1f0a31035c655dc205/3.12": {
+      "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "584d67a4658ce5ce482e299cb16639db2b9cb754d50abb3ffa3a817a93fa2c48",
+      "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "08846cfdcb2370ac61a881907a197e28f26abb2a6b4e42b7105b0ab469093a0a",
+      "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": "1d499e22a661799a25e66dbc803e5587602de19028aa6ae7594c851665855abb",
+      "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": "fced837ceba85c8fe71d47b5cd3f48a5dd9deed2519f511dde4c0910ed71979c",
+      "bench_models.ModelBenchEval_models_BEST.time_eval": "0170a802ef079fdbcff4164eb4949ac1fa31de59ff90fa344e57b86902420cd0"
+    },
     "55b4725c6b4e7c8daa5724c93beb144e33dae716/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "65eb4df077d016bb820f4b9f38432b5b96ad1c0422c64139f30e88bd351b9a61",
       "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "be79a1e77306d54d95b3940f69c9b177b246683209c74139fe3e8dc5ef5d03da",
@@ -543,6 +550,9 @@
     "3ec601cf6911b5e8d577a87a4da721d2459e44df": [
       "3.12"
     ],
+    "3f70524a1654d1b21c918f1f0a31035c655dc205": [
+      "3.12"
+    ],
     "55b4725c6b4e7c8daa5724c93beb144e33dae716": [
       "3.12"
     ],
@@ -579,6 +589,9 @@
     ],
     "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
     "3ec601cf6911b5e8d577a87a4da721d2459e44df": [
+      "3.12"
+    ],
+    "3f70524a1654d1b21c918f1f0a31035c655dc205": [
       "3.12"
     ],
     "55b4725c6b4e7c8daa5724c93beb144e33dae716": [
