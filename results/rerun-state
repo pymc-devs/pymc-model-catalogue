@@ -22,11 +22,16 @@
       "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_n_rewrites": "977b446f248919ea57b62a996905e1df18b894d1236b6445c4d730d7c8f606eb",
       "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_peak_rss": "3442a9ed5d902c42491aa098d1902e09dba4b0c08f522793252370b407764001",
       "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_rewrite_time": "abf8263321aad624549f7109485f152d53e8d5e307c57f9542a2ef27705edd2c",
+      "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_compile_time": "7da2953820287eb4bf239e3eafb439a18f7292c0d0fe98fa2ff1b7b726c3dd09",
+      "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_n_rewrites": "e19ca73d1f06db8e55b018adc14935d26451d8ec2a3ffd92d60c0daa95716ab5",
+      "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_peak_rss": "00c07f5d6949737eaa278d1193d9fa1d7c7f9fd9c2447f3181413f347e729fac",
+      "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_rewrite_time": "3253871b2457b7f4cc27f57fc3d9664f3d8626ea77e920881451da51ec939002",
       "bench_models.ModelBenchEval_models_BEST.time_eval": "fecb36ef6d3dcbec0a4b0453e2807f5fd1f17d54210f05a3027cfe678894b539",
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "27f52d5818e600e90738166d5e05ef81c634fe52e1e6ca7cedbaab0718aa217d",
       "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": "1b4862caa05eb0e39fd49e3b144dfab121655f2218aaaa60032cb2a0c95659d9",
       "bench_models.ModelBenchEval_models_eight_schools_noncentered.time_eval": "19c5be73c62a0b8bfe9bc43bb66b7afeb0dbad1d9aa80fe194ff522d4ca1f522",
-      "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "dc74e44c4ee41e99ffa5c2f3643d71a0e0aad2b412511900a995151019afe78d"
+      "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "dc74e44c4ee41e99ffa5c2f3643d71a0e0aad2b412511900a995151019afe78d",
+      "bench_models.ModelBenchEval_models_irt_survey_zerosum_categorical.time_eval": "58895ccabf01fd4672b8f40691e9656a1ff73fd481b8aec980c315111aa795c3"
     }
   },
   "environments": {
