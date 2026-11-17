@@ -52,11 +52,21 @@
       "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": "b4a7fc411c23bcedff48e175a7adbc2985cffecec40739c96255f5d5ba6d92ae",
       "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "34b339db09424271f8d98abab84ed1aaef480a1ebfaafe83608e0e64a1ffd13a",
       "bench_models.ModelBenchEval_models_multilevel_varying_intercept_slope_noncentered.time_eval": "839518b033fdf92934738d4c75c517969a0ec2073a8474925037dfd8415c4ff1"
+    },
+    "55b4725c6b4e7c8daa5724c93beb144e33dae716/3.12": {
+      "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "65eb4df077d016bb820f4b9f38432b5b96ad1c0422c64139f30e88bd351b9a61",
+      "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "be79a1e77306d54d95b3940f69c9b177b246683209c74139fe3e8dc5ef5d03da",
+      "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": "2336f56d8686f99d413202b982342d22021b1018716806a46ab43fd8b901a5b0",
+      "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": "196a09f27735f159ead713aa65a6200e6a0f2104f8f2d40a272a84e49339b74e",
+      "bench_models.ModelBenchEval_models_BEST.time_eval": "ba7a60e70bc48376094f53584dc4c2a993f60f17b44e38fb7185d130670da1b3"
     }
   },
   "environments": {
     "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
     "3ec601cf6911b5e8d577a87a4da721d2459e44df": [
+      "3.12"
+    ],
+    "55b4725c6b4e7c8daa5724c93beb144e33dae716": [
       "3.12"
     ],
     "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
@@ -68,6 +78,9 @@
   "known_environments": {
     "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
     "3ec601cf6911b5e8d577a87a4da721d2459e44df": [
+      "3.12"
+    ],
+    "55b4725c6b4e7c8daa5724c93beb144e33dae716": [
       "3.12"
     ],
     "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
