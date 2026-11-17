@@ -105,6 +105,13 @@
       "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "f7703f591e0b260e6c03bef4da28f82204a8085993796dbe2b325158fbfd3f3d",
       "bench_models.ModelBenchEval_models_multilevel_varying_intercept_slope_noncentered.time_eval": "5d26e3ab469451d88baaf9398a30d2e531927265a191777f6dcd621e849440b8"
     },
+    "ea734630f9c23c8c25f0c44c261205d965b45558/3.12": {
+      "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "1b4d2b111047ea993cb5b74e076bfa55bc177da427d77c235a3635a0af7e0f72",
+      "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "1131ae97fa45bbf7f16be6fe5c6bfbdd2c3df61f5ebbde64230642ca45e808c5",
+      "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": "698936b97af4437b948a280093dd3cee47d3b1b581af6e4bc5a6c9c6c230daed",
+      "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": "2ac329b58ff2404a018dabca863d5868f48bd3c30b786c3f528f081629df7f47",
+      "bench_models.ModelBenchEval_models_BEST.time_eval": "f37df0c57e13ac42cbf6a7f65fa665fc5e4fec8264568416858f687588aae67b"
+    },
     "ede5e699914c33a36e8f0b5267c3882e9179dfa1/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "916696372a0762560ad09a605ef248c2fc2b38240262567a1d3d83fe855c4e75",
       "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "06fe67dfaf765efab16ca135fb625e8bbcde6f2aa0730bc483bada5ef845af1d",
@@ -169,6 +176,9 @@
     "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": [],
     "86bf330a330352fbc13c934b6ce6749803675f2a": [],
+    "ea734630f9c23c8c25f0c44c261205d965b45558": [
+      "3.12"
+    ],
     "ede5e699914c33a36e8f0b5267c3882e9179dfa1": [
       "3.12"
     ]
@@ -186,6 +196,9 @@
     "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": [],
     "86bf330a330352fbc13c934b6ce6749803675f2a": [],
+    "ea734630f9c23c8c25f0c44c261205d965b45558": [
+      "3.12"
+    ],
     "ede5e699914c33a36e8f0b5267c3882e9179dfa1": [
       "3.12"
     ]
