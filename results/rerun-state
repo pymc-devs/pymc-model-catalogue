@@ -10,8 +10,13 @@
       "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_n_rewrites": "a45bcc20c7776d8b0e7abdea3c4e263d90c10ad2e70d4cea8acb31d7223b2144",
       "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_peak_rss": "42d916f1023d07622f2b4c02a7a73911a1f2c34c5e6ff08093c8ad5ef52558e7",
       "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_rewrite_time": "cc34cee2e03bdae543a75b29a1ddf09310203956c5fc16396ad575d97932e741",
+      "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_compile_time": "90c4fa797aa9d28a2d799ffef549837645b99b3204f29aca4f0bc6b48bfd9fd1",
+      "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_n_rewrites": "b4234fdfa47b2d98568d1682c7af1cfc25a704e544aec83ba6de217a349c0bf9",
+      "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_peak_rss": "e136d9c8b26462b54146d5b7289b7ae2d82ca43a828f78617271e79437d7dd44",
+      "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_rewrite_time": "8e2906ea03ddfb36bbb1aee80b124673afa7f56fe3926187ee20e490b1a4e3b2",
       "bench_models.ModelBenchEval_models_BEST.time_eval": "fecb36ef6d3dcbec0a4b0453e2807f5fd1f17d54210f05a3027cfe678894b539",
-      "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "27f52d5818e600e90738166d5e05ef81c634fe52e1e6ca7cedbaab0718aa217d"
+      "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "27f52d5818e600e90738166d5e05ef81c634fe52e1e6ca7cedbaab0718aa217d",
+      "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": "1b4862caa05eb0e39fd49e3b144dfab121655f2218aaaa60032cb2a0c95659d9"
     }
   },
   "environments": {
