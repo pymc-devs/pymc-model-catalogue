@@ -2,9 +2,9 @@ name: Benchmark
 
 # Regular timeline benchmark run. Triggered on push to `timeline` (usually
 # from merging a detect-releases PR) plus manual dispatch and a weekly
-# safety-net cron. Walks the timeline in order, compiling first and then
-# reusing caches for the other metrics. Successful measurements are skipped
-# unless a full rerun is pending. Publishes to gh-pages after each phase
+# safety-net cron. Walks the timeline in order, building each model once and
+# sampling eval from the same compiled callable. Skips successful measurements
+# unless a full rerun is pending. Publishes to gh-pages after each model
 # so partial progress is durable — if the install hook breaks on
 # one pymc version, everything before it is still visible on the
 # dashboard.

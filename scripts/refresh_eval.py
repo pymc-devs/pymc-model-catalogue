@@ -10,6 +10,7 @@ import math
 from pathlib import Path
 import re
 import subprocess
+import sys
 
 from core_models import CORE_MODELS
 
@@ -73,8 +74,11 @@ def refresh(target):
     regex = "^(?:" + "|".join(re.escape(name) for name in names) + ")$"
     try:
         subprocess.run([
-            "asv", "run", "--show-stderr", "--launch-method=spawn", "--record-samples",
-            "--machine", "ci", "--python", python, "--bench", regex, f"{sha}^!",
+            sys.executable, str(Path(__file__).with_name("run_benchmarks.py")),
+            "--show-stderr", "--launch-method=spawn", "--record-samples",
+            "--machine", "ci", "--python", python, "--bench", regex,
+            "--set-commit-hash", sha, f"{sha}^!",
+            "--results-dir", str(path.parent.parent),
         ], check=True)
         after = rows(json.loads(path.read_bytes()))
         for name, row in before.items():

@@ -10,9 +10,9 @@ branch/CI layout, and how to run or extend it. For the model set itself see the
 
 Each model is wrapped in an asv `ModelBench` class that captures five metrics:
 
-- **`rewrite_time`** — wall-clock from calling `logp_dlogp_function` (or
-  `compile_logp` for discrete models) to the moment it returns. Covers graph
-  construction and the full rewriter pipeline.
+- **`rewrite_time`** — wall-clock from calling the shared `build_logp_fn`
+  helper to the moment it returns. Covers graph construction and the full
+  rewriter pipeline.
 - **`compile_time`** — wall-clock from the end of the rewrite phase to the end
   of the first `f(x)` call. Captures the NUMBA JIT cost, which is triggered on
   first call; the one eval's worth of arithmetic inside is microseconds, so the
@@ -23,7 +23,7 @@ Each model is wrapped in an asv `ModelBench` class that captures five metrics:
   graph went through; shifts when rewrite rules are added or removed.
 - **`peak_rss`** — the highest resident set size, in bytes, that building and
   compiling this model drove the process to. A whole-process high-water mark,
-  not a window: asv spawns a fresh process per benchmark, so it covers imports,
+  not a window: the runner spawns a fresh process per model, so it covers imports,
   `_prewarm`, graph construction, rewrites and the NUMBA JIT together. That
   makes it the "will this fit on the box" number. Memory moves independently of
   time — the numba backend has had regressions where peak RSS grew several-fold
@@ -60,10 +60,10 @@ The five metrics are tracked on a curated subset of 26 models listed in
 
 ## Running locally
 
-CI pins ASV to 0.6.6 and `asv-runner` to 0.2.5. Newer runners changed timing
-benchmarks with `setup()` hooks to one call per sample, which defeats the eval
-benchmark's steady-state batching. `sample_time = 0.1` averages many calls per
-sample with the pinned runner; it does not fix batching with newer runners.
+CI pins ASV to 0.6.6 and `asv-runner` to 0.2.5. The model worker uses this
+runner's native eval batching and statistics, with `sample_time = 0.1`.
+Its timing sampler has no model setup hook: every sample calls the same
+already-compiled function.
 
 Both the ASV tool and the runner inside benchmark environments must use the
 constraint. Before a local run, set:
@@ -79,9 +79,9 @@ constraint survives switching branches and checking out historical commits.
 These are tooling pins; release-date resolution of model dependencies is kept.
 
 The pin does not refresh saved results: `--skip-existing-successful` will still
-skip earlier single-call measurements. Refresh those with an eval-only run over
-the selected releases, omitting that skip flag. This preserves the saved rewrite
-and compile metrics and avoids repeating the Build benchmarks.
+skip earlier successful measurements of the current benchmark version.
+An eval-only run preserves saved build measurements while compiling the target
+once to obtain the callable used for eval samples.
 
 The manual **Refresh eval timings** workflow automates that refresh. It selects
 successful core eval measurements with one call per sample and a per-call time
@@ -97,23 +97,35 @@ gh workflow run refresh-eval.yml --repo pymc-devs/pymc-model-catalogue --ref mai
 
 Add `-f dry_run=true` to list affected records without measuring or publishing.
 The workflow uses Python 3.12 and 3.14 to repair both saved environments. Each
-eval setup still compiles its function; the Build benchmarks are not run.
+model worker compiles its function once; only the requested eval rows are replaced.
 
-### Compile first, then reuse the cache
+### One target build per model
 
-ASV's multiple timing rounds can run Eval before Build, regardless of class
-name ordering. `scripts/run_benchmarks.py` therefore uses two ASV invocations
-per release/environment: compile timings first with fresh PyTensor and Numba
-cache directories, then all other metrics with the same populated caches.
-RSS may use cached code. The directories are removed after both phases;
-other `PYTENSOR_FLAGS` are preserved. `spawn` is the default launch method.
+`scripts/run_benchmarks.py` starts one ASV worker per model/environment with
+fresh PyTensor and Numba cache directories. The worker first builds and calls
+a tiny, unrelated Normal model to initialize LLVM and common compiler helpers,
+outside the target timers. It then builds the target exactly once:
+
+1. Graph construction and rewriting provide `rewrite_time` and `n_rewrites`.
+2. The first call provides `compile_time` and completes the RSS measurement.
+3. ASV's native eval sampler repeatedly calls that same compiled function.
+
+The wrapper saves all five metrics under their existing ASV benchmark names,
+including eval samples and statistics. Rewrite time, compile time, rewrite count,
+and RSS each use one observation. Only eval is sampled repeatedly. Existing eval
+round/repeat/batching settings are retained, but all rounds share the callable.
+This also works on older PyTensor releases without a compiled-graph disk cache.
+Caches are removed after each model; other `PYTENSOR_FLAGS` are preserved.
+`spawn` is the default launch method. Use the wrapper rather than `asv run`
+directly for these model benchmarks.
 
 Compile time records cache counters and Numba compilation events. It fails if
-the graph was already compiled, its dispatcher loads a disk-cache entry, or
-the first call produces no compilation events. Its `cold-cache-v1` benchmark
-version prevents reuse of earlier cached-load measurements. The trivial-model
-prewarm still initializes LLVM and common helpers. Older PyTensor versions that
-cannot cache a graph may compile again during other metrics.
+the target was already compiled, its dispatcher loads a disk-cache entry, or
+the first call produces no compilation events. Eval fails if any new Numba
+compilation occurs during its samples. All five metrics use the benchmark
+version `single-build-v1`, distinguishing this protocol from older measurements.
+The compiler warmup is excluded from target rewrite/compile times, but included
+in the process RSS high-water mark.
 
 To rerun the whole timeline after merging, use the existing **Benchmark**
 workflow from `main` with **rerun** checked, or:
@@ -126,8 +138,8 @@ gh workflow run benchmark.yml --repo pymc-devs/pymc-model-catalogue \
 This starts a full rerun, or resumes the unfinished full rerun. Progress is
 stored in `gh-pages/results/rerun-state`, alongside the saved ASV results.
 Successful measurements are recorded individually, and the result tree plus
-checkpoint is published after each compile/other-metrics phase. If a job times
-out, the unfinished phase is repeated; published successful values are skipped.
+checkpoint is published after each model. If a job times out, the unfinished
+model is repeated; published successful values are skipped.
 Failed benchmarks remain pending for another attempt. Normal runs also resume
 an active campaign, rather than accepting older successful values as refreshed.
 
@@ -176,7 +188,7 @@ python scripts/run_benchmarks.py --bench "$(python scripts/core_models.py)" \
 | Workflow | Trigger | What it does |
 |---|---|---|
 | `backfill.yml` | manual dispatch | Walks the timeline a `step` at a time. First dispatch creates the branch; `reset=true` wipes it back to main. |
-| `benchmark.yml` | push on `timeline`, weekly cron, manual dispatch | Compiles first, then runs other metrics using populated caches. Manual `rerun=true` starts/resumes a full timeline rerun; checkpoints after each phase. |
+| `benchmark.yml` | push on `timeline`, weekly cron, manual dispatch | Builds each model once and samples eval from its compiled callable. Manual `rerun=true` starts/resumes a full timeline rerun; checkpoints after each model. |
 | `detect-releases.yml` | daily cron | Polls PyPI for new pymc minors, opens a PR against `timeline`. Merging the PR kicks off `benchmark.yml`. |
 | `refresh-eval.yml` | manual dispatch | Replaces single-call core eval timings in tagged releases, verifies other measurements are unchanged, then publishes. Optional dry run lists the affected records. |
 | `experiment.yml` | push on `experiments`, manual dispatch | Runs each changed YAML, keyed by the YAML file's last-touching git SHA for dedup. |
