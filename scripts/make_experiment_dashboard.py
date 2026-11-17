@@ -244,6 +244,7 @@ _HTML_TEMPLATE = r"""<!doctype html>
   <h1>Experiment Comparison</h1>
   <span class="meta" id="meta"></span>
   <div class="links">
+    <a href="https://github.com/pymc-devs/pymc-model-catalogue">GitHub</a>
     <a href="dashboard.html">timeline dashboard</a>
     <a href="./">default asv view</a>
   </div>

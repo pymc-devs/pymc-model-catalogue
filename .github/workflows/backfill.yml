@@ -29,7 +29,7 @@ on:
         default: false
 
 concurrency:
-  group: backfill
+  group: benchmark-refs/heads/timeline
   cancel-in-progress: false
 
 jobs:
