@@ -110,7 +110,12 @@
       "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "5a1281fdb8f68025a03bb38d546c86805447d3785d67ec17c9adc70d1e018b21",
       "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": "3d075f54bedbeb053a494406016ae04ee5bfc2e908dcba97c3e23e3737f789be",
       "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": "d70731e41914fb960c6bf7a5c7f746b48ef03f62cebdac8e22868130f872897c",
-      "bench_models.ModelBenchEval_models_BEST.time_eval": "dbd8dd45622d786660281770f3a20a66bd47b3089f541bd29f0fb32c7db49f8d"
+      "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_compile_time": "c945f0770444c11ab352affbd7ef930003bb2ea940f79fff75ce2cc384d981d8",
+      "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_n_rewrites": "5636ffd5760ec23497cc0dccaadbee4df0b862f7a8f24501003abf43f881d080",
+      "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_peak_rss": "0d75f62e588bc1563ac17f575ab671e216242c0062e8d5a3e6409899f421f81f",
+      "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_rewrite_time": "f64f5d65589a983249d3f3c8ef24d36344fd91362e3d2e6a2312456ba40b56c1",
+      "bench_models.ModelBenchEval_models_BEST.time_eval": "dbd8dd45622d786660281770f3a20a66bd47b3089f541bd29f0fb32c7db49f8d",
+      "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "ddb275dff2fae9844f16cbbe6ed79cc9ec6146834ba2d37f191b6709587810be"
     },
     "ea734630f9c23c8c25f0c44c261205d965b45558/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "1b4d2b111047ea993cb5b74e076bfa55bc177da427d77c235a3635a0af7e0f72",
