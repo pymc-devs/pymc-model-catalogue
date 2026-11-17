@@ -16,7 +16,8 @@ Each model is wrapped in an asv `ModelBench` class that captures five metrics:
 - **`compile_time`** — wall-clock from the end of the rewrite phase to the end
   of the first `f(x)` call. Captures the NUMBA JIT cost, which is triggered on
   first call; the one eval's worth of arithmetic inside is microseconds, so the
-  metric reflects compile cost in practice.
+  metric reflects compile cost in practice. The measured model has an empty
+  disk cache; a trivial-model prewarm excludes compiler initialization.
 - **`n_rewrites`** — number of `rewriting: ...` lines emitted under
   `pytensor.config.optimizer_verbose = True`. A proxy for how many rewrites the
   graph went through; shifts when rewrite rules are added or removed.
@@ -98,14 +99,44 @@ Add `-f dry_run=true` to list affected records without measuring or publishing.
 The workflow uses Python 3.12 and 3.14 to repair both saved environments. Each
 eval setup still compiles its function; the Build benchmarks are not run.
 
+### Compile first, then reuse the cache
+
+ASV's multiple timing rounds can run Eval before Build, regardless of class
+name ordering. `scripts/run_benchmarks.py` therefore uses two ASV invocations
+per release/environment: compile timings first with fresh PyTensor and Numba
+cache directories, then all other metrics with the same populated caches.
+RSS may use cached code. The directories are removed after both phases;
+other `PYTENSOR_FLAGS` are preserved. `spawn` is the default launch method.
+
+Compile time records cache counters and Numba compilation events. It fails if
+the graph was already compiled, its dispatcher loads a disk-cache entry, or
+the first call produces no compilation events. Its `cold-cache-v1` benchmark
+version prevents reuse of earlier cached-load measurements. The trivial-model
+prewarm still initializes LLVM and common helpers. Older PyTensor versions that
+cannot cache a graph may compile again during other metrics.
+
+To rerun the whole timeline after merging, use the existing **Benchmark**
+workflow from `main` with **rerun** checked, or:
+
+```bash
+gh workflow run benchmark.yml --repo pymc-devs/pymc-model-catalogue \
+  --ref main -f rerun=true
+```
+
+This remeasures all metrics, including peak RSS, without resetting the timeline
+or its tags. It checks out `timeline` even when dispatched from `main`. Each
+release reuses its successful saved Python 3.12/3.14 environments; new releases use Python
+3.12 before PyMC 6 and Python 3.14 thereafter. Without `rerun`, successful
+measurements are skipped as usual.
+
 ```bash
 # Smoke-test a single model directly (no asv, no timeline):
 python models/stochastic_volatility.py
 
 # Run asv against the current .venv for a curated subset:
-asv run --launch-method=spawn --environment=existing:$(which python) \
-  --set-commit-hash $(git rev-parse HEAD) \
-  --bench "$(python scripts/core_models.py)"
+python scripts/run_benchmarks.py --bench "$(python scripts/core_models.py)" \
+  --launch-method=spawn --environment=existing:$(which python) \
+  --set-commit-hash $(git rev-parse HEAD)
 ```
 
 ## Branches
@@ -130,7 +161,7 @@ asv run --launch-method=spawn --environment=existing:$(which python) \
 | Workflow | Trigger | What it does |
 |---|---|---|
 | `backfill.yml` | manual dispatch | Walks the timeline a `step` at a time. First dispatch creates the branch; `reset=true` wipes it back to main. |
-| `benchmark.yml` | push on `timeline`, weekly cron | Walks any new commits with `asv run --skip-existing-commits` and publishes after each — partial progress is durable across a single failing release. |
+| `benchmark.yml` | push on `timeline`, weekly cron, manual dispatch | Compiles first, then runs other metrics using populated caches. Manual `rerun=true` remeasures the whole timeline; publishes after each commit. |
 | `detect-releases.yml` | daily cron | Polls PyPI for new pymc minors, opens a PR against `timeline`. Merging the PR kicks off `benchmark.yml`. |
 | `refresh-eval.yml` | manual dispatch | Replaces single-call core eval timings in tagged releases, verifies other measurements are unchanged, then publishes. Optional dry run lists the affected records. |
 | `experiment.yml` | push on `experiments`, manual dispatch | Runs each changed YAML, keyed by the YAML file's last-touching git SHA for dedup. |

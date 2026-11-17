@@ -6,6 +6,7 @@
     "branches": ["timeline"],
     "dvcs": "git",
     "environment_type": "virtualenv",
+    "launch_method": "spawn",
     "install_command": [
         "python {build_dir}/asv_bench/_provision.py {env_dir} {build_dir}"
     ],
