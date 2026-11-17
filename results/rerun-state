@@ -122,10 +122,15 @@
       "bench_models.ModelBenchBuild_models_eight_schools_noncentered.track_n_rewrites": "ad3ae4ed3ae2e7fb159b430503ea8b2dae78d26abf299c20179684a3661db8a8",
       "bench_models.ModelBenchBuild_models_eight_schools_noncentered.track_peak_rss": "767872138c28bada221637ed33eacb4674e37e0517b855f3667b56bab03259a3",
       "bench_models.ModelBenchBuild_models_eight_schools_noncentered.track_rewrite_time": "e54e2e34246f8ba819f05487692bf039e5b787df62cfda6a179c25b672a1292b",
+      "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_compile_time": "476e36febaeed97d65d35bbae9f3336fa0cdb8c9d4489d740256a22c54be804d",
+      "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_n_rewrites": "1dcb6bf27dcd77e13abff80219c802a34b8855dc74f21b63a2780a3aaf106f45",
+      "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_peak_rss": "964250c9ab8cddcba49f0c93e806955648dbd4ade682593c9b8759418a110f0e",
+      "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_rewrite_time": "7f8a911c5d616295abbe94fe0ce42bd872204fb05f3ee4ae9411bb0cf49ef9ed",
       "bench_models.ModelBenchEval_models_BEST.time_eval": "dbd8dd45622d786660281770f3a20a66bd47b3089f541bd29f0fb32c7db49f8d",
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "ddb275dff2fae9844f16cbbe6ed79cc9ec6146834ba2d37f191b6709587810be",
       "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": "e28ab9ee0cb398c7d3629d48ed1b537cf164fcaf61ff8f06d8b6d9013bc39648",
-      "bench_models.ModelBenchEval_models_eight_schools_noncentered.time_eval": "01289ce26572405fb949830bec882a98a2330aa502428139bc62c6314a433824"
+      "bench_models.ModelBenchEval_models_eight_schools_noncentered.time_eval": "01289ce26572405fb949830bec882a98a2330aa502428139bc62c6314a433824",
+      "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "19199a399a6fd8f113ba69a89ebc3a66ebbf692bbd3194b971216f54026e144b"
     },
     "ea734630f9c23c8c25f0c44c261205d965b45558/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "1b4d2b111047ea993cb5b74e076bfa55bc177da427d77c235a3635a0af7e0f72",
