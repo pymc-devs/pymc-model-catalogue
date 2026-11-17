@@ -20,7 +20,7 @@ Metric definitions (intentional, don't "correct" these):
   microseconds, so calling this ``compile_time`` reflects what it
   actually measures.
 - ``eval_time`` — steady-state per-call timing via asv's native timing
-  machinery, implemented in ``bench_models.py``.
+  machinery, implemented in ``_measure.py``.
 - ``n_rewrites`` — count of ``rewriting: ...`` lines printed by pytensor
   under ``config.optimizer_verbose = True``.
 - ``peak_rss`` — highest RSS during the build, in bytes.

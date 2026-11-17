@@ -1,10 +1,10 @@
-"""Configure the cache shared by a cold compile phase and subsequent metrics."""
+"""Configure fresh compiler caches for one model worker."""
 
 import os
 from pathlib import Path
 
 
-COLD_COMPILE_VERSION = "cold-cache-v1"
+MODEL_BENCHMARK_VERSION = "single-build-v1"
 
 
 def cache_environment(directory):
