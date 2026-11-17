@@ -2,6 +2,3 @@
 __pycache__/
 *.pyc
 .asv/
-# pixi environments
-.pixi/*
-!.pixi/config.toml

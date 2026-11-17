@@ -3,7 +3,6 @@
 This catalogue contains [PyMC](https://github.com/pymc-devs/pymc) models for
 research on the PyMC and [PyTensor](https://github.com/pymc-devs/pytensor) stack.
 Each model builder returns a model and its initial point.
-The optional native PyMC6 package also accepts canonical posterior IDs for exact dataset selection.
 
 The same model set also backs an ASV benchmark suite that tracks PyMC/PyTensor
 performance across releases (see
@@ -11,7 +10,7 @@ performance across releases (see
 
 ## How the models are packaged
 
-The existing top-level files under `models/` and `models_discrete/` define
+The top-level files under `models/` and `models_discrete/` define
 `build_model()` and return a PyMC model with its initial point:
 
 ```python
@@ -20,8 +19,8 @@ def build_model() -> tuple[pm.Model, dict]:
     return model, initial_point
 ```
 
-Data is either inlined or loaded from a bundled `.npz`, so importing a file is
-enough to build the model: there are no notebooks to run and nothing is fetched
+Data is either inlined or loaded from bundled `.npz` or JSON data. Importing a
+file is enough to build the model: there are no notebooks to run and nothing is fetched
 over the network. Each model is checked to give a finite logp and gradient at
 its initial point, both as written and after `freeze_dims_and_data` bakes in the
 dims and shapes. Models keep the form the original author used (`pm.Data`,
@@ -48,50 +47,29 @@ For the exact logp/dlogp compilation used by the benchmarks (raveled input,
 NUMBA mode, version-robust across old pymc releases) reuse
 `models/_benchmark.py:build_logp_fn`.
 
-## Native PyMC6 posterior workloads
+## Posteriordb models
 
-The optional `models.posteriordb` package contains 121 native PyMC models,
-148 model/data pairs, and 91 bundled processed datasets.
-The registry preserves canonical posterior identities and embeds upstream metadata, source paths, and hashes.
-The builders use local data without network access.
+The catalogue also includes 148 standalone model/data pairs ported from
+posteriordb, covering 121 model definitions and 91 datasets. Each pair has an
+explicit `posteriordb_<model>_<dataset>.py` file under `models/` or
+`models_discrete/`, with bundled source JSON archives. These ports target PyMC 6.4.
 
-The package does not duplicate metadata in separate JSON files.
-
-The package supports PyMC 6.4 and compatible PyTensor versions.
-Choose a canonical posterior to select its exact dataset.
-The module default uses its smallest bundled dataset.
-
-Run `pixi install` to create the pinned local environment.
+See [`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md) for the source index.
+Each file records its upstream revision, model source, posterior and dataset
+identity, authors or contributor attribution, and translation notes.
 
 ```python
-from models.posteriordb import build_model, get_posterior, list_posteriors
+from models.posteriordb_blr_sblri import build_model
 
-pairs = list_posteriors("blr")
-metadata = get_posterior("sblri-blr")
-model, ip = build_model("sblri-blr")
+model, ip = build_model()
 
-# Reuse one model with another canonical dataset.
-from models.posteriordb.blr import build_model as build_blr
-other_model, other_ip = build_blr(posterior="sblrc-blr")
+# The source namespace re-exports the same builders for convenience.
+from models.posteriordb import blr_sblrc
+other_model, other_ip = blr_sblrc()
 ```
 
-No command below samples a posterior.
-
-```bash
-pixi run python -m models.posteriordb.blr --posterior sblri-blr
-
-pixi run asv run --launch-method=spawn \
-  --environment="existing:$(pixi run python -c 'import sys; print(sys.executable)')" \
-  --set-commit-hash "$(git rev-parse HEAD)" \
-  --bench 'ModelBench(?:Build|Eval)_models_posteriordb__sblri__blr__NUMBA\.'
-```
-
-The ASV example uses the configured `timeline` branch.
-For a different branch, use a separate ASV configuration with `--config`.
-
-The existing core selector and historical benchmark names stay unchanged.
-Each optional ASV workload includes its posterior ID and declared backend.
-See [backend timing details](./BENCHMARKING.md#optional-native-pymc6-workloads).
+Run a pair with `python models/posteriordb_blr_sblri.py`.
+See [benchmarking instructions](./BENCHMARKING.md) for selecting entries in ASV.
 
 ### Intended-model corrections
 
@@ -101,7 +79,7 @@ The native ports correct these confirmed defects in the source definitions.
 | --- | --- | --- |
 | `hmm_gaussian` | Use the first observation's state-specific emission density. | [Original HMM definition](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271) |
 | `iohmm_reg` | Use destination-state gating weights. Native Gaussian mixtures eliminate the conditionally independent states. | [Original description and generator](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L840-L875) |
-| `dogs_nonhierarchical` | Use the declared covariance `diag(sigma) @ Omega @ diag(sigma)`. | [Native module and source notes](models/posteriordb/dogs_nonhierarchical.py) |
+| `dogs_nonhierarchical` | Use the declared covariance `diag(sigma) @ Omega @ diag(sigma)`. | [Native module and source notes](models/posteriordb_dogs_nonhierarchical_dogs.py) |
 | `2pl_latent_reg_irt`, `gpcm_latent_reg_irt` | Scale binary covariates by their range, not twice their sample standard deviation. | [Furr's model description, sections 1.1 and 1.3](https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html) |
 
 The shared scaling correction also covers `grsm_latent_reg_irt`. Its bundled intercept-only dataset does not change.
@@ -125,7 +103,7 @@ Canonical identifiers retain the source model/data identity. See the correspondi
 
 ## What's inside
 
-The existing top-level catalogue contains about 200 model files across these areas.
+The catalogue contains about 350 model files across these areas.
 
 - **GLMs & regression** — logistic, Poisson, negative-binomial, ordinal, robust,
   truncated/censored, discrete-choice, rolling.
@@ -152,8 +130,8 @@ Layout:
 - `models_discrete/` — models with discrete free variables (logp-only path).
   Observed discrete likelihoods stay in `models/`, since the continuous latents
   still have well-defined gradients.
-- `models/data/`, `models_discrete/data/` — bundled `.npz` datasets.
-- `models/posteriordb/` — reusable native PyMC6 models, a pair registry, and bundled processed ZIP datasets.
+- `models/data/`, `models_discrete/data/` — bundled `.npz` datasets and JSON archives.
+- `models/posteriordb/` — convenience exports and source attribution for the posteriordb entries.
 
 Most models are extracted from
 [pymc-examples](https://github.com/pymc-devs/pymc-examples); the rest come from

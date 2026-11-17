@@ -11,11 +11,10 @@ branch/CI layout, and how to run or extend it. For the model set itself see the
 Each model is wrapped in an asv `ModelBench` class that captures five metrics:
 
 - **`rewrite_time`** measures the call to `models._benchmark.build_logp_fn`.
-  It includes graph construction, gradients, rewrites, and backend compilation before return.
+  It includes logp graph construction, gradients, rewrites, and backend preparation.
   NUMBA defers JIT compilation until the first call.
-- **`compile_time`** keeps its historical identifier and measures the first function call.
-  NUMBA includes JIT compilation and one evaluation in this metric.
-  FAST_RUN measures only its first evaluation here.
+- **`compile_time`** measures the first function call, including NUMBA JIT
+  compilation and one evaluation.
 - **`n_rewrites`** — number of `rewriting: ...` lines emitted under
   `pytensor.config.optimizer_verbose = True`. A proxy for how many rewrites the
   graph went through; shifts when rewrite rules are added or removed.
@@ -107,56 +106,24 @@ asv run --launch-method=spawn --environment=existing:$(which python) \
   --bench "$(python scripts/core_models.py)"
 ```
 
-## Optional native PyMC6 workloads
+## Posteriordb model/data pairs
 
-The optional package contains 121 native PyMC models, 148 model/data pairs,
-and 91 bundled processed datasets.
-The registry supplies each workload's module, canonical posterior ID, and backend.
-Model construction and dataset loading occur outside timed compilation.
+See [`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md) for the model/data index.
 
 ```bash
-# List canonical pairs without constructing models.
-pixi run python -c 'from models.posteriordb import list_posteriors; print(*list_posteriors(), sep="\n")'
+# Check the original and frozen graphs for one fixed pair.
+python models/posteriordb_blr_sblri.py
 
-# Evaluate the original and frozen graphs without inference.
-pixi run python -m models.posteriordb.blr --posterior sblri-blr
-
-# Select one exact posterior/backend pair.
-pixi run asv run --launch-method=spawn \
-  --environment="existing:$(pixi run python -c 'import sys; print(sys.executable)')" \
+# Select one pair in ASV.
+asv run --launch-method=spawn --environment="existing:$(command -v python)" \
   --set-commit-hash "$(git rev-parse HEAD)" \
-  --bench 'ModelBench(?:Build|Eval)_models_posteriordb__sblri__blr__NUMBA\.'
+  --bench 'ModelBench(?:Build|Eval)_models_posteriordb_blr_sblri\.'
 
-# Select all 148 optional pairs.
-pixi run asv run --launch-method=spawn \
-  --environment="existing:$(pixi run python -c 'import sys; print(sys.executable)')" \
+# Select every posteriordb pair, including the discrete entry.
+asv run --launch-method=spawn --environment="existing:$(command -v python)" \
   --set-commit-hash "$(git rev-parse HEAD)" \
-  --bench 'ModelBench(?:Build|Eval)_models_posteriordb__'
+  --bench 'ModelBench(?:Build|Eval)_models(?:_discrete)?_posteriordb_'
 ```
-
-The ASV suffix replaces the posterior hyphen with double underscores and appends the declared backend.
-For example, `sblri-blr` uses `ModelBenchBuild_models_posteriordb__sblri__blr__NUMBA`.
-The dashboards restore the canonical posterior and show the backend separately.
-
-NUMBA is the default backend. Some native operations need FAST_RUN.
-The registry declares those workloads explicitly.
-A backend failure never selects another backend.
-
-`FAST_RUN` uses an explicit CVM linker because PyTensor's automatic linker can select NUMBA.
-Native ODE callbacks use the same explicit CVM linker.
-Their compilation occurs during model construction, before the measured phases.
-
-FAST_RUN compiles during `rewrite_time`.
-Its `compile_time` measures first evaluation, not NUMBA JIT compilation.
-The historical metric key stays `track_compile_time`. Its visible dashboard label is `first_call_time`.
-
-Keep backend identities separate when you interpret results.
-New workloads derive gradient eligibility from actual value-variable dtypes.
-Existing `models_discrete/` workloads retain their logp-only contract.
-Observed discrete outcomes do not disable gradients.
-
-These timings do not measure inference or posterior accuracy.
-
 
 ## Branches
 

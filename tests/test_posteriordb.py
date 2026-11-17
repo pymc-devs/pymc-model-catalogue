@@ -1,21 +1,13 @@
-"""Check posterior data ownership and constrained model initialization."""
+"""Check constrained model initialization."""
 
 import unittest
-
-from models.posteriordb import load_data
-
-
-class PosteriorDataSelectionTest(unittest.TestCase):
-    def test_rejects_a_posterior_that_belongs_to_another_model(self):
-        with self.assertRaises(ValueError):
-            load_data("eight_schools_centered", "nes1972-nes")
 
 
 class PosteriorInitializationTest(unittest.TestCase):
     def test_positive_ordered_scales_have_finite_initial_density(self):
         import numpy as np
 
-        from models.posteriordb.state_space_stochastic_level_stochastic_seasonal import (
+        from models.posteriordb_state_space_stochastic_level_stochastic_seasonal_uk_drivers import (
             build_model,
         )
 
