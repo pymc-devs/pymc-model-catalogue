@@ -1,8 +1,19 @@
 {
   "bench": "ModelBench(?:Build|Eval)_(?:models_eight_schools_noncentered|models_BEST|models_GLM_hierarchical_binomial_rat_tumor|models_multilevel_varying_intercept_slope_noncentered|models_lkj_cholesky_cov_mvnormal|models_frailty_coxph_individual|models_bayesian_var_ireland|models_gp_marginal_matern52|models_marginalized_gaussian_mixture_model|models_irt_survey_zerosum_categorical|models_discrete_occupancy_crossbill)",
-  "completed": {},
+  "completed": {
+    "3ec601cf6911b5e8d577a87a4da721d2459e44df/3.12": {
+      "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "e158f5694d748da1909367eae59026376e4b6213d4bf5c98b3e8a6fef6b12695",
+      "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "82a697b79d8897cf85a26f68295bde4ae8ae1ddae5730850d02b3adc57eb65be",
+      "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": "37ff5cdabbd70f9b2eae07195007c5de0bda388573a48d6b1e4ec52d73e90078",
+      "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": "c84f6eb8b068cc17c526e7e46c2e027e046c2654efcc37f5a570efe17ebdefbd",
+      "bench_models.ModelBenchEval_models_BEST.time_eval": "fecb36ef6d3dcbec0a4b0453e2807f5fd1f17d54210f05a3027cfe678894b539"
+    }
+  },
   "environments": {
     "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
+    "3ec601cf6911b5e8d577a87a4da721d2459e44df": [
+      "3.12"
+    ],
     "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": [],
     "86bf330a330352fbc13c934b6ce6749803675f2a": []
@@ -11,6 +22,9 @@
   "id": "single-build-20261117T183548Z-183490",
   "known_environments": {
     "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
+    "3ec601cf6911b5e8d577a87a4da721d2459e44df": [
+      "3.12"
+    ],
     "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": [],
     "86bf330a330352fbc13c934b6ce6749803675f2a": []
