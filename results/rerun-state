@@ -209,6 +209,13 @@
       "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "f7703f591e0b260e6c03bef4da28f82204a8085993796dbe2b325158fbfd3f3d",
       "bench_models.ModelBenchEval_models_multilevel_varying_intercept_slope_noncentered.time_eval": "5d26e3ab469451d88baaf9398a30d2e531927265a191777f6dcd621e849440b8"
     },
+    "84065a42e5bd0b1d83958898e79b357c3a68ad36/3.12": {
+      "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "61f670bbc25aacae888b0a682a3921d42c667580c429a52b8de121ef4071a4b6",
+      "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "a63c35c2347b4f6a7171b85dfe41b3462ee863d7425c4943af4fba0b34212589",
+      "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": "3dcf14b80e207ba43303cc41efbe28c63af535bba864ebd35af704d62325cf33",
+      "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": "d05c8d58559c2fab3ae37c36198d9da3d324f03e624f7faeab25ef176e53d4c5",
+      "bench_models.ModelBenchEval_models_BEST.time_eval": "10bc3b6be2061c0de6cab5c759d94847d1feb3877df27a3bbd09b26031cc666f"
+    },
     "b3a8a955701c7c0b263a722b380665c8f9efa176/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "d4c4ea58b85cb8750c3841107ce68480c70849a10dcdfb91bd1435d5271aeb8b",
       "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "90e72d9bf2f3616354a669b38df64801851eb32fc606e74a72d735750f5a482b",
@@ -434,6 +441,9 @@
     ],
     "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": [],
+    "84065a42e5bd0b1d83958898e79b357c3a68ad36": [
+      "3.12"
+    ],
     "86bf330a330352fbc13c934b6ce6749803675f2a": [],
     "b3a8a955701c7c0b263a722b380665c8f9efa176": [
       "3.12"
@@ -466,6 +476,9 @@
     ],
     "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": [],
+    "84065a42e5bd0b1d83958898e79b357c3a68ad36": [
+      "3.12"
+    ],
     "86bf330a330352fbc13c934b6ce6749803675f2a": [],
     "b3a8a955701c7c0b263a722b380665c8f9efa176": [
       "3.12"
