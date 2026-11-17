@@ -299,6 +299,10 @@
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_n_rewrites": "59f34dc5e1c3ccf612037f34170dcf79da6828b82db94f2164f896a0048452f3",
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_peak_rss": "7336ace85deb6cd59a5a07998d0f10b7289744ad37c9738aab1e051d471154e2",
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_rewrite_time": "f7f3ceed2e126b9e112ca2a5643f81df9eb0d59717a7127a76d8f6b8d93b2c82",
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_compile_time": "2c1c5394827383ed43a701ea844f63e49128912660f55f790aadcdcc16c3c59a",
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_n_rewrites": "2bf167e67bb956334499d7e9f3ab17ebb33c7332bf980ab0465d23c330f2646e",
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_peak_rss": "11fe66c1e2b0da51253d52c17fbea2e5e28405c0689622dc241b166fb0e9d89c",
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_rewrite_time": "5edadf6c23facf720e63b5484fbea23198858e4a4f84a70fd170ba11b52a912f",
       "bench_models.ModelBenchEval_models_BEST.time_eval": "b46a04d3f8e53cd67994a068bf95f84be96b1c8157759fdabefcedc10d0674df",
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "eb453f0ee0a59643b02a638c7816e7fc40c34e5936d6d160ff369d190101a8a7",
       "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": "6a533960b8af1d56a437761b9df58090985bc975552aeac48aeb5cc9db777d64",
@@ -306,7 +310,8 @@
       "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "26bb097afd9cd6dd213dcb60c803d334ba6ea15479ea6e7ed039af4cd664d192",
       "bench_models.ModelBenchEval_models_gp_marginal_matern52.time_eval": "acf047374d57bbe7c8eb4ffc8aaab640e6a44f4ec75a3eabc852551f2fdca77c",
       "bench_models.ModelBenchEval_models_irt_survey_zerosum_categorical.time_eval": "6e7d6e0e6c064a15c83f0a64a3c323593dcc257dd1c49e813641f39279143106",
-      "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": "4f46100bb6cce3b94bf3d91e21c9a575d13b0f59d831720bf85525e3aaffbd79"
+      "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": "4f46100bb6cce3b94bf3d91e21c9a575d13b0f59d831720bf85525e3aaffbd79",
+      "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "9a48d124fe6cfa35a18f97f36408eaedfdf82fd7e1035191c8cd9222e7337fe5"
     },
     "b3a8a955701c7c0b263a722b380665c8f9efa176/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "d4c4ea58b85cb8750c3841107ce68480c70849a10dcdfb91bd1435d5271aeb8b",
