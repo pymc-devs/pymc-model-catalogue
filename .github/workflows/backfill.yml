@@ -211,7 +211,7 @@ jobs:
           for sha in $commits; do
             short=$(git rev-parse --short=10 "$sha")
             echo "::group::benchmark $short"
-            # Compile first, then reuse this release/environment's caches.
+            # Build each model once and reuse its callable for eval samples.
             if ! python scripts/run_benchmarks.py --bench "$BENCH" --commit "$sha" \
               -v --show-stderr --launch-method=spawn --skip-existing-successful --machine ci; then
               echo "::warning::commit $short had benchmark failures — publishing partial results"
