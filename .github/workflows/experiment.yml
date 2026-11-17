@@ -148,18 +148,10 @@ jobs:
             # only — experiment.yml never pushes tags.
             git tag -f "exp-$name" "$yaml_sha"
 
-            # Isolate numba/pytensor caches per experiment so earlier runs
-            # in the loop don't give later ones free cache hits.
-            exp_cache_dir="$(pwd)/.cache/$name"
-            mkdir -p "$exp_cache_dir"
-            export NUMBA_CACHE_DIR="$exp_cache_dir/numba"
-            export PYTENSOR_FLAGS="compiledir=$exp_cache_dir/pytensor"
-
             regex=$(python scripts/core_models.py "$yaml_path")
-            asv run -v --show-stderr --launch-method=spawn \
+            python scripts/run_benchmarks.py --bench "$regex" -v --show-stderr --launch-method=spawn \
               --environment="existing:$venv_py" \
               --set-commit-hash "$yaml_sha" \
-              --bench "$regex" \
               --machine ci
 
             asv publish

@@ -17,6 +17,9 @@ just tagged commits.
 
 Each benchmark environment has its own series. Historical measurements
 remain visible when a later run uses a different Python version.
+Lines for the newest Python version label their last measured value.
+A checkbox restricts all plots to the latest six measured versions,
+with linear axes rescaled to that window.
 
 This is purely a rendering script — it reads already-published asv
 data and rewrites the HTML. It can run against stale data (no new
@@ -130,12 +133,21 @@ _HTML_TEMPLATE = """<!doctype html>
       padding: 10px 20px;
       border-bottom: 1px solid #eaeaea;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 16px;
     }
     header h1 { margin: 0; font-size: 15px; font-weight: 600; }
     header .meta { color: #888; font-size: 11px; }
     header .environments { display: flex; gap: 12px; font-size: 11px; }
+    header .version-filter {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
     header .links { margin-left: auto; display: flex; gap: 12px; }
     header .links a { color: #1f77b4; text-decoration: none; font-size: 12px; }
     header .links a:hover { text-decoration: underline; }
@@ -180,6 +192,9 @@ _HTML_TEMPLATE = """<!doctype html>
   <h1>pymc-model-catalogue</h1>
   <span class="meta" id="meta"></span>
   <span class="environments" id="environments"></span>
+  <label class="version-filter">
+    <input type="checkbox" id="latest-versions" /> Latest 6 versions only
+  </label>
   <div class="links">
     <a href="experiments.html">experiments</a>
     <a href="./">default asv view</a>
@@ -193,24 +208,32 @@ const LAYOUT_BASE = {
   paper_bgcolor: '#fff',
   plot_bgcolor: '#fff',
   font: { color: '#222', size: 9, family: 'system-ui' },
-  margin: { l: 4, r: 4, t: 2, b: 2 },
+  margin: { l: 4, r: 44, t: 6, b: 6 },
   showlegend: false,
   xaxis: {
     visible: false, fixedrange: true, type: 'category',
     categoryorder: 'array', categoryarray: PAYLOAD.versions,
   },
-  yaxis: { visible: false, fixedrange: true },
+  yaxis: { visible: false, fixedrange: true, type: 'linear', autorange: true },
 };
 const PLOTLY_CONFIG = { displayModeBar: false, responsive: true };
 const COLORS = ['#1f77b4', '#d95f02', '#2ca02c', '#9467bd', '#8c564b'];
+const pythonVersion = environment => environment.match(/Python ([0-9]+(?:[.][0-9]+)*)/)?.[1] || '';
+const latestPythonVersion = PAYLOAD.environments.map(pythonVersion)
+  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).at(-1);
 
 function environmentColor(environment) {
   return COLORS[PAYLOAD.environments.indexOf(environment) % COLORS.length];
 }
 
-function pointsFor(model, metric) {
+function visibleVersions() {
+  return document.getElementById('latest-versions').checked
+    ? PAYLOAD.versions.slice(-6) : PAYLOAD.versions;
+}
+
+function pointsFor(model, metric, versions) {
   const d = PAYLOAD.data[model] && PAYLOAD.data[model][metric];
-  return d || [];
+  return (d || []).filter(p => versions.has(p.tag));
 }
 
 function formatValue(metric, v) {
@@ -230,15 +253,28 @@ function formatValue(metric, v) {
   return v.toFixed(2) + ' s';
 }
 
-function makeSparkline(div, pts, metric) {
+function makeSparkline(div, pts, metric, versions) {
   if (pts.length === 0) {
     div.innerHTML = '<div class="empty">no data</div>';
     return;
   }
+  const annotations = [];
   const traces = PAYLOAD.environments.flatMap(environment => {
     const points = pts.filter(p => p.environment === environment);
     if (points.length === 0) return [];
     const color = environmentColor(environment);
+    const last = points.findLast(p => Number.isFinite(p.value));
+    if (last && pythonVersion(environment) === latestPythonVersion) {
+      annotations.push({
+        x: last.tag, y: last.value,
+        xref: 'x', yref: 'y',
+        text: formatValue(metric, last.value),
+        font: { color, size: 8 },
+        showarrow: false,
+        xanchor: 'left', yanchor: 'middle', xshift: 4,
+        hovertext: `${last.tag}<br>${environment}`,
+      });
+    }
     return [{
       name: environment,
       x: points.map(p => p.tag),
@@ -250,14 +286,29 @@ function makeSparkline(div, pts, metric) {
       text: points.map(p => `<b>${p.tag}</b><br>${formatValue(metric, p.value)}`),
     }];
   });
-  Plotly.newPlot(div, traces, LAYOUT_BASE, PLOTLY_CONFIG);
+  const layout = {
+    ...LAYOUT_BASE,
+    xaxis: {
+      ...LAYOUT_BASE.xaxis,
+      categoryarray: versions,
+      range: [-0.25, versions.length - 0.5],
+    },
+    annotations,
+  };
+  Plotly.newPlot(div, traces, layout, PLOTLY_CONFIG);
 }
 
 function render() {
   const root = document.getElementById('root');
+  root.querySelectorAll('.plot').forEach(div => Plotly.purge(div));
   root.innerHTML = '';
   // One grid column per metric, so adding one needs no CSS change.
   document.documentElement.style.setProperty('--n-metrics', PAYLOAD.metrics.length);
+  const versions = visibleVersions();
+  const versionSet = new Set(versions);
+  document.getElementById('meta').textContent =
+    PAYLOAD.models.length + ' models · ' + versions.length + ' of ' +
+    PAYLOAD.measured_count + ' pymc versions shown';
   PAYLOAD.models.forEach(model => {
     const row = document.createElement('div');
     row.className = 'model-row';
@@ -269,14 +320,12 @@ function render() {
     root.appendChild(row);
     row.querySelectorAll('.plot').forEach(div => {
       const metric = div.dataset.metric;
-      makeSparkline(div, pointsFor(model, metric), metric);
+      makeSparkline(div, pointsFor(model, metric, versionSet), metric, versions);
     });
   });
 }
 
-document.getElementById('meta').textContent =
-  PAYLOAD.models.length + ' models · ' +
-  PAYLOAD.measured_count + ' pymc versions measured';
+document.getElementById('latest-versions').addEventListener('change', render);
 
 PAYLOAD.environments.forEach(environment => {
   const label = document.createElement('span');

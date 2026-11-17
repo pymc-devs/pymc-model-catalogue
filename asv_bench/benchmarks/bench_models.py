@@ -10,24 +10,24 @@ Each model gets two sibling classes:
 - ``ModelBenchBuild_<model>`` — regular ``setup()`` calls
   ``build_and_measure`` to collect four scalar metrics
   (``rewrite_time``, ``compile_time``, ``n_rewrites``, ``peak_rss``). Each
-  ``track_*`` method runs in its own asv subprocess, so the rebuild
-  cost is paid four times per (commit, model). We deliberately
-  accept that 4× cost instead of caching: every caching strategy we
-  tried (asv ``setup_cache``, disk cache keyed by git SHA, disk cache
-  keyed by pymc version) had a subtle scoping trap that produced flat
-  identical timelines. Re-measuring is slower but obviously correct.
+  ``track_*`` method runs in its own asv subprocess. Compile time runs
+  first; later metrics rebuild using its populated disk cache where
+  supported by that PyTensor version.
 - ``ModelBenchEval_<model>`` — regular ``setup()`` rebuilds the
   compiled function and keeps it on ``self`` so ``time_eval`` can
   call it repeatedly for asv's native steady-state timing.
 
-Total rebuilds per (commit, model): 4 (Build) + 1 (Eval) = 5.
+Only the compile-time phase requires a cold model compilation. Later
+Build setups and Eval timing rounds may load the compiled graph from disk.
 
-Alphabetical class ordering puts ``Build`` before ``Eval`` (``B < E``),
-so ``track_compile_time`` is measured against a cold pytensor NUMBA
-disk cache. ``ModelBenchEval`` subsequently rebuilds with a warm cache,
-which is fine — ``time_eval`` only cares about steady-state arithmetic.
+scripts/run_benchmarks.py runs compile time first with fresh caches, then
+runs all other metrics using those populated caches. ASV's timing rounds
+can otherwise run Eval before Build, regardless of class name ordering.
+The trivial-model prewarm initializes the compiler. Only compile time
+requires a cold model compilation; RSS and the other metrics may use cache.
 """
 
+import json
 import sys
 from pathlib import Path
 
@@ -35,6 +35,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from asv_bench._cache import COLD_COMPILE_VERSION  # noqa: E402
 from asv_bench._runner import _ru_maxrss_bytes, build_and_measure  # noqa: E402
 
 
@@ -90,9 +91,11 @@ class _BaseModelBenchBuild:
     track_rewrite_time.unit = "seconds"
 
     def track_compile_time(self):
+        self._check_cold_compile()
         return self._result["compile_time"]
 
     track_compile_time.unit = "seconds"
+    track_compile_time.version = COLD_COMPILE_VERSION
 
     def track_n_rewrites(self):
         return self._result["n_rewrites"]
@@ -104,6 +107,13 @@ class _BaseModelBenchBuild:
         return max(self._result["peak_rss"], _ru_maxrss_bytes())
 
     track_peak_rss.unit = "bytes"
+
+    def _check_cold_compile(self):
+        cache = self._result["compile_cache"]
+        print("Compile cache: " + json.dumps(cache), flush=True)
+        if (cache["signatures_before_first_call"] or cache["cache_hits"]
+                or not cache["compile_events"]):
+            raise RuntimeError(f"Expected a cold model compilation: {cache}")
 
 
 class _BaseModelBenchEval:

@@ -2,9 +2,9 @@ name: Benchmark
 
 # Regular timeline benchmark run. Triggered on push to `timeline` (usually
 # from merging a detect-releases PR) plus manual dispatch and a weekly
-# safety-net cron. Walks all synthetic commits on the current branch in
-# order and runs each under asv with --skip-existing-successful, so any
-# already-measured commit is a no-op. Publishes to gh-pages after each
+# safety-net cron. Walks the timeline in order, compiling first and then
+# reusing caches for the other metrics. Successful measurements are skipped
+# unless manual dispatch sets rerun=true. Publishes to gh-pages after each
 # commit so partial progress is durable — if the install hook breaks on
 # one pymc version, everything before it is still visible on the
 # dashboard.
@@ -13,11 +13,16 @@ on:
   push:
     branches: [timeline]
   workflow_dispatch:
+    inputs:
+      rerun:
+        description: "Remeasure the whole timeline, including successful results"
+        type: boolean
+        default: false
   schedule:
     - cron: '17 3 * * 1'
 
 concurrency:
-  group: benchmark-${{ github.ref }}
+  group: benchmark-refs/heads/timeline
   cancel-in-progress: false
 
 jobs:
@@ -28,8 +33,15 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          ref: timeline
           fetch-depth: 0
           fetch-tags: true  # pymc-<ver> tags feed asv's x-axis labels
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: |
+            3.12
+            3.14
 
       - uses: astral-sh/setup-uv@v5
         with:
@@ -91,6 +103,7 @@ jobs:
       - name: Walk timeline commits, publishing after each
         env:
           BENCH: ${{ steps.filter.outputs.regex }}
+          RERUN: ${{ inputs.rerun || false }}
           REMOTE: "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
         run: |
           set -euo pipefail
@@ -119,6 +132,8 @@ jobs:
           # crashes, the other 39 are still on disk and worth
           # publishing. See backfill.yml for the full rationale.
           failed_commits=""
+          skip_args=()
+          if [ "$RERUN" != "true" ]; then skip_args+=(--skip-existing-successful); fi
           for sha in $commits; do
             short=$(git rev-parse --short=10 "$sha")
             echo "::group::benchmark $short"
@@ -136,7 +151,8 @@ jobs:
               git tag "pymc-$ver" "$sha" && new_tags=1
             fi
 
-            if ! asv run -v --show-stderr --launch-method=spawn --skip-existing-successful --machine ci --bench "$BENCH" "${sha}^!"; then
+            if ! python scripts/run_benchmarks.py --bench "$BENCH" --commit "$sha" \
+              -v --show-stderr --launch-method=spawn "${skip_args[@]}" --machine ci; then
               echo "::warning::commit $short had benchmark failures — publishing partial results"
               failed_commits="${failed_commits} ${short}"
             fi
