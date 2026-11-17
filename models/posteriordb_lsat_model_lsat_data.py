@@ -29,6 +29,9 @@ Native LSAT item-response model from the BUGS example.
 
 Cumulative pattern counts expand to individual student responses.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

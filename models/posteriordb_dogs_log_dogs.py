@@ -24,6 +24,9 @@ Changes from original:
 Implementation notes:
 Native constrained logistic model from posteriordb dogs_log.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

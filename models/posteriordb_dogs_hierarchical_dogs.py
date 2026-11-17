@@ -24,6 +24,9 @@ Changes from original:
 Implementation notes:
 Native shared learning model from posteriordb dogs_hierarchical.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

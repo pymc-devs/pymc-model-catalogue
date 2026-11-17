@@ -26,6 +26,9 @@ Latent Dirichlet allocation with two topics and uniform simplex densities.
 
 Source: Blei, Ng, and Jordan (2003), as specified by posteriordb.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Original: logp = -1323.4223, grad norm = 40.0000, 86.0 us/call (5 evals).
 - Frozen: logp = -1323.4223, grad norm = 40.0000, 71.3 us/call (5 evals).

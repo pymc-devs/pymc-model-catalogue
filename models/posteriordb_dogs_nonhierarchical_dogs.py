@@ -15,6 +15,8 @@ Data: dogs (upstream posterior: dogs-dogs_nonhierarchical)
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/dogs-dogs_nonhierarchical.json
 
 Changes from original:
+- Use the declared covariance diag(sigma) @ Omega @ diag(sigma), rather than the source row-factor product.
+  This changes the joint prior on the dog effects.
 - Native PyMC port; the upstream implementation paths above identify the source definitions.
 - Bundled the processed source JSON archive unchanged.
 - Captured the initial point before clearing model initial-value overrides.
@@ -25,6 +27,9 @@ Native correlated dog effects from posteriordb dogs_nonhierarchical.
 The covariance is diag(sigma) @ Omega @ diag(sigma), as defined by the source Sigma_logit_ab.
 The source row-factor product does not give that covariance. This model uses the declared covariance.
 Evidence: posterior_database/models/stan/dogs_nonhierarchical.stan, lines 27-32, upstream revision 91027f9.
+
+Stan comparison:
+- Not recorded.
 
 Benchmark results:
 - Original: logp = -922.6830, grad norm = 482.4855, 45.7 us/call (5 evals).

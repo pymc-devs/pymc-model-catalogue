@@ -27,6 +27,9 @@ Regularized horseshoe logistic regression from Piironen and Vehtari (2017).
 
 The global half-Student-t scale equals twice the dataset scale_global value.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

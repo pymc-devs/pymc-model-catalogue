@@ -27,6 +27,9 @@ Finite-basis acceleration model from posteriordb and Bales (2019).
 The supplied eigenfunctions and frequencies define both finite Gaussian processes.
 The two processes control the mean and log standard deviation.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

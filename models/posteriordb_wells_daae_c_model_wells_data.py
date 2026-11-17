@@ -30,6 +30,9 @@ Native well-switching logistic regression from Gelman and Hill (2006), Chapter 5
 All coefficient densities are constant. Distance and arsenic use their sample means for centering.
 Education uses four-year units without centering. Association retains its binary coding.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

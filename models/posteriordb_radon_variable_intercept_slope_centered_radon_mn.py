@@ -29,6 +29,9 @@ Native radon model from the posteriordb radon case study.
 The county hierarchy uses centered Normal effects.
 Source: https://mc-stan.org/users/documentation/case-studies/radon.html
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

@@ -27,6 +27,9 @@ One success rate with a uniform Beta distribution.
 
 Source: Lee and Wagenmakers (2013), binomial rate examples.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

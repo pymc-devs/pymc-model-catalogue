@@ -29,6 +29,9 @@ Native well-switching logistic regression from Gelman and Hill (2006), Chapter 5
 All coefficient densities are constant. Distance uses hundreds of meters.
 Education uses four-year units without centering.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

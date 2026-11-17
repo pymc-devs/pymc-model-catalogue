@@ -26,6 +26,9 @@ Latent Dirichlet allocation with two topics and uniform simplex densities.
 
 Source: Blei, Ng, and Jordan (2003), as specified by posteriordb.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

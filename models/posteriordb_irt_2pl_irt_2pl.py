@@ -24,6 +24,9 @@ Changes from original:
 Implementation notes:
 Native two-parameter logistic model from the posteriordb definition.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

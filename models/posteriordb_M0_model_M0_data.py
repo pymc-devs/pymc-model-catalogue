@@ -28,6 +28,9 @@ Constant detection with exact population-inclusion marginalization.
 
 Source: Kéry and Schaub (2011), chapter 6.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

@@ -25,6 +25,9 @@ Changes from original:
 Implementation notes:
 Native quadratic binomial model from posteriordb GLM_Binomial_model.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

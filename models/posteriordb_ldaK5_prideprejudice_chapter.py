@@ -26,6 +26,9 @@ Latent Dirichlet allocation with five topics and dataset concentration parameter
 
 Source: Blei, Ng, and Jordan (2003), as specified by posteriordb.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

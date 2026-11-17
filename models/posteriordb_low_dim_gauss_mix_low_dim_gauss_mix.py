@@ -28,6 +28,9 @@ Source: posteriordb low_dim_gauss_mix model metadata at revision 91027f9.
 The ordered transform keeps the source constraint on the component means.
 Each observation selects one Normal component through the native marginalized likelihood.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

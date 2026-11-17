@@ -28,6 +28,9 @@ The independent comparison rate retains its unconditioned Beta distribution.
 Source: Lee and Wagenmakers (2013), binomial rate examples.
 Predictive counts do not add free variables to the probability model.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

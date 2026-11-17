@@ -29,6 +29,9 @@ Source: Gelman and Hill (2006), ARM.
 
 The likelihood uses the transformed response, without a response Jacobian.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

@@ -27,6 +27,9 @@ Native skeletal maturity model from the BUGS bones example.
 
 Missing grades do not contribute a likelihood factor.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

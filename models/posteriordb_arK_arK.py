@@ -27,6 +27,9 @@ Conditional autoregression from the posteriordb arK probability model.
 The first K observations condition the likelihood and have no density factor.
 Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

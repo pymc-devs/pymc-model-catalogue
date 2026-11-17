@@ -25,6 +25,9 @@ Changes from original:
 Implementation notes:
 Native logistic shock model from posteriordb dogs.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

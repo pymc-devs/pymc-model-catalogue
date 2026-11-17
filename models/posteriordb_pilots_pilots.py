@@ -28,6 +28,9 @@ Native crossed Gaussian effects for pilot groups and scenarios.
 Source: Gelman and Hill (2006).
 The group and scenario effects retain their centered parameterization.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

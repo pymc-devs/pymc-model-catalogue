@@ -28,6 +28,9 @@ Source: posteriordb normal_mixture_k model metadata at revision 91027f9.
 A uniform simplex density gives Dirichlet weights with unit concentrations.
 The likelihood uses only y. Other dataset fields describe the data generator.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

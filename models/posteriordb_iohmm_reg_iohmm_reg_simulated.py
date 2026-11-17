@@ -16,6 +16,7 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 Reference URL: https://github.com/luisdamiano/stancon18
 
 Changes from original:
+- Use destination-state gating and analytically eliminate the conditionally independent states.
 - Native PyMC port; the upstream implementation paths above identify the source definitions.
 - Bundled the processed source JSON archive unchanged.
 - Captured the initial point before clearing model initial-value overrides.
@@ -32,6 +33,9 @@ This implementation corrects that defect and uses the documented generative mode
 Evidence: https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L840-L875
 
 The initial probabilities have a uniform simplex density.
+
+Stan comparison:
+- Not recorded.
 
 Benchmark results:
 - Not measured.

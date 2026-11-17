@@ -28,6 +28,9 @@ Native standardized child-score interaction regression from Gelman and Hill (200
 Each predictor uses its sample mean and twice its sample standard deviation.
 All parameter densities are constant on their supports.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

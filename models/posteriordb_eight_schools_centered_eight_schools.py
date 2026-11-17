@@ -25,6 +25,9 @@ Changes from original:
 Implementation notes:
 Native centered school effects from posteriordb eight_schools_centered.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

@@ -26,6 +26,9 @@ Changes from original:
 Implementation notes:
 Native crossed logistic effects from posteriordb election88_full.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

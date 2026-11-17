@@ -28,6 +28,9 @@ Changes from original:
 Implementation notes:
 Native centered seed effects from posteriordb seeds_centered_model.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

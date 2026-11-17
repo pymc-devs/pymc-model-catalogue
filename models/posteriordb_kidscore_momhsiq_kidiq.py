@@ -27,6 +27,9 @@ Native child-score regression from Gelman and Hill (2006), Chapter 3.
 
 The coefficient density is constant. The positive noise scale follows a half-Cauchy law.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

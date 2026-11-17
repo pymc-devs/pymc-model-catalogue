@@ -27,6 +27,9 @@ Native Gaussian regression for National Election Study party identification.
 
 Source: Gelman and Hill (2006), ARM.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Original: logp = -1042.3892, grad norm = 169.9735, 15.9 us/call (5 evals).
 - Frozen: logp = -1042.3892, grad norm = 169.9735, 15.0 us/call (5 evals).

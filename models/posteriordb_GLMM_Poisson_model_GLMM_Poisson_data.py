@@ -26,6 +26,9 @@ Changes from original:
 Implementation notes:
 Native cubic Poisson mixed model from posteriordb GLMM_Poisson_model.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

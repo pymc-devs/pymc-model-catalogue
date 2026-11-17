@@ -27,6 +27,9 @@ One-hidden-layer classification network with one hundred hidden units.
 
 Source: Lampinen and Vehtari (2001), as specified by posteriordb.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

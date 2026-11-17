@@ -28,6 +28,9 @@ Exact Gaussian-process regression from posteriordb.
 The sigma parameter adds variance, not standard deviation, to the diagonal.
 Source: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/gp_regr
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

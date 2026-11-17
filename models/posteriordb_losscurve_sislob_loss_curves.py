@@ -26,6 +26,9 @@ Hierarchical loss development from the posteriordb losscurve_sislob model.
 The data select Weibull or log-logistic cumulative growth.
 Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

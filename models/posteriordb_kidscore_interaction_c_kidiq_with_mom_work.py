@@ -27,6 +27,9 @@ Native centered child-score interaction regression from Gelman and Hill (2006), 
 
 Both predictors use their sample means. The coefficients and positive noise scale have constant densities.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

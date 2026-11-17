@@ -26,6 +26,9 @@ Two count observations share one success rate.
 
 Source: Lee and Wagenmakers (2013), binomial rate examples.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

@@ -28,6 +28,9 @@ Native hierarchical two-parameter logistic model from Furr (2016).
 
 Item effects use the centered bivariate Gaussian law.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

@@ -27,6 +27,9 @@ Native Gaussian regression for National Election Study party identification.
 
 Source: Gelman and Hill (2006), ARM.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

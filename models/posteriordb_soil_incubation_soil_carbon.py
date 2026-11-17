@@ -28,6 +28,9 @@ Two-pool carbon dynamics from the posteriordb soil_incubation model.
 The observation model uses cumulative carbon loss, not measurement error scales.
 Source: Sierra et al. (2014), as specified by posteriordb.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Original: logp = -42.8159, grad norm = 15.6056, 3636.9 us/call (5 evals).
 - Frozen: logp = -42.8159, grad norm = 15.6056, 4063.1 us/call (5 evals).

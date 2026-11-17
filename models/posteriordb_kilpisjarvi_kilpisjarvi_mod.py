@@ -28,6 +28,9 @@ Gaussian temperature regression from the posteriordb kilpisjarvi probability mod
 The observation scale has the source model's improper positive flat density.
 Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

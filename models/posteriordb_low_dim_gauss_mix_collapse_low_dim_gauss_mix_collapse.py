@@ -27,6 +27,9 @@ Two-component Gaussian mixture with unrestricted means.
 Source: posteriordb low_dim_gauss_mix_collapse model metadata at revision 91027f9.
 This named variant keeps both label permutations and does not order the means.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

@@ -27,6 +27,9 @@ Native child-score work-category regression from Gelman and Hill (2006), Chapter
 
 Work category one is the reference. The coefficients and positive noise scale have constant densities.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

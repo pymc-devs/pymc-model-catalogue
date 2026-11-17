@@ -28,6 +28,9 @@ Detection has additive occasion, behavior, and individual effects on log odds.
 
 Source: Kéry and Schaub (2011), chapter 6.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

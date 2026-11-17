@@ -28,6 +28,9 @@ Latent Gaussian-process Poisson regression from posteriordb.
 The native latent GP uses a noncentered Normal representation and the source jitter.
 Source: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/gp_pois_regr
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

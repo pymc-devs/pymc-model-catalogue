@@ -27,6 +27,9 @@ Changes from original:
 Implementation notes:
 Native scale-based seed effects from posteriordb seeds_stanified_model.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

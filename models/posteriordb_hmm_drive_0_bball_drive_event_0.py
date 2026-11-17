@@ -27,6 +27,9 @@ Source: https://github.com/imadmali/bball-hmm
 The initial state weights equal one, as in the published target.
 Positive ordered transforms preserve the joint support of the emission rates.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

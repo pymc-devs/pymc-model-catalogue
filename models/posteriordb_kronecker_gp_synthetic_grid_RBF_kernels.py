@@ -27,6 +27,9 @@ Kronecker Gaussian process from posteriordb and Flaxman et al. (2015).
 The native Kronecker Normal uses temporal covariance and an LKJ correlation matrix.
 The sigma1 parameter adds variance to the observation covariance.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

@@ -27,6 +27,9 @@ Native radon model from the posteriordb radon case study.
 
 Source: https://mc-stan.org/users/documentation/case-studies/radon.html
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

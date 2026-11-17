@@ -26,6 +26,9 @@ Changes from original:
 Implementation notes:
 Native growth curve from posteriordb dugongs_model.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

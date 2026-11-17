@@ -25,6 +25,9 @@ Changes from original:
 Implementation notes:
 Native hospital mortality model from posteriordb surgical_model.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

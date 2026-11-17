@@ -27,6 +27,9 @@ Native well-switching logistic regression from Gelman and Hill (2006), Chapter 5
 
 All coefficient densities are constant. Distance uses meters.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

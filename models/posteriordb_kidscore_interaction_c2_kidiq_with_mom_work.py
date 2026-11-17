@@ -28,6 +28,9 @@ Native reference-centered child-score interaction regression from Gelman and Hil
 
 Education centers at 0.5 and IQ centers at 100. The coefficients and positive noise scale have constant densities.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

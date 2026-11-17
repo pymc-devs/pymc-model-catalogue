@@ -27,6 +27,9 @@ The initial eleven seasonal states and regression coefficients have flat densiti
 The level bounds apply to every time point without transition normalization.
 Source: sinhrks/stan-statespace, fig07_02, as specified by posteriordb.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

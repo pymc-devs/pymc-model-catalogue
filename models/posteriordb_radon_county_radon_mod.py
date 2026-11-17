@@ -27,6 +27,9 @@ Native county radon hierarchy from posteriordb, Bales et al. (2019).
 
 The county model uses bounded uniform scale distributions.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

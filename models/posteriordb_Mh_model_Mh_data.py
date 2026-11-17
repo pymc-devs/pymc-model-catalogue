@@ -28,6 +28,9 @@ Individual detection uses noncentered Gaussian effects on log odds.
 
 Source: Kéry and Schaub (2011), chapter 6.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

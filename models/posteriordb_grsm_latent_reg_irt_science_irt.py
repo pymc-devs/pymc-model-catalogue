@@ -18,6 +18,7 @@ Reference URL: https://github.com/danielcfurr/edstan
 Reference URL: https://mc-stan.org/users/documentation/case-studies/rsm_and_grsm.html
 
 Changes from original:
+- Use the documented covariate scaling; the bundled intercept-only dataset is unaffected.
 - Native PyMC port; the upstream implementation paths above identify the source definitions.
 - Bundled the processed source JSON archive unchanged.
 - Captured the initial point before clearing model initial-value overrides.
@@ -35,6 +36,9 @@ Continuous columns use twice their sample standard deviation, and the intercept 
 This corrects the published binary-column counter defect.
 It changes the induced coefficient priors for fims_Aus_Jpn_irt-2pl_latent_reg_irt and timssAusTwn_irt-gpcm_latent_reg_irt.
 The intercept-only science_irt-grsm_latent_reg_irt pair does not change.
+
+Stan comparison:
+- Not recorded.
 
 Benchmark results:
 - Not measured.

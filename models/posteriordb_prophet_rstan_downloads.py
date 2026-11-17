@@ -28,6 +28,9 @@ The hinge basis preserves continuity for linear trends and logistic log odds.
 The logistic offset is a time location, not a log-odds intercept.
 Source: Taylor and Letham (2018), as specified by posteriordb.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

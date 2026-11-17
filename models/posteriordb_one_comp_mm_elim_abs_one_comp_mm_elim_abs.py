@@ -27,6 +27,9 @@ Source: posteriordb one_comp_mm_elim_abs, revision 91027f9cdd13b7e76283fec3f2898
 The initial concentration is zero, as specified by the published database model.
 Native ODE integration separates the concentration dynamics from lognormal measurement errors.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Original: logp = -44.3001, grad norm = 13.5193, 7444.0 us/call (5 evals).
 - Frozen: logp = -44.3001, grad norm = 13.5193, 7692.5 us/call (5 evals).

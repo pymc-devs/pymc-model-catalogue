@@ -25,6 +25,9 @@ Changes from original:
 Implementation notes:
 Native centered growth effects from posteriordb rats_model.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

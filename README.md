@@ -49,8 +49,10 @@ NUMBA mode, version-robust across old pymc releases) reuse
 
 ## Posteriordb models
 
-The catalogue also includes 148 standalone model/data pairs ported from
-posteriordb, covering 121 model definitions and 91 datasets. Each pair has an
+The catalogue also includes 148 model/data pairs ported from
+[posteriordb](https://github.com/stan-dev/posteriordb) at
+[revision 91027f9](https://github.com/stan-dev/posteriordb/tree/91027f9cdd13b7e76283fec3f2898f59d4b83ec4),
+covering 121 model definitions and 91 datasets. Each pair has an
 explicit `posteriordb_<model>_<dataset>.py` file under `models/` or
 `models_discrete/`, with bundled source JSON archives. These ports target PyMC 6.4.
 
@@ -71,16 +73,32 @@ other_model, other_ip = blr_sblrc()
 Run a pair with `python models/posteriordb_blr_sblri.py`.
 See [benchmarking instructions](./BENCHMARKING.md) for selecting entries in ASV.
 
-### Intended-model corrections
+### Validation and intentional departures
 
-The native ports correct these confirmed defects in the source definitions.
+The benchmark helper checks finite PyMC logp and gradients and evaluates original
+and frozen graphs. Agreement with Stan logp has not been established for this
+collection. Each model header records its Stan comparison status. Completed
+comparisons should identify the reference revision, parameter points, Jacobian
+settings, logp differences and tolerances. Cross-library comparisons need aligned
+parameterizations, transforms,
+and Jacobian terms; parameter-independent normalization constants can be handled
+by comparing changes in logp. See
+[A Rosetta stone for PyMC and Stan](https://gist.github.com/ricardoV94/c421ddacb3ba7a19ac46efa253ea466c)
+for worked examples.
 
-| Models | Native mathematical correction | Evidence |
-| --- | --- | --- |
-| `hmm_gaussian` | Use the first observation's state-specific emission density. | [Original HMM definition](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271) |
-| `iohmm_reg` | Use destination-state gating weights. Native Gaussian mixtures eliminate the conditionally independent states. | [Original description and generator](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L840-L875) |
-| `dogs_nonhierarchical` | Use the declared covariance `diag(sigma) @ Omega @ diag(sigma)`. | [Native module and source notes](models/posteriordb_dogs_nonhierarchical_dogs.py) |
-| `2pl_latent_reg_irt`, `gpcm_latent_reg_irt` | Scale binary covariates by their range, not twice their sample standard deviation. | [Furr's model description, sections 1.1 and 1.3](https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html) |
+The following ports deliberately follow the stated model where it differs from
+the published implementation. Their model headers describe the departures and
+sources. Some changes affect priors: the dog-effects covariance changes their
+joint prior, and IRT covariate scaling changes the induced coefficient priors.
+Comparisons must account for those changes explicitly, using a corresponding Stan
+reference or documented density adjustments.
+
+| Models | Effect | Intentional departure | Evidence |
+| --- | --- | --- | --- |
+| `hmm_gaussian` | Likelihood | Use the first observation's state-specific emission density. | [Original HMM definition](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271) |
+| `iohmm_reg` | Likelihood | Use destination-state gating weights. Native Gaussian mixtures eliminate the conditionally independent states. | [Original description and generator](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L840-L875) |
+| `dogs_nonhierarchical` | Prior | Use the declared covariance `diag(sigma) @ Omega @ diag(sigma)`. | [Native module and source notes](models/posteriordb_dogs_nonhierarchical_dogs.py) |
+| `2pl_latent_reg_irt`, `gpcm_latent_reg_irt` | Induced prior | Scale binary covariates by their range, not twice their sample standard deviation. | [Furr's model description, sections 1.1 and 1.3](https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html) |
 
 The shared scaling correction also covers `grsm_latent_reg_irt`. Its bundled intercept-only dataset does not change.
 Canonical identifiers retain the source model/data identity. See the corresponding module docstrings for correction details and references.
@@ -139,8 +157,8 @@ Statistical Rethinking and from papers (provenance is in each file's docstring).
 
 ## Benchmarking & the timeline
 
-The catalogue backs an ASV suite that tracks four metrics — `rewrite_time`,
-`compile_time`, `n_rewrites`, `time_eval` — on a curated core subset
+The catalogue backs an ASV suite that tracks five metrics — `rewrite_time`,
+`compile_time`, `n_rewrites`, `peak_rss`, `time_eval` — on a curated core subset
 ([`BENCHMARK_CORE.md`](./BENCHMARK_CORE.md)) across PyMC releases, published
 to a [dashboard](https://pymc-devs.github.io/pymc-model-catalogue/dashboard.html).
 A separate [experiments](https://pymc-devs.github.io/pymc-model-catalogue/experiments.html)
@@ -148,6 +166,8 @@ track runs the models against patched pymc/pytensor to A/B specific changes.
 
 Full details — metrics, the branch/CI layout, running asv locally, and adding an
 experiment — are in [`BENCHMARKING.md`](./BENCHMARKING.md).
+
+See [`PLAN.md`](./PLAN.md) for adding or adapting model examples.
 
 ## Requirements
 

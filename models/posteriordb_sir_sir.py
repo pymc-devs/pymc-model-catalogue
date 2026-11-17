@@ -29,6 +29,9 @@ Source: posteriordb sir, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
 Initial compartment sizes and the water concentration constant remain fixed.
 Incidence counts measure susceptible losses between consecutive observation times.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Original: logp = -8849.2832, grad norm = 6315.5231, 14027.6 us/call (5 evals).
 - Frozen: logp = -8849.2832, grad norm = 6315.5231, 12936.7 us/call (5 evals).

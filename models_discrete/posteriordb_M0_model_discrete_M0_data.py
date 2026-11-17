@@ -27,6 +27,9 @@ Explicit population inclusion with constant detection.
 
 Source: Kéry and Schaub (2011), chapter 6.
 
+Stan comparison:
+- No upstream Stan implementation; the source has discrete free variables.
+
 Benchmark results:
 
 Has discrete variables: Yes (population-inclusion indicators z).

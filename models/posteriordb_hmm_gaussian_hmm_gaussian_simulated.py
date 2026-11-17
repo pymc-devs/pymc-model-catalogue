@@ -16,6 +16,7 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 Reference URL: https://github.com/luisdamiano/stancon18
 
 Changes from original:
+- Use state-specific first-observation emissions instead of the source scalar sum.
 - Native PyMC port; the upstream implementation paths above identify the source definitions.
 - Bundled the processed source JSON archive unchanged.
 - Captured the initial point before clearing model initial-value overrides.
@@ -30,6 +31,9 @@ This corrects the published scalar sum across all initial emission densities.
 Evidence: the local-evidence definition and Bayesian update use one density per state.
 https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271
 Source model: https://github.com/luisdamiano/stancon18
+
+Stan comparison:
+- Not recorded.
 
 Benchmark results:
 - Not measured.

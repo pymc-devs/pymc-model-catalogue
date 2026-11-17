@@ -27,6 +27,9 @@ Native Gaussian regression for Sesame Street viewing and encouragement.
 
 Source: Gelman and Hill (2006), ARM.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

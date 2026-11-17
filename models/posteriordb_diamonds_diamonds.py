@@ -28,6 +28,9 @@ Native Gaussian regression for diamond prices.
 Source: Bales et al. (2019), with the ggplot2 diamonds data.
 The intercept has its density at the centered predictor origin.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

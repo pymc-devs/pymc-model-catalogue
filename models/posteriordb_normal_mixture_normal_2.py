@@ -28,6 +28,9 @@ Two-component Normal mixture with known unit standard deviations.
 Source: posteriordb normal_mixture model metadata at revision 91027f9.
 The likelihood uses only y. Other dataset fields describe the data generator.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

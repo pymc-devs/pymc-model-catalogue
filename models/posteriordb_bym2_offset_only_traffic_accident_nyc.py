@@ -30,6 +30,9 @@ Native BYM2 Poisson model from the posteriordb spatial case study.
 The ICAR law retains the published soft sum constraint.
 Source: https://mc-stan.org/users/documentation/case-studies/icar_stan.html
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

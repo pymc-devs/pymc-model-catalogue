@@ -23,6 +23,9 @@ Changes from original:
 Implementation notes:
 Flaxman et al. (2020) intervention renewal model, version 3.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

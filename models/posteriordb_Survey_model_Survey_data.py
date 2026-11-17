@@ -28,6 +28,9 @@ The survey count has a discrete uniform distribution over one through nmax.
 Source: Lee and Wagenmakers (2013), binomial rate examples.
 Exact enumeration integrates the shared survey count across all observed returns.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

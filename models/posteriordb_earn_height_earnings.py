@@ -27,6 +27,9 @@ Native Gaussian model for earnings and height.
 
 Source: Gelman and Hill (2006), ARM.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

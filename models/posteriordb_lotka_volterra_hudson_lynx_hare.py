@@ -29,6 +29,9 @@ Source: posteriordb lotka_volterra, revision 91027f9cdd13b7e76283fec3f2898f59d4b
 Positive normal rates retain their zero lower bound.
 The initial populations remain latent and have their own observed measurements.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Original: logp = -148.2680, grad norm = 62.0095, 26068.9 us/call (5 evals).
 - Frozen: logp = -148.2680, grad norm = 62.0095, 32025.4 us/call (5 evals).

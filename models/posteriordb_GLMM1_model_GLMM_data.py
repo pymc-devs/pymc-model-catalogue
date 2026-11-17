@@ -26,6 +26,9 @@ Changes from original:
 Implementation notes:
 Native hierarchical Poisson site model from posteriordb GLMM1_model.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

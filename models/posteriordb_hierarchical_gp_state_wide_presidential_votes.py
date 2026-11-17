@@ -26,6 +26,9 @@ Hierarchical election Gaussian process from posteriordb and Trangucci (2017).
 A shared variance allocation controls independent year, state, region, and GP effects.
 Each temporal kernel sums long-scale and short-scale squared-exponential components.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

@@ -26,6 +26,9 @@ Gaussian ARMA(1, 1) from the posteriordb arma11 probability model.
 The initial prediction uses mu + phi * mu and zero previous error.
 Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

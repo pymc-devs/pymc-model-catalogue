@@ -28,6 +28,9 @@ Acceleration spline model from posteriordb and Bales (2019).
 The supplied spline matrices define the fixed model basis.
 The unpenalized linear coefficients retain their improper flat priors.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

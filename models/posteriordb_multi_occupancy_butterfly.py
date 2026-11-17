@@ -29,6 +29,9 @@ Native multiple-species occupancy model from Dorazio and Royle.
 The likelihood marginalizes site occupancy and species availability exactly.
 Species effects use the centered bivariate Gaussian law.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

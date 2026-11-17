@@ -28,6 +28,9 @@ Detection probabilities vary by occasion.
 
 Source: Kéry and Schaub (2011), chapter 6.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Not measured.
 """

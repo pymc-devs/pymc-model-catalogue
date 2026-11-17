@@ -27,6 +27,9 @@ One-hidden-layer classification network with ten hidden units.
 
 Source: Lampinen and Vehtari (2001), as specified by posteriordb.
 
+Stan comparison:
+- Not recorded.
+
 Benchmark results:
 - Original: logp = 127507.2551, grad norm = 3919.2566, 249.2 us/call (5 evals).
 - Frozen: logp = 127507.2551, grad norm = 3919.2566, 272.1 us/call (5 evals).
