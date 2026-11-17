@@ -2,11 +2,13 @@
   "bench": "ModelBench(?:Build|Eval)_(?:models_eight_schools_noncentered|models_BEST|models_GLM_hierarchical_binomial_rat_tumor|models_multilevel_varying_intercept_slope_noncentered|models_lkj_cholesky_cov_mvnormal|models_frailty_coxph_individual|models_bayesian_var_ireland|models_gp_marginal_matern52|models_marginalized_gaussian_mixture_model|models_irt_survey_zerosum_categorical|models_discrete_occupancy_crossbill)",
   "completed": {},
   "environments": {
+    "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": []
   },
   "fingerprint": "7c52889289f2bb25209c1ecab197419214f09c62419c3d10bd1e3ec6458018c4",
   "id": "single-build-20261117T183548Z-183490",
   "known_environments": {
+    "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": []
   },
   "status": "active",
