@@ -570,13 +570,18 @@
       "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_n_rewrites": "8a1c633eb3e4e6cb6282e8fd28def87105db92ae133c336b6fcfd6f73653d377",
       "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_peak_rss": "9ec44b3b3fa49e9bcffb506ff665d22af85c85db8c4a9fc0a4b273e6cabcf7a8",
       "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_rewrite_time": "39796d886b1b8caad4e7fca4f2b936bc9bb44ca90e19763999e1a69b41138c26",
+      "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_compile_time": "52c9897d7b116544bd369728fc002a1481ef4cd84dc9b5732538c2a73c86fe80",
+      "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_n_rewrites": "26074202f365655da26bbbe6d08fb6b592250208eaf14ed32e29cb6ffdf0c799",
+      "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_peak_rss": "aae760cae889be117d675ef9876089c63eb7630f67995b0d7cff641e59a6af1e",
+      "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_rewrite_time": "0bce08ad8143e2903b1323d8c758285a766ead288d1783264022cd15d64c5187",
       "bench_models.ModelBenchEval_models_BEST.time_eval": "66b6c6742137af320bf2e13c76ebbd563b11396856aaa4daaab411567734a49a",
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "5ae7de3f8b8f2063801eca79616fb9cb7ec4f068046b6b481ed1e319a85ba392",
       "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": "c9f2e1e17bd0361a53215dce425c1445adcf33e6fb1ed639a805a68080bca3fb",
       "bench_models.ModelBenchEval_models_eight_schools_noncentered.time_eval": "9ad0d85deb97c8676e817ef65713c0fbb174f4c64f163405d128f5727c745a2f",
       "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "ed9b9bc5272eaf84ca110463579763e7c8ba19754a0952fb6e556bdbc5ca79fa",
       "bench_models.ModelBenchEval_models_gp_marginal_matern52.time_eval": "8231658f1f36774c5688ab7bec2f8addfa5d7a50f6769f6e92e0caa444cfd46f",
-      "bench_models.ModelBenchEval_models_irt_survey_zerosum_categorical.time_eval": "41ec55d2aa2a823212b8e8f17068c0f0b622844752fe18de110efc6eb9418f45"
+      "bench_models.ModelBenchEval_models_irt_survey_zerosum_categorical.time_eval": "41ec55d2aa2a823212b8e8f17068c0f0b622844752fe18de110efc6eb9418f45",
+      "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": "64d35f708ab9a85a2a2dc8b08a6841049356c780113183e0057236137e220fb0"
     },
     "ea734630f9c23c8c25f0c44c261205d965b45558/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "1b4d2b111047ea993cb5b74e076bfa55bc177da427d77c235a3635a0af7e0f72",
