@@ -8,11 +8,15 @@ asv publish output directory (typically ``.asv/html`` during CI or
 ``.gh-pages-push`` / a freshly-cloned gh-pages checkout) and writes a
 self-contained HTML file with embedded data and Plotly plots.
 
-The generated page is a dense sparkline grid: one row per model, five
-columns (model name + four metrics). No horizontal scroll, no chart
+The generated page is a dense sparkline grid: one row per model, one
+column per metric plus the model name (the grid sizes itself from
+METRIC_ORDER). No horizontal scroll, no chart
 chrome, hover tooltips show (pymc tag, formatted value, commit
 short-hash). Counts only pymc versions that actually have data, not
 just tagged commits.
+
+Each benchmark environment has its own series. Historical measurements
+remain visible when a later run uses a different Python version.
 
 This is purely a rendering script — it reads already-published asv
 data and rewrites the HTML. It can run against stale data (no new
@@ -32,6 +36,7 @@ METRIC_ORDER = [
     ("track_rewrite_time", "rewrite_time", "seconds"),
     ("track_compile_time", "compile_time", "seconds"),
     ("track_n_rewrites", "n_rewrites", "count"),
+    ("track_peak_rss", "peak_rss", "bytes"),
     ("time_eval", "eval", "seconds"),
 ]
 
@@ -68,6 +73,11 @@ def load_data(src: Path) -> tuple[dict, dict]:
                 model = prefix.rstrip("_") + "." + sanitized_model[len(prefix):]
                 break
         series = json.loads(gf.read_text())
+        environment = " · ".join(
+            "Python " + part.removeprefix("python-")
+            if part.startswith("python-") else part.removeprefix("machine-")
+            for part in gf.parent.relative_to(graphs_root).parts
+        ) or "default"
         # Keep only measurements at SHAs that a current tag points to.
         # Orphans from previous timeline force-push generations are
         # silently dropped — the user can run reset=true to clean them
@@ -80,16 +90,24 @@ def load_data(src: Path) -> tuple[dict, dict]:
             tag = sha_to_tag.get(sha)
             if tag is None:
                 continue
-            points.append({"tag": tag, "hash": sha, "value": value})
-        # Sort by pymc version (parsed as semver) so re-orderings on
-        # the underlying data don't shuffle the x-axis.
-        points.sort(
-            key=lambda p: tuple(
-                int(x) for x in p["tag"].removeprefix("pymc-").split(".")
-            )
-        )
+            points.append({
+                "tag": tag, "hash": sha, "value": value,
+                "environment": environment,
+            })
         if points:
-            data.setdefault(model, {})[metric] = points
+            # ASV writes a separate graph per environment. Keep all of them;
+            # assigning here used to replace the entire historical series
+            # with whichever Python version's file happened to sort last.
+            data.setdefault(model, {}).setdefault(metric, []).extend(points)
+
+    for metrics in data.values():
+        for points in metrics.values():
+            # Sort by pymc version so file ordering cannot shuffle the x-axis.
+            points.sort(
+                key=lambda p: tuple(
+                    int(x) for x in p["tag"].removeprefix("pymc-").split(".")
+                )
+            )
     return data, idx
 
 
@@ -117,14 +135,15 @@ _HTML_TEMPLATE = """<!doctype html>
     }
     header h1 { margin: 0; font-size: 15px; font-weight: 600; }
     header .meta { color: #888; font-size: 11px; }
+    header .environments { display: flex; gap: 12px; font-size: 11px; }
     header .links { margin-left: auto; display: flex; gap: 12px; }
     header .links a { color: #1f77b4; text-decoration: none; font-size: 12px; }
     header .links a:hover { text-decoration: underline; }
-    main { padding: 16px 20px; max-width: 1400px; margin: 0 auto; }
+    main { padding: 16px 20px; max-width: 1700px; margin: 0 auto; }
     .model-row {
       margin-bottom: 14px;
       display: grid;
-      grid-template-columns: 200px repeat(4, 1fr);
+      grid-template-columns: 200px repeat(var(--n-metrics), 1fr);
       gap: 8px;
       align-items: center;
       border-bottom: 1px solid #f1f1f1;
@@ -160,6 +179,7 @@ _HTML_TEMPLATE = """<!doctype html>
 <header>
   <h1>pymc-model-catalogue</h1>
   <span class="meta" id="meta"></span>
+  <span class="environments" id="environments"></span>
   <div class="links">
     <a href="experiments.html">experiments</a>
     <a href="./">default asv view</a>
@@ -175,18 +195,22 @@ const LAYOUT_BASE = {
   font: { color: '#222', size: 9, family: 'system-ui' },
   margin: { l: 4, r: 4, t: 2, b: 2 },
   showlegend: false,
-  xaxis: { visible: false, fixedrange: true },
+  xaxis: {
+    visible: false, fixedrange: true, type: 'category',
+    categoryorder: 'array', categoryarray: PAYLOAD.versions,
+  },
   yaxis: { visible: false, fixedrange: true },
 };
 const PLOTLY_CONFIG = { displayModeBar: false, responsive: true };
+const COLORS = ['#1f77b4', '#d95f02', '#2ca02c', '#9467bd', '#8c564b'];
+
+function environmentColor(environment) {
+  return COLORS[PAYLOAD.environments.indexOf(environment) % COLORS.length];
+}
 
 function pointsFor(model, metric) {
   const d = PAYLOAD.data[model] && PAYLOAD.data[model][metric];
-  if (!d) return { x: [], y: [] };
-  return {
-    x: d.map(p => p.tag),
-    y: d.map(p => p.value),
-  };
+  return d || [];
 }
 
 function formatValue(metric, v) {
@@ -195,33 +219,45 @@ function formatValue(metric, v) {
   // entire render loop before it reaches the next model row.
   if (v == null || Number.isNaN(v)) return 'n/a';
   if (metric === 'track_n_rewrites') return v.toFixed(0);
+  // Without this, bytes fall through to the seconds ladder below.
+  if (PAYLOAD.metric_units[metric] === 'bytes') {
+    if (v >= 1073741824) return (v / 1073741824).toFixed(2) + ' GB';
+    if (v >= 1048576) return (v / 1048576).toFixed(0) + ' MB';
+    return (v / 1024).toFixed(0) + ' KB';
+  }
   if (v < 1e-3) return (v * 1e6).toFixed(1) + ' μs';
   if (v < 1) return (v * 1e3).toFixed(0) + ' ms';
   return v.toFixed(2) + ' s';
 }
 
 function makeSparkline(div, pts, metric) {
-  if (pts.x.length === 0) {
+  if (pts.length === 0) {
     div.innerHTML = '<div class="empty">no data</div>';
     return;
   }
-  const hoverText = pts.x.map((tag, i) =>
-    `<b>${tag}</b><br>${formatValue(metric, pts.y[i])}`
-  );
-  Plotly.newPlot(div, [{
-    x: pts.x,
-    y: pts.y,
-    mode: 'lines+markers',
-    line: { color: '#1f77b4', width: 1.5, shape: 'linear' },
-    marker: { size: 4, color: '#1f77b4' },
-    hovertemplate: '%{text}<extra></extra>',
-    text: hoverText,
-  }], LAYOUT_BASE, PLOTLY_CONFIG);
+  const traces = PAYLOAD.environments.flatMap(environment => {
+    const points = pts.filter(p => p.environment === environment);
+    if (points.length === 0) return [];
+    const color = environmentColor(environment);
+    return [{
+      name: environment,
+      x: points.map(p => p.tag),
+      y: points.map(p => p.value),
+      mode: 'lines+markers',
+      line: { color, width: 1.5, shape: 'linear' },
+      marker: { size: 4, color },
+      hovertemplate: '%{text}<br>%{fullData.name}<extra></extra>',
+      text: points.map(p => `<b>${p.tag}</b><br>${formatValue(metric, p.value)}`),
+    }];
+  });
+  Plotly.newPlot(div, traces, LAYOUT_BASE, PLOTLY_CONFIG);
 }
 
 function render() {
   const root = document.getElementById('root');
   root.innerHTML = '';
+  // One grid column per metric, so adding one needs no CSS change.
+  document.documentElement.style.setProperty('--n-metrics', PAYLOAD.metrics.length);
   PAYLOAD.models.forEach(model => {
     const row = document.createElement('div');
     row.className = 'model-row';
@@ -242,6 +278,13 @@ document.getElementById('meta').textContent =
   PAYLOAD.models.length + ' models · ' +
   PAYLOAD.measured_count + ' pymc versions measured';
 
+PAYLOAD.environments.forEach(environment => {
+  const label = document.createElement('span');
+  label.style.color = environmentColor(environment);
+  label.textContent = '● ' + environment;
+  document.getElementById('environments').appendChild(label);
+});
+
 render();
 </script>
 </body>
@@ -250,8 +293,10 @@ render();
 
 
 def render(data: dict, idx: dict, out: Path) -> None:
+    points = [pt for metrics in data.values() for series in metrics.values() for pt in series]
     measured_tags = sorted(
-        {pt["tag"] for metrics in data.values() for s in metrics.values() for pt in s}
+        {pt["tag"] for pt in points},
+        key=lambda tag: tuple(int(x) for x in tag.removeprefix("pymc-").split(".")),
     )
     payload = {
         "models": sorted(data.keys()),
@@ -259,6 +304,8 @@ def render(data: dict, idx: dict, out: Path) -> None:
         "metric_labels": {m[0]: m[1] for m in METRIC_ORDER},
         "metric_units": {m[0]: m[2] for m in METRIC_ORDER},
         "measured_count": len(measured_tags),
+        "versions": measured_tags,
+        "environments": sorted({pt["environment"] for pt in points}),
         "data": data,
     }
     html = _HTML_TEMPLATE.replace("__PAYLOAD__", json.dumps(payload))

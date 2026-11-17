@@ -40,7 +40,14 @@ jobs:
 
       - name: Install asv
         run: |
-          uv tool install asv
+          # timeline may predate this constraint file; use main's copy and
+          # keep it outside the checkout throughout ASV's historical walk.
+          constraints="$RUNNER_TEMP/asv-runner-constraints.txt"
+          git show origin/main:asv_bench/runner-constraints.txt > "$constraints"
+          uv tool install --force 'asv==0.6.6' --constraint "$constraints"
+          # ASV bootstraps its runner with pip; project installs use uv.
+          echo "PIP_CONSTRAINT=$constraints" >> "$GITHUB_ENV"
+          echo "UV_CONSTRAINT=$constraints" >> "$GITHUB_ENV"
           pip install pyyaml packaging
 
       - name: Configure git identity
@@ -141,6 +148,13 @@ jobs:
             cp -a .asv/html/. .gh-pages-push/
             mkdir -p .gh-pages-push/results
             cp -a .asv/results/. .gh-pages-push/results/
+
+            # Publish a complete site each time. Waiting until the walk ends
+            # to recreate these pages leaves their URLs returning 404.
+            python scripts/make_dashboard.py .gh-pages-push .gh-pages-push/dashboard.html
+            if [ -d .gh-pages-push/experiments ]; then
+              python scripts/make_experiment_dashboard.py .gh-pages-push .gh-pages-push/experiments.html
+            fi
 
             # Rebase onto any concurrent gh-pages update (e.g. an
             # experiment.yml push) so our push stays fast-forward. The
