@@ -123,11 +123,26 @@ gh workflow run benchmark.yml --repo pymc-devs/pymc-model-catalogue \
   --ref main -f rerun=true
 ```
 
-This remeasures all metrics, including peak RSS, without resetting the timeline
-or its tags. It checks out `timeline` even when dispatched from `main`. Each
-release reuses its successful saved Python 3.12/3.14 environments; new releases use Python
-3.12 before PyMC 6 and Python 3.14 thereafter. Without `rerun`, successful
-measurements are skipped as usual.
+This starts a full rerun, or resumes the unfinished full rerun. Progress is
+stored in `gh-pages/results/rerun-state`, alongside the saved ASV results.
+Successful measurements are recorded individually, and the result tree plus
+checkpoint is published after each compile/other-metrics phase. If a job times
+out, the unfinished phase is repeated; published successful values are skipped.
+Failed benchmarks remain pending for another attempt. Normal runs also resume
+an active campaign, rather than accepting older successful values as refreshed.
+
+An optional `rerun_id` names a campaign. Reuse its name to resume it, or choose
+a different name to deliberately remeasure everything. Without a name,
+`rerun=true` resumes an active campaign and starts a new one after the previous
+campaign completes. Changes to benchmark/model code require a new campaign;
+UI-only changes do not invalidate checkpointed measurements. No old values are
+deleted when a campaign starts: they are replaced as measurements finish.
+
+This checks out `timeline` even when dispatched from `main`. Each release
+reuses its successful saved Python 3.12/3.14 environments; new releases use
+Python 3.12 before PyMC 6 and Python 3.14 thereafter. The environment list is
+saved in the checkpoint, so a failed attempt cannot silently drop an environment
+from the next run. The timeline and its tags are preserved.
 
 ```bash
 # Smoke-test a single model directly (no asv, no timeline):
@@ -161,19 +176,20 @@ python scripts/run_benchmarks.py --bench "$(python scripts/core_models.py)" \
 | Workflow | Trigger | What it does |
 |---|---|---|
 | `backfill.yml` | manual dispatch | Walks the timeline a `step` at a time. First dispatch creates the branch; `reset=true` wipes it back to main. |
-| `benchmark.yml` | push on `timeline`, weekly cron, manual dispatch | Compiles first, then runs other metrics using populated caches. Manual `rerun=true` remeasures the whole timeline; publishes after each commit. |
+| `benchmark.yml` | push on `timeline`, weekly cron, manual dispatch | Compiles first, then runs other metrics using populated caches. Manual `rerun=true` starts/resumes a full timeline rerun; checkpoints after each phase. |
 | `detect-releases.yml` | daily cron | Polls PyPI for new pymc minors, opens a PR against `timeline`. Merging the PR kicks off `benchmark.yml`. |
 | `refresh-eval.yml` | manual dispatch | Replaces single-call core eval timings in tagged releases, verifies other measurements are unchanged, then publishes. Optional dry run lists the affected records. |
 | `experiment.yml` | push on `experiments`, manual dispatch | Runs each changed YAML, keyed by the YAML file's last-touching git SHA for dedup. |
 
-Each timeline publish regenerates `dashboard.html` and, when experiment data
+Each timeline checkpoint regenerates `dashboard.html` and, when experiment data
 exists, `experiments.html` before committing and pushing the site. Intermediate
 updates therefore include the custom pages throughout a benchmark or backfill
 run. If rendering fails, that update is not pushed and the previous site remains
 published.
 
-The custom dashboard plots each benchmark environment separately, with labels
-and consistent colors. A run on a newer Python version therefore keeps the
+The custom dashboard plots each benchmark environment separately, with
+consistent colors. Each chart labels its newest successful release; ties
+prefer the newer Python version. A run on a newer Python version keeps the
 historical series visible rather than replacing it or joining measurements from
 different Python versions into a single line.
 

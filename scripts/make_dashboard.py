@@ -17,7 +17,7 @@ just tagged commits.
 
 Each benchmark environment has its own series. Historical measurements
 remain visible when a later run uses a different Python version.
-Lines for the newest Python version label their last measured value.
+Each chart labels its newest measured point, preferring newer Python on ties.
 A checkbox restricts all plots to the latest six measured versions,
 with linear axes rescaled to that window.
 
@@ -196,6 +196,7 @@ _HTML_TEMPLATE = """<!doctype html>
     <input type="checkbox" id="latest-versions" /> Latest 6 versions only
   </label>
   <div class="links">
+    <a href="https://github.com/pymc-devs/pymc-model-catalogue">GitHub</a>
     <a href="experiments.html">experiments</a>
     <a href="./">default asv view</a>
   </div>
@@ -219,8 +220,6 @@ const LAYOUT_BASE = {
 const PLOTLY_CONFIG = { displayModeBar: false, responsive: true };
 const COLORS = ['#1f77b4', '#d95f02', '#2ca02c', '#9467bd', '#8c564b'];
 const pythonVersion = environment => environment.match(/Python ([0-9]+(?:[.][0-9]+)*)/)?.[1] || '';
-const latestPythonVersion = PAYLOAD.environments.map(pythonVersion)
-  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).at(-1);
 
 function environmentColor(environment) {
   return COLORS[PAYLOAD.environments.indexOf(environment) % COLORS.length];
@@ -259,12 +258,20 @@ function makeSparkline(div, pts, metric, versions) {
     return;
   }
   const annotations = [];
+  // Label the newest measured release, preferring the newer Python on ties.
+  const last = pts.filter(p => Number.isFinite(p.value)).reduce((latest, point) => {
+    if (!latest) return point;
+    const releaseOrder = versions.indexOf(point.tag) - versions.indexOf(latest.tag);
+    const pythonOrder = pythonVersion(point.environment).localeCompare(
+      pythonVersion(latest.environment), undefined, { numeric: true },
+    );
+    return releaseOrder > 0 || (releaseOrder === 0 && pythonOrder > 0) ? point : latest;
+  }, null);
   const traces = PAYLOAD.environments.flatMap(environment => {
     const points = pts.filter(p => p.environment === environment);
     if (points.length === 0) return [];
     const color = environmentColor(environment);
-    const last = points.findLast(p => Number.isFinite(p.value));
-    if (last && pythonVersion(environment) === latestPythonVersion) {
+    if (last && last.environment === environment) {
       annotations.push({
         x: last.tag, y: last.value,
         xref: 'x', yref: 'y',
