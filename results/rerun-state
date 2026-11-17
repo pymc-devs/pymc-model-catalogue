@@ -3,12 +3,14 @@
   "completed": {},
   "environments": {
     "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
+    "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": []
   },
   "fingerprint": "7c52889289f2bb25209c1ecab197419214f09c62419c3d10bd1e3ec6458018c4",
   "id": "single-build-20261117T183548Z-183490",
   "known_environments": {
     "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
+    "577e4ea7cc87045e0ba4bacdb788e2c7df5c1cf4": [],
     "6d7bf67e0abf30565e5cdff7ec50c7e8aecb052f": []
   },
   "status": "active",
