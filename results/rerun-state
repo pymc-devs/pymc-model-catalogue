@@ -1,6 +1,13 @@
 {
   "bench": "ModelBench(?:Build|Eval)_(?:models_eight_schools_noncentered|models_BEST|models_GLM_hierarchical_binomial_rat_tumor|models_multilevel_varying_intercept_slope_noncentered|models_lkj_cholesky_cov_mvnormal|models_frailty_coxph_individual|models_bayesian_var_ireland|models_gp_marginal_matern52|models_marginalized_gaussian_mixture_model|models_irt_survey_zerosum_categorical|models_discrete_occupancy_crossbill)",
   "completed": {
+    "02af68f7b66fc8287e4ea312ef1610d582a4054e/3.12": {
+      "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "e040dc09b8bc46b3d88963052de94d9bb6b1ed226496d8be7964525fd890e7b7",
+      "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "c5f7ffa10192004e5865750059c09c28aab4e8bbb1903bb10ce8f34621ea03f2",
+      "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": "e426b75b51d4cea6048f848c84364d1918f83dc38040f8b72288a8bd526742fa",
+      "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": "2b44fbac3e930b003a27e9d345a7b11379934d66986e33232fe43223ff14e5f0",
+      "bench_models.ModelBenchEval_models_BEST.time_eval": "974cc532eb41d0cf70a5e82989381c0502d722305666d990fe837a209887448a"
+    },
     "3ec601cf6911b5e8d577a87a4da721d2459e44df/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "e158f5694d748da1909367eae59026376e4b6213d4bf5c98b3e8a6fef6b12695",
       "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "82a697b79d8897cf85a26f68295bde4ae8ae1ddae5730850d02b3adc57eb65be",
@@ -263,6 +270,9 @@
     }
   },
   "environments": {
+    "02af68f7b66fc8287e4ea312ef1610d582a4054e": [
+      "3.12"
+    ],
     "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
     "3ec601cf6911b5e8d577a87a4da721d2459e44df": [
       "3.12"
@@ -286,6 +296,9 @@
   "fingerprint": "7c52889289f2bb25209c1ecab197419214f09c62419c3d10bd1e3ec6458018c4",
   "id": "single-build-20261117T183548Z-183490",
   "known_environments": {
+    "02af68f7b66fc8287e4ea312ef1610d582a4054e": [
+      "3.12"
+    ],
     "221ed296ed5854f1d6ff1252922ece6280bd76a0": [],
     "3ec601cf6911b5e8d577a87a4da721d2459e44df": [
       "3.12"
