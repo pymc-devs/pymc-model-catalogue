@@ -1452,8 +1452,13 @@
       "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_n_rewrites": true,
       "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_peak_rss": true,
       "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_rewrite_time": true,
+      "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_compile_time": true,
+      "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_n_rewrites": true,
+      "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_peak_rss": true,
+      "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_rewrite_time": true,
       "bench_models.ModelBenchEval_models_BEST.time_eval": true,
-      "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": true
+      "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": true,
+      "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": true
     },
     "eed427dcd50779a122e142d280520cf6121cb417/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "6a70ecc696c712a3331afe9f38fb1ed602cfeceae8655248558fd72633e902d6",
