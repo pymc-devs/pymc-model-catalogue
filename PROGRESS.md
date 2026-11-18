@@ -8,11 +8,11 @@ can produce multiple model files (e.g. `multilevel_modeling.ipynb` → 8 files,
 
 | Metric | Count |
 |---|---|
-| Model files done (continuous) | 182 |
+| Model files done (continuous) | 186 |
 | Model files done (discrete) | 10 |
-| **Total model files done** | **192** |
+| **Total model files done** | **196** |
 | Skipped model files (`.skip`) | 4 |
-| Notebooks fully addressed | 139 / 139 |
+| Notebooks fully addressed | 140 / 140 |
 | Notebooks remaining | 0 |
 
 **Do not re-attempt any notebook listed under "Skipped"** — reasons are listed per item and
@@ -42,10 +42,10 @@ dependency, PyMC/PyTensor bug), not for "has a non-Numba-native Op".
 | Samplers | 8 | 8 | 10 | 0 | 0 |
 | Spatial | 3 | 3 | 3 | 0 | 0 |
 | Statistical Rethinking | 19 | 16 | 19 | 1 | 0 |
-| Survival Analysis | 5 | 5 | 14 | 0 | 0 |
+| Survival Analysis | 6 | 6 | 18 | 0 | 0 |
 | Time Series | 9 | 9 | 22 | 0 | 0 |
 | Variational Inference | 5 | 5 | 4 | 0 | 0 |
-| **Total** | **139** | **124** | **192** | **9** | **0** |
+| **Total** | **140** | **125** | **196** | **9** | **0** |
 
 Rows where "Notebooks done" < (notebooks − skipped) because one notebook can yield zero
 extractable models (tutorial-only content counted as "done" when confirmed but produces 0

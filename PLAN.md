@@ -142,7 +142,7 @@ Extract every final/complete model from every notebook:
 
 **Statistical Rethinking (20)**: lectures 02 through 20
 
-**Survival Analysis (5)**: bayes_param_survival, censored_data, frailty_models, survival_analysis, weibull_aft
+**Survival Analysis (6)**: bayes_param_survival, censored_data, frailty_models, hospital_length_of_stay, survival_analysis, weibull_aft
 
 **Time Series (9)**: Air_passengers-Prophet, AR, bayesian_var_model, Euler-Maruyama_and_SDEs, Forecasting_with_structural_timeseries, longitudinal_models, MvGaussianRandomWalk_demo, stochastic_volatility, Time_Series_Generative_Graph
 
