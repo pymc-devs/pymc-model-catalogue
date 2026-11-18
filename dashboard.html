@@ -163,7 +163,7 @@ function makeSparkline(div, pts, metric, versions) {
         font: { color, size: 8 },
         showarrow: false,
         xanchor: 'left', yanchor: 'middle', xshift: 4,
-        hovertext: `${last.tag}<br>${environment}`,
+        captureevents: true,
       });
     }
     return [{
@@ -186,7 +186,21 @@ function makeSparkline(div, pts, metric, versions) {
     },
     annotations,
   };
-  Plotly.newPlot(div, traces, layout, PLOTLY_CONFIG);
+  Plotly.newPlot(div, traces, layout, PLOTLY_CONFIG).then(() => {
+    if (!last) return;
+    const curveNumber = traces.findIndex(trace => trace.name === last.environment);
+    const pointNumber = traces[curveNumber].x.indexOf(last.tag);
+    // The value label is another hover target for its point, with the same
+    // tooltip and trace color. Rebind when Plotly redraws it after a resize.
+    const bindLabelHover = () => {
+      const label = div.querySelector('.annotation-text-g');
+      if (!label) return;
+      label.onpointerenter = () => Plotly.Fx.hover(div, [{ curveNumber, pointNumber }]);
+      label.onpointerleave = () => Plotly.Fx.unhover(div);
+    };
+    bindLabelHover();
+    div.on('plotly_afterplot', bindLabelHover);
+  });
 }
 
 function render() {
