@@ -23,16 +23,12 @@ Two independent success rates and their difference.
 Source: Lee and Wagenmakers (2013), binomial rate examples.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -3.079291541514772; PyMC = -3.079291541514775.
 - B: Stan = -3.376244044403064; PyMC = -3.3762440444030664.
 - Raw delta: Stan = -0.296952502888292; PyMC = -0.29695250288829156.
 - Raw comparison: MATCH; residual = -4.440892098500626e-16.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0029695250288828e-06
+- Tolerance: 1.0029695250288828e-06
 - Original Stan SHA-256: 2556299694d2e3420d6d100b5439376bed7f78454816d89cd189d09df0b5877d
-- Saved points: models/posteriordb_logp/points/Rate_2_data-Rate_2_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

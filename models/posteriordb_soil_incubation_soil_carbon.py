@@ -24,18 +24,14 @@ The observation model uses cumulative carbon loss, not measurement error scales.
 Source: Sierra et al. (2014), as specified by posteriordb.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -32.35121812756171; PyMC = -28.885478931878026.
 - B: Stan = -31.536547018749822; PyMC = -28.070807010787178.
 - Raw delta: Stan = 0.8146711088118863; PyMC = 0.8146719210908486.
 - Raw comparison: MATCH; residual = -8.122789623143944e-07.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0081467192109083e-06
+- Tolerance: 1.0081467192109083e-06
 - Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
   is applied.
 - Original Stan SHA-256: 6c845fcee0e9e5a49508c5b3395bb09613495b2773d93dbeef9f72664ce10e57
-- Saved points: models/posteriordb_logp/points/soil_carbon-soil_incubation.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -42.8159, grad norm = 15.6056, 3636.9 us/call (5 evals).

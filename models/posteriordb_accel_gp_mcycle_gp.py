@@ -23,8 +23,6 @@ The supplied eigenfunctions and frequencies define both finite Gaussian processe
 The two processes control the mean and log standard deviation.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -155371.18965842773; PyMC = -155366.87455612782.
 - B: Stan = -209414.58318585833; PyMC = -209410.2722747428.
 - Raw delta: Stan = -54043.3935274306; PyMC = -54043.397718614986.
@@ -33,8 +31,7 @@ Stan comparison:
   4.315102260010999; B = 4.310911075603358.
 - Adjusted Stan delta = -54043.39771861501.
 - Adjusted comparison: MATCH; residual = -2.1827872842550278e-11.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.0005414339771861502
-  using adjusted delta_Stan.
+- Tolerance: 0.0005414339771861502
 - In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT GP
   amplitude priors has dtype int8: sigma**2 overflows to 16. Their native density is
   therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The
@@ -42,8 +39,6 @@ Stan comparison:
   Original targets differ; this runtime discrepancy is not a best-practice
   reparameterization. Recheck this adjustment after engine upgrades.
 - Original Stan SHA-256: a65f0d579c6feb398e345ebe37dbb88017a7ecc00f199f6b07d3377cac419835
-- Saved points: models/posteriordb_logp/points/mcycle_gp-accel_gp.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

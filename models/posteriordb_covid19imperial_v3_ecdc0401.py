@@ -19,21 +19,17 @@ Implementation notes:
 Flaxman et al. (2020) intervention renewal model, version 3.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -152053.08150795815; PyMC = -152051.6952136253.
 - B: Stan = -143829.9426968772; PyMC = -143828.55640254423.
 - Raw delta: Stan = 8223.13881108095; PyMC = 8223.138811081066.
 - Raw comparison: MATCH; residual = -1.1641532182693481e-10.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 8.323138811081065e-05
+- Tolerance: 8.323138811081065e-05
 - Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature);
   delay convolutions use lag-1 array indices.
 - The random-kappa truncation normalizer for positive mu is explicitly canceled by the
   PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal
   phi/kappa change only constants.
 - Original Stan SHA-256: ea0d293199edfe1f06a9bdece810686d9cc98a64bc50fd23da4760a9c0733216
-- Saved points: models/posteriordb_logp/points/ecdc0401-covid19imperial_v3.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

@@ -21,17 +21,13 @@ Implementation notes:
 Native centered growth effects from posteriordb rats_model.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -5468930.328995618; PyMC = -5468930.328995745.
 - B: Stan = -4398362.244870762; PyMC = -4398362.244870891.
 - Raw delta: Stan = 1070568.0841248557; PyMC = 1070568.0841248538.
 - Raw comparison: MATCH; residual = 1.862645149230957e-09.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.010706680841248557
+- Tolerance: 0.010706680841248557
 - PyMC indexes rats with rat_index=rat-1 (zero-based).
 - Original Stan SHA-256: c01395015d523c02784e538927b7c2b9cf36114d93729bd25a81d566e05eca19
-- Saved points: models/posteriordb_logp/points/rats_data-rats_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

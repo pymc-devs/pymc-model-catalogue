@@ -20,19 +20,15 @@ Implementation notes:
 Native constrained logistic model from posteriordb dogs_log.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -730.8670110448141; PyMC = -730.867011044815.
 - B: Stan = -391.2564909183006; PyMC = -391.25649091830047.
 - Raw delta: Stan = 339.61052012651356; PyMC = 339.6105201265145.
 - Raw comparison: MATCH; residual = -9.094947017729282e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.396105201265145e-06
+- Tolerance: 4.396105201265145e-06
 - Stan declares beta unconstrained, but the Uniform(-100,0) and Uniform(0,100) prior
   supports still apply. The feasible center [-0.5,0.5] is chosen solely from support,
   not engine agreement.
 - Original Stan SHA-256: f0257153c50d7ef91d9958607c159ae9097d622e3d5ed9778cd3be60fd91b56b
-- Saved points: models/posteriordb_logp/points/dogs-dogs_log.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

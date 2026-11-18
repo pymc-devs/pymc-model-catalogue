@@ -25,13 +25,11 @@ The likelihood marginalizes site occupancy and species availability exactly.
 Species effects use the centered bivariate Gaussian law.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -2216.558948724705; PyMC = -2215.172654428967.
 - B: Stan = -2567.8440496981566; PyMC = -2566.457755402418.
 - Raw delta: Stan = -351.2851009734518; PyMC = -351.28510097345134.
 - Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.512851009734518e-06
+- Tolerance: 4.512851009734518e-06
 - Map correlation_unit=(rho_uv+1)/2 and uv=column_stack(uv1,uv2). The PyMC Cholesky
   factor induces the covariance with diagonals sigma_uv**2 and off-diagonal
   sigma_uv[0]*sigma_uv[1]*rho_uv. Stan already evaluates Beta(2,2) at (rho_uv+1)/2
@@ -40,8 +38,6 @@ Stan comparison:
   normalizing Stan's rho prior removes the same constant. The two positive Cauchy-to-
   HalfCauchy normalizations add only 2*log(2) to raw PyMC logp.
 - Original Stan SHA-256: 2da8b97338d43107b8c9d97500ca3b9f526891ad6ace2eb11715c06c2c45b052
-- Saved points: models/posteriordb_logp/points/butterfly-multi_occupancy.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

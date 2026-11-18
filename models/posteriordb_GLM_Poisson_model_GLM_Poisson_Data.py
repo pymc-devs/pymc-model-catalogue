@@ -22,18 +22,14 @@ Implementation notes:
 Native cubic Poisson model from posteriordb GLM_Poisson_model.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -19247.726566493642; PyMC = -19260.402643382677.
 - B: Stan = -14928.78196329504; PyMC = -14941.458040184076.
 - Raw delta: Stan = 4318.944603198603; PyMC = 4318.944603198601.
 - Raw comparison: MATCH; residual = 1.8189894035458565e-12.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.4189446031986024e-05
+- Tolerance: 4.4189446031986024e-05
 - Stan implicit bounded coefficients versus PyMC Uniform priors add only
   -log(40)-3*log(20).
 - Original Stan SHA-256: 84186ad779e2add1b934a00e211d9e642ae29cba0e02caf3fedb5c1b29e54f85
-- Saved points: models/posteriordb_logp/points/GLM_Poisson_Data-GLM_Poisson_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

@@ -23,19 +23,15 @@ Native radon model from the posteriordb radon case study.
 Source: https://mc-stan.org/users/documentation/case-studies/radon.html
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -2074.1853621070295; PyMC = -2073.49221499042.
 - B: Stan = -1725.9305325752941; PyMC = -1725.237385458685.
 - Raw delta: Stan = 348.25482953173537; PyMC = 348.25482953173514.
 - Raw comparison: MATCH; residual = 2.2737367544323206e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.482548295317354e-06
+- Tolerance: 4.482548295317354e-06
 - County labels are converted from Stan one-based to NumPy zero-based indices.
 - Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
   the constant log(2).
 - Original Stan SHA-256: 680277f397ca17ab3603fa8acb0042fe547cdedfd19d4bc22aedd40e3ae7d0de
-- Saved points: models/posteriordb_logp/points/radon_mn-radon_pooled.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

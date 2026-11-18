@@ -22,16 +22,12 @@ Implementation notes:
 Native growth curve from posteriordb dugongs_model.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -131.96739041849747; PyMC = -131.96739060844538.
 - B: Stan = -109.4324822421098; PyMC = -109.43248243205778.
 - Raw delta: Stan = 22.534908176387674; PyMC = 22.534908176387603.
 - Raw comparison: MATCH; residual = 7.105427357601002e-14.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.2253490817638768e-06
+- Tolerance: 1.2253490817638768e-06
 - Original Stan SHA-256: abdf86f018dc0b6e9213222648f3fafc14eae13629769e40cca7490877b05e6b
-- Saved points: models/posteriordb_logp/points/dugongs_data-dugongs_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

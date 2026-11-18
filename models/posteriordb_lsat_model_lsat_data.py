@@ -25,19 +25,15 @@ Native LSAT item-response model from the BUGS example.
 Cumulative pattern counts expand to individual student responses.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -4649.540355460236; PyMC = -4648.847208663369.
 - B: Stan = -4287.590745592309; PyMC = -4286.897598795441.
 - Raw delta: Stan = 361.9496098679274; PyMC = 361.9496098679283.
 - Raw comparison: MATCH; residual = -9.094947017729282e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.619496098679283e-06
+- Tolerance: 4.619496098679283e-06
 - Stan's item/person matrix is transposed relative to PyMC's person/item likelihood,
   without permuting theta. PyMC HalfNormal(100) for positive beta differs from Stan's
   constrained Normal(0,100) only by the constant +log(2).
 - Original Stan SHA-256: 9f3d0abccfb55fcab634d81a19d74507409b836c549224b923b237ecf9f2c817
-- Saved points: models/posteriordb_logp/points/lsat_data-lsat_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

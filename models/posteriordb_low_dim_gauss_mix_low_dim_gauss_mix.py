@@ -24,13 +24,11 @@ The ordered transform keeps the source constraint on the component means.
 Each observation selects one Normal component through the native marginalized likelihood.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -5061.501489160019; PyMC = -5060.11519490697.
 - B: Stan = -4432.7715974554385; PyMC = -4431.38530320239.
 - Raw delta: Stan = 628.729891704581; PyMC = 628.72989170458.
 - Raw comparison: MATCH; residual = 9.094947017729282e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 7.287298917045809e-06
+- Tolerance: 7.287298917045809e-06
 - HalfNormal scale normalizers differ from positive Normal densities only by two log(2)
   constants.
 - Shared-support limitation: original Stan points enforce all ordered or positive-
@@ -38,8 +36,6 @@ Stan comparison:
   enforced after transforms are removed. These evaluations compare points on the shared
   Stan-valid support, not global support or model equivalence.
 - Original Stan SHA-256: b94ee44ab73502a0053c4a52b7e9d582ca4f466994d7beef4a4e606ff8582344
-- Saved points: models/posteriordb_logp/points/low_dim_gauss_mix-low_dim_gauss_mix.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

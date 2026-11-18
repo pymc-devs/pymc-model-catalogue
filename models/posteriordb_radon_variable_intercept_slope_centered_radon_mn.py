@@ -25,19 +25,15 @@ The county hierarchy uses centered Normal effects.
 Source: https://mc-stan.org/users/documentation/case-studies/radon.html
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -2049.6493672843153; PyMC = -2047.5699258065883.
 - B: Stan = -1923.6868920595975; PyMC = -1921.6074505818683.
 - Raw delta: Stan = 125.96247522471776; PyMC = 125.96247522472004.
 - Raw comparison: MATCH; residual = -2.2737367544323206e-12.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.2596247522472e-06
+- Tolerance: 2.2596247522472e-06
 - County labels are converted from Stan one-based to NumPy zero-based indices.
 - Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
   the constant log(2).
 - Original Stan SHA-256: b41732368f4f389a6ce0aa1a6d169387521500a23294436b0230595e9a745ae2
-- Saved points: models/posteriordb_logp/points/radon_mn-radon_variable_intercept_slope_centered.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

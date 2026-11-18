@@ -23,13 +23,11 @@ The native Kronecker Normal uses temporal covariance and an LKJ correlation matr
 The sigma1 parameter adds variance to the observation covariance.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = 46.16899443399919; PyMC = -780.1825382959074.
 - B: Stan = -174.18002781900708; PyMC = -1000.5315605489137.
 - Raw delta: Stan = -220.34902225300627; PyMC = -220.3490222530063.
 - Raw comparison: MATCH; residual = 2.842170943040401e-14.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.2034902225300633e-06
+- Tolerance: 3.2034902225300633e-06
 - PyMC flattens observations as y.T.reshape(-1) and passes sigma=sqrt(sigma1) to
   KroneckerNormal, matching Stan's to_vector(y) ordering and additive noise variance
   sigma1.
@@ -37,8 +35,6 @@ Stan comparison:
   Positive Cauchy and fixed-threshold truncated lognormal normalization differences are
   also parameter-independent.
 - Original Stan SHA-256: c1c2c779849a0d3e57b1f9df8daa5cc6b215a56f35db21912bd4d10b149ece57
-- Saved points: models/posteriordb_logp/points/synthetic_grid_RBF_kernels-kronecker_gp.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

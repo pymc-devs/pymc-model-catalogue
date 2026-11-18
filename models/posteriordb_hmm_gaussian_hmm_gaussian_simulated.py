@@ -30,8 +30,6 @@ https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271
 Source model: https://github.com/luisdamiano/stancon18
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -87074.08921999834; PyMC = -86148.52959186646.
 - B: Stan = -60347.245630767924; PyMC = -59397.338385377116.
 - Raw delta: Stan = 26726.84358923041; PyMC = 26751.191206489348.
@@ -40,15 +38,12 @@ Stan comparison:
   = 947.1346566686552.
 - Adjusted Stan delta = 26751.1912064895.
 - Adjusted comparison: MATCH; residual = 1.5279510989785194e-10.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.00026851191206489505
-  using adjusted delta_Stan.
+- Tolerance: 0.00026851191206489505
 - Original targets differ: Stan adds the sum of first-time state emissions to every
   state; PyMC uses state-specific emissions. Adjustment is the difference of
   independently computed forward likelihoods. Ordered means are tested on shared Stan-
   valid support.
 - Original Stan SHA-256: 2f76768fec16648e6a49782166c8c70862d22fb72e12349906b25cf8e6e837d7
-- Saved points: models/posteriordb_logp/points/hmm_gaussian_simulated-hmm_gaussian.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

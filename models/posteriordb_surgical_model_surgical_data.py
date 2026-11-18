@@ -21,16 +21,12 @@ Implementation notes:
 Native hospital mortality model from posteriordb surgical_model.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1414.6703595926172; PyMC = -1414.6703596885425.
 - B: Stan = -1334.3373835523455; PyMC = -1334.337383648271.
 - Raw delta: Stan = 80.33297604027166; PyMC = 80.33297604027143.
 - Raw comparison: MATCH; residual = 2.2737367544323206e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.8033297604027164e-06
+- Tolerance: 1.8033297604027164e-06
 - Original Stan SHA-256: 10fdd6ddf107af6c0ef7ead174b5ad6f341ae3b3b80c54650d88e22d5c459696
-- Saved points: models/posteriordb_logp/points/surgical_data-surgical_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

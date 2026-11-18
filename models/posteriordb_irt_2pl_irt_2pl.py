@@ -20,17 +20,13 @@ Implementation notes:
 Native two-parameter logistic model from the posteriordb definition.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1548.950210050591; PyMC = -1546.870768538983.
 - B: Stan = -1533.3844413914348; PyMC = -1531.3049998798278.
 - Raw delta: Stan = 15.56576865915622; PyMC = 15.565768659155083.
 - Raw comparison: MATCH; residual = 1.1368683772161603e-12.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1556576865915621e-06
+- Tolerance: 1.1556576865915621e-06
 - The three HalfCauchy versus positive Cauchy normalizers are constants.
 - Original Stan SHA-256: 27947f5afa47a63c8587213c7d5598e701aa11209dff0b117d635578d028c922
-- Saved points: models/posteriordb_logp/points/irt_2pl-irt_2pl.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

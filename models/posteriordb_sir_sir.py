@@ -25,18 +25,14 @@ Initial compartment sizes and the water concentration constant remain fixed.
 Incidence counts measure susceptible losses between consecutive observation times.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -9172.264842237479; PyMC = -9169.49208716104.
 - B: Stan = -8161.621032291843; PyMC = -8158.848429295431.
 - Raw delta: Stan = 1010.6438099456354; PyMC = 1010.6436578656085.
 - Raw comparison: MISMATCH; residual = 0.0001520800269645406.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1106438099456355e-05
+- Tolerance: 1.1106438099456355e-05
 - Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
   is applied.
 - Original Stan SHA-256: 7d4cf584bf79ffec37b8adab67067bf544b1e8f62835e49859b2d423dbedb619
-- Saved points: models/posteriordb_logp/points/sir-sir.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -8849.2832, grad norm = 6315.5231, 14027.6 us/call (5 evals).

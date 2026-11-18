@@ -23,17 +23,13 @@ The first K observations condition the likelihood and have no density factor.
 Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -233.33159578143048; PyMC = -232.63844881898444.
 - B: Stan = -213.5590502472479; PyMC = -212.86590328480204.
 - Raw delta: Stan = 19.77254553418257; PyMC = 19.7725455341824.
 - Raw comparison: MATCH; residual = 1.7053025658242404e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1977254553418258e-06
+- Tolerance: 1.1977254553418258e-06
 - HalfCauchy versus a Cauchy density on positive sigma contributes only log(2).
 - Original Stan SHA-256: fd5c71a891f648de3b9b65e2a65885c974fd9478b0a137b6b229f76ff4e01de6
-- Saved points: models/posteriordb_logp/points/arK-arK.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

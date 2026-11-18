@@ -24,18 +24,14 @@ Source: Gelman and Hill (2006).
 The group and scenario effects retain their centered parameterization.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -255.80167956170123; PyMC = -269.6171903115181.
 - B: Stan = -259.8135650165997; PyMC = -273.6290757664166.
 - Raw delta: Stan = -4.011885454898447; PyMC = -4.011885454898504.
 - Raw comparison: MATCH; residual = 5.684341886080802e-14.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.040118854548985e-06
+- Tolerance: 1.040118854548985e-06
 - One-based group/scenario indices become zero-based. Implicit Stan (0,100) priors
   versus three PyMC Uniforms add only -3*log(100).
 - Original Stan SHA-256: 4bf2c1e00ab66ce90a014b1f48ee7d129601b93783f0cb850b5dacc5109fae19
-- Saved points: models/posteriordb_logp/points/pilots-pilots.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

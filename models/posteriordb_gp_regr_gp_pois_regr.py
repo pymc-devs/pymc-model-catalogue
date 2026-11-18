@@ -24,17 +24,13 @@ The sigma parameter adds variance, not standard deviation, to the diagonal.
 Source: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/gp_regr
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -76.2113812525413; PyMC = -74.82508545021304.
 - B: Stan = -80.3124765261045; PyMC = -78.92618072377616.
 - Raw delta: Stan = -4.101095273563203; PyMC = -4.101095273563118.
 - Raw comparison: MATCH; residual = -8.526512829121202e-14.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.041010952735632e-06
+- Tolerance: 1.041010952735632e-06
 - The two HalfNormal versus positive Normal density normalizers are constants.
 - Original Stan SHA-256: bfbba64339a06d6ca5e0619aa0e3bffee2865504ee00768dd999066182db9873
-- Saved points: models/posteriordb_logp/points/gp_pois_regr-gp_regr.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

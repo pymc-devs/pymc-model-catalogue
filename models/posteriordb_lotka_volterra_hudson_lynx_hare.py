@@ -25,18 +25,14 @@ Positive normal rates retain their zero lower bound.
 The initial populations remain latent and have their own observed measurements.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -257.10417041859887; PyMC = -256.72246199321796.
 - B: Stan = -182.3569016532067; PyMC = -181.98098398931793.
 - Raw delta: Stan = 74.74726876539216; PyMC = 74.74147800390003.
 - Raw comparison: MISMATCH; residual = 0.005790761492136198.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.7474726876539216e-06
+- Tolerance: 1.7474726876539216e-06
 - Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
   is applied.
 - Original Stan SHA-256: f1cb4dda6af07ea721d5a38c6cbe8e3b60f7d48294db0374f331dc9803fe4328
-- Saved points: models/posteriordb_logp/points/hudson_lynx_hare-lotka_volterra.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -148.2680, grad norm = 62.0095, 26068.9 us/call (5 evals).

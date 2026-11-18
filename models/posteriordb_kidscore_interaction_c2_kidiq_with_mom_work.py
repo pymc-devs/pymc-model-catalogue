@@ -24,16 +24,12 @@ Native reference-centered child-score interaction regression from Gelman and Hil
 Education centers at 0.5 and IQ centers at 100. The coefficients and positive noise scale have constant densities.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -866198.4706636631; PyMC = -866198.4706636635.
 - B: Stan = -1876522.7716739054; PyMC = -1876522.7716739047.
 - Raw delta: Stan = -1010324.3010102423; PyMC = -1010324.3010102413.
 - Raw comparison: MATCH; residual = -1.0477378964424133e-09.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.010104243010102423
+- Tolerance: 0.010104243010102423
 - Original Stan SHA-256: f0e2de7b978b8ee263d3aa5fccdc4170e2f4d0678af5d6b8a0090162d084e9be
-- Saved points: models/posteriordb_logp/points/kidiq_with_mom_work-kidscore_interaction_c2.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

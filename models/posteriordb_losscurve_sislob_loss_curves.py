@@ -22,16 +22,12 @@ The data select Weibull or log-logistic cumulative growth.
 Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -574.1474428807884; PyMC = -574.1474428731698.
 - B: Stan = -556.634734886495; PyMC = -556.6347348788763.
 - Raw delta: Stan = 17.51270799429335; PyMC = 17.512707994293464.
 - Raw comparison: MATCH; residual = -1.1368683772161603e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1751270799429345e-06
+- Tolerance: 1.1751270799429345e-06
 - Original Stan SHA-256: b7e3d55e53d230a391b87e03fc9eec6007322a79ddec748ac1a4dee1741bc4b4
-- Saved points: models/posteriordb_logp/points/loss_curves-losscurve_sislob.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

@@ -23,18 +23,14 @@ Native child-score regression from Gelman and Hill (2006), Chapter 3.
 The coefficient density is constant. The positive noise scale follows a half-Cauchy law.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1898952.5453926628; PyMC = -1898951.8522455075.
 - B: Stan = -1759958.4851688948; PyMC = -1759957.7920217412.
 - Raw delta: Stan = 138994.060223768; PyMC = 138994.06022376637.
 - Raw comparison: MATCH; residual = 1.6298145055770874e-09.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.0013909406022376799
+- Tolerance: 0.0013909406022376799
 - Stan sigma>0 with Cauchy(0,2.5) versus PyMC HalfCauchy(2.5): PyMC-Stan is the constant
   log(2).
 - Original Stan SHA-256: 4a09d0baf54d23c5a9f2aebaaf212c4017b839ba5b9f04910ec98cb698593a2f
-- Saved points: models/posteriordb_logp/points/kidiq-kidscore_momiq.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

@@ -25,19 +25,15 @@ Standard Normal effects define the noncentered county hierarchy.
 Source: https://mc-stan.org/users/documentation/case-studies/radon.html
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1743.7915490044484; PyMC = -1742.4052547072802.
 - B: Stan = -2315.6399616776002; PyMC = -2314.2536673804325.
 - Raw delta: Stan = -571.8484126731519; PyMC = -571.8484126731523.
 - Raw comparison: MATCH; residual = 4.547473508864641e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 6.7184841267315234e-06
+- Tolerance: 6.7184841267315234e-06
 - County labels are converted from Stan one-based to NumPy zero-based indices.
 - Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
   the constant log(2).
 - Original Stan SHA-256: db097f50d6f6158ceff725f520179ae74f2debe1ced50d899cac92787fd62861
-- Saved points: models/posteriordb_logp/points/radon_mn-radon_variable_intercept_noncentered.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

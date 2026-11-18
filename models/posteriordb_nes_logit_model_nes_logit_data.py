@@ -25,16 +25,12 @@ Native logistic regression for National Election Study votes.
 Source: Gelman and Hill (2006), ARM.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -823.8426202699114; PyMC = -823.8426202699114.
 - B: Stan = -816.3904366646025; PyMC = -816.3904366646025.
 - Raw delta: Stan = 7.45218360530896; PyMC = 7.45218360530896.
 - Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0745218360530895e-06
+- Tolerance: 1.0745218360530895e-06
 - Original Stan SHA-256: d72a517f816195755bb5e25f743320a0a85d9107c30ce0ae970f9332983bb6a1
-- Saved points: models/posteriordb_logp/points/nes_logit_data-nes_logit_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

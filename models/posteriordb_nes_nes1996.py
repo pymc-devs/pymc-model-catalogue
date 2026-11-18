@@ -23,16 +23,12 @@ Native Gaussian regression for National Election Study party identification.
 Source: Gelman and Hill (2006), ARM.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -12871.551714773277; PyMC = -12871.55171477326.
 - B: Stan = -6988.179245364434; PyMC = -6988.179245364431.
 - Raw delta: Stan = 5883.372469408843; PyMC = 5883.37246940883.
 - Raw comparison: MATCH; residual = 1.3642420526593924e-11.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 5.983372469408843e-05
+- Tolerance: 5.983372469408843e-05
 - Original Stan SHA-256: 260e7acec9bef905cae306ff6defb97e525c116f018aba9c687af154c10c8e70
-- Saved points: models/posteriordb_logp/points/nes1996-nes.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

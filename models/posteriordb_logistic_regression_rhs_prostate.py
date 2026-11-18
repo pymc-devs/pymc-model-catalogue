@@ -23,18 +23,14 @@ Regularized horseshoe logistic regression from Piironen and Vehtari (2017).
 The global half-Student-t scale equals twice the dataset scale_global value.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -17073.680040363008; PyMC = -12937.670709589542.
 - B: Stan = -16703.512666603085; PyMC = -12567.503335829655.
 - Raw delta: Stan = 370.16737375992307; PyMC = 370.1673737598867.
 - Raw comparison: MATCH; residual = 3.637978807091713e-11.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.701673737599231e-06
+- Tolerance: 4.701673737599231e-06
 - PyMC's positive half-t normalizations for tau and lambda add only (d+1)*log(2) with
   d=5966.
 - Original Stan SHA-256: b5c3167d819c155b81558c8889295c7bd1b1d4a7d137ce1bcd04783825c7b00b
-- Saved points: models/posteriordb_logp/points/prostate-logistic_regression_rhs.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

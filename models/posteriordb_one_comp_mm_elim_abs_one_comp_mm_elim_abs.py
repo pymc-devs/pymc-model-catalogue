@@ -23,18 +23,14 @@ The initial concentration is zero, as specified by the published database model.
 Native ODE integration separates the concentration dynamics from lognormal measurement errors.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -47.953679678651916; PyMC = -45.18109126320565.
 - B: Stan = -44.48394585873322; PyMC = -41.71135715146996.
 - Raw delta: Stan = 3.4697338199186945; PyMC = 3.46973411173569.
 - Raw comparison: MATCH; residual = -2.918169954568839e-07.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0346973411173568e-06
+- Tolerance: 1.0346973411173568e-06
 - Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
   is applied.
 - Original Stan SHA-256: dbb2bdf39dd21bdf83f062b59a2d5f210b5ccd372d93631302d723a5b5f57d9c
-- Saved points: models/posteriordb_logp/points/one_comp_mm_elim_abs-one_comp_mm_elim_abs.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -44.3001, grad norm = 13.5193, 7444.0 us/call (5 evals).

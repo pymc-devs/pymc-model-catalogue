@@ -23,13 +23,11 @@ The transition rows have uniform simplex densities.
 The initial state weights equal one, as in the published target.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1993.254877632162; PyMC = -1993.254877632162.
 - B: Stan = -2108.9643080736214; PyMC = -2108.964308073621.
 - Raw delta: Stan = -115.70943044145929; PyMC = -115.70943044145884.
 - Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.1570943044145927e-06
+- Tolerance: 2.1570943044145927e-06
 - Explicit uniform simplex densities in PyMC add only constant normalizers to Stan's
   implicit flat simplex densities.
 - Shared-support limitation: original Stan points enforce all ordered or positive-
@@ -37,8 +35,6 @@ Stan comparison:
   enforced after transforms are removed. These evaluations compare points on the shared
   Stan-valid support, not global support or model equivalence.
 - Original Stan SHA-256: 8ebe19f3469e97153177d69c9dea248207278cc6f3d1d16885f83a791b11c476
-- Saved points: models/posteriordb_logp/points/hmm_example-hmm_example.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -259.1863, grad norm = 721.6521, 212.5 us/call (5 evals).

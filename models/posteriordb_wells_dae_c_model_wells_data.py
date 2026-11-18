@@ -25,16 +25,12 @@ All coefficient densities are constant. Distance and arsenic use their sample me
 Education uses four-year units without centering.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -2043.3908041032953; PyMC = -2043.3908041032953.
 - B: Stan = -2173.8142278637506; PyMC = -2173.8142278637506.
 - Raw delta: Stan = -130.4234237604553; PyMC = -130.4234237604553.
 - Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.304234237604553e-06
+- Tolerance: 2.304234237604553e-06
 - Original Stan SHA-256: 0284ca32ef2523fb09f5be590e5415de7a40b09d24d068f10c3062a44b0eb331
-- Saved points: models/posteriordb_logp/points/wells_data-wells_dae_c_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

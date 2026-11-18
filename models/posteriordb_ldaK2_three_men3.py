@@ -22,17 +22,13 @@ Latent Dirichlet allocation with two topics and uniform simplex densities.
 Source: Blei, Ng, and Jordan (2003), as specified by posteriordb.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -25412.90986807543; PyMC = -25412.909868075403.
 - B: Stan = -25371.50881000111; PyMC = -25371.508810001153.
 - Raw delta: Stan = 41.401058074319735; PyMC = 41.401058074250614.
 - Raw comparison: MATCH; residual = 6.912159733474255e-11.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.4140105807431973e-06
+- Tolerance: 1.4140105807431973e-06
 - Document and word indices shift from one-based to zero-based.
 - Original Stan SHA-256: 2b943b45446d68148c94c9089ee17f45597eb839e0cd4f94410a817f787327d5
-- Saved points: models/posteriordb_logp/points/three_men3-ldaK2.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

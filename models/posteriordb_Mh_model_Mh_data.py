@@ -24,18 +24,14 @@ Individual detection uses noncentered Gaussian effects on log odds.
 Source: Kéry and Schaub (2011), chapter 6.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -753.2032385618709; PyMC = -754.8126765043747.
 - B: Stan = -747.3552538441143; PyMC = -748.9646917866185.
 - Raw delta: Stan = 5.847984717756617; PyMC = 5.847984717756276.
 - Raw comparison: MATCH; residual = 3.410605131648481e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.058479847177566e-06
+- Tolerance: 1.058479847177566e-06
 - PyMC Uniform(0,5) for sigma adds only -log(5) relative to Stan's implicit bounded-flat
   prior.
 - Original Stan SHA-256: 69dda71b0ec6857c4c5a0e81c014979f57da97c5260b6e3456305a13050b7ad5
-- Saved points: models/posteriordb_logp/points/Mh_data-Mh_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

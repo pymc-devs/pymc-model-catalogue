@@ -21,16 +21,12 @@ Implementation notes:
 Native quadratic binomial model from posteriordb GLM_Binomial_model.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -254.6454361190116; PyMC = -254.64543631086403.
 - B: Stan = -327.0304780966763; PyMC = -327.03047828852914.
 - Raw delta: Stan = -72.38504197766468; PyMC = -72.38504197766511.
 - Raw comparison: MATCH; residual = 4.263256414560601e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.723850419776651e-06
+- Tolerance: 1.723850419776651e-06
 - Original Stan SHA-256: 1cd08265b53a2faea2087055fd5c24eff965c6581c6ce78479a0925ddd3a1144
-- Saved points: models/posteriordb_logp/points/GLM_Binomial_data-GLM_Binomial_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

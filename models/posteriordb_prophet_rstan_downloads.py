@@ -24,20 +24,16 @@ The logistic offset is a time location, not a log-odds intercept.
 Source: Taylor and Letham (2018), as specified by posteriordb.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1526.0074637737189; PyMC = -1525.314316651395.
 - B: Stan = -1323.1678056449293; PyMC = -1322.4746585226062.
 - Raw delta: Stan = 202.83965812878955; PyMC = 202.83965812878887.
 - Raw comparison: MATCH; residual = 6.821210263296962e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.0283965812878954e-06
+- Tolerance: 3.0283965812878954e-06
 - For the logistic trend, PyMC uses the telescoped form
   logit(trend/cap)=k*(t-m)+sum(delta_s*max(t-t_change_s,0)) in place of Stan's
   continuity recursion; m remains a time location, not a log-odds intercept.
 - HalfNormal versus positive Normal sigma_obs contributes only log(2).
 - Original Stan SHA-256: e3fcbc4b053e2e8f270ad611eba9fe593146aa24bb01940e91cd4e17450239b5
-- Saved points: models/posteriordb_logp/points/rstan_downloads-prophet.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

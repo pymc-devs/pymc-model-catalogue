@@ -23,16 +23,12 @@ Native Gaussian model for earnings and height.
 Source: Gelman and Hill (2006), ARM.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -400986929008.98285; PyMC = -400986929008.98267.
 - B: Stan = -470226871825.1733; PyMC = -470226871825.1741.
 - Raw delta: Stan = -69239942816.19043; PyMC = -69239942816.1914.
 - Raw comparison: MATCH; residual = 0.0009765625.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 692.3994291619141
+- Tolerance: 692.3994291619141
 - Original Stan SHA-256: cabef66313b5b1568716951892387134a46d92865a84710445970cc69bda163a
-- Saved points: models/posteriordb_logp/points/earnings-earn_height.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

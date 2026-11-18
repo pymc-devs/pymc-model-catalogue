@@ -22,19 +22,15 @@ The coefficient pair has a flat joint density on its triangular support.
 Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -752.9671745691298; PyMC = -752.96717456913.
 - B: Stan = -761.0105067059353; PyMC = -761.0105067059361.
 - Raw delta: Stan = -8.043332136805475; PyMC = -8.043332136806157.
 - Raw comparison: MATCH; residual = 6.821210263296962e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0804333213680616e-06
+- Tolerance: 1.0804333213680616e-06
 - The PyMC log1p(-alpha1) potential cancels its conditional Uniform beta1 normalizer,
   leaving the flat joint density on the triangle alpha1>0, beta1>0, alpha1+beta1<1 that
   Stan declares.
 - Original Stan SHA-256: bbfe1929a9dbf6f5a4066f6099d90fc8c3e1bf1c65e1072b47af19534c60a679
-- Saved points: models/posteriordb_logp/points/garch-garch11.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

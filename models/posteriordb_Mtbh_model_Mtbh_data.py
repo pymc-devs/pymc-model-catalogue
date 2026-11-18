@@ -24,17 +24,13 @@ Detection has additive occasion, behavior, and individual effects on log odds.
 Source: Kéry and Schaub (2011), chapter 6.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -348.2499600792822; PyMC = -349.3485724197596.
 - B: Stan = -343.17282999664394; PyMC = -344.27144233712136.
 - Raw delta: Stan = 5.077130082638234; PyMC = 5.077130082638234.
 - Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0507713008263823e-06
+- Tolerance: 1.0507713008263823e-06
 - PyMC's sigma Uniform(0,3) contributes only the constant -log(3).
 - Original Stan SHA-256: 97c151a4cccca051c09de3dc1e66fe42980be9c850503db089e2bb8e7a16b451
-- Saved points: models/posteriordb_logp/points/Mtbh_data-Mtbh_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

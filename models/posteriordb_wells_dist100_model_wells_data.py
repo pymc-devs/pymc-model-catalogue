@@ -24,16 +24,12 @@ Native well-switching logistic regression from Gelman and Hill (2006), Chapter 5
 All coefficient densities are constant. Distance uses hundreds of meters.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -2116.4961435323917; PyMC = -2116.4961435323917.
 - B: Stan = -2069.1450016549925; PyMC = -2069.145001654993.
 - Raw delta: Stan = 47.351141877399186; PyMC = 47.35114187739873.
 - Raw comparison: MATCH; residual = 4.547473508864641e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.4735114187739919e-06
+- Tolerance: 1.4735114187739919e-06
 - Original Stan SHA-256: e32bd4a05563e46dd0d678659eb167be2abcc377b080183ae7087a0c7cb518c5
-- Saved points: models/posteriordb_logp/points/wells_data-wells_dist100_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

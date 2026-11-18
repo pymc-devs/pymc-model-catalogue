@@ -23,17 +23,13 @@ One-hidden-layer classification network with ten hidden units.
 Source: Lampinen and Vehtari (2001), as specified by posteriordb.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -6984.3954375624235; PyMC = -6984.395437549347.
 - B: Stan = -6277.298990779531; PyMC = -6277.298990766442.
 - Raw delta: Stan = 707.0964467828926; PyMC = 707.0964467829044.
 - Raw comparison: MATCH; residual = -1.1823431123048067e-11.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 8.070964467829044e-06
+- Tolerance: 8.070964467829044e-06
 - Observed labels shift from 1..K to 0..K-1.
 - Original Stan SHA-256: 2ef44b6ba9b893dadcdcb3f95befe897f492e2f4d67f554307e444beed2f872c
-- Saved points: models/posteriordb_logp/points/mnist_100-nn_rbm1bJ10.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = 127507.2551, grad norm = 3919.2566, 249.2 us/call (5 evals).

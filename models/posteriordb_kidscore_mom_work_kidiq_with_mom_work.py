@@ -23,16 +23,12 @@ Native child-score work-category regression from Gelman and Hill (2006), Chapter
 Work category one is the reference. The coefficients and positive noise scale have constant densities.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -3489148.4822633765; PyMC = -3489148.4822633765.
 - B: Stan = -1357896.0004124728; PyMC = -1357896.0004124732.
 - Raw delta: Stan = 2131252.4818509035; PyMC = 2131252.4818509035.
 - Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.021313524818509035
+- Tolerance: 0.021313524818509035
 - Original Stan SHA-256: fe41ba28792cddf91df4f46e5b48c2bcf33c0f1a193148fc36b4a52483640d27
-- Saved points: models/posteriordb_logp/points/kidiq_with_mom_work-kidscore_mom_work.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

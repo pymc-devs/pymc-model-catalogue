@@ -21,16 +21,12 @@ Implementation notes:
 Native logistic shock model from posteriordb dogs.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -628.7830399113662; PyMC = -628.783040103219.
 - B: Stan = -903.8250716435396; PyMC = -903.8250718353919.
 - Raw delta: Stan = -275.0420317321733; PyMC = -275.04203173217286.
 - Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.750420317321733e-06
+- Tolerance: 3.750420317321733e-06
 - Original Stan SHA-256: bc4c096706d2bb0558cdd88f171ccafda252d7a62b3cd7d1210642c3508b613a
-- Saved points: models/posteriordb_logp/points/dogs-dogs.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

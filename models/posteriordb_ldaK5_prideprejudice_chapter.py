@@ -22,17 +22,13 @@ Latent Dirichlet allocation with five topics and dataset concentration parameter
 Source: Blei, Ng, and Jordan (2003), as specified by posteriordb.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -205189.15496980018; PyMC = -205189.15496980195.
 - B: Stan = -205072.78648196885; PyMC = -205072.78648197.
 - Raw delta: Stan = 116.36848783132154; PyMC = 116.36848783196183.
 - Raw comparison: MATCH; residual = -6.402842700481415e-10.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.1636848783196183e-06
+- Tolerance: 2.1636848783196183e-06
 - Document and word indices shift from one-based to zero-based.
 - Original Stan SHA-256: 514ebdd2564b2cbb90f64ba59f252a2a8b4447a6008685b04141ddec820933a6
-- Saved points: models/posteriordb_logp/points/prideprejudice_chapter-ldaK5.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

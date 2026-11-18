@@ -23,16 +23,12 @@ Detection depends on capture at the previous occasion.
 Source: Kéry and Schaub (2011), chapter 6.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -801.2928365793337; PyMC = -801.2928365793337.
 - B: Stan = -785.5224343593771; PyMC = -785.5224343593771.
 - Raw delta: Stan = 15.770402219956509; PyMC = 15.770402219956509.
 - Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1577040221995651e-06
+- Tolerance: 1.1577040221995651e-06
 - Original Stan SHA-256: fd8975a0bd29c338066cee715a3aeda704382daef4f4db30ffc4deb9f018b43f
-- Saved points: models/posteriordb_logp/points/Mb_data-Mb_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -802.2076, grad norm = 84.2924, 38.5 us/call (5 evals).

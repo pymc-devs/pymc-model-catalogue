@@ -24,20 +24,16 @@ The native latent GP uses a noncentered Normal representation and the source jit
 Source: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/gp_pois_regr
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1043.0656157679641; PyMC = -1042.3724671461957.
 - B: Stan = -1044.0478221953438; PyMC = -1043.3546735735754.
 - Raw delta: Stan = -0.9822064273796514; PyMC = -0.9822064273796514.
 - Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0098220642737965e-06
+- Tolerance: 1.0098220642737965e-06
 - Set f_rotated_=f_tilde: PyMC gp/gp.py Latent._build_prior names the free whitened
   vector f_rotated_. Neither density is evaluated in centered f coordinates, so there is
   no Cholesky determinant correction.
 - HalfNormal versus a Normal density on positive alpha contributes only log(2).
 - Original Stan SHA-256: d44142b5a950cfa68302de8d14c57e0ef0f9bcb7069375d22a74f84b7f78c270
-- Saved points: models/posteriordb_logp/points/gp_pois_regr-gp_pois_regr.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

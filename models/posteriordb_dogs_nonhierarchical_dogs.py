@@ -26,8 +26,6 @@ The source row-factor product does not give that covariance. This model uses the
 Evidence: posterior_database/models/stan/dogs_nonhierarchical.stan, lines 27-32, upstream revision 91027f9.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -964.1082378541431; PyMC = -962.0262129394036.
 - B: Stan = -871.1298048632541; PyMC = -869.0412251422583.
 - Raw delta: Stan = 92.97843299088902; PyMC = 92.98498779714532.
@@ -36,16 +34,13 @@ Stan comparison:
   0.002583351320819993; B = 0.009138157577196493.
 - Adjusted Stan delta = 92.9849877971454.
 - Adjusted comparison: MATCH; residual = 7.105427357601002e-14.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.9298498779714537e-06
-  using adjusted delta_Stan.
+- Tolerance: 1.9298498779714537e-06
 - Original targets differ: Stan uses z @ A, PyMC z @ A.T. Map
   z_PyMC=solve(A,(z_Stan@A).T).T to preserve dog effects; add the independently computed
   standard-Normal prior difference.
 - This z mapping has unit Jacobian. rho_unit=(L[1,0]+1)/2 has a constant Jacobian;
   LKJ(2) and Beta(2,2) then agree up to constants, as do Normal and HalfNormal factors.
 - Original Stan SHA-256: 69dc8063e69d0451f54c5223edbb34e316742f5001a630f251bbab2be074109d
-- Saved points: models/posteriordb_logp/points/dogs-dogs_nonhierarchical.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -922.6830, grad norm = 482.4855, 45.7 us/call (5 evals).

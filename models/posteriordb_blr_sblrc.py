@@ -19,17 +19,13 @@ Implementation notes:
 Native Gaussian linear regression from posteriordb blr.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -792509.0486571618; PyMC = -792508.3555101727.
 - B: Stan = -959988.8302412318; PyMC = -959988.1370942437.
 - Raw delta: Stan = -167479.78158407006; PyMC = -167479.781584071.
 - Raw comparison: MATCH; residual = 9.313225746154785e-10.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.00167579781584071
+- Tolerance: 0.00167579781584071
 - Stan sigma>0 with Normal(0,10) versus PyMC HalfNormal(10) adds the constant log(2).
 - Original Stan SHA-256: e6407c4391ab11c0b59f17f3a04132df87aa69b7dae459e173036f16f9e8b161
-- Saved points: models/posteriordb_logp/points/sblrc-blr.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -6873.0122, grad norm = 14663.6951, 10.5 us/call (5 evals).

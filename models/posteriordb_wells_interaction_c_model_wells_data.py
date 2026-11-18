@@ -25,16 +25,12 @@ All coefficient densities are constant. Distance and arsenic use their sample me
 Distance uses hundreds of meters.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -2175.192592127743; PyMC = -2175.1925921277434.
 - B: Stan = -2055.182483293224; PyMC = -2055.182483293224.
 - Raw delta: Stan = 120.01010883451909; PyMC = 120.01010883451954.
 - Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.2001010883451956e-06
+- Tolerance: 2.2001010883451956e-06
 - Original Stan SHA-256: 6e288f00a6d9acc05a2eaeb3f298797a3afd36800f8500928aaf3f23a1e6fee0
-- Saved points: models/posteriordb_logp/points/wells_data-wells_interaction_c_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

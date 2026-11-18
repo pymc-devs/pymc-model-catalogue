@@ -37,8 +37,6 @@ It changes the induced coefficient priors for fims_Aus_Jpn_irt-2pl_latent_reg_ir
 The intercept-only science_irt-grsm_latent_reg_irt pair does not change.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -5187.562842107589; PyMC = -5185.548142726041.
 - B: Stan = -5290.972236161646; PyMC = -5288.961746628744.
 - Raw delta: Stan = -103.40939405405697; PyMC = -103.41360390270256.
@@ -47,16 +45,13 @@ Stan comparison:
   -0.0028511805874233964; B = -0.007061029243367489.
 - Adjusted Stan delta = -103.41360390271292.
 - Adjusted comparison: MATCH; residual = -1.035971308738226e-11.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.0341360390271293e-06
-  using adjusted delta_Stan.
+- Tolerance: 2.0341360390271293e-06
 - Append minus the sum to beta_free (and kappa_free when present) for ZeroSumNormal.
   Fixed prior scale 3 makes the subspace-volume and normalization offsets constant.
 - Original targets differ: binary covariate scaling changes coefficient priors. Map
   lambda_PyMC=lambda_Stan*scale_PyMC/scale_Stan to preserve physical slopes and latent
   means; add the StudentT(3) prior difference. The Jacobian is data-only.
 - Original Stan SHA-256: b624e19f288c892778eabc80b4afde9f6822ac9622202787950adf4d5ba6d10b
-- Saved points: models/posteriordb_logp/points/timssAusTwn_irt-gpcm_latent_reg_irt.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

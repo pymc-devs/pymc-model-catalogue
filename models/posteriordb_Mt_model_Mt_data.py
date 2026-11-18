@@ -24,16 +24,12 @@ Detection probabilities vary by occasion.
 Source: Kéry and Schaub (2011), chapter 6.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -333.5695376087196; PyMC = -333.5695376087196.
 - B: Stan = -330.28450715685545; PyMC = -330.28450715685545.
 - Raw delta: Stan = 3.285030451864145; PyMC = 3.285030451864145.
 - Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0328503045186415e-06
+- Tolerance: 1.0328503045186415e-06
 - Original Stan SHA-256: 3391120504996a0369e58658d1872f190d2932e5c7d192f63c3db2057e8d324c
-- Saved points: models/posteriordb_logp/points/Mt_data-Mt_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

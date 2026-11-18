@@ -24,18 +24,14 @@ Constant detection with exact population-inclusion marginalization.
 Source: Kéry and Schaub (2011), chapter 6.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -243.13503478308752; PyMC = -243.13503478308752.
 - B: Stan = -247.3422894332097; PyMC = -247.3422894332097.
 - Raw delta: Stan = -4.207254650122167; PyMC = -4.207254650122167.
 - Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0420725465012217e-06
+- Tolerance: 1.0420725465012217e-06
 - PyMC marginalizes inclusion with ZeroInflatedBinomial over each individual's row sum,
   where Stan evaluates the same row sums in its binomial.
 - Original Stan SHA-256: 56f27cc21218cfe634e3d02596617dac693c9f08c724a85bbebbf1fe86bb901c
-- Saved points: models/posteriordb_logp/points/M0_data-M0_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

@@ -24,18 +24,14 @@ A uniform simplex density gives Dirichlet weights with unit concentrations.
 The likelihood uses only y. Other dataset fields describe the data generator.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -5480.534220963223; PyMC = -5488.869093394437.
 - B: Stan = -5514.887037286612; PyMC = -5523.221909717825.
 - Raw delta: Stan = -34.35281632338956; PyMC = -34.35281632338774.
 - Raw comparison: MATCH; residual = -1.8189894035458565e-12.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.3435281632338956e-06
+- Tolerance: 1.3435281632338956e-06
 - PyMC's Dirichlet(ones) and Uniform(0,10) normalizers differ from Stan's implicit
   bounded flat densities only by constants.
 - Original Stan SHA-256: e9a39473b1e2c909097a5b8b265c5f47b8a5d6a609e9bd282f35355d770a5c5a
-- Saved points: models/posteriordb_logp/points/normal_5-normal_mixture_k.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

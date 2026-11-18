@@ -22,16 +22,12 @@ Two count observations share one success rate.
 Source: Lee and Wagenmakers (2013), binomial rate examples.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -3.756980106360462; PyMC = -3.756980106360465.
 - B: Stan = -3.556700839794817; PyMC = -3.5567008397948205.
 - Raw delta: Stan = 0.2002792665656452; PyMC = 0.20027926656564432.
 - Raw comparison: MATCH; residual = 8.881784197001252e-16.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0020027926656564e-06
+- Tolerance: 1.0020027926656564e-06
 - Original Stan SHA-256: 416ea0e377796973a67eddfa956d93e4e5f2204d96889b7b55432275b5e4e0d2
-- Saved points: models/posteriordb_logp/points/Rate_3_data-Rate_3_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

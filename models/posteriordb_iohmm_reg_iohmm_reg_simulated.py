@@ -32,8 +32,6 @@ Evidence: https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L840-L87
 The initial probabilities have a uniform simplex density.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -12251.424541381222; PyMC = -12250.068644344123.
 - B: Stan = -13444.51019509857; PyMC = -13441.722573636545.
 - Raw delta: Stan = -1193.0856537173477; PyMC = -1191.6539292924226.
@@ -42,14 +40,11 @@ Stan comparison:
   B = 0.01503352099825861.
 - Adjusted Stan delta = -1191.6539292924172.
 - Adjusted comparison: MATCH; residual = 5.4569682106375694e-12.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.2916539292924226e-05
-  using adjusted delta_Stan.
+- Tolerance: 1.2916539292924226e-05
 - Original targets differ: Stan gates source states; PyMC gates destination states.
   Adjustment is the independently computed destination-mixture likelihood minus the
   original forward likelihood.
 - Original Stan SHA-256: 9203ab44e94440c2bc51f96551c4e8ef94bbebfb6481c601320883ee983d7c32
-- Saved points: models/posteriordb_logp/points/iohmm_reg_simulated-iohmm_reg.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

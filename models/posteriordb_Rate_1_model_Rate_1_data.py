@@ -23,16 +23,12 @@ One success rate with a uniform Beta distribution.
 Source: Lee and Wagenmakers (2013), binomial rate examples.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1.5191739432523104; PyMC = -1.519173943252311.
 - B: Stan = -1.4755165919307762; PyMC = -1.4755165919307773.
 - Raw delta: Stan = 0.043657351321534144; PyMC = 0.0436573513215337.
 - Raw comparison: MATCH; residual = 4.440892098500626e-16.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0004365735132153e-06
+- Tolerance: 1.0004365735132153e-06
 - Original Stan SHA-256: ae95dcc6c2e2953e202fb257181ee24e1cb1f7780819e95d94663dde4fddc795
-- Saved points: models/posteriordb_logp/points/Rate_1_data-Rate_1_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

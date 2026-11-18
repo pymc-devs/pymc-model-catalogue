@@ -22,19 +22,15 @@ Implementation notes:
 Native crossed logistic effects from posteriordb election88_full.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -8556.772621101387; PyMC = -8579.798472670835.
 - B: Stan = -8628.412684196437; PyMC = -8651.438535765885.
 - Raw delta: Stan = -71.64006309505021; PyMC = -71.64006309505021.
 - Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.716400630950502e-06
+- Tolerance: 1.716400630950502e-06
 - Categorical indices are shifted from Stan one-based to NumPy zero-based.
 - The five Uniform(0,100) scale normalizers are parameter-independent relative to the
   original Stan bounded scales.
 - Original Stan SHA-256: cc0cac4d2d729adf98d1b12d06db2fa53327e3fc3bc700a1e7f28b3690ef858d
-- Saved points: models/posteriordb_logp/points/election88-election88_full.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

@@ -23,19 +23,15 @@ Native skeletal maturity model from the BUGS bones example.
 Missing grades do not contribute a likelihood factor.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1639.9838350060193; PyMC = -1639.9838353052326.
 - B: Stan = -1650.3197544900816; PyMC = -1650.319761646184.
 - Raw delta: Stan = -10.335919484062288; PyMC = -10.335926340951346.
 - Raw comparison: MISMATCH; residual = 6.8568890583264874e-06.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1033592634095134e-06
+- Tolerance: 1.1033592634095134e-06
 - Stan's categories 1..ncat become PyMC categories 0..ncat-1. PyMC OrderedLogistic
   eta=delta*theta and cutpoints delta*gamma reproduce Stan's differences of
   inv_logit(delta*(theta-gamma)).
 - Original Stan SHA-256: 0d478060e879cf4c26f5a5d8eafb2de3e166a1d9e581999c26c00d3a002cf2c4
-- Saved points: models/posteriordb_logp/points/bones_data-bones_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

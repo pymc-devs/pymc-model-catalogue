@@ -22,16 +22,12 @@ Implementation notes:
 Native precision-based seed effects from posteriordb seeds_model.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -166.12208642194116; PyMC = -166.12208680564652.
 - B: Stan = -176.7715777005259; PyMC = -176.77157808423124.
 - Raw delta: Stan = -10.649491278584748; PyMC = -10.649491278584719.
 - Raw comparison: MATCH; residual = -2.842170943040401e-14.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1064949127858474e-06
+- Tolerance: 1.1064949127858474e-06
 - Original Stan SHA-256: 11548246c12d4afdbb7455a2a249522bbdf255084041d48408c1ba5daf10ab8d
-- Saved points: models/posteriordb_logp/points/seeds_data-seeds_model.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

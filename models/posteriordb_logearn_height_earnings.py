@@ -24,16 +24,12 @@ Source: Gelman and Hill (2006), ARM.
 The likelihood uses the transformed response, without a response Jacobian.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -1804.8224042939457; PyMC = -1804.8224042939423.
 - B: Stan = -6752.272852830232; PyMC = -6752.272852830225.
 - Raw delta: Stan = -4947.450448536287; PyMC = -4947.450448536283.
 - Raw comparison: MATCH; residual = -3.637978807091713e-12.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 5.0474504485362866e-05
+- Tolerance: 5.0474504485362866e-05
 - Original Stan SHA-256: 2eca5eaba6ba31d6964eec624e819d84f7ba0a06a0289920b2276d933a31d64e
-- Saved points: models/posteriordb_logp/points/earnings-logearn_height.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

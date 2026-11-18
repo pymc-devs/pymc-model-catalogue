@@ -24,8 +24,6 @@ The supplied spline matrices define the fixed model basis.
 The unpenalized linear coefficients retain their improper flat priors.
 
 Stan comparison:
-- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
-- Constrained densities; automatic support-transform Jacobians disabled in both.
 - A: Stan = -161646.16470841187; PyMC = -161641.83664461042.
 - B: Stan = -129349.91842334527; PyMC = -129345.6220514148.
 - Raw delta: Stan = 32296.246285066605; PyMC = 32296.21459319562.
@@ -34,8 +32,7 @@ Stan comparison:
   4.328063761528535; B = 4.296371890539598.
 - Adjusted Stan delta = 32296.214593195615.
 - Adjusted comparison: MATCH; residual = -3.637978807091713e-12.
-- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.0003239621459319562
-  using adjusted delta_Stan.
+- Tolerance: 0.0003239621459319562
 - In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT spline-
   scale priors has dtype int8: sigma**2 overflows to 16. Their native density is
   therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The
@@ -43,8 +40,6 @@ Stan comparison:
   Original targets differ; this runtime discrepancy is not a best-practice
   reparameterization. Recheck this adjustment after engine upgrades.
 - Original Stan SHA-256: 9996e181a5d23d8c2a127adfa19c4c1e12051abf91539ce40a14249fc94d8bae
-- Saved points: models/posteriordb_logp/points/mcycle_splines-accel_splines.npz
-- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.
