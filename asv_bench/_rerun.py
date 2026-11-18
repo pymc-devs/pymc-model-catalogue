@@ -5,6 +5,7 @@ import json
 import math
 import os
 import re
+import subprocess
 import uuid
 
 
@@ -12,12 +13,51 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
 
 
-def benchmark_fingerprint(root):
+def benchmark_sources(root):
     paths = [root / "asv.conf.json", root / "scripts/core_models.py",
              root / "scripts/run_benchmarks.py"]
     for directory in ("asv_bench", "models", "models_discrete"):
         paths.extend((root / directory).rglob("*.py"))
-    return digest([(str(path.relative_to(root)), path.read_text()) for path in sorted(paths)])
+    return [(str(path.relative_to(root)), path.read_text()) for path in sorted(paths)]
+
+
+def benchmark_fingerprint(root):
+    # Updating progress tracking does not change the measurements themselves.
+    return digest([(path, source) for path, source in benchmark_sources(root)
+                   if path != "asv_bench/_rerun.py"])
+
+
+def matches_legacy_fingerprint(root, fingerprint):
+    """Upgrade an old checkpoint only if all other benchmark files still match.
+
+    Old fingerprints included this module. Recover its historical source from
+    Git and compare the complete fingerprint; never waive changes to the model,
+    compiler, sampler, or environment configuration.
+    """
+    path = "asv_bench/_rerun.py"
+    sources = benchmark_sources(root)
+    try:
+        commits = subprocess.check_output(
+            ["git", "log", "--all", "--format=%H", "--", path], cwd=root, text=True,
+            stderr=subprocess.DEVNULL,
+        ).splitlines()
+        for commit in commits:
+            source = subprocess.check_output(
+                ["git", "show", f"{commit}:{path}"], cwd=root, text=True,
+                stderr=subprocess.DEVNULL,
+            )
+            if digest([(name, source if name == path else content)
+                       for name, content in sources]) == fingerprint:
+                return True
+    except subprocess.CalledProcessError:
+        pass
+    return False
+
+
+def successful(row):
+    values = row.get("result")
+    return bool(values) and all(isinstance(v, (int, float)) and math.isfinite(v)
+                                for v in values)
 
 
 class RerunCheckpoint:
@@ -30,6 +70,13 @@ class RerunCheckpoint:
         fingerprint = benchmark_fingerprint(root)
         compatible = (self.state and self.state["bench"] == bench
                       and self.state["fingerprint"] == fingerprint)
+        if (self.state and self.state["bench"] == bench and not compatible
+                and matches_legacy_fingerprint(root, self.state["fingerprint"])):
+            compatible = True
+            self.state["fingerprint"] = fingerprint
+            print("Upgrading progress tracking; benchmark code is unchanged", flush=True)
+        if self.state and rerun_id == self.state["id"] and not compatible:
+            raise RuntimeError("Campaign uses different benchmark code; choose a new rerun_id")
         if self.state and self.state["status"] == "active" and not compatible and not rerun:
             raise RuntimeError("Pending rerun uses different benchmark code; start with rerun=true")
         resume = compatible and (
@@ -93,8 +140,11 @@ class RerunCheckpoint:
             return None  # Let ASV discover the suite when metadata is unavailable.
         rows = self.rows(commit, python)
         completed = self.state["completed"].get(f"{commit}/{python}", {})
-        return [name for name in names if name not in rows
-                or completed.get(name) != digest(rows[name])
+        # Membership proves this campaign measured the metric successfully.
+        # ASV rewrites durations/statistics at lower precision when saving other
+        # models, so a hash of the entire saved row is not a stable identity.
+        return [name for name in names if not completed.get(name)
+                or not successful(rows.get(name, {}))
                 or rows[name].get("version") != metadata[name].get("version")]
 
     def record(self, commit, python, regex, before):
@@ -103,12 +153,10 @@ class RerunCheckpoint:
         for name, row in self.rows(commit, python).items():
             if not re.search(regex, name):
                 continue
-            values = row.get("result")
-            if (values and all(isinstance(v, (int, float)) and math.isfinite(v)
-                               for v in values)
+            if (successful(row)
                     and row.get("version") == metadata.get(name, {}).get("version")
                     and digest(row) != digest(before.get(name))):
-                completed[name] = digest(row)
+                completed[name] = True
         self.save()
 
     def finish(self):
