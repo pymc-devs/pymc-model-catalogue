@@ -853,6 +853,10 @@
       "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_n_rewrites": "b6e4b7765a197b072a2b581d4a1ff410d1a1839bb6e4421a06abb0cd07534270",
       "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_peak_rss": "c8017e9092c4827d765b15df9280492b2e4ff95e46cad9be41b3ea45738e1d92",
       "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_rewrite_time": "bbda5a331f39a3438de19b67152e5ee8f6d1d185e9ff2073fd698d9cee8fe664",
+      "bench_models.ModelBenchBuild_models_multilevel_varying_intercept_slope_noncentered.track_compile_time": "4226295375936dc7759112a97a15dedf03aad7c172293494b24e05fda05cb0e0",
+      "bench_models.ModelBenchBuild_models_multilevel_varying_intercept_slope_noncentered.track_n_rewrites": "86ebcc19b8d55ba0b6e5bd2316927fd6b1367fdcf21c3632210770caed20c0ab",
+      "bench_models.ModelBenchBuild_models_multilevel_varying_intercept_slope_noncentered.track_peak_rss": "cfde3376b7b31ad42a2a342f652ec77984439d5f2a3976e92786683348527629",
+      "bench_models.ModelBenchBuild_models_multilevel_varying_intercept_slope_noncentered.track_rewrite_time": "0c701dc530e07510147cfb0f3c336c58dc999543764b0e0799f7224527bb0605",
       "bench_models.ModelBenchEval_models_BEST.time_eval": "3bb601b103cf76661e807ae3171586a20fa39a596529a7218c3ee6d75c51b9e5",
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "22ee075fa17c3073552c767fc1731fca2e1a6416d12825d34a6a168a247d5857",
       "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": "b1514d38cfb5d29dae4c9224a2c74267e03bfb83683e4539429261b89f428748",
@@ -861,7 +865,8 @@
       "bench_models.ModelBenchEval_models_gp_marginal_matern52.time_eval": "5fc6cb77e0099b65be425daabdc75512f6427f197adc8c746662a1cf4edf8b36",
       "bench_models.ModelBenchEval_models_irt_survey_zerosum_categorical.time_eval": "bd65879eccf6609fae9cf5c0a78751a54f9bdda0d88c49ab2e2c281f661c685f",
       "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": "126fb1f649a4e467d3350a4f1031b4b91012f7e732f2a9e310e9ba497f7388af",
-      "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "9118b7861d545c58b8d55ae4a47fc22420afa6c499a3a0ed7a1cbf55b04d73c5"
+      "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "9118b7861d545c58b8d55ae4a47fc22420afa6c499a3a0ed7a1cbf55b04d73c5",
+      "bench_models.ModelBenchEval_models_multilevel_varying_intercept_slope_noncentered.time_eval": "bd52420ab5ace412c29e110b01c3236bd9f7cba0dfd2756aaba22a9849cbe73b"
     }
   },
   "environments": {
