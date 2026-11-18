@@ -10,6 +10,15 @@ import uuid
 from asv_bench._model_results import rows, valid_result
 
 
+# Preserve the active timeline campaign across the metadata-only changes to
+# measurement reports and result imports. An exact pair still detects edits
+# to any measurement code or model.
+DEPENDENCY_METADATA_UPGRADE = (
+    "6925d39fa2cfe48035a07028377121f7e7f1fe9d82b6e2315e3d318016aabf9b",
+    "9de4f44cc52a6db2752034660210216a0949d2de1a1112e9a7ff08e6790cf534",
+)
+
+
 def benchmark_fingerprint(root, *, legacy=False):
     paths = [root / "asv.conf.json", root / "scripts/core_models.py",
              root / "scripts/run_benchmarks.py"]
@@ -43,6 +52,7 @@ class RerunCheckpoint:
         if resume:
             resume = saved["bench"] == bench and (
                 saved["fingerprint"] == fingerprint
+                or (saved["fingerprint"], fingerprint) == DEPENDENCY_METADATA_UPGRADE
                 or saved["fingerprint"] == benchmark_fingerprint(root, legacy=True)
             )
             if not resume and (rerun_id or not rerun):

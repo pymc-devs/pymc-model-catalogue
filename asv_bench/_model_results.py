@@ -39,6 +39,16 @@ def valid_result(row):
     return bool(values) and all(isinstance(v, (int, float)) and math.isfinite(v) for v in values)
 
 
+def update_dependencies(data, old, selected, versions=None):
+    # ASV discards extra top-level fields on save. Restore the metadata for
+    # untouched measurements so a partial rerun cannot change their tooltips.
+    dependencies = {name: value for name, value in old.get("benchmark_dependencies", {}).items()
+                    if name not in selected}
+    if versions:
+        dependencies.update(dict.fromkeys(selected, versions))
+    data["benchmark_dependencies"] = dependencies
+
+
 def import_reports(directory, results_dir, model, selected, before, machine=None):
     failed = False
     imported = set()
@@ -75,6 +85,8 @@ def import_reports(directory, results_dir, model, selected, before, machine=None
         for name in selected:
             measurements[name] = report["rows"][name]
             failed |= not valid_result(measurements[name])
+        update_dependencies(data, before.get(record, {}),
+                            selected, report.get("dependencies"))
         save(record, data, measurements)
         imported.add(record)
     # If compilation failed, publish failed values instead of stale successful values.
@@ -97,6 +109,7 @@ def import_reports(directory, results_dir, model, selected, before, machine=None
                 measurements.pop(compile_name, None)
             else:
                 measurements[compile_name] = old
+        update_dependencies(data, before.get(record, {}), selected)
         save(record, data, measurements)
         failed = True
     return failed or not imported

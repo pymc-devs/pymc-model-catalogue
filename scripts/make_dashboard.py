@@ -52,16 +52,18 @@ def load_dependencies(src: Path) -> dict:
         result = json.loads(path.read_text())
         sha = result["commit_hash"]
         environment = f"ci · Python {result['python']}"
-        versions = known["commits"].get(sha, {}).get(environment)
+        for name, versions in result.get("benchmark_dependencies", {}).items():
+            dependencies[sha, environment, name] = versions
+        historical = known["commits"].get(sha, {}).get(environment)
         columns = result["result_columns"]
-        if not versions or "started_at" not in columns:
+        if not historical or "started_at" not in columns:
             continue
         index = columns.index("started_at")
         for name, row in result["results"].items():
             # A later run can use different packages at the same timeline SHA.
             started_at = row[index] if len(row) > index else None
             if started_at is not None and known["started_at_min"] <= started_at <= known["started_at_max"]:
-                dependencies[sha, environment, name] = versions
+                dependencies.setdefault((sha, environment, name), historical)
     return dependencies
 
 

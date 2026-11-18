@@ -193,6 +193,9 @@ consistent colors. Each chart labels its newest successful release; ties
 prefer the newer Python version. A run on a newer Python version keeps the
 historical series visible rather than replacing it or joining measurements from
 different Python versions into a single line.
+Tooltips show the PyTensor and Numba versions recorded by the benchmark worker
+for each measurement. A partial rerun updates the versions for the measurements
+it replaces. Older published points use the version backfill from the CI logs.
 
 The timeline CI uses a custom install hook (`asv_bench/_provision.py`) that
 installs `pymc==<pinned>` with `uv pip install --exclude-newer <released_at + 1
