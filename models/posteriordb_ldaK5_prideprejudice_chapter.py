@@ -16,11 +16,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: blei2003latent (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://mc-stan.org/docs/2_18/stan-users-guide/latent-dirichlet-allocation.html
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Latent Dirichlet allocation with five topics and dataset concentration parameters.
 
@@ -33,16 +28,10 @@ Stan comparison:
 - B: Stan = -205072.78648196885; PyMC = -205072.78648197.
 - Raw delta: Stan = 116.36848783132154; PyMC = 116.36848783196183.
 - Raw comparison: MATCH; residual = -6.402842700481415e-10.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.1636848783196183e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of theta with shape (M,5) and phi with shape (5,V), each row a simplex with
-  the supplied alpha/beta concentration vectors. Each token contributes logsumexp over
-  its five topics; no categorical latent variable or document-word count normalization
-  is introduced. Only document/word indices shift to zero-based.
+- Document and word indices shift from one-based to zero-based.
 - Original Stan SHA-256: 514ebdd2564b2cbb90f64ba59f252a2a8b4447a6008685b04141ddec820933a6
 - Saved points: models/posteriordb_logp/points/prideprejudice_chapter-ldaK5.npz
-- Full evidence: models/posteriordb_logp/records/prideprejudice_chapter-ldaK5.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

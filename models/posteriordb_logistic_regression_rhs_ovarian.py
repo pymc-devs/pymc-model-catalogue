@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: piironen2017sparsity (see posteriordb/source/bibliography/references.bib)
 Reference URL:
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Regularized horseshoe logistic regression from Piironen and Vehtari (2017).
 
@@ -34,19 +29,11 @@ Stan comparison:
 - B: Stan = -4569.633927230235; PyMC = -3504.2666882539274.
 - Raw delta: Stan = -170.0698679141833; PyMC = -170.06986791491863.
 - Raw comparison: MATCH; residual = 7.353264663834125e-10.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.7006986791491864e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- beta0, z, tau, lambda and caux are unchanged. Both set c^2=slab_scale^2*caux and
-  beta=z*tau*sqrt(c^2*lambda^2/(c^2+tau^2*lambda^2)); beta is not a density coordinate.
-  Both use tau scale 2*scale_global and caux~InvGamma(slab_df/2,slab_df/2). PyMC's
-  positive half-t normalizations for tau and lambda add only (d+1)*log(2) with d=1536.
+- PyMC's positive half-t normalizations for tau and lambda add only (d+1)*log(2) with
+  d=1536.
 - Original Stan SHA-256: b5c3167d819c155b81558c8889295c7bd1b1d4a7d137ce1bcd04783825c7b00b
 - Saved points: models/posteriordb_logp/points/ovarian-logistic_regression_rhs.npz
-- Full evidence: models/posteriordb_logp/records/ovarian-logistic_regression_rhs.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

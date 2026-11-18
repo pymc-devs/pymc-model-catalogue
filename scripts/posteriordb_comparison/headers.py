@@ -15,9 +15,6 @@ def comparison_text(record, metadata):
         return "\n".join(lines)
     if record["status"] == "error":
         lines.append("- Measurement incomplete; no numerical agreement is claimed.")
-        lines.append(
-            f"- Evidence: models/posteriordb_logp/records/{record['posterior']}.json"
-        )
         return "\n".join(lines)
     a, b = record["points"]["a"], record["points"]["b"]
     packages = metadata["packages"]
@@ -46,16 +43,11 @@ def comparison_text(record, metadata):
                 f"- Adjusted comparison: {record['status'].upper()}; residual = {record['residual']!r}.",
             ]
         )
-    else:
-        lines.append(
-            "- No parameter-dependent adjustment; only constant offsets may cancel."
-        )
-    lines.extend(
-        [
-            f"- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = {record['tolerance']!r}",
-            "  using adjusted delta_Stan when an adjustment is present.",
-        ]
+    lines.append(
+        f"- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = {record['tolerance']!r}"
     )
+    if a["adjustments"]:
+        lines.append("  using adjusted delta_Stan.")
     for note in record["notes"]:
         if not note.startswith("Sources:"):
             lines.extend(wrap("- " + note, width=88, subsequent_indent="  "))
@@ -63,7 +55,6 @@ def comparison_text(record, metadata):
         [
             f"- Original Stan SHA-256: {record['stan_sha256']}",
             f"- Saved points: models/posteriordb_logp/{record['point_file']}",
-            f"- Full evidence: models/posteriordb_logp/records/{record['posterior']}.json",
             "- Two-point evidence only; no global equivalence, support or inference claim.",
         ]
     )

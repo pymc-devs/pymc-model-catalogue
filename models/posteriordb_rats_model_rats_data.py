@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelfand1990illustration (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/bugs_examples/vol1/rats
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native centered growth effects from posteriordb rats_model.
 
@@ -32,18 +27,10 @@ Stan comparison:
 - B: Stan = -4398362.244870762; PyMC = -4398362.244870891.
 - Raw delta: Stan = 1070568.0841248557; PyMC = 1070568.0841248538.
 - Raw comparison: MATCH; residual = 1.862645149230957e-09.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.010706680841248557
-  using adjusted delta_Stan when an adjustment is present.
-- Keep centered alpha and beta in rat order. PyMC rat_index=rat-1 and centered_x=x-xbar
-  reproduce the Stan observation predictor. Positive sigma_y, sigma_alpha and sigma_beta
-  have the same improper flat kernels as HalfFlat, not proper half-Normal priors.
-  Independent Normal alpha/beta hierarchy and hypermeans are unchanged.
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
+- PyMC indexes rats with rat_index=rat-1 (zero-based).
 - Original Stan SHA-256: c01395015d523c02784e538927b7c2b9cf36114d93729bd25a81d566e05eca19
 - Saved points: models/posteriordb_logp/points/rats_data-rats_model.npz
-- Full evidence: models/posteriordb_logp/records/rats_data-rats_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

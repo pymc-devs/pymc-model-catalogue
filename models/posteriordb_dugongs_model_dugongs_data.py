@@ -18,11 +18,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: mrc2winbugs (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/bugs_examples/vol2
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native growth curve from posteriordb dugongs_model.
 
@@ -33,18 +28,9 @@ Stan comparison:
 - B: Stan = -109.4324822421098; PyMC = -109.43248243205778.
 - Raw delta: Stan = 22.534908176387674; PyMC = 22.534908176387603.
 - Raw comparison: MATCH; residual = 7.105427357601002e-14.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.2253490817638768e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Keep the original precision tau, with Gamma(shape=0.0001,rate=0.0001) in both sources.
-  sigma=tau**(-1/2) is deterministic, not a new free coordinate, so no tau-to-sigma
-  Jacobian applies. The lambda interval (0.5,1), Normal coefficient priors, and growth
-  likelihood are unchanged.
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
 - Original Stan SHA-256: abdf86f018dc0b6e9213222648f3fafc14eae13629769e40cca7490877b05e6b
 - Saved points: models/posteriordb_logp/points/dugongs_data-dugongs_model.npz
-- Full evidence: models/posteriordb_logp/records/dugongs_data-dugongs_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

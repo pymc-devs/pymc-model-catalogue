@@ -16,11 +16,6 @@ Data: low_dim_gauss_mix_collapse (upstream posterior: low_dim_gauss_mix_collapse
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/low_dim_gauss_mix_collapse-low_dim_gauss_mix_collapse.json
 Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/low_dim_gauss_mix_collapse
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Two-component Gaussian mixture with unrestricted means.
 
@@ -34,16 +29,11 @@ Stan comparison:
 - B: Stan = -1687.6652702311083; PyMC = -1686.2789759780596.
 - Raw delta: Stan = 101.89586366821982; PyMC = 101.89586366821914.
 - Raw comparison: MATCH; residual = 6.821210263296962e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.018958636682198e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of unrestricted two-component mu, positive sigma and scalar theta; no
-  relabeling or sorting. Both likelihoods marginalize with weights [theta,1-theta] per
-  observation. HalfNormal scale normalizers differ from positive Normal densities only
-  by two log(2) constants.
+- HalfNormal scale normalizers differ from positive Normal densities only by two log(2)
+  constants.
 - Original Stan SHA-256: 5aef8bff324b2c25497ef2920153ca6359d1cb846468552b1c9a40e9970b0d52
 - Saved points: models/posteriordb_logp/points/low_dim_gauss_mix_collapse-low_dim_gauss_mix_collapse.npz
-- Full evidence: models/posteriordb_logp/records/low_dim_gauss_mix_collapse-low_dim_gauss_mix_collapse.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

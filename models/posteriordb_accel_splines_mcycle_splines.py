@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: bales2019selecting (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/bbbales2/cmdstan-warmup/blob/develop/examples/accel_splines/
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Acceleration spline model from posteriordb and Bales (2019).
 
@@ -40,20 +35,15 @@ Stan comparison:
 - Adjusted Stan delta = 32296.214593195615.
 - Adjusted comparison: MATCH; residual = -3.637978807091713e-12.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.0003239621459319562
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of unpenalized bs/bs_sigma and standardized zs vectors; spline coefficients
-  are sds*zs in both predictors, and sigma is exp of its linear predictor. The
-  unpenalized coefficients have flat densities.
-- Student-t intercepts and prior_only agree. In the measured installed PyMC/PyTensor,
-  integer sigma=36 in both HalfStudentT spline-scale priors has dtype int8: sigma**2
-  overflows to 16. Their native density is therefore HalfStudentT(3,4), not Stan's
-  normalized positive StudentT(3,0,36). The named adjustment adds the two source-derived
-  prior log-density differences to Stan. Original targets differ; this runtime
-  discrepancy is not a best-practice reparameterization. Recheck this adjustment after
-  engine upgrades.
+  using adjusted delta_Stan.
+- In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT spline-
+  scale priors has dtype int8: sigma**2 overflows to 16. Their native density is
+  therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The
+  named adjustment adds the two source-derived prior log-density differences to Stan.
+  Original targets differ; this runtime discrepancy is not a best-practice
+  reparameterization. Recheck this adjustment after engine upgrades.
 - Original Stan SHA-256: 9996e181a5d23d8c2a127adfa19c4c1e12051abf91539ce40a14249fc94d8bae
 - Saved points: models/posteriordb_logp/points/mcycle_splines-accel_splines.npz
-- Full evidence: models/posteriordb_logp/records/mcycle_splines-accel_splines.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

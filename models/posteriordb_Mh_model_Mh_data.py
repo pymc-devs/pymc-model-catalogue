@@ -18,11 +18,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: kery2011population (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/blob/master/BPA/Ch.06
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Individual detection uses noncentered Gaussian effects on log odds.
 
@@ -35,18 +30,11 @@ Stan comparison:
 - B: Stan = -747.3552538441143; PyMC = -748.9646917866185.
 - Raw delta: Stan = 5.847984717756617; PyMC = 5.847984717756276.
 - Raw comparison: MATCH; residual = 3.410605131648481e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.058479847177566e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Retain all M eps_raw values, including never-detected individuals. Both sources use
-  logit(mean_p)+sigma*eps_raw and the same marginalized Binomial likelihood. PyMC
-  Uniform(0,5) for sigma adds only -log(5) relative to Stan's implicit bounded-flat
+- PyMC Uniform(0,5) for sigma adds only -log(5) relative to Stan's implicit bounded-flat
   prior.
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
 - Original Stan SHA-256: 69dda71b0ec6857c4c5a0e81c014979f57da97c5260b6e3456305a13050b7ad5
 - Saved points: models/posteriordb_logp/points/Mh_data-Mh_model.npz
-- Full evidence: models/posteriordb_logp/records/Mh_data-Mh_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

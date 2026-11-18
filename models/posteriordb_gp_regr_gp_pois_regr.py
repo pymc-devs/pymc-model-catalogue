@@ -17,11 +17,6 @@ Data: gp_pois_regr (upstream posterior: gp_pois_regr-gp_regr)
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/gp_pois_regr-gp_regr.json
 Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/gp_regr
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Exact Gaussian-process regression from posteriordb.
 
@@ -35,16 +30,10 @@ Stan comparison:
 - B: Stan = -80.3124765261045; PyMC = -78.92618072377616.
 - Raw delta: Stan = -4.101095273563203; PyMC = -4.101095273563118.
 - Raw comparison: MATCH; residual = -8.526512829121202e-14.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.041010952735632e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of rho, alpha and sigma; both marginalized Normal covariances are
-  alpha^2*ExpQuad(rho)+sigma*I. sigma is additive variance, not an SD to square.
-  Observed y retains its supplied order.
 - The two HalfNormal versus positive Normal density normalizers are constants.
 - Original Stan SHA-256: bfbba64339a06d6ca5e0619aa0e3bffee2865504ee00768dd999066182db9873
 - Saved points: models/posteriordb_logp/points/gp_pois_regr-gp_regr.npz
-- Full evidence: models/posteriordb_logp/records/gp_pois_regr-gp_regr.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

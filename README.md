@@ -79,7 +79,7 @@ The benchmark helper checks finite PyMC logp and gradients and evaluates origina
 and frozen graphs. The separate two-point comparison harness evaluates the pinned
 original Stan definitions through BridgeStan and the unchanged native PyMC builders.
 Each model header records the measured logps, deltas, adjustments, residual and
-status. Full-precision records and saved parameter arrays are in
+status. Full-precision results (`results.json`) and saved parameter arrays are in
 [`models/posteriordb_logp/`](models/posteriordb_logp/).
 
 The recorded two-point outcomes are:
@@ -139,7 +139,7 @@ it does not repair or declare the original models equivalent. See
 [`motorcycle-dtype-diagnostic.json`](models/posteriordb_logp/motorcycle-dtype-diagnostic.json).
 These adjustments require re-review after engine upgrades. Run-specific metadata
 preserves harness hashes; run 3 also records the relevant installed PyMC source
-hashes and PyTensor dtype configuration. Each delivered record identifies its
+hashes and PyTensor dtype configuration. Each `results.json` entry identifies its
 measurement run; superseded failures and source snapshots remain in the local
 verification evidence.
 

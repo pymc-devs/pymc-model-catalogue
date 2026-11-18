@@ -152,8 +152,7 @@ def map_parameters(name, data, stan):
         )
     else:
         notes.append(
-            "Same constrained parameters and probability factors up to "
-            "normalization constants. Stan ODE integration and PyMC LSODA "
-            "differ numerically; no solver-residual correction is applied."
+            "Stan ODE integration and PyMC LSODA differ numerically; "
+            "no solver-residual correction is applied."
         )
     return values, adjustments, notes

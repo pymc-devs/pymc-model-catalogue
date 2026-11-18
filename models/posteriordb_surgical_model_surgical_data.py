@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: mrc1winbugs (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/bugs_examples/vol1/surgical
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native hospital mortality model from posteriordb surgical_model.
 
@@ -32,18 +27,9 @@ Stan comparison:
 - B: Stan = -1334.3373835523455; PyMC = -1334.337383648271.
 - Raw delta: Stan = 80.33297604027166; PyMC = 80.33297604027143.
 - Raw comparison: MATCH; residual = 2.2737367544323206e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.8033297604027164e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Keep variance sigmasq with InverseGamma(shape=0.001,scale=0.001). sigma=sqrt(sigmasq)
-  and p=sigmoid(b) are deterministics, so no variance/SD or logit/probability Jacobian
-  applies. Both sources use the same Normal(mu,sigma) b effects and Binomial-logit
-  observations.
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
 - Original Stan SHA-256: 10fdd6ddf107af6c0ef7ead174b5ad6f341ae3b3b80c54650d88e22d5c459696
 - Saved points: models/posteriordb_logp/points/surgical_data-surgical_model.npz
-- Full evidence: models/posteriordb_logp/records/surgical_data-surgical_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

@@ -21,9 +21,6 @@ Reference URL: https://mc-stan.org/users/documentation/case-studies/pcm_and_gpcm
 Changes from original:
 - Scale binary covariates by their range, changing the induced coefficient priors
   on the original covariate scale; see the scaling notes below.
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
 
 Implementation notes:
 Native generalized partial-credit model with latent regression from edstan.
@@ -51,7 +48,7 @@ Stan comparison:
 - Adjusted Stan delta = -103.41360390271292.
 - Adjusted comparison: MATCH; residual = -1.035971308738226e-11.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.0341360390271293e-06
-  using adjusted delta_Stan when an adjustment is present.
+  using adjusted delta_Stan.
 - Append minus the sum to beta_free (and kappa_free when present) for ZeroSumNormal.
   Fixed prior scale 3 makes the subspace-volume and normalization offsets constant.
 - Original targets differ: binary covariate scaling changes coefficient priors. Map
@@ -59,7 +56,6 @@ Stan comparison:
   means; add the StudentT(3) prior difference. The Jacobian is data-only.
 - Original Stan SHA-256: b624e19f288c892778eabc80b4afde9f6822ac9622202787950adf4d5ba6d10b
 - Saved points: models/posteriordb_logp/points/timssAusTwn_irt-gpcm_latent_reg_irt.npz
-- Full evidence: models/posteriordb_logp/records/timssAusTwn_irt-gpcm_latent_reg_irt.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

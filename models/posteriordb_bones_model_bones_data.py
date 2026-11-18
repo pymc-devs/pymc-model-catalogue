@@ -17,11 +17,6 @@ References: roche1975rwt (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/bugs_examples/vol1/bones
 Reference URL: http://www.mrc-bsu.cam.ac.uk/wp-content/uploads/WinBUGS_Vol1.pdf
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native skeletal maturity model from the BUGS bones example.
 
@@ -34,19 +29,12 @@ Stan comparison:
 - B: Stan = -1650.3197544900816; PyMC = -1650.319761646184.
 - Raw delta: Stan = -10.335919484062288; PyMC = -10.335926340951346.
 - Raw comparison: MISMATCH; residual = 6.8568890583264874e-06.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1033592634095134e-06
-  using adjusted delta_Stan when an adjustment is present.
-- theta retains child order and Normal(0,36) SD. Stan's categories 1..ncat become PyMC
-  categories 0..ncat-1; missing grade=-1 entries are omitted in both. OrderedLogistic
+- Stan's categories 1..ncat become PyMC categories 0..ncat-1. PyMC OrderedLogistic
   eta=delta*theta and cutpoints delta*gamma reproduce Stan's differences of
-  inv_logit(delta*(theta-gamma)). The bundled discriminations are positive and active
-  thresholds ordered.
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
+  inv_logit(delta*(theta-gamma)).
 - Original Stan SHA-256: 0d478060e879cf4c26f5a5d8eafb2de3e166a1d9e581999c26c00d3a002cf2c4
 - Saved points: models/posteriordb_logp/points/bones_data-bones_model.npz
-- Full evidence: models/posteriordb_logp/records/bones_data-bones_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

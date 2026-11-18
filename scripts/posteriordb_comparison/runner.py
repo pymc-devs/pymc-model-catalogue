@@ -462,9 +462,6 @@ def main():
             for future in as_completed(futures):
                 result = future.result()
                 results.append(result)
-                _write_json(
-                    args.output / "records" / f"{result['posterior']}.json", result
-                )
                 print(
                     result["posterior"],
                     result["status"],

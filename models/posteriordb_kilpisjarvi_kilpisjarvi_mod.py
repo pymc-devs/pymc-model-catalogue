@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: bales2019selecting (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/bbbales2/cmdstan-warmup/develop/examples/kilpisjarvi/kilpisjarvi.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Gaussian temperature regression from the posteriordb kilpisjarvi probability model.
 
@@ -35,15 +30,9 @@ Stan comparison:
 - B: Stan = -45519254.86296274; PyMC = -45519254.86296279.
 - Raw delta: Stan = -45137485.910838604; PyMC = -45137485.91083859.
 - Raw comparison: MATCH; residual = -1.4901161193847656e-08.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.451375859108386
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of alpha, beta and sigma, preserving the supplied uncentered year predictor x
-  and its adjustable prior parameters. HalfFlat sigma matches the original positive flat
-  constrained density.
 - Original Stan SHA-256: 49c1f6d1d7a12595957549ffac0159496c7216037dd07e7ff345e088394aba0a
 - Saved points: models/posteriordb_logp/points/kilpisjarvi_mod-kilpisjarvi.npz
-- Full evidence: models/posteriordb_logp/records/kilpisjarvi_mod-kilpisjarvi.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

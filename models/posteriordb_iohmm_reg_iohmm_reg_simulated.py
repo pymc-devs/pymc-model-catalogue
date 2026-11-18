@@ -17,9 +17,6 @@ Reference URL: https://github.com/luisdamiano/stancon18
 
 Changes from original:
 - Use destination-state gating and analytically eliminate the conditionally independent states.
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
 
 Implementation notes:
 Native input-output hidden-state regression from the Damiano example in posteriordb.
@@ -46,13 +43,12 @@ Stan comparison:
 - Adjusted Stan delta = -1191.6539292924172.
 - Adjusted comparison: MATCH; residual = 5.4569682106375694e-12.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.2916539292924226e-05
-  using adjusted delta_Stan when an adjustment is present.
+  using adjusted delta_Stan.
 - Original targets differ: Stan gates source states; PyMC gates destination states.
   Adjustment is the independently computed destination-mixture likelihood minus the
   original forward likelihood.
 - Original Stan SHA-256: 9203ab44e94440c2bc51f96551c4e8ef94bbebfb6481c601320883ee983d7c32
 - Saved points: models/posteriordb_logp/points/iohmm_reg_simulated-iohmm_reg.npz
-- Full evidence: models/posteriordb_logp/records/iohmm_reg_simulated-iohmm_reg.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

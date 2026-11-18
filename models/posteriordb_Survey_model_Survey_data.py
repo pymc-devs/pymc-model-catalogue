@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: lee2013cognitive (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/Bayesian_Cognitive_Modeling/ParameterEstimation/Binomial
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 The survey count has a discrete uniform distribution over one through nmax.
 
@@ -35,18 +30,9 @@ Stan comparison:
 - B: Stan = -18.92216108259801; PyMC = -18.92216108259803.
 - Raw delta: Stan = -0.45726500318806274; PyMC = -0.4572650031881018.
 - Raw comparison: MATCH; residual = 3.907985046680551e-14.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.004572650031881e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- theta is unchanged. Both sum the joint binomial likelihood over
-  n=max(1,max(k)),...,nmax with weight 1/nmax; omitted lower n have zero likelihood.
-  Uniform(0,1) adds zero log-normalization.
 - Original Stan SHA-256: 6253492299891332a7746d44976a161a2a557816ef177d68ddedaa703a144f87
 - Saved points: models/posteriordb_logp/points/Survey_data-Survey_model.npz
-- Full evidence: models/posteriordb_logp/records/Survey_data-Survey_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

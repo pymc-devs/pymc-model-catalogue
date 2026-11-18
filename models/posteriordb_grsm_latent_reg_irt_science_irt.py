@@ -19,9 +19,6 @@ Reference URL: https://mc-stan.org/users/documentation/case-studies/rsm_and_grsm
 
 Changes from original:
 - Use the documented covariate scaling; the bundled intercept-only dataset is unaffected.
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
 
 Implementation notes:
 Native generalized rating-scale model with latent regression from edstan.
@@ -44,14 +41,11 @@ Stan comparison:
 - B: Stan = -4284.753997951464; PyMC = -4280.718896462794.
 - Raw delta: Stan = -50.37742635732775; PyMC = -50.37742635732047.
 - Raw comparison: MATCH; residual = -7.275957614183426e-12.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.5037742635732774e-06
-  using adjusted delta_Stan when an adjustment is present.
 - Append minus the sum to beta_free (and kappa_free when present) for ZeroSumNormal.
   Fixed prior scale 3 makes the subspace-volume and normalization offsets constant.
 - Original Stan SHA-256: 88399731bf82063c69f6b0bead80a3fba0966e6d85ade9729fde54e853b459e5
 - Saved points: models/posteriordb_logp/points/science_irt-grsm_latent_reg_irt.npz
-- Full evidence: models/posteriordb_logp/records/science_irt-grsm_latent_reg_irt.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

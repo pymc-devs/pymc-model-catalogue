@@ -18,11 +18,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.14/election88_full.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native crossed logistic effects from posteriordb election88_full.
 
@@ -33,17 +28,12 @@ Stan comparison:
 - B: Stan = -8628.412684196437; PyMC = -8651.438535765885.
 - Raw delta: Stan = -71.64006309505021; PyMC = -71.64006309505021.
 - Raw comparison: MATCH; residual = 0.0.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.716400630950502e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of the five centered effect vectors and their scales. beta order is
-  intercept, black, female, previous_vote, female*black; all categorical indices are
-  shifted from Stan one-based to NumPy zero-based.
-- The five Uniform(0,100) scale normalizers are parameter-independent; the original Stan
-  bounded scales have flat constrained densities.
+- Categorical indices are shifted from Stan one-based to NumPy zero-based.
+- The five Uniform(0,100) scale normalizers are parameter-independent relative to the
+  original Stan bounded scales.
 - Original Stan SHA-256: cc0cac4d2d729adf98d1b12d06db2fa53327e3fc3bc700a1e7f28b3690ef858d
 - Saved points: models/posteriordb_logp/points/election88-election88_full.npz
-- Full evidence: models/posteriordb_logp/records/election88-election88_full.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

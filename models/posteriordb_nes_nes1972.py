@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/nes.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native Gaussian regression for National Election Study party identification.
 
@@ -34,17 +29,9 @@ Stan comparison:
 - B: Stan = -23392.363173055055; PyMC = -23392.36317305503.
 - Raw delta: Stan = -390.8589853379526; PyMC = -390.85898533792715.
 - Raw comparison: MATCH; residual = -2.546585164964199e-11.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.908589853379526e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1,
-  gender, income], partyid7 response and flat beta/sigma>0 priors.
 - Original Stan SHA-256: 260e7acec9bef905cae306ff6defb97e525c116f018aba9c687af154c10c8e70
 - Saved points: models/posteriordb_logp/points/nes1972-nes.npz
-- Full evidence: models/posteriordb_logp/records/nes1972-nes.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

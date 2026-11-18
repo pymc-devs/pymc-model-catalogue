@@ -15,11 +15,6 @@ Data: hmm_example (upstream posterior: hmm_example-hmm_example)
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/hmm_example-hmm_example.json
 Reference URL: https://github.com/imadmali/bball-hmm/blob/master/models/hmm_example.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native two-state Gaussian example from posteriordb.
 
@@ -34,20 +29,15 @@ Stan comparison:
 - B: Stan = -2108.9643080736214; PyMC = -2108.964308073621.
 - Raw delta: Stan = -115.70943044145929; PyMC = -115.70943044145884.
 - Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.1570943044145927e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of transition simplex rows and positive ordered means. The same Gaussian
-  forward recursion marginalizes hidden states with initial weights one. Explicit
-  uniform simplex densities in PyMC add only constant normalizers to Stan's implicit
-  flat simplex densities.
+- Explicit uniform simplex densities in PyMC add only constant normalizers to Stan's
+  implicit flat simplex densities.
 - Shared-support limitation: original Stan points enforce all ordered or positive-
   ordered constraints. PyMC ordering supplied only by a transform is not separately
   enforced after transforms are removed. These evaluations compare points on the shared
   Stan-valid support, not global support or model equivalence.
 - Original Stan SHA-256: 8ebe19f3469e97153177d69c9dea248207278cc6f3d1d16885f83a791b11c476
 - Saved points: models/posteriordb_logp/points/hmm_example-hmm_example.npz
-- Full evidence: models/posteriordb_logp/records/hmm_example-hmm_example.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

@@ -16,11 +16,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: taylor2018forecasting (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/facebook/prophet/master/R/inst/stan/prophet.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Prophet trend and regression from the posteriordb prophet probability model.
 
@@ -35,18 +30,13 @@ Stan comparison:
 - B: Stan = -1323.1678056449293; PyMC = -1322.4746585226062.
 - Raw delta: Stan = 202.83965812878955; PyMC = 202.83965812878887.
 - Raw comparison: MATCH; residual = 6.821210263296962e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.0283965812878954e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of k, m, delta, sigma_obs and feature beta. Linear trend uses
-  k*t+m+sum(delta_s*max(t-t_change_s,0)). For logistic trend, Stan's continuity
-  recursion telescopes to logit(trend/cap)=k*(t-m)+sum(delta_s*max(t-t_change_s,0));
-  thus m remains a time location, not a log-odds intercept. Additive/multiplicative
-  feature masks and observation order are unchanged.
+- For the logistic trend, PyMC uses the telescoped form
+  logit(trend/cap)=k*(t-m)+sum(delta_s*max(t-t_change_s,0)) in place of Stan's
+  continuity recursion; m remains a time location, not a log-odds intercept.
 - HalfNormal versus positive Normal sigma_obs contributes only log(2).
 - Original Stan SHA-256: e3fcbc4b053e2e8f270ad611eba9fe593146aa24bb01940e91cd4e17450239b5
 - Saved points: models/posteriordb_logp/points/rstan_downloads-prophet.npz
-- Full evidence: models/posteriordb_logp/records/rstan_downloads-prophet.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

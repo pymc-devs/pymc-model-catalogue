@@ -15,11 +15,6 @@ Data: bball_drive_event_0 (upstream posterior: bball_drive_event_0-hmm_drive_0)
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/bball_drive_event_0-hmm_drive_0.json
 Reference URL: https://github.com/imadmali/bball-hmm/blob/master/models/drive_0.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native exponential drive model from the posteriordb basketball example.
 
@@ -34,21 +29,13 @@ Stan comparison:
 - B: Stan = -11384.378617039532; PyMC = -11384.37861703954.
 - Raw delta: Stan = 1493.767150612559; PyMC = 1493.7671506125862.
 - Raw comparison: MATCH; residual = -2.7284841053187847e-11.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.593767150612586e-05
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of two transition simplex rows and positive ordered emission rates
-  phi/lambda. Both likelihoods sum all hidden paths by the same log-space forward
-  recursion, with initial state weights one rather than a normalized uniform
-  distribution. Each emission is the sum of Exponential(u;phi) and Exponential(v;lambda)
-  log densities.
 - Shared-support limitation: original Stan points enforce all ordered or positive-
   ordered constraints. PyMC ordering supplied only by a transform is not separately
   enforced after transforms are removed. These evaluations compare points on the shared
   Stan-valid support, not global support or model equivalence.
 - Original Stan SHA-256: febb25a020c125d594c0c39058e68847fbfe49c20f80ec3c6ea0851a3b8f75e1
 - Saved points: models/posteriordb_logp/points/bball_drive_event_0-hmm_drive_0.npz
-- Full evidence: models/posteriordb_logp/records/bball_drive_event_0-hmm_drive_0.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

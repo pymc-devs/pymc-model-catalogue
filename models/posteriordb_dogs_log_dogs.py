@@ -16,11 +16,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.24/dogs_log.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native constrained logistic model from posteriordb dogs_log.
 
@@ -31,20 +26,12 @@ Stan comparison:
 - B: Stan = -391.2564909183006; PyMC = -391.25649091830047.
 - Raw delta: Stan = 339.61052012651356; PyMC = 339.6105201265145.
 - Raw comparison: MATCH; residual = -9.094947017729282e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.396105201265145e-06
-  using adjusted delta_Stan when an adjustment is present.
-- beta order is avoidance, shock, with identical Uniform(-100,0) and Uniform(0,100)
-  factors. Stan declares beta unconstrained, but these prior supports still apply.
-  PyMC's logit_p equals Stan's inv_logit predictor; first-trial probability is 1/2 in
-  both. The feasible center [-0.5,0.5] is chosen solely from support, not engine
-  agreement. The constrained beta-to-beta map is identity with log Jacobian zero;
-  automatic Stan/PyMC support-transform Jacobians remain disabled.
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
+- Stan declares beta unconstrained, but the Uniform(-100,0) and Uniform(0,100) prior
+  supports still apply. The feasible center [-0.5,0.5] is chosen solely from support,
+  not engine agreement.
 - Original Stan SHA-256: f0257153c50d7ef91d9958607c159ae9097d622e3d5ed9778cd3be60fd91b56b
 - Saved points: models/posteriordb_logp/points/dogs-dogs_log.npz
-- Full evidence: models/posteriordb_logp/records/dogs-dogs_log.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

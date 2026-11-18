@@ -15,11 +15,6 @@ Data: sblri (upstream posterior: sblri-blr)
     Local archive: data/posteriordb_sblri.json.zip
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/sblri-blr.json
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native Gaussian linear regression from posteriordb blr.
 
@@ -30,17 +25,10 @@ Stan comparison:
 - B: Stan = -6068280.409912163; PyMC = -6068279.716765175.
 - Raw delta: Stan = -2824023.4004541677; PyMC = -2824023.4004541673.
 - Raw comparison: MATCH; residual = -4.656612873077393e-10.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.02824123400454168
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- beta, sigma and X are unchanged. Stan sigma>0 with Normal(0,10) versus PyMC
-  HalfNormal(10) adds the constant log(2).
+- Stan sigma>0 with Normal(0,10) versus PyMC HalfNormal(10) adds the constant log(2).
 - Original Stan SHA-256: e6407c4391ab11c0b59f17f3a04132df87aa69b7dae459e173036f16f9e8b161
 - Saved points: models/posteriordb_logp/points/sblri-blr.npz
-- Full evidence: models/posteriordb_logp/records/sblri-blr.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

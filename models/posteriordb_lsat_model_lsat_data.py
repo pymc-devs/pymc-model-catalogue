@@ -19,11 +19,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: mrc1winbugs (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/bugs_examples/vol1/lsat
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native LSAT item-response model from the BUGS example.
 
@@ -36,18 +31,12 @@ Stan comparison:
 - B: Stan = -4287.590745592309; PyMC = -4286.897598795441.
 - Raw delta: Stan = 361.9496098679274; PyMC = 361.9496098679283.
 - Raw comparison: MATCH; residual = -9.094947017729282e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.619496098679283e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Expand response patterns in cumulative-count order; Stan's item/person matrix is
-  transposed relative to PyMC's person/item likelihood, without permuting theta. Both
-  logits are beta*theta-alpha. PyMC HalfNormal(100) for positive beta differs from
-  Stan's constrained Normal(0,100) only by the constant +log(2).
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
+- Stan's item/person matrix is transposed relative to PyMC's person/item likelihood,
+  without permuting theta. PyMC HalfNormal(100) for positive beta differs from Stan's
+  constrained Normal(0,100) only by the constant +log(2).
 - Original Stan SHA-256: 9f3d0abccfb55fcab634d81a19d74507409b836c549224b923b237ecf9f2c817
 - Saved points: models/posteriordb_logp/points/lsat_data-lsat_model.npz
-- Full evidence: models/posteriordb_logp/records/lsat_data-lsat_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

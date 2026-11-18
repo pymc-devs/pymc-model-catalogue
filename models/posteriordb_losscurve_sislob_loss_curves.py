@@ -15,11 +15,6 @@ Data: loss_curves (upstream posterior: loss_curves-losscurve_sislob)
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/loss_curves-losscurve_sislob.json
 Reference URL: https://mc-stan.org/users/documentation/case-studies/losscurves_casestudy.html
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Hierarchical loss development from the posteriordb losscurve_sislob model.
 
@@ -33,17 +28,9 @@ Stan comparison:
 - B: Stan = -556.634734886495; PyMC = -556.6347348788763.
 - Raw delta: Stan = 17.51270799429335; PyMC = 17.512707994293464.
 - Raw comparison: MATCH; residual = -1.1368683772161603e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1751270799429345e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of omega, theta, LR, mu_LR, sd_LR and loss_sd. The supplied growthmodel_id
-  selects the same Weibull 1-exp(-(t/theta)^omega) or log-logistic
-  sigmoid(omega*(log(t)-log(theta))) growth. Loss
-  mean=LR[cohort]*premium[cohort]*growth[t_idx] and observation
-  SD=loss_sd*premium[cohort], preserving observation order and all priors.
 - Original Stan SHA-256: b7e3d55e53d230a391b87e03fc9eec6007322a79ddec748ac1a4dee1741bc4b4
 - Saved points: models/posteriordb_logp/points/loss_curves-losscurve_sislob.npz
-- Full evidence: models/posteriordb_logp/records/loss_curves-losscurve_sislob.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

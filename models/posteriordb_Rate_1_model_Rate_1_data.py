@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: lee2013cognitive (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/Bayesian_Cognitive_Modeling/GettingStarted
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 One success rate with a uniform Beta distribution.
 
@@ -34,15 +29,9 @@ Stan comparison:
 - B: Stan = -1.4755165919307762; PyMC = -1.4755165919307773.
 - Raw delta: Stan = 0.043657351321534144; PyMC = 0.0436573513215337.
 - Raw comparison: MATCH; residual = 4.440892098500626e-16.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0004365735132153e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identical Beta(1,1) prior and Binomial(n,theta) observed count.
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
 - Original Stan SHA-256: ae95dcc6c2e2953e202fb257181ee24e1cb1f7780819e95d94663dde4fddc795
 - Saved points: models/posteriordb_logp/points/Rate_1_data-Rate_1_model.npz
-- Full evidence: models/posteriordb_logp/records/Rate_1_data-Rate_1_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

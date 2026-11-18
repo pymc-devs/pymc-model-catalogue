@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: sierra2014modeling (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/blob/master/knitr/soil-carbon/soil_incubation.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Two-pool carbon dynamics from the posteriordb soil_incubation model.
 
@@ -35,15 +30,11 @@ Stan comparison:
 - B: Stan = -31.536547018749822; PyMC = -28.070807010787178.
 - Raw delta: Stan = 0.8146711088118863; PyMC = 0.8146719210908486.
 - Raw comparison: MATCH; residual = -8.122789623143944e-07.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0081467192109083e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Same constrained parameters and probability factors up to normalization constants.
-  Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
+- Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
   is applied.
 - Original Stan SHA-256: 6c845fcee0e9e5a49508c5b3395bb09613495b2773d93dbeef9f72664ce10e57
 - Saved points: models/posteriordb_logp/points/soil_carbon-soil_incubation.npz
-- Full evidence: models/posteriordb_logp/records/soil_carbon-soil_incubation.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

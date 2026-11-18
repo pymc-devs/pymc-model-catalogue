@@ -15,11 +15,6 @@ Data: uk_drivers (upstream posterior: uk_drivers-state_space_stochastic_level_st
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/uk_drivers-state_space_stochastic_level_stochastic_seasonal.json
 Reference URL: https://github.com/sinhrks/stan-statespace/blob/master/models/fig07_02.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Seasonal state model from the posteriordb stochastic level model.
 
@@ -34,14 +29,10 @@ Stan comparison:
 - B: Stan = -897.3775675171354; PyMC = -900.591892292794.
 - Raw delta: Stan = -7.022613185529508; PyMC = -7.022613185529053.
 - Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.070226131855295e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of bounded level mu, seasonal states, flat beta/lambda and three positive
-  ordered SDs (seasonal,level,observation). Native AR rho=-ones(11) with flat initial
-  eleven states equals Stan's seasonal[t]~Normal(-sum(previous eleven),sigma[0]); level
-  transitions remain unnormalized Normal factors inside the fixed
-  mean(y)+/-3*sample_sd(y) level bounds.
+- Native AR rho=-ones(11) with flat initial eleven states replaces Stan's
+  seasonal[t]~Normal(-sum(previous eleven),sigma[0]); level transitions remain
+  unnormalized Normal factors inside the fixed mean(y)+/-3*sample_sd(y) level bounds.
 - Uniform level normalizers and three HalfStudentT versus positive Student-t scale
   normalizers are parameter-independent.
 - Shared-support limitation: original Stan points enforce all ordered or positive-
@@ -50,7 +41,6 @@ Stan comparison:
   Stan-valid support, not global support or model equivalence.
 - Original Stan SHA-256: f0103754c910380b24d6a6619053eb04fb7ee9f74f4acfa301b6f6234e9b8dec
 - Saved points: models/posteriordb_logp/points/uk_drivers-state_space_stochastic_level_stochastic_seasonal.npz
-- Full evidence: models/posteriordb_logp/records/uk_drivers-state_space_stochastic_level_stochastic_seasonal.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

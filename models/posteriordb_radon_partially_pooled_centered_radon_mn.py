@@ -18,11 +18,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://mc-stan.org/users/documentation/case-studies/radon.html
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native radon model from the posteriordb radon case study.
 
@@ -36,21 +31,12 @@ Stan comparison:
 - B: Stan = -2120.5815623520916; PyMC = -2119.1952680229465.
 - Raw delta: Stan = 59.27377792054358; PyMC = 59.273777920543125.
 - Raw comparison: MATCH; residual = 4.547473508864641e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.5927377792054357e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- County labels are converted from Stan one-based to NumPy zero-based indices without
-  reordering observations or county parameters. Residual SD and all varying-effect SDs
-  retain their names and units.
+- County labels are converted from Stan one-based to NumPy zero-based indices.
 - Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
-  the constant log(2), with no changed prior shape.
-- Both sources retain centered county alpha and/or beta.
+  the constant log(2).
 - Original Stan SHA-256: 7c56bbcfc3e0922edb5874c67eb10bc8b174bef0d4c63e916558e37862fc3a4a
 - Saved points: models/posteriordb_logp/points/radon_mn-radon_partially_pooled_centered.npz
-- Full evidence: models/posteriordb_logp/records/radon_mn-radon_partially_pooled_centered.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

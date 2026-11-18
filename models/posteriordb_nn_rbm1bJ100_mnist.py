@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: lampinen2001bayesian (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/knitr/neural-nets
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 One-hidden-layer classification network with one hundred hidden units.
 
@@ -34,20 +29,10 @@ Stan comparison:
 - B: Stan = -274624.68105277163; PyMC = -274624.6810527595.
 - Raw delta: Stan = -3110.384322169528; PyMC = -3110.3843221730785.
 - Raw comparison: MATCH; residual = 3.550667315721512e-09.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.210384322173078e-05
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of alpha (M,J), beta (J,K-1), row-vector alpha1 (J,), beta1 (K-1,) and their
-  variances. No transpose or Fortran/C flattening permutation is applied to matrices.
-  The hidden layer is tanh(x@alpha+alpha1), and nonbaseline logits are
-  hidden@beta+beta1. The first category logit is one, not zero; observed labels shift
-  from 1..K to 0..K-1.
-- The variance priors have inverse-gamma shape 0.25 and scales 0.25*(0.05/M^2)^2 and
-  0.25*(0.05/J^2)^2. Conditional weight SDs are square roots of these variances,
-  matching the original priors.
+- Observed labels shift from 1..K to 0..K-1.
 - Original Stan SHA-256: 810f47fa99f782219c6b16fdb23e719e126dfb678997c0ae0f4b3498a0cdc801
 - Saved points: models/posteriordb_logp/points/mnist-nn_rbm1bJ100.npz
-- Full evidence: models/posteriordb_logp/records/mnist-nn_rbm1bJ100.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

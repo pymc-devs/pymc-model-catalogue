@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: lotka1925principles, volterra1926fluctuations, volterra1927variazioni (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/knitr/lotka-volterra/lotka-volterra.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Lotka-Volterra populations with lognormal measurement errors.
 
@@ -36,15 +31,11 @@ Stan comparison:
 - B: Stan = -182.3569016532067; PyMC = -181.98098398931793.
 - Raw delta: Stan = 74.74726876539216; PyMC = 74.74147800390003.
 - Raw comparison: MISMATCH; residual = 0.005790761492136198.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.7474726876539216e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Same constrained parameters and probability factors up to normalization constants.
-  Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
+- Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
   is applied.
 - Original Stan SHA-256: f1cb4dda6af07ea721d5a38c6cbe8e3b60f7d48294db0374f331dc9803fe4328
 - Saved points: models/posteriordb_logp/points/hudson_lynx_hare-lotka_volterra.npz
-- Full evidence: models/posteriordb_logp/records/hudson_lynx_hare-lotka_volterra.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

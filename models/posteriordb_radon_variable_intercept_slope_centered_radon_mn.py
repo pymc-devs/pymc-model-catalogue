@@ -18,11 +18,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://mc-stan.org/users/documentation/case-studies/radon.html
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native radon model from the posteriordb radon case study.
 
@@ -36,21 +31,12 @@ Stan comparison:
 - B: Stan = -1923.6868920595975; PyMC = -1921.6074505818683.
 - Raw delta: Stan = 125.96247522471776; PyMC = 125.96247522472004.
 - Raw comparison: MATCH; residual = -2.2737367544323206e-12.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.2596247522472e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- County labels are converted from Stan one-based to NumPy zero-based indices without
-  reordering observations or county parameters. Residual SD and all varying-effect SDs
-  retain their names and units.
+- County labels are converted from Stan one-based to NumPy zero-based indices.
 - Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
-  the constant log(2), with no changed prior shape.
-- Both sources retain centered county alpha and/or beta.
+  the constant log(2).
 - Original Stan SHA-256: b41732368f4f389a6ce0aa1a6d169387521500a23294436b0230595e9a745ae2
 - Saved points: models/posteriordb_logp/points/radon_mn-radon_variable_intercept_slope_centered.npz
-- Full evidence: models/posteriordb_logp/records/radon_mn-radon_variable_intercept_slope_centered.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

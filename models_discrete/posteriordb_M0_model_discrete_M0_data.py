@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: kery2011population (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/blob/master/BPA/Ch.06
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Explicit population inclusion with constant detection.
 

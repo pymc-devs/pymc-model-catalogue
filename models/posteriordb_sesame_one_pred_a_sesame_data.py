@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/ARM/Ch.10
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native Gaussian regression for Sesame Street viewing and encouragement.
 
@@ -34,17 +29,9 @@ Stan comparison:
 - B: Stan = -337.3023539131388; PyMC = -337.30235391313954.
 - Raw delta: Stan = -1.327486232489889; PyMC = -1.327486232489889.
 - Raw comparison: MATCH; residual = 0.0.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.013274862324899e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- Identical watched response, beta order [intercept, encouraged], and Flat beta/HalfFlat
-  sigma matching the implicit Stan priors.
 - Original Stan SHA-256: 8fa82cd7e6c4d1f23db8de2cd0f8a5eb6efedc8369ddccc5e4f3476a61d6fc73
 - Saved points: models/posteriordb_logp/points/sesame_data-sesame_one_pred_a.npz
-- Full evidence: models/posteriordb_logp/records/sesame_data-sesame_one_pred_a.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

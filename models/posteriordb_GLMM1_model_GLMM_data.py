@@ -18,11 +18,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: kery2011population (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/blob/master/BPA/Ch.04
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native hierarchical Poisson site model from posteriordb GLMM1_model.
 
@@ -33,18 +28,11 @@ Stan comparison:
 - B: Stan = -69482.35951328461; PyMC = -69483.96895125911.
 - Raw delta: Stan = -1333.6074108591565; PyMC = -1333.6074108592002.
 - Raw comparison: MATCH; residual = 4.3655745685100555e-11.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.4336074108592003e-05
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- alpha[obssite-1] matches Stan's replicated alpha row at each obsyear. mu_alpha,
-  sd_alpha and centered alpha are unchanged. The implicit Stan sd_alpha prior on (0,5)
-  versus Uniform(0,5) adds only -log(5).
+- PyMC indexes alpha[obssite-1] where Stan replicates the alpha row at each obsyear. The
+  implicit Stan sd_alpha prior on (0,5) versus Uniform(0,5) adds only -log(5).
 - Original Stan SHA-256: c477cfd297db4b9a54fee522211f2c50af98519ccb967d4313727fb484358934
 - Saved points: models/posteriordb_logp/points/GLMM_data-GLMM1_model.npz
-- Full evidence: models/posteriordb_logp/records/GLMM_data-GLMM1_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

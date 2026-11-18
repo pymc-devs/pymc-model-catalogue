@@ -23,9 +23,6 @@ Reference URL: https://mc-stan.org/users/documentation/case-studies/rasch_and_2p
 Changes from original:
 - Scale binary covariates by their range, changing the induced coefficient priors
   on the original covariate scale; see the scaling notes below.
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
 
 Implementation notes:
 Native two-parameter logistic model with latent regression from edstan.
@@ -53,7 +50,7 @@ Stan comparison:
 - Adjusted Stan delta = -101.98636144501249.
 - Adjusted comparison: MATCH; residual = -1.5631940186722204e-13.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.0198636144501246e-06
-  using adjusted delta_Stan when an adjustment is present.
+  using adjusted delta_Stan.
 - Append minus the sum to beta_free (and kappa_free when present) for ZeroSumNormal.
   Fixed prior scale 3 makes the subspace-volume and normalization offsets constant.
 - Original targets differ: binary covariate scaling changes coefficient priors. Map
@@ -61,7 +58,6 @@ Stan comparison:
   means; add the StudentT(3) prior difference. The Jacobian is data-only.
 - Original Stan SHA-256: 96c8f931ea6ff2569863cf1afa8b255aefe441516ab06705519b16ef1dc461b8
 - Saved points: models/posteriordb_logp/points/fims_Aus_Jpn_irt-2pl_latent_reg_irt.npz
-- Full evidence: models/posteriordb_logp/records/fims_Aus_Jpn_irt-2pl_latent_reg_irt.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

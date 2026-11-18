@@ -20,11 +20,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: crowder1978beta (see posteriordb/source/bibliography/references.bib)
 Reference URL: http://www.mrc-bsu.cam.ac.uk/wp-content/uploads/WinBUGS_Vol1.pdf
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native centered seed effects from posteriordb seeds_centered_model.
 
@@ -35,18 +30,10 @@ Stan comparison:
 - B: Stan = -123.39810550522995; PyMC = -122.70495832276539.
 - Raw delta: Stan = 5.268203320360158; PyMC = 5.268203320360286.
 - Raw comparison: MATCH; residual = -1.2789769243681803e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0526820332036028e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Retain all I unconstrained c values. In both sources b=c-mean(c) is deterministic; it
-  does not replace c with a lower-dimensional zero-sum random variable or introduce an
-  intrinsic improper prior. Coefficient Normal(0,1) priors and Binomial logits match.
-  PyMC HalfCauchy(1) differs from Stan's positive Cauchy only by +log(2).
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
+- PyMC HalfCauchy(1) differs from Stan's positive Cauchy only by +log(2).
 - Original Stan SHA-256: 37512dcebf0e156a8c186637dbdbfd1fb9fee18bcda2a9c5a47be2d0fc2867eb
 - Saved points: models/posteriordb_logp/points/seeds_data-seeds_centered_model.npz
-- Full evidence: models/posteriordb_logp/records/seeds_data-seeds_centered_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

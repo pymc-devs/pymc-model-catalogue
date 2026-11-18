@@ -18,11 +18,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: crowder1978beta (see posteriordb/source/bibliography/references.bib)
 Reference URL: http://www.mrc-bsu.cam.ac.uk/wp-content/uploads/WinBUGS_Vol1.pdf
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native precision-based seed effects from posteriordb seeds_model.
 
@@ -33,18 +28,9 @@ Stan comparison:
 - B: Stan = -176.7715777005259; PyMC = -176.77157808423124.
 - Raw delta: Stan = -10.649491278584748; PyMC = -10.649491278584719.
 - Raw comparison: MATCH; residual = -2.842170943040401e-14.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1064949127858474e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Keep tau as precision with Gamma(shape=0.001,rate=0.001) and all I centered b effects.
-  Both sources set sigma=tau**(-1/2) deterministically, so no precision/SD coordinate
-  Jacobian applies. Normal(0,1000) coefficient priors and Binomial logits use identical
-  x1,x2 interactions.
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
 - Original Stan SHA-256: 11548246c12d4afdbb7455a2a249522bbdf255084041d48408c1ba5daf10ab8d
 - Saved points: models/posteriordb_logp/points/seeds_data-seeds_model.npz
-- Full evidence: models/posteriordb_logp/records/seeds_data-seeds_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

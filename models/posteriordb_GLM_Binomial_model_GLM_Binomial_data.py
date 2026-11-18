@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: kery2011population (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/BPA/Ch.03
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native quadratic binomial model from posteriordb GLM_Binomial_model.
 
@@ -32,19 +27,9 @@ Stan comparison:
 - B: Stan = -327.0304780966763; PyMC = -327.03047828852914.
 - Raw delta: Stan = -72.38504197766468; PyMC = -72.38504197766511.
 - Raw comparison: MATCH; residual = 4.263256414560601e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.723850419776651e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- Identical year, year^2 and (for Poisson) year^3 predictors; PyMC's Horner expression
-  is algebraically the same linear predictor. All coefficient names, units and bounds
-  are unchanged.
-- Both coefficient priors are Normal(0,100), with the same binomial totals.
 - Original Stan SHA-256: 1cd08265b53a2faea2087055fd5c24eff965c6581c6ce78479a0925ddd3a1144
 - Saved points: models/posteriordb_logp/points/GLM_Binomial_data-GLM_Binomial_model.npz
-- Full evidence: models/posteriordb_logp/records/GLM_Binomial_data-GLM_Binomial_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

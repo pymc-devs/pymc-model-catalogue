@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: kery2011population (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/blob/master/BPA/Ch.06
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Detection depends on capture at the previous occasion.
 
@@ -34,17 +29,9 @@ Stan comparison:
 - B: Stan = -785.5224343593771; PyMC = -785.5224343593771.
 - Raw delta: Stan = 15.770402219956509; PyMC = 15.770402219956509.
 - Raw comparison: MATCH; residual = 0.0.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1577040221995651e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Both sources use p at the first occasion and p+(c-p)*previous_capture afterward,
-  marginalizing inclusion over the complete history. No latent inclusion indicators or
-  generated population size are added to the point.
-- No nonconstant density adjustment is required by these source definitions; parameter-
-  independent constants are omitted from two-point deltas.
 - Original Stan SHA-256: fd8975a0bd29c338066cee715a3aeda704382daef4f4db30ffc4deb9f018b43f
 - Saved points: models/posteriordb_logp/points/Mb_data-Mb_model.npz
-- Full evidence: models/posteriordb_logp/records/Mb_data-Mb_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

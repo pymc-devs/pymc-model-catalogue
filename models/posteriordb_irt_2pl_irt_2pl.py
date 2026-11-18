@@ -16,11 +16,6 @@ Data: irt_2pl (upstream posterior: irt_2pl-irt_2pl)
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/irt_2pl-irt_2pl.json
 Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/irt_2pl
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native two-parameter logistic model from the posteriordb definition.
 
@@ -31,17 +26,10 @@ Stan comparison:
 - B: Stan = -1533.3844413914348; PyMC = -1531.3049998798278.
 - Raw delta: Stan = 15.56576865915622; PyMC = 15.565768659155083.
 - Raw comparison: MATCH; residual = 1.1368683772161603e-12.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1556576865915621e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of abilities theta, positive lognormal discrimination a, difficulty b, mu_b
-  and the three hierarchical SDs. The response matrix has shape (item,person), with
-  logits a[:,None] * (theta[None,:]-b[:,None]); no transpose, log(a) rewrite or
-  noncentering is needed.
 - The three HalfCauchy versus positive Cauchy normalizers are constants.
 - Original Stan SHA-256: 27947f5afa47a63c8587213c7d5598e701aa11209dff0b117d635578d028c922
 - Saved points: models/posteriordb_logp/points/irt_2pl-irt_2pl.npz
-- Full evidence: models/posteriordb_logp/records/irt_2pl-irt_2pl.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

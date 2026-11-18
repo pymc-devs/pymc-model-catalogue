@@ -130,10 +130,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/GLMM_Poisson_model.stan parameters/model blocks and models/posteriordb_GLMM_Poisson_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical year, year^2 and (for Poisson) year^3 predictors; PyMC's Horner expression is algebraically the same linear predictor. All coefficient names, units and bounds are unchanged.",
-      "Both retain centered eps~Normal(0,sigma) and identical explicit Uniform priors."
+      "Sources: pinned stan/GLMM_Poisson_model.stan parameters/model blocks and models/posteriordb_GLMM_Poisson_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/GLMM_Poisson_data-GLMM_Poisson_model.npz",
@@ -663,8 +660,7 @@
     },
     "notes": [
       "Sources: pinned stan/GLMM1_model.stan parameters/model blocks and models/posteriordb_GLMM1_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "alpha[obssite-1] matches Stan's replicated alpha row at each obsyear. mu_alpha, sd_alpha and centered alpha are unchanged. The implicit Stan sd_alpha prior on (0,5) versus Uniform(0,5) adds only -log(5)."
+      "PyMC indexes alpha[obssite-1] where Stan replicates the alpha row at each obsyear. The implicit Stan sd_alpha prior on (0,5) versus Uniform(0,5) adds only -log(5)."
     ],
     "rejected_candidates": [],
     "point_file": "points/GLMM_data-GLMM1_model.npz",
@@ -725,10 +721,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/GLM_Binomial_model.stan parameters/model blocks and models/posteriordb_GLM_Binomial_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical year, year^2 and (for Poisson) year^3 predictors; PyMC's Horner expression is algebraically the same linear predictor. All coefficient names, units and bounds are unchanged.",
-      "Both coefficient priors are Normal(0,100), with the same binomial totals."
+      "Sources: pinned stan/GLM_Binomial_model.stan parameters/model blocks and models/posteriordb_GLM_Binomial_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/GLM_Binomial_data-GLM_Binomial_model.npz",
@@ -793,8 +786,6 @@
     },
     "notes": [
       "Sources: pinned stan/GLM_Poisson_model.stan parameters/model blocks and models/posteriordb_GLM_Poisson_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical year, year^2 and (for Poisson) year^3 predictors; PyMC's Horner expression is algebraically the same linear predictor. All coefficient names, units and bounds are unchanged.",
       "Stan implicit bounded coefficients versus PyMC Uniform priors add only -log(40)-3*log(20)."
     ],
     "rejected_candidates": [],
@@ -854,8 +845,7 @@
     },
     "notes": [
       "Sources: pinned stan/M0_model.stan and models/posteriordb_M0_model_M0_data.py::build_model.",
-      "Both sources marginalize one inclusion indicator over each individual's complete history; Stan's binomial uses the same row sums as PyMC's ZeroInflatedBinomial. Generated population size N is not a free RV.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "PyMC marginalizes inclusion with ZeroInflatedBinomial over each individual's row sum, where Stan evaluates the same row sums in its binomial."
     ],
     "rejected_candidates": [],
     "point_file": "points/M0_data-M0_model.npz",
@@ -930,9 +920,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/Mb_model.stan and models/posteriordb_Mb_model_Mb_data.py::build_model.",
-      "Both sources use p at the first occasion and p+(c-p)*previous_capture afterward, marginalizing inclusion over the complete history. No latent inclusion indicators or generated population size are added to the point.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/Mb_model.stan and models/posteriordb_Mb_model_Mb_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/Mb_data-Mb_model.npz",
@@ -1765,8 +1753,7 @@
     },
     "notes": [
       "Sources: pinned stan/Mh_model.stan and models/posteriordb_Mh_model_Mh_data.py::build_model.",
-      "Retain all M eps_raw values, including never-detected individuals. Both sources use logit(mean_p)+sigma*eps_raw and the same marginalized Binomial likelihood. PyMC Uniform(0,5) for sigma adds only -log(5) relative to Stan's implicit bounded-flat prior.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "PyMC Uniform(0,5) for sigma adds only -log(5) relative to Stan's implicit bounded-flat prior."
     ],
     "rejected_candidates": [],
     "point_file": "points/Mh_data-Mh_model.npz",
@@ -1828,9 +1815,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/Mt_model.stan and models/posteriordb_Mt_model_Mt_data.py::build_model.",
-      "The T detection probabilities retain occasion order. Both sources marginalize inclusion over each complete Bernoulli capture history, not independently at each occasion.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/Mt_model.stan and models/posteriordb_Mt_model_Mt_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/Mt_data-Mt_model.npz",
@@ -2196,8 +2181,7 @@
     },
     "notes": [
       "Sources: pinned stan/Mtbh_model.stan and models/posteriordb_Mtbh_model_Mtbh_data.py::build_model.",
-      "Keep all M noncentered eps_raw values. Both sources use logit(mean_p[j])+sigma*eps_raw[i]+gamma*y[i,j-1], with zero previous capture at the first occasion, and marginalize individual inclusion. PyMC's sigma Uniform(0,3) contributes only the constant -log(3).",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "PyMC's sigma Uniform(0,3) contributes only the constant -log(3)."
     ],
     "rejected_candidates": [],
     "point_file": "points/Mtbh_data-Mtbh_model.npz",
@@ -3042,8 +3026,7 @@
     },
     "notes": [
       "Sources: pinned stan/Mth_model.stan and models/posteriordb_Mth_model_Mth_data.py::build_model.",
-      "The T mean_p probabilities and all M eps_raw effects retain original order. Both sources use logit(mean_p[j])+sigma*eps_raw[i] and marginalize inclusion over complete histories. PyMC's sigma Uniform(0,5) contributes only the constant -log(5).",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "PyMC's sigma Uniform(0,5) contributes only the constant -log(5)."
     ],
     "rejected_candidates": [],
     "point_file": "points/Mth_data-Mth_model.npz",
@@ -3098,9 +3081,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/Rate_1_model.stan and models/posteriordb_Rate_1_model_Rate_1_data.py::build_model.",
-      "Identical Beta(1,1) prior and Binomial(n,theta) observed count.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/Rate_1_model.stan and models/posteriordb_Rate_1_model_Rate_1_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/Rate_1_data-Rate_1_model.npz",
@@ -3158,9 +3139,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/Rate_2_model.stan and models/posteriordb_Rate_2_model_Rate_2_data.py::build_model.",
-      "Identical independent Beta(1,1) rates and their respective Binomial counts. delta=theta1-theta2 is deterministic, not a density coordinate.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/Rate_2_model.stan and models/posteriordb_Rate_2_model_Rate_2_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/Rate_2_data-Rate_2_model.npz",
@@ -3215,9 +3194,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/Rate_3_model.stan and models/posteriordb_Rate_3_model_Rate_3_data.py::build_model.",
-      "Identical Beta(1,1) common rate and two Binomial observation factors.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/Rate_3_model.stan and models/posteriordb_Rate_3_model_Rate_3_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/Rate_3_data-Rate_3_model.npz",
@@ -3275,9 +3252,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/Rate_4_model.stan and models/posteriordb_Rate_4_model_Rate_4_data.py::build_model.",
-      "Both independent Beta(1,1) free rates are retained, including the unobserved thetaprior. Only theta enters the observed Binomial. Generated prior/posterior predictive counts are not free parameters.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/Rate_4_model.stan and models/posteriordb_Rate_4_model_Rate_4_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/Rate_4_data-Rate_4_model.npz",
@@ -3332,9 +3307,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/Rate_5_model.stan and models/posteriordb_Rate_5_model_Rate_5_data.py::build_model.",
-      "Identical Beta(1,1) common rate and two Binomial counts; generated posterior-predictive counts do not enter either density.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/Rate_5_model.stan and models/posteriordb_Rate_5_model_Rate_5_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/Rate_5_data-Rate_5_model.npz",
@@ -3389,9 +3362,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/Survey_model.stan parameters/model blocks and models/posteriordb_Survey_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "theta is unchanged. Both sum the joint binomial likelihood over n=max(1,max(k)),...,nmax with weight 1/nmax; omitted lower n have zero likelihood. Uniform(0,1) adds zero log-normalization."
+      "Sources: pinned stan/Survey_model.stan parameters/model blocks and models/posteriordb_Survey_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/Survey_data-Survey_model.npz",
@@ -3460,8 +3431,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan arK.stan and the assigned native models/posteriordb_arK_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of alpha, lag-ordered beta[1:K], and sigma; row t uses y[t-1],...,y[t-K]. The first K observations only condition the likelihood.",
+      "Sources: pinned posteriordb Stan arK.stan and the assigned native models/posteriordb_arK_*.py builder(s).",
       "HalfCauchy versus a Cauchy density on positive sigma contributes only log(2)."
     ],
     "rejected_candidates": [],
@@ -3526,8 +3496,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan arma11.stan and the assigned native models/posteriordb_arma11_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of mu, phi, theta, sigma. Both recursions start with nu[1]=mu+phi*mu and zero pre-series error; later nu[t]=mu+phi*y[t-1]+theta*(y[t-1]-nu[t-1]). Normal errors equal the conditional Normal observation likelihood, with a unit triangular Jacobian.",
+      "Sources: pinned posteriordb Stan arma11.stan and the assigned native models/posteriordb_arma11_*.py builder(s).",
       "HalfCauchy versus a Cauchy density on positive sigma contributes only log(2)."
     ],
     "rejected_candidates": [],
@@ -3598,8 +3567,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan hmm_drive_0.stan and the assigned native models/posteriordb_hmm_drive_0_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of two transition simplex rows and positive ordered emission rates phi/lambda. Both likelihoods sum all hidden paths by the same log-space forward recursion, with initial state weights one rather than a normalized uniform distribution. Each emission is the sum of Exponential(u;phi) and Exponential(v;lambda) log densities.",
+      "Sources: pinned posteriordb Stan hmm_drive_0.stan and the assigned native models/posteriordb_hmm_drive_0_*.py builder(s).",
       "Shared-support limitation: original Stan points enforce all ordered or positive-ordered constraints. PyMC ordering supplied only by a transform is not separately enforced after transforms are removed. These evaluations compare points on the shared Stan-valid support, not global support or model equivalence."
     ],
     "rejected_candidates": [],
@@ -3670,8 +3638,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan hmm_drive_1.stan and the assigned native models/posteriordb_hmm_drive_1_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of two transition simplex rows and ordered emission means phi/lambda. Both forward algorithms marginalize the same hidden paths with initial state weights one; u and v Normal emission SDs are the fixed data tau and rho, respectively.",
+      "Sources: pinned posteriordb Stan hmm_drive_1.stan and the assigned native models/posteriordb_hmm_drive_1_*.py builder(s).",
       "Shared-support limitation: original Stan points enforce all ordered or positive-ordered constraints. PyMC ordering supplied only by a transform is not separately enforced after transforms are removed. These evaluations compare points on the shared Stan-valid support, not global support or model equivalence."
     ],
     "rejected_candidates": [],
@@ -3752,8 +3719,7 @@
     },
     "notes": [
       "Sources: pinned stan/bones_model.stan and models/posteriordb_bones_model_bones_data.py::build_model.",
-      "theta retains child order and Normal(0,36) SD. Stan's categories 1..ncat become PyMC categories 0..ncat-1; missing grade=-1 entries are omitted in both. OrderedLogistic eta=delta*theta and cutpoints delta*gamma reproduce Stan's differences of inv_logit(delta*(theta-gamma)). The bundled discriminations are positive and active thresholds ordered.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Stan's categories 1..ncat become PyMC categories 0..ncat-1. PyMC OrderedLogistic eta=delta*theta and cutpoints delta*gamma reproduce Stan's differences of inv_logit(delta*(theta-gamma))."
     ],
     "rejected_candidates": [],
     "point_file": "points/bones_data-bones_model.npz",
@@ -4024,8 +3990,7 @@
     },
     "notes": [
       "Sources: pinned stan/multi_occupancy.stan and models/posteriordb_multi_occupancy_butterfly.py::build_model.",
-      "Map correlation_unit=(rho_uv+1)/2 and uv=column_stack(uv1,uv2), retaining all S species, including S-n never-observed species. The PyMC Cholesky factor induces the same covariance with diagonals sigma_uv**2 and off-diagonal sigma_uv[0]*sigma_uv[1]*rho_uv. Stan already evaluates Beta(2,2) at (rho_uv+1)/2 without a Jacobian; its value equals PyMC's Beta density at correlation_unit. The coordinate determinant |d rho_uv/d correlation_unit|=2 is constant (log(2)); normalizing Stan's rho prior removes the same constant. The two positive Cauchy-to-HalfCauchy normalizations add only 2*log(2) to raw PyMC logp. Observed and never-observed inclusion/occupancy mixtures match, including the J-fold zero-site likelihood for each never-observed species; no latent species are discarded.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Map correlation_unit=(rho_uv+1)/2 and uv=column_stack(uv1,uv2). The PyMC Cholesky factor induces the covariance with diagonals sigma_uv**2 and off-diagonal sigma_uv[0]*sigma_uv[1]*rho_uv. Stan already evaluates Beta(2,2) at (rho_uv+1)/2 without a Jacobian; its value equals PyMC's Beta density at correlation_unit. The coordinate determinant |d rho_uv/d correlation_unit|=2 is constant (log(2)); normalizing Stan's rho prior removes the same constant. The two positive Cauchy-to-HalfCauchy normalizations add only 2*log(2) to raw PyMC logp."
     ],
     "rejected_candidates": [],
     "point_file": "points/butterfly-multi_occupancy.npz",
@@ -4132,9 +4097,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/diamonds.stan parameters/model blocks and models/posteriordb_diamonds_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both discard X's intercept column and center each remaining column by its mean. Use the original centered Intercept, not generated b_Intercept=Intercept-means_X@b. b and sigma are unchanged. Stan explicitly subtracts StudentT(3,0,10)'s log survival at zero, so its sigma normalization already matches HalfStudentT(3,10). Both honor prior_only."
+      "Sources: pinned stan/diamonds.stan parameters/model blocks and models/posteriordb_diamonds_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/diamonds-diamonds.npz",
@@ -4193,9 +4156,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/dogs.stan and models/posteriordb_dogs_dogs.py::build_model.",
-      "beta order is intercept, avoidance, shock. Both sources count observed avoidances and shocks strictly before each trial and use the same Normal(0,100) coefficients and Bernoulli-logit likelihood. There are no dog-specific independent or correlated random effects in this source.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/dogs.stan and models/posteriordb_dogs_dogs.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/dogs-dogs.npz",
@@ -4254,8 +4215,7 @@
     },
     "notes": [
       "Sources: pinned stan/dogs_hierarchical.stan and models/posteriordb_dogs_hierarchical_dogs.py::build_model.",
-      "Despite its name, the original source has only shared probabilities a and b, with implicit Uniform(0,1) priors and no dog random effects. Both likelihoods use a**previous_shock*b**previous_avoid. The first trial has probability one; every bundled first response is one. PyMC preserves that support factor separately as first_shock.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "The first trial has probability one; every bundled first response is one. PyMC preserves that support factor separately as first_shock."
     ],
     "rejected_candidates": [],
     "point_file": "points/dogs-dogs_hierarchical.npz",
@@ -4318,8 +4278,7 @@
     },
     "notes": [
       "Sources: pinned stan/dogs_log.stan and models/posteriordb_dogs_log_dogs.py::build_model.",
-      "beta order is avoidance, shock, with identical Uniform(-100,0) and Uniform(0,100) factors. Stan declares beta unconstrained, but these prior supports still apply. PyMC's logit_p equals Stan's inv_logit predictor; first-trial probability is 1/2 in both. The feasible center [-0.5,0.5] is chosen solely from support, not engine agreement. The constrained beta-to-beta map is identity with log Jacobian zero; automatic Stan/PyMC support-transform Jacobians remain disabled.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Stan declares beta unconstrained, but the Uniform(-100,0) and Uniform(0,100) prior supports still apply. The feasible center [-0.5,0.5] is chosen solely from support, not engine agreement."
     ],
     "rejected_candidates": [],
     "point_file": "points/dogs-dogs_log.npz",
@@ -4577,9 +4536,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/dugongs_model.stan and models/posteriordb_dugongs_model_dugongs_data.py::build_model.",
-      "Keep the original precision tau, with Gamma(shape=0.0001,rate=0.0001) in both sources. sigma=tau**(-1/2) is deterministic, not a new free coordinate, so no tau-to-sigma Jacobian applies. The lambda interval (0.5,1), Normal coefficient priors, and growth likelihood are unchanged.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/dugongs_model.stan and models/posteriordb_dugongs_model_dugongs_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/dugongs_data-dugongs_model.npz",
@@ -4639,9 +4596,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/earn_height.stan parameters/model blocks and models/posteriordb_earn_height_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use earn as response; [1, height]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/earn_height.stan parameters/model blocks and models/posteriordb_earn_height_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/earnings-earn_height.npz",
@@ -4701,9 +4656,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/log10earn_height.stan parameters/model blocks and models/posteriordb_log10earn_height_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log10(earn) as response; [1, height]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/log10earn_height.stan parameters/model blocks and models/posteriordb_log10earn_height_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/earnings-log10earn_height.npz",
@@ -4763,9 +4716,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logearn_height.stan parameters/model blocks and models/posteriordb_logearn_height_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(earn) as response; [1, height]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logearn_height.stan parameters/model blocks and models/posteriordb_logearn_height_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/earnings-logearn_height.npz",
@@ -4827,9 +4778,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logearn_height_male.stan parameters/model blocks and models/posteriordb_logearn_height_male_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(earn) as response; [1, height, male]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logearn_height_male.stan parameters/model blocks and models/posteriordb_logearn_height_male_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/earnings-logearn_height_male.npz",
@@ -4893,9 +4842,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logearn_interaction.stan parameters/model blocks and models/posteriordb_logearn_interaction_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(earn) as response; [1, height, male, height*male]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logearn_interaction.stan parameters/model blocks and models/posteriordb_logearn_interaction_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/earnings-logearn_interaction.npz",
@@ -4959,9 +4906,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logearn_interaction_z.stan parameters/model blocks and models/posteriordb_logearn_interaction_z_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(earn) as response; [1, z_height, male, z_height*male], where z_height=(height-mean(height))/sd(height), using sample SD (ddof=1). Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logearn_interaction_z.stan parameters/model blocks and models/posteriordb_logearn_interaction_z_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/earnings-logearn_interaction_z.npz",
@@ -5023,9 +4968,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logearn_logheight_male.stan parameters/model blocks and models/posteriordb_logearn_logheight_male_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(earn) as response; [1, log(height), male]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logearn_logheight_male.stan parameters/model blocks and models/posteriordb_logearn_logheight_male_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/earnings-logearn_logheight_male.npz",
@@ -5186,9 +5129,9 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan covid19imperial_v2.stan and the assigned native models/posteriordb_covid19imperial_v2_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of all seven parameter blocks; alpha=alpha_hier-log(1.05)/6 is the same deterministic intervention effect. Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature). Both renewal recursions seed N0 days with y and use N0*y cumulative infections at the first post-seed day; delay convolutions use lag-1 array indices.",
-      "Both likelihoods use negative-binomial mean E_deaths and shape phi, selecting each country's EpidemicStart..N inclusive in country-major order. The random-kappa truncation normalizer for positive mu is explicitly canceled by the PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa change only constants."
+      "Sources: pinned posteriordb Stan covid19imperial_v2.stan and the assigned native models/posteriordb_covid19imperial_v2_*.py builder(s).",
+      "Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature); delay convolutions use lag-1 array indices.",
+      "The random-kappa truncation normalizer for positive mu is explicitly canceled by the PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa change only constants."
     ],
     "rejected_candidates": [],
     "point_file": "points/ecdc0401-covid19imperial_v2.npz",
@@ -5349,9 +5292,9 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan covid19imperial_v3.stan and the assigned native models/posteriordb_covid19imperial_v3_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of all seven parameter blocks; alpha=alpha_hier-log(1.05)/6 is the same deterministic intervention effect. Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature). Both renewal recursions seed N0 days with y and use N0*y cumulative infections at the first post-seed day; delay convolutions use lag-1 array indices.",
-      "Both likelihoods use negative-binomial mean E_deaths and shape phi, selecting each country's EpidemicStart..N inclusive in country-major order. The random-kappa truncation normalizer for positive mu is explicitly canceled by the PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa change only constants."
+      "Sources: pinned posteriordb Stan covid19imperial_v3.stan and the assigned native models/posteriordb_covid19imperial_v3_*.py builder(s).",
+      "Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature); delay convolutions use lag-1 array indices.",
+      "The random-kappa truncation normalizer for positive mu is explicitly canceled by the PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa change only constants."
     ],
     "rejected_candidates": [],
     "point_file": "points/ecdc0401-covid19imperial_v3.npz",
@@ -5512,9 +5455,9 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan covid19imperial_v2.stan and the assigned native models/posteriordb_covid19imperial_v2_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of all seven parameter blocks; alpha=alpha_hier-log(1.05)/6 is the same deterministic intervention effect. Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature). Both renewal recursions seed N0 days with y and use N0*y cumulative infections at the first post-seed day; delay convolutions use lag-1 array indices.",
-      "Both likelihoods use negative-binomial mean E_deaths and shape phi, selecting each country's EpidemicStart..N inclusive in country-major order. The random-kappa truncation normalizer for positive mu is explicitly canceled by the PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa change only constants."
+      "Sources: pinned posteriordb Stan covid19imperial_v2.stan and the assigned native models/posteriordb_covid19imperial_v2_*.py builder(s).",
+      "Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature); delay convolutions use lag-1 array indices.",
+      "The random-kappa truncation normalizer for positive mu is explicitly canceled by the PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa change only constants."
     ],
     "rejected_candidates": [],
     "point_file": "points/ecdc0501-covid19imperial_v2.npz",
@@ -5675,9 +5618,9 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan covid19imperial_v3.stan and the assigned native models/posteriordb_covid19imperial_v3_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of all seven parameter blocks; alpha=alpha_hier-log(1.05)/6 is the same deterministic intervention effect. Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature). Both renewal recursions seed N0 days with y and use N0*y cumulative infections at the first post-seed day; delay convolutions use lag-1 array indices.",
-      "Both likelihoods use negative-binomial mean E_deaths and shape phi, selecting each country's EpidemicStart..N inclusive in country-major order. The random-kappa truncation normalizer for positive mu is explicitly canceled by the PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa change only constants."
+      "Sources: pinned posteriordb Stan covid19imperial_v3.stan and the assigned native models/posteriordb_covid19imperial_v3_*.py builder(s).",
+      "Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature); delay convolutions use lag-1 array indices.",
+      "The random-kappa truncation normalizer for positive mu is explicitly canceled by the PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa change only constants."
     ],
     "rejected_candidates": [],
     "point_file": "points/ecdc0501-covid19imperial_v3.npz",
@@ -5753,8 +5696,7 @@
     },
     "notes": [
       "Sources: pinned stan/eight_schools_centered.stan parameters/model blocks and models/posteriordb_eight_schools_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "mu, tau and the native school coordinates are unchanged. Both use centered theta~Normal(mu,tau). Stan tau>0 with Cauchy(0,5) versus PyMC HalfCauchy(5) differs only by the constant log(2)."
+      "Stan tau>0 with Cauchy(0,5) versus PyMC HalfCauchy(5) differs only by the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/eight_schools-eight_schools_centered.npz",
@@ -5830,8 +5772,7 @@
     },
     "notes": [
       "Sources: pinned stan/eight_schools_noncentered.stan parameters/model blocks and models/posteriordb_eight_schools_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "mu, tau and the native school coordinates are unchanged. Both use theta_trans~Normal(0,1), theta=mu+tau*theta_trans; do not substitute centered theta as the density coordinate. Stan tau>0 with Cauchy(0,5) versus PyMC HalfCauchy(5) differs only by the constant log(2)."
+      "Stan tau>0 with Cauchy(0,5) versus PyMC HalfCauchy(5) differs only by the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/eight_schools-eight_schools_noncentered.npz",
@@ -6074,9 +6015,9 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan election88_full.stan and the assigned native models/posteriordb_election88_full_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of the five centered effect vectors and their scales. beta order is intercept, black, female, previous_vote, female*black; all categorical indices are shifted from Stan one-based to NumPy zero-based.",
-      "The five Uniform(0,100) scale normalizers are parameter-independent; the original Stan bounded scales have flat constrained densities."
+      "Sources: pinned posteriordb Stan election88_full.stan and the assigned native models/posteriordb_election88_full_*.py builder(s).",
+      "Categorical indices are shifted from Stan one-based to NumPy zero-based.",
+      "The five Uniform(0,100) scale normalizers are parameter-independent relative to the original Stan bounded scales."
     ],
     "rejected_candidates": [],
     "point_file": "points/election88-election88_full.npz",
@@ -7263,9 +7204,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan garch11.stan and the assigned native models/posteriordb_garch11_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity on the triangle alpha1>0, beta1>0, alpha1+beta1<1. The PyMC log1p(-alpha1) potential cancels its conditional Uniform beta1 normalizer; the joint constrained coefficient density is flat as in Stan.",
-      "Both recursions initialize variance=sigma1^2, then add alpha0 + alpha1*(previous_y-mu)^2 + beta1*previous_variance. No scale squaring or observation reordering is introduced by this map."
+      "Sources: pinned posteriordb Stan garch11.stan and the assigned native models/posteriordb_garch11_*.py builder(s).",
+      "The PyMC log1p(-alpha1) potential cancels its conditional Uniform beta1 normalizer, leaving the flat joint density on the triangle alpha1>0, beta1>0, alpha1+beta1<1 that Stan declares."
     ],
     "rejected_candidates": [],
     "point_file": "points/garch-garch11.npz",
@@ -7346,8 +7286,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan gp_pois_regr.stan and the assigned native models/posteriordb_gp_pois_regr_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Set f_rotated_=f_tilde. Both whitened standard Normal vectors generate f=chol(K+1e-10*I)*z with K_ij=alpha^2*exp(-(x_i-x_j)^2/(2*rho^2)); neither density is evaluated in centered f coordinates, so there is no Cholesky determinant correction. PyMC gp/gp.py Latent._build_prior names the free whitened vector f_rotated_.",
+      "Sources: pinned posteriordb Stan gp_pois_regr.stan and the assigned native models/posteriordb_gp_pois_regr_*.py builder(s).",
+      "Set f_rotated_=f_tilde: PyMC gp/gp.py Latent._build_prior names the free whitened vector f_rotated_. Neither density is evaluated in centered f coordinates, so there is no Cholesky determinant correction.",
       "HalfNormal versus a Normal density on positive alpha contributes only log(2)."
     ],
     "rejected_candidates": [],
@@ -7409,8 +7349,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan gp_regr.stan and the assigned native models/posteriordb_gp_regr_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of rho, alpha and sigma; both marginalized Normal covariances are alpha^2*ExpQuad(rho)+sigma*I. sigma is additive variance, not an SD to square. Observed y retains its supplied order.",
+      "Sources: pinned posteriordb Stan gp_regr.stan and the assigned native models/posteriordb_gp_regr_*.py builder(s).",
       "The two HalfNormal versus positive Normal density normalizers are constants."
     ],
     "rejected_candidates": [],
@@ -7476,8 +7415,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan hmm_example.stan and the assigned native models/posteriordb_hmm_example_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of transition simplex rows and positive ordered means. The same Gaussian forward recursion marginalizes hidden states with initial weights one. Explicit uniform simplex densities in PyMC add only constant normalizers to Stan's implicit flat simplex densities.",
+      "Sources: pinned posteriordb Stan hmm_example.stan and the assigned native models/posteriordb_hmm_example_*.py builder(s).",
+      "Explicit uniform simplex densities in PyMC add only constant normalizers to Stan's implicit flat simplex densities.",
       "Shared-support limitation: original Stan points enforce all ordered or positive-ordered constraints. PyMC ordering supplied only by a transform is not separately enforced after transforms are removed. These evaluations compare points on the shared Stan-valid support, not global support or model equivalence."
     ],
     "rejected_candidates": [],
@@ -7656,7 +7595,7 @@
       }
     },
     "notes": [
-      "Same constrained parameters and probability factors up to normalization constants. Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction is applied."
+      "Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction is applied."
     ],
     "rejected_candidates": [],
     "point_file": "points/hudson_lynx_hare-lotka_volterra.npz",
@@ -8122,8 +8061,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan irt_2pl.stan and the assigned native models/posteriordb_irt_2pl_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of abilities theta, positive lognormal discrimination a, difficulty b, mu_b and the three hierarchical SDs. The response matrix has shape (item,person), with logits a[:,None] * (theta[None,:]-b[:,None]); no transpose, log(a) rewrite or noncentering is needed.",
+      "Sources: pinned posteriordb Stan irt_2pl.stan and the assigned native models/posteriordb_irt_2pl_*.py builder(s).",
       "The three HalfCauchy versus positive Cauchy normalizers are constants."
     ],
     "rejected_candidates": [],
@@ -8189,9 +8127,7 @@
     },
     "notes": [
       "Sources: pinned stan/kidscore_interaction.stan parameters/model blocks and models/posteriordb_kidscore_interaction_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both predictors use [1, mom_hs, mom_iq, mom_hs*mom_iq]; beta order is unchanged.",
-      "Stan sigma>0 with Cauchy(0,2.5), PyMC HalfCauchy(2.5): PyMC-Stan is the constant log(2). Beta has a flat prior in both."
+      "Stan sigma>0 with Cauchy(0,2.5) versus PyMC HalfCauchy(2.5): PyMC-Stan is the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/kidiq-kidscore_interaction.npz",
@@ -8252,9 +8188,7 @@
     },
     "notes": [
       "Sources: pinned stan/kidscore_momhs.stan parameters/model blocks and models/posteriordb_kidscore_momhs_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both predictors use [1, mom_hs]; beta order is unchanged.",
-      "Stan sigma>0 with Cauchy(0,2.5), PyMC HalfCauchy(2.5): PyMC-Stan is the constant log(2). Beta has a flat prior in both."
+      "Stan sigma>0 with Cauchy(0,2.5) versus PyMC HalfCauchy(2.5): PyMC-Stan is the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/kidiq-kidscore_momhs.npz",
@@ -8317,9 +8251,7 @@
     },
     "notes": [
       "Sources: pinned stan/kidscore_momhsiq.stan parameters/model blocks and models/posteriordb_kidscore_momhsiq_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both predictors use [1, mom_hs, mom_iq]; beta order is unchanged.",
-      "Stan sigma>0 with Cauchy(0,2.5), PyMC HalfCauchy(2.5): PyMC-Stan is the constant log(2). Beta has a flat prior in both."
+      "Stan sigma>0 with Cauchy(0,2.5) versus PyMC HalfCauchy(2.5): PyMC-Stan is the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/kidiq-kidscore_momhsiq.npz",
@@ -8380,9 +8312,7 @@
     },
     "notes": [
       "Sources: pinned stan/kidscore_momiq.stan parameters/model blocks and models/posteriordb_kidscore_momiq_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both predictors use [1, mom_iq]; beta order is unchanged.",
-      "Stan sigma>0 with Cauchy(0,2.5), PyMC HalfCauchy(2.5): PyMC-Stan is the constant log(2). Beta has a flat prior in both."
+      "Stan sigma>0 with Cauchy(0,2.5) versus PyMC HalfCauchy(2.5): PyMC-Stan is the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/kidiq-kidscore_momiq.npz",
@@ -8446,10 +8376,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/kidscore_interaction_c.stan parameters/model blocks and models/posteriordb_kidscore_interaction_c_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both predictors use [1, hs-mean(hs), iq-mean(iq), centered_hs*centered_iq]; beta order is unchanged.",
-      "Stan implicit flat beta/sigma>0 match PyMC Flat/HalfFlat."
+      "Sources: pinned stan/kidscore_interaction_c.stan parameters/model blocks and models/posteriordb_kidscore_interaction_c_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/kidiq_with_mom_work-kidscore_interaction_c.npz",
@@ -8513,10 +8440,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/kidscore_interaction_c2.stan parameters/model blocks and models/posteriordb_kidscore_interaction_c2_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both predictors use [1, hs-0.5, iq-100, (hs-0.5)*(iq-100)]; beta order is unchanged.",
-      "Stan implicit flat beta/sigma>0 match PyMC Flat/HalfFlat."
+      "Sources: pinned stan/kidscore_interaction_c2.stan parameters/model blocks and models/posteriordb_kidscore_interaction_c2_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/kidiq_with_mom_work-kidscore_interaction_c2.npz",
@@ -8580,10 +8504,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/kidscore_interaction_z.stan parameters/model blocks and models/posteriordb_kidscore_interaction_z_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both predictors use [1, z_hs, z_iq, z_hs*z_iq], with each z=(x-mean(x))/(2*sd(x)); Stan sd and NumPy std(ddof=1) both use sample SD; beta order is unchanged.",
-      "Stan implicit flat beta/sigma>0 match PyMC Flat/HalfFlat."
+      "Sources: pinned stan/kidscore_interaction_z.stan parameters/model blocks and models/posteriordb_kidscore_interaction_z_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/kidiq_with_mom_work-kidscore_interaction_z.npz",
@@ -8647,10 +8568,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/kidscore_mom_work.stan parameters/model blocks and models/posteriordb_kidscore_mom_work_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both predictors use [1, mom_work==2, mom_work==3, mom_work==4]; beta order is unchanged.",
-      "Stan implicit flat beta/sigma>0 match PyMC Flat/HalfFlat."
+      "Sources: pinned stan/kidscore_mom_work.stan parameters/model blocks and models/posteriordb_kidscore_mom_work_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/kidiq_with_mom_work-kidscore_mom_work.npz",
@@ -8711,8 +8629,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan kilpisjarvi.stan and the assigned native models/posteriordb_kilpisjarvi_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of alpha, beta and sigma, preserving the supplied uncentered year predictor x and its adjustable prior parameters. HalfFlat sigma matches the original positive flat constrained density."
+      "Sources: pinned posteriordb Stan kilpisjarvi.stan and the assigned native models/posteriordb_kilpisjarvi_*.py builder(s)."
     ],
     "rejected_candidates": [],
     "point_file": "points/kilpisjarvi_mod-kilpisjarvi.npz",
@@ -8800,8 +8717,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan losscurve_sislob.stan and the assigned native models/posteriordb_losscurve_sislob_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of omega, theta, LR, mu_LR, sd_LR and loss_sd. The supplied growthmodel_id selects the same Weibull 1-exp(-(t/theta)^omega) or log-logistic sigmoid(omega*(log(t)-log(theta))) growth. Loss mean=LR[cohort]*premium[cohort]*growth[t_idx] and observation SD=loss_sd*premium[cohort], preserving observation order and all priors."
+      "Sources: pinned posteriordb Stan losscurve_sislob.stan and the assigned native models/posteriordb_losscurve_sislob_*.py builder(s)."
     ],
     "rejected_candidates": [],
     "point_file": "points/loss_curves-losscurve_sislob.npz",
@@ -8866,8 +8782,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan low_dim_gauss_mix.stan and the assigned native models/posteriordb_low_dim_gauss_mix_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of ordered mu, positive sigma and scalar theta; no relabeling. Both likelihoods marginalize with weights [theta,1-theta] per observation. HalfNormal scale normalizers differ from positive Normal densities only by two log(2) constants.",
+      "Sources: pinned posteriordb Stan low_dim_gauss_mix.stan and the assigned native models/posteriordb_low_dim_gauss_mix_*.py builder(s).",
+      "HalfNormal scale normalizers differ from positive Normal densities only by two log(2) constants.",
       "Shared-support limitation: original Stan points enforce all ordered or positive-ordered constraints. PyMC ordering supplied only by a transform is not separately enforced after transforms are removed. These evaluations compare points on the shared Stan-valid support, not global support or model equivalence."
     ],
     "rejected_candidates": [],
@@ -8933,8 +8849,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan low_dim_gauss_mix_collapse.stan and the assigned native models/posteriordb_low_dim_gauss_mix_collapse_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of unrestricted two-component mu, positive sigma and scalar theta; no relabeling or sorting. Both likelihoods marginalize with weights [theta,1-theta] per observation. HalfNormal scale normalizers differ from positive Normal densities only by two log(2) constants."
+      "Sources: pinned posteriordb Stan low_dim_gauss_mix_collapse.stan and the assigned native models/posteriordb_low_dim_gauss_mix_collapse_*.py builder(s).",
+      "HalfNormal scale normalizers differ from positive Normal densities only by two log(2) constants."
     ],
     "rejected_candidates": [],
     "point_file": "points/low_dim_gauss_mix_collapse-low_dim_gauss_mix_collapse.npz",
@@ -11002,8 +10918,7 @@
     },
     "notes": [
       "Sources: pinned stan/lsat_model.stan and models/posteriordb_lsat_model_lsat_data.py::build_model.",
-      "Expand response patterns in cumulative-count order; Stan's item/person matrix is transposed relative to PyMC's person/item likelihood, without permuting theta. Both logits are beta*theta-alpha. PyMC HalfNormal(100) for positive beta differs from Stan's constrained Normal(0,100) only by the constant +log(2).",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Stan's item/person matrix is transposed relative to PyMC's person/item likelihood, without permuting theta. PyMC HalfNormal(100) for positive beta differs from Stan's constrained Normal(0,100) only by the constant +log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/lsat_data-lsat_model.npz",
@@ -11209,9 +11124,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan accel_gp.stan and the assigned native models/posteriordb_accel_gp_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of both whitened GP coefficient vectors: for dimension D, spectral SD_m = sdgp*(sqrt(2*pi)*lscale)^(D/2)*exp(-lscale^2*sum(slambda_m^2)/4); both predictors use the supplied Xgp matrices times spectral_SD*zgp, with the scale predictor exponentiated.",
-      "Student-t intercepts, inverse-gamma lengths and the prior_only switch match. In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT GP amplitude priors has dtype int8: sigma**2 overflows to 16. Their native density is therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The named adjustment adds the two source-derived prior log-density differences to Stan. Original targets differ; this runtime discrepancy is not a best-practice reparameterization. Recheck this adjustment after engine upgrades."
+      "Sources: pinned posteriordb Stan accel_gp.stan and the assigned native models/posteriordb_accel_gp_*.py builder(s).",
+      "In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT GP amplitude priors has dtype int8: sigma**2 overflows to 16. Their native density is therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The named adjustment adds the two source-derived prior log-density differences to Stan. Original targets differ; this runtime discrepancy is not a best-practice reparameterization. Recheck this adjustment after engine upgrades."
     ],
     "rejected_candidates": [],
     "point_file": "points/mcycle_gp-accel_gp.npz",
@@ -11449,9 +11363,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan accel_splines.stan and the assigned native models/posteriordb_accel_splines_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of unpenalized bs/bs_sigma and standardized zs vectors; spline coefficients are sds*zs in both predictors, and sigma is exp of its linear predictor. The unpenalized coefficients have flat densities.",
-      "Student-t intercepts and prior_only agree. In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT spline-scale priors has dtype int8: sigma**2 overflows to 16. Their native density is therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The named adjustment adds the two source-derived prior log-density differences to Stan. Original targets differ; this runtime discrepancy is not a best-practice reparameterization. Recheck this adjustment after engine upgrades."
+      "Sources: pinned posteriordb Stan accel_splines.stan and the assigned native models/posteriordb_accel_splines_*.py builder(s).",
+      "In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT spline-scale priors has dtype int8: sigma**2 overflows to 16. Their native density is therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The named adjustment adds the two source-derived prior log-density differences to Stan. Original targets differ; this runtime discrepancy is not a best-practice reparameterization. Recheck this adjustment after engine upgrades."
     ],
     "rejected_candidates": [],
     "point_file": "points/mcycle_splines-accel_splines.npz",
@@ -11521,9 +11434,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logmesquite.stan parameters/model blocks and models/posteriordb_logmesquite_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(weight) as response; [1, log(diam1), log(diam2), log(canopy_height), log(total_height), log(density), group]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logmesquite.stan parameters/model blocks and models/posteriordb_logmesquite_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/mesquite-logmesquite.npz",
@@ -11587,9 +11498,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logmesquite_logva.stan parameters/model blocks and models/posteriordb_logmesquite_logva_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(weight) as response; [1, log(diam1*diam2*canopy_height), log(diam1*diam2), group]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logmesquite_logva.stan parameters/model blocks and models/posteriordb_logmesquite_logva_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/mesquite-logmesquite_logva.npz",
@@ -11659,9 +11568,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logmesquite_logvas.stan parameters/model blocks and models/posteriordb_logmesquite_logvas_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(weight) as response; [1, log(diam1*diam2*canopy_height), log(diam1*diam2), log(diam1/diam2), log(total_height), log(density), group]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logmesquite_logvas.stan parameters/model blocks and models/posteriordb_logmesquite_logvas_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/mesquite-logmesquite_logvas.npz",
@@ -11729,9 +11636,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logmesquite_logvash.stan parameters/model blocks and models/posteriordb_logmesquite_logvash_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(weight) as response; [1, log(diam1*diam2*canopy_height), log(diam1*diam2), log(diam1/diam2), log(total_height), group]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logmesquite_logvash.stan parameters/model blocks and models/posteriordb_logmesquite_logvash_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/mesquite-logmesquite_logvash.npz",
@@ -11791,9 +11696,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/logmesquite_logvolume.stan parameters/model blocks and models/posteriordb_logmesquite_logvolume_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use log(weight) as response; [1, log(diam1*diam2*canopy_height)]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/logmesquite_logvolume.stan parameters/model blocks and models/posteriordb_logmesquite_logvolume_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/mesquite-logmesquite_logvolume.npz",
@@ -11863,9 +11766,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/mesquite.stan parameters/model blocks and models/posteriordb_mesquite_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use weight as response; [1, diam1, diam2, canopy_height, total_height, density, group]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+      "Sources: pinned stan/mesquite.stan parameters/model blocks and models/posteriordb_mesquite_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/mesquite-mesquite.npz",
@@ -170745,9 +170646,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan nn_rbm1bJ100.stan and the assigned native models/posteriordb_nn_rbm1bJ100_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of alpha (M,J), beta (J,K-1), row-vector alpha1 (J,), beta1 (K-1,) and their variances. No transpose or Fortran/C flattening permutation is applied to matrices. The hidden layer is tanh(x@alpha+alpha1), and nonbaseline logits are hidden@beta+beta1. The first category logit is one, not zero; observed labels shift from 1..K to 0..K-1.",
-      "The variance priors have inverse-gamma shape 0.25 and scales 0.25*(0.05/M^2)^2 and 0.25*(0.05/J^2)^2. Conditional weight SDs are square roots of these variances, matching the original priors."
+      "Sources: pinned posteriordb Stan nn_rbm1bJ100.stan and the assigned native models/posteriordb_nn_rbm1bJ100_*.py builder(s).",
+      "Observed labels shift from 1..K to 0..K-1."
     ],
     "rejected_candidates": [],
     "point_file": "points/mnist-nn_rbm1bJ100.npz",
@@ -186707,9 +186607,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan nn_rbm1bJ10.stan and the assigned native models/posteriordb_nn_rbm1bJ10_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of alpha (M,J), beta (J,K-1), row-vector alpha1 (J,), beta1 (K-1,) and their variances. No transpose or Fortran/C flattening permutation is applied to matrices. The hidden layer is tanh(x@alpha+alpha1), and nonbaseline logits are hidden@beta+beta1. The first category logit is one, not zero; observed labels shift from 1..K to 0..K-1.",
-      "The variance priors have inverse-gamma shape 0.25 and scales 0.25*(0.05/M^2)^2 and 0.25*(0.05/J^2)^2. Conditional weight SDs are square roots of these variances, matching the original priors."
+      "Sources: pinned posteriordb Stan nn_rbm1bJ10.stan and the assigned native models/posteriordb_nn_rbm1bJ10_*.py builder(s).",
+      "Observed labels shift from 1..K to 0..K-1."
     ],
     "rejected_candidates": [],
     "point_file": "points/mnist_100-nn_rbm1bJ10.npz",
@@ -186783,9 +186682,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1, gender, income], partyid7 response and flat beta/sigma>0 priors."
+      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/nes1972-nes.npz",
@@ -186859,9 +186756,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1, gender, income], partyid7 response and flat beta/sigma>0 priors."
+      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/nes1976-nes.npz",
@@ -186935,9 +186830,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1, gender, income], partyid7 response and flat beta/sigma>0 priors."
+      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/nes1980-nes.npz",
@@ -187011,9 +186904,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1, gender, income], partyid7 response and flat beta/sigma>0 priors."
+      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/nes1984-nes.npz",
@@ -187087,9 +186978,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1, gender, income], partyid7 response and flat beta/sigma>0 priors."
+      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/nes1988-nes.npz",
@@ -187163,9 +187052,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1, gender, income], partyid7 response and flat beta/sigma>0 priors."
+      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/nes1992-nes.npz",
@@ -187239,9 +187126,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1, gender, income], partyid7 response and flat beta/sigma>0 priors."
+      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/nes1996-nes.npz",
@@ -187315,9 +187200,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1, gender, income], partyid7 response and flat beta/sigma>0 priors."
+      "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/nes2000-nes.npz",
@@ -187375,9 +187258,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/nes_logit_model.stan parameters/model blocks and models/posteriordb_nes_logit_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical flat alpha and length-one beta; logit=alpha+beta[0]*income."
+      "Sources: pinned stan/nes_logit_model.stan parameters/model blocks and models/posteriordb_nes_logit_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/nes_logit_data-nes_logit_model.npz",
@@ -187437,8 +187318,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan normal_mixture.stan and the assigned native models/posteriordb_normal_mixture_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of scalar theta and mu[2]; both marginalized Normal likelihoods use weights [theta,1-theta] and known unit SD. No sorting or label permutation is performed."
+      "Sources: pinned posteriordb Stan normal_mixture.stan and the assigned native models/posteriordb_normal_mixture_*.py builder(s)."
     ],
     "rejected_candidates": [],
     "point_file": "points/normal_2-normal_mixture.npz",
@@ -187522,8 +187402,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan normal_mixture_k.stan and the assigned native models/posteriordb_normal_mixture_k_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of K-simplex theta, unrestricted mu and bounded sigma vectors, retaining component labels. The likelihood is the same per-observation logsumexp over weighted Normal components. PyMC's Dirichlet(ones) and Uniform(0,10) normalizers differ from Stan's implicit bounded flat densities only by constants."
+      "Sources: pinned posteriordb Stan normal_mixture_k.stan and the assigned native models/posteriordb_normal_mixture_k_*.py builder(s).",
+      "PyMC's Dirichlet(ones) and Uniform(0,10) normalizers differ from Stan's implicit bounded flat densities only by constants."
     ],
     "rejected_candidates": [],
     "point_file": "points/normal_5-normal_mixture_k.npz",
@@ -187592,7 +187472,7 @@
       }
     },
     "notes": [
-      "Same constrained parameters and probability factors up to normalization constants. Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction is applied."
+      "Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction is applied."
     ],
     "rejected_candidates": [],
     "point_file": "points/one_comp_mm_elim_abs-one_comp_mm_elim_abs.npz",
@@ -193800,8 +193680,7 @@
     },
     "notes": [
       "Sources: pinned stan/logistic_regression_rhs.stan parameters/model blocks and models/posteriordb_logistic_regression_rhs_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "beta0, z, tau, lambda and caux are unchanged. Both set c^2=slab_scale^2*caux and beta=z*tau*sqrt(c^2*lambda^2/(c^2+tau^2*lambda^2)); beta is not a density coordinate. Both use tau scale 2*scale_global and caux~InvGamma(slab_df/2,slab_df/2). PyMC's positive half-t normalizations for tau and lambda add only (d+1)*log(2) with d=1536."
+      "PyMC's positive half-t normalizations for tau and lambda add only (d+1)*log(2) with d=1536."
     ],
     "rejected_candidates": [],
     "point_file": "points/ovarian-logistic_regression_rhs.npz",
@@ -193897,8 +193776,7 @@
     },
     "notes": [
       "Sources: pinned stan/pilots.stan parameters/model blocks and models/posteriordb_pilots_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "a, b, mu_a, mu_b and all SDs are unchanged; a~Normal(10*mu_a,sigma_a), b~Normal(10*mu_b,sigma_b). One-based group/scenario indices become zero-based without row reordering. Implicit Stan (0,100) priors versus three PyMC Uniforms add only -3*log(100)."
+      "One-based group/scenario indices become zero-based. Implicit Stan (0,100) priors versus three PyMC Uniforms add only -3*log(100)."
     ],
     "rejected_candidates": [],
     "point_file": "points/pilots-pilots.npz",
@@ -209446,8 +209324,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan ldaK5.stan and the assigned native models/posteriordb_ldaK5_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of theta with shape (M,5) and phi with shape (5,V), each row a simplex with the supplied alpha/beta concentration vectors. Each token contributes logsumexp over its five topics; no categorical latent variable or document-word count normalization is introduced. Only document/word indices shift to zero-based."
+      "Sources: pinned posteriordb Stan ldaK5.stan and the assigned native models/posteriordb_ldaK5_*.py builder(s).",
+      "Document and word indices shift from one-based to zero-based."
     ],
     "rejected_candidates": [],
     "point_file": "points/prideprejudice_chapter-ldaK5.npz",
@@ -242671,8 +242549,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan ldaK5.stan and the assigned native models/posteriordb_ldaK5_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of theta with shape (M,5) and phi with shape (5,V), each row a simplex with the supplied alpha/beta concentration vectors. Each token contributes logsumexp over its five topics; no categorical latent variable or document-word count normalization is introduced. Only document/word indices shift to zero-based."
+      "Sources: pinned posteriordb Stan ldaK5.stan and the assigned native models/posteriordb_ldaK5_*.py builder(s).",
+      "Document and word indices shift from one-based to zero-based."
     ],
     "rejected_candidates": [],
     "point_file": "points/prideprejudice_paragraph-ldaK5.npz",
@@ -266600,8 +266478,7 @@
     },
     "notes": [
       "Sources: pinned stan/logistic_regression_rhs.stan parameters/model blocks and models/posteriordb_logistic_regression_rhs_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "beta0, z, tau, lambda and caux are unchanged. Both set c^2=slab_scale^2*caux and beta=z*tau*sqrt(c^2*lambda^2/(c^2+tau^2*lambda^2)); beta is not a density coordinate. Both use tau scale 2*scale_global and caux~InvGamma(slab_df/2,slab_df/2). PyMC's positive half-t normalizations for tau and lambda add only (d+1)*log(2) with d=5966."
+      "PyMC's positive half-t normalizations for tau and lambda add only (d+1)*log(2) with d=5966."
     ],
     "rejected_candidates": [],
     "point_file": "points/prostate-logistic_regression_rhs.npz",
@@ -267433,9 +267310,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_county_intercept.stan parameters/model blocks and models/posteriordb_radon_county_intercept_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_county_intercept.npz",
@@ -268275,11 +268151,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_hierarchical_intercept_centered.stan parameters/model blocks and models/posteriordb_radon_hierarchical_intercept_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta.",
-      "beta order is [log_uppm, floor_measure] in both sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_hierarchical_intercept_centered.npz",
@@ -269119,11 +268992,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_hierarchical_intercept_noncentered.stan parameters/model blocks and models/posteriordb_radon_hierarchical_intercept_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources.",
-      "beta order is [log_uppm, floor_measure] in both sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_hierarchical_intercept_noncentered.npz",
@@ -269958,10 +269828,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_partially_pooled_centered.stan parameters/model blocks and models/posteriordb_radon_partially_pooled_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_partially_pooled_centered.npz",
@@ -270796,10 +270664,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_partially_pooled_noncentered.stan parameters/model blocks and models/posteriordb_radon_partially_pooled_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_partially_pooled_noncentered.npz",
@@ -270861,9 +270727,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_pooled.stan parameters/model blocks and models/posteriordb_radon_pooled_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_pooled.npz",
@@ -271701,10 +271566,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_intercept_centered.stan parameters/model blocks and models/posteriordb_radon_variable_intercept_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_variable_intercept_centered.npz",
@@ -272542,10 +272405,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_intercept_noncentered.stan parameters/model blocks and models/posteriordb_radon_variable_intercept_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_variable_intercept_noncentered.npz",
@@ -274159,10 +274020,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_intercept_slope_centered.stan parameters/model blocks and models/posteriordb_radon_variable_intercept_slope_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_variable_intercept_slope_centered.npz",
@@ -275776,10 +275635,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_intercept_slope_noncentered.stan parameters/model blocks and models/posteriordb_radon_variable_intercept_slope_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_variable_intercept_slope_noncentered.npz",
@@ -276617,10 +276474,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_slope_centered.stan parameters/model blocks and models/posteriordb_radon_variable_slope_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_variable_slope_centered.npz",
@@ -277458,10 +277313,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_slope_noncentered.stan parameters/model blocks and models/posteriordb_radon_variable_slope_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_all-radon_variable_slope_noncentered.npz",
@@ -277691,9 +277544,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_county_intercept.stan parameters/model blocks and models/posteriordb_radon_county_intercept_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_county_intercept.npz",
@@ -277931,11 +277783,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_hierarchical_intercept_centered.stan parameters/model blocks and models/posteriordb_radon_hierarchical_intercept_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta.",
-      "beta order is [log_uppm, floor_measure] in both sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_hierarchical_intercept_centered.npz",
@@ -278173,11 +278022,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_hierarchical_intercept_noncentered.stan parameters/model blocks and models/posteriordb_radon_hierarchical_intercept_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources.",
-      "beta order is [log_uppm, floor_measure] in both sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_hierarchical_intercept_noncentered.npz",
@@ -278410,10 +278256,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_partially_pooled_centered.stan parameters/model blocks and models/posteriordb_radon_partially_pooled_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_partially_pooled_centered.npz",
@@ -278646,10 +278490,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_partially_pooled_noncentered.stan parameters/model blocks and models/posteriordb_radon_partially_pooled_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_partially_pooled_noncentered.npz",
@@ -278711,9 +278553,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_pooled.stan parameters/model blocks and models/posteriordb_radon_pooled_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_pooled.npz",
@@ -278949,10 +278790,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_intercept_centered.stan parameters/model blocks and models/posteriordb_radon_variable_intercept_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_variable_intercept_centered.npz",
@@ -279188,10 +279027,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_intercept_noncentered.stan parameters/model blocks and models/posteriordb_radon_variable_intercept_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_variable_intercept_noncentered.npz",
@@ -279601,10 +279438,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_intercept_slope_centered.stan parameters/model blocks and models/posteriordb_radon_variable_intercept_slope_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_variable_intercept_slope_centered.npz",
@@ -280014,10 +279849,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_intercept_slope_noncentered.stan parameters/model blocks and models/posteriordb_radon_variable_intercept_slope_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_variable_intercept_slope_noncentered.npz",
@@ -280253,10 +280086,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_slope_centered.stan parameters/model blocks and models/posteriordb_radon_variable_slope_centered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Both sources retain centered county alpha and/or beta."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_variable_slope_centered.npz",
@@ -280492,10 +280323,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_variable_slope_noncentered.stan parameters/model blocks and models/posteriordb_radon_variable_slope_noncentered_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape.",
-      "Keep alpha_raw and/or beta_raw as density coordinates: both sources form alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No centered/noncentered conversion or scale Jacobian is applied between these paired sources."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mn-radon_variable_slope_noncentered.npz",
@@ -281330,9 +281159,8 @@
     },
     "notes": [
       "Sources: pinned stan/radon_county.stan parameters/model blocks and models/posteriordb_radon_county_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
-      "a, mu_a, sigma_a, sigma_y are unchanged. Stan implicit SD priors on (0,100) versus PyMC Uniform(0,100) contribute only -2*log(100)."
+      "County labels are converted from Stan one-based to NumPy zero-based indices.",
+      "Stan implicit SD priors on (0,100) versus PyMC Uniform(0,100) contribute only -2*log(100)."
     ],
     "rejected_candidates": [],
     "point_file": "points/radon_mod-radon_county.npz",
@@ -281522,8 +281350,7 @@
     },
     "notes": [
       "Sources: pinned stan/rats_model.stan and models/posteriordb_rats_model_rats_data.py::build_model.",
-      "Keep centered alpha and beta in rat order. PyMC rat_index=rat-1 and centered_x=x-xbar reproduce the Stan observation predictor. Positive sigma_y, sigma_alpha and sigma_beta have the same improper flat kernels as HalfFlat, not proper half-Normal priors. Independent Normal alpha/beta hierarchy and hypermeans are unchanged.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "PyMC indexes rats with rat_index=rat-1 (zero-based)."
     ],
     "rejected_candidates": [],
     "point_file": "points/rats_data-rats_model.npz",
@@ -281704,8 +281531,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan prophet.stan and the assigned native models/posteriordb_prophet_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of k, m, delta, sigma_obs and feature beta. Linear trend uses k*t+m+sum(delta_s*max(t-t_change_s,0)). For logistic trend, Stan's continuity recursion telescopes to logit(trend/cap)=k*(t-m)+sum(delta_s*max(t-t_change_s,0)); thus m remains a time location, not a log-odds intercept. Additive/multiplicative feature masks and observation order are unchanged.",
+      "Sources: pinned posteriordb Stan prophet.stan and the assigned native models/posteriordb_prophet_*.py builder(s).",
+      "For the logistic trend, PyMC uses the telescoped form logit(trend/cap)=k*(t-m)+sum(delta_s*max(t-t_change_s,0)) in place of Stan's continuity recursion; m remains a time location, not a log-odds intercept.",
       "HalfNormal versus positive Normal sigma_obs contributes only log(2)."
     ],
     "rejected_candidates": [],
@@ -283104,8 +282931,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan hier_2pl.stan and the assigned native models/posteriordb_hier_2pl_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Set xi[i,:]=[xi1[i],xi2[i]] and correlation_unit=(L_Omega[1,0]+1)/2. rho=L_Omega[1,0]; diag(tau)*[[1,0],[rho,sqrt(1-rho^2)]] is the same bivariate covariance Cholesky factor. Item discrimination=exp(xi[:,0]), difficulty=xi[:,1], and abilities theta remain centered.",
+      "Sources: pinned posteriordb Stan hier_2pl.stan and the assigned native models/posteriordb_hier_2pl_*.py builder(s).",
+      "Set xi[i,:]=[xi1[i],xi2[i]] and correlation_unit=(L_Omega[1,0]+1)/2.",
       "In dimension two LKJ(eta=4) has density proportional to (1-rho^2)^3; Beta(4,4) on u=(rho+1)/2 is its exact coordinate rewrite. log|d rho/d u|=log(2) is constant and omitted from delta adjustments; stacking the item vectors is a permutation with unit absolute determinant."
     ],
     "rejected_candidates": [],
@@ -283173,8 +283000,7 @@
     },
     "notes": [
       "Sources: pinned stan/blr.stan parameters/model blocks and models/posteriordb_blr_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "beta, sigma and X are unchanged. Stan sigma>0 with Normal(0,10) versus PyMC HalfNormal(10) adds the constant log(2)."
+      "Stan sigma>0 with Normal(0,10) versus PyMC HalfNormal(10) adds the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/sblrc-blr.npz",
@@ -283241,8 +283067,7 @@
     },
     "notes": [
       "Sources: pinned stan/blr.stan parameters/model blocks and models/posteriordb_blr_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "beta, sigma and X are unchanged. Stan sigma>0 with Normal(0,10) versus PyMC HalfNormal(10) adds the constant log(2)."
+      "Stan sigma>0 with Normal(0,10) versus PyMC HalfNormal(10) adds the constant log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/sblri-blr.npz",
@@ -284226,8 +284051,7 @@
     },
     "notes": [
       "Sources: pinned stan/seeds_centered_model.stan and models/posteriordb_seeds_centered_model_seeds_data.py::build_model.",
-      "Retain all I unconstrained c values. In both sources b=c-mean(c) is deterministic; it does not replace c with a lower-dimensional zero-sum random variable or introduce an intrinsic improper prior. Coefficient Normal(0,1) priors and Binomial logits match. PyMC HalfCauchy(1) differs from Stan's positive Cauchy only by +log(2).",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "PyMC HalfCauchy(1) differs from Stan's positive Cauchy only by +log(2)."
     ],
     "rejected_candidates": [],
     "point_file": "points/seeds_data-seeds_centered_model.npz",
@@ -284337,9 +284161,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/seeds_model.stan and models/posteriordb_seeds_model_seeds_data.py::build_model.",
-      "Keep tau as precision with Gamma(shape=0.001,rate=0.001) and all I centered b effects. Both sources set sigma=tau**(-1/2) deterministically, so no precision/SD coordinate Jacobian applies. Normal(0,1000) coefficient priors and Binomial logits use identical x1,x2 interactions.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/seeds_model.stan and models/posteriordb_seeds_model_seeds_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/seeds_data-seeds_model.npz",
@@ -284450,8 +284272,7 @@
     },
     "notes": [
       "Sources: pinned stan/seeds_stanified_model.stan and models/posteriordb_seeds_stanified_model_seeds_data.py::build_model.",
-      "All I b effects remain unconstrained centered Normal(0,sigma) draws, without subtracting their mean. Normal(0,1) coefficient priors and Binomial logits match. Positive Cauchy versus HalfCauchy(1) changes only the constant +log(2), not the sigma-dependent kernel.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Positive Cauchy versus HalfCauchy(1) changes only the constant +log(2), not the sigma-dependent kernel."
     ],
     "rejected_candidates": [],
     "point_file": "points/seeds_data-seeds_stanified_model.npz",
@@ -284511,9 +284332,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/sesame_one_pred_a.stan parameters/model blocks and models/posteriordb_sesame_one_pred_a_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Identical watched response, beta order [intercept, encouraged], and Flat beta/HalfFlat sigma matching the implicit Stan priors."
+      "Sources: pinned stan/sesame_one_pred_a.stan parameters/model blocks and models/posteriordb_sesame_one_pred_a_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/sesame_data-sesame_one_pred_a.npz",
@@ -284582,7 +284401,7 @@
       }
     },
     "notes": [
-      "Same constrained parameters and probability factors up to normalization constants. Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction is applied."
+      "Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction is applied."
     ],
     "rejected_candidates": [],
     "point_file": "points/sir-sir.npz",
@@ -284659,7 +284478,7 @@
       }
     },
     "notes": [
-      "Same constrained parameters and probability factors up to normalization constants. Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction is applied."
+      "Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction is applied."
     ],
     "rejected_candidates": [],
     "point_file": "points/soil_carbon-soil_incubation.npz",
@@ -286590,9 +286409,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan hierarchical_gp.stan and the assigned native models/posteriordb_hierarchical_gp_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of whitened GP matrices with shape (year,region) and (year,state), never transposed. Both left-multiply each temporal Cholesky factor into these columns. Region covariance=sum over long/short kernels of 17*tot_var*prop_var[j]*ExpQuad(length_j)+1e-6*I; state covariance uses the corresponding state components.",
-      "The 17-simplex prop_var retains its component order: year, region, ten state-region scales, region_long, state_long, region_short, state_short, error. State-region and observation indices shift only from one-based to zero-based. All priors match in these coordinates."
+      "Sources: pinned posteriordb Stan hierarchical_gp.stan and the assigned native models/posteriordb_hierarchical_gp_*.py builder(s).",
+      "State-region and observation indices shift from one-based to zero-based."
     ],
     "rejected_candidates": [],
     "point_file": "points/state_wide_presidential_votes-hierarchical_gp.npz",
@@ -286675,9 +286493,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/surgical_model.stan and models/posteriordb_surgical_model_surgical_data.py::build_model.",
-      "Keep variance sigmasq with InverseGamma(shape=0.001,scale=0.001). sigma=sqrt(sigmasq) and p=sigmoid(b) are deterministics, so no variance/SD or logit/probability Jacobian applies. Both sources use the same Normal(mu,sigma) b effects and Binomial-logit observations.",
-      "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+      "Sources: pinned stan/surgical_model.stan and models/posteriordb_surgical_model_surgical_data.py::build_model."
     ],
     "rejected_candidates": [],
     "point_file": "points/surgical_data-surgical_model.npz",
@@ -288080,9 +287896,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan kronecker_gp.stan and the assigned native models/posteriordb_kronecker_gp_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of variance var1, bandwidth bw1, lower correlation Cholesky L and additive noise variance sigma1>1e-5. Omega=L@L.T. The temporal covariance is var1*exp(-bw1*distance^2)+1e-5*I. The flattened PyMC observations y.T.reshape(-1) put category fastest, matching Stan to_vector(y) and temporal_covariance tensor-product Omega. KroneckerNormal sigma=sqrt(sigma1) preserves additive noise variance.",
-      "The installed LKJCorr has lower-Cholesky support and logp C+sum_i(2*eta-2+K-i)*log(L_ii), with one-based i. This includes the same Cholesky-to-correlation measure term as Stan's lkj_corr_cholesky; no parameter-dependent correction is needed.",
+      "Sources: pinned posteriordb Stan kronecker_gp.stan and the assigned native models/posteriordb_kronecker_gp_*.py builder(s).",
+      "PyMC flattens observations as y.T.reshape(-1) and passes sigma=sqrt(sigma1) to KroneckerNormal, matching Stan's to_vector(y) ordering and additive noise variance sigma1.",
       "Stan's handwritten Gaussian factor omits -n1*n2/2*log(2*pi); PyMC includes it. Positive Cauchy and fixed-threshold truncated lognormal normalization differences are also parameter-independent."
     ],
     "rejected_candidates": [],
@@ -288156,8 +287971,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan ldaK2.stan and the assigned native models/posteriordb_ldaK2_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of theta with shape (M,2) and phi with shape (2,V), each row a simplex. Priors are Dirichlet(ones). Each token contributes logsumexp_k(log(theta[doc,k])+log(phi[k,word])); topic indicators are marginalized identically, retaining token order and shifting only document/word indices to zero-based."
+      "Sources: pinned posteriordb Stan ldaK2.stan and the assigned native models/posteriordb_ldaK2_*.py builder(s).",
+      "Document and word indices shift from one-based to zero-based."
     ],
     "rejected_candidates": [],
     "point_file": "points/three_docs1200-ldaK2.npz",
@@ -289223,8 +289038,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan ldaK2.stan and the assigned native models/posteriordb_ldaK2_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of theta with shape (M,2) and phi with shape (2,V), each row a simplex. Priors are Dirichlet(ones). Each token contributes logsumexp_k(log(theta[doc,k])+log(phi[k,word])); topic indicators are marginalized identically, retaining token order and shifting only document/word indices to zero-based."
+      "Sources: pinned posteriordb Stan ldaK2.stan and the assigned native models/posteriordb_ldaK2_*.py builder(s).",
+      "Document and word indices shift from one-based to zero-based."
     ],
     "rejected_candidates": [],
     "point_file": "points/three_men1-ldaK2.npz",
@@ -290314,8 +290129,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan ldaK2.stan and the assigned native models/posteriordb_ldaK2_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of theta with shape (M,2) and phi with shape (2,V), each row a simplex. Priors are Dirichlet(ones). Each token contributes logsumexp_k(log(theta[doc,k])+log(phi[k,word])); topic indicators are marginalized identically, retaining token order and shifting only document/word indices to zero-based."
+      "Sources: pinned posteriordb Stan ldaK2.stan and the assigned native models/posteriordb_ldaK2_*.py builder(s).",
+      "Document and word indices shift from one-based to zero-based."
     ],
     "rejected_candidates": [],
     "point_file": "points/three_men2-ldaK2.npz",
@@ -291390,8 +291205,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan ldaK2.stan and the assigned native models/posteriordb_ldaK2_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of theta with shape (M,2) and phi with shape (2,V), each row a simplex. Priors are Dirichlet(ones). Each token contributes logsumexp_k(log(theta[doc,k])+log(phi[k,word])); topic indicators are marginalized identically, retaining token order and shifting only document/word indices to zero-based."
+      "Sources: pinned posteriordb Stan ldaK2.stan and the assigned native models/posteriordb_ldaK2_*.py builder(s).",
+      "Document and word indices shift from one-based to zero-based."
     ],
     "rejected_candidates": [],
     "point_file": "points/three_men3-ldaK2.npz",
@@ -300259,8 +300074,7 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan bym2_offset_only.stan and the assigned native models/posteriordb_bym2_offset_only_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of spatial phi and unstructured theta; convolved effect=sqrt(1-rho)*theta+sqrt(rho/scaling_factor)*phi. The ICAR factor uses one copy per undirected edge and Normal(sum(phi);0,0.001*N), matching the original soft sum constraint without centering or projection.",
+      "Sources: pinned posteriordb Stan bym2_offset_only.stan and the assigned native models/posteriordb_bym2_offset_only_*.py builder(s).",
       "HalfNormal versus a Normal density on positive sigma contributes only log(2)."
     ],
     "rejected_candidates": [],
@@ -301096,8 +300910,8 @@
       }
     },
     "notes": [
-      "Sources: pinned posteriordb Stan state_space_stochastic_level_stochastic_seasonal.stan and the assigned native models/posteriordb_state_space_stochastic_level_stochastic_seasonal_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
-      "Identity of bounded level mu, seasonal states, flat beta/lambda and three positive ordered SDs (seasonal,level,observation). Native AR rho=-ones(11) with flat initial eleven states equals Stan's seasonal[t]~Normal(-sum(previous eleven),sigma[0]); level transitions remain unnormalized Normal factors inside the fixed mean(y)+/-3*sample_sd(y) level bounds.",
+      "Sources: pinned posteriordb Stan state_space_stochastic_level_stochastic_seasonal.stan and the assigned native models/posteriordb_state_space_stochastic_level_stochastic_seasonal_*.py builder(s).",
+      "Native AR rho=-ones(11) with flat initial eleven states replaces Stan's seasonal[t]~Normal(-sum(previous eleven),sigma[0]); level transitions remain unnormalized Normal factors inside the fixed mean(y)+/-3*sample_sd(y) level bounds.",
       "Uniform level normalizers and three HalfStudentT versus positive Student-t scale normalizers are parameter-independent.",
       "Shared-support limitation: original Stan points enforce all ordered or positive-ordered constraints. PyMC ordering supplied only by a transform is not separately enforced after transforms are removed. These evaluations compare points on the shared Stan-valid support, not global support or model equivalence."
     ],
@@ -301165,9 +300979,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/wells_daae_c_model.stan parameters/model blocks and models/posteriordb_wells_daae_c_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use predictors [cd, ca, cd*ca, assoc, educ/4]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+      "Sources: pinned stan/wells_daae_c_model.stan parameters/model blocks and models/posteriordb_wells_daae_c_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/wells_data-wells_daae_c_model.npz",
@@ -301231,9 +301043,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/wells_dae_c_model.stan parameters/model blocks and models/posteriordb_wells_dae_c_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use predictors [cd, ca, cd*ca, educ/4]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+      "Sources: pinned stan/wells_dae_c_model.stan parameters/model blocks and models/posteriordb_wells_dae_c_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/wells_data-wells_dae_c_model.npz",
@@ -301301,9 +301111,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/wells_dae_inter_model.stan parameters/model blocks and models/posteriordb_wells_dae_inter_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use predictors [cd, ca, ce, cd*ca, cd*ce, ca*ce]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+      "Sources: pinned stan/wells_dae_inter_model.stan parameters/model blocks and models/posteriordb_wells_dae_inter_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/wells_data-wells_dae_inter_model.npz",
@@ -301365,9 +301173,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/wells_dae_model.stan parameters/model blocks and models/posteriordb_wells_dae_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use predictors [dist/100, arsenic, educ/4]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+      "Sources: pinned stan/wells_dae_model.stan parameters/model blocks and models/posteriordb_wells_dae_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/wells_data-wells_dae_model.npz",
@@ -301424,9 +301230,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/wells_dist.stan parameters/model blocks and models/posteriordb_wells_dist_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use predictors [1, dist], with the intercept stored in beta[0]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+      "Sources: pinned stan/wells_dist.stan parameters/model blocks and models/posteriordb_wells_dist_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/wells_data-wells_dist.npz",
@@ -301484,9 +301288,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/wells_dist100_model.stan parameters/model blocks and models/posteriordb_wells_dist100_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use predictors [dist/100]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+      "Sources: pinned stan/wells_dist100_model.stan parameters/model blocks and models/posteriordb_wells_dist100_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/wells_data-wells_dist100_model.npz",
@@ -301546,9 +301348,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/wells_dist100ars_model.stan parameters/model blocks and models/posteriordb_wells_dist100ars_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use predictors [dist/100, arsenic]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+      "Sources: pinned stan/wells_dist100ars_model.stan parameters/model blocks and models/posteriordb_wells_dist100ars_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/wells_data-wells_dist100ars_model.npz",
@@ -301610,9 +301410,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/wells_interaction_c_model.stan parameters/model blocks and models/posteriordb_wells_interaction_c_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use predictors [cd, ca, cd*ca]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+      "Sources: pinned stan/wells_interaction_c_model.stan parameters/model blocks and models/posteriordb_wells_interaction_c_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/wells_data-wells_interaction_c_model.npz",
@@ -301674,9 +301472,7 @@
       }
     },
     "notes": [
-      "Sources: pinned stan/wells_interaction_model.stan parameters/model blocks and models/posteriordb_wells_interaction_model_*.py build_model (each dataset variant inspected).",
-      "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
-      "Both use predictors [dist/100, arsenic, (dist/100)*arsenic]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+      "Sources: pinned stan/wells_interaction_model.stan parameters/model blocks and models/posteriordb_wells_interaction_model_*.py build_model (each dataset variant inspected)."
     ],
     "rejected_candidates": [],
     "point_file": "points/wells_data-wells_interaction_model.npz",

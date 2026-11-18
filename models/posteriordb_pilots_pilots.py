@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.14/pilots.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native crossed Gaussian effects for pilot groups and scenarios.
 
@@ -35,19 +30,11 @@ Stan comparison:
 - B: Stan = -259.8135650165997; PyMC = -273.6290757664166.
 - Raw delta: Stan = -4.011885454898447; PyMC = -4.011885454898504.
 - Raw comparison: MATCH; residual = 5.684341886080802e-14.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.040118854548985e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- a, b, mu_a, mu_b and all SDs are unchanged; a~Normal(10*mu_a,sigma_a),
-  b~Normal(10*mu_b,sigma_b). One-based group/scenario indices become zero-based without
-  row reordering. Implicit Stan (0,100) priors versus three PyMC Uniforms add only
-  -3*log(100).
+- One-based group/scenario indices become zero-based. Implicit Stan (0,100) priors
+  versus three PyMC Uniforms add only -3*log(100).
 - Original Stan SHA-256: 4bf2c1e00ab66ce90a014b1f48ee7d129601b93783f0cb850b5dacc5109fae19
 - Saved points: models/posteriordb_logp/points/pilots-pilots.npz
-- Full evidence: models/posteriordb_logp/records/pilots-pilots.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

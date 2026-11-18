@@ -17,9 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 Changes from original:
 - Use the declared covariance diag(sigma) @ Omega @ diag(sigma), rather than the source row-factor product.
   This changes the joint prior on the dog effects.
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
 
 Implementation notes:
 Native correlated dog effects from posteriordb dogs_nonhierarchical.
@@ -40,7 +37,7 @@ Stan comparison:
 - Adjusted Stan delta = 92.9849877971454.
 - Adjusted comparison: MATCH; residual = 7.105427357601002e-14.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.9298498779714537e-06
-  using adjusted delta_Stan when an adjustment is present.
+  using adjusted delta_Stan.
 - Original targets differ: Stan uses z @ A, PyMC z @ A.T. Map
   z_PyMC=solve(A,(z_Stan@A).T).T to preserve dog effects; add the independently computed
   standard-Normal prior difference.
@@ -48,7 +45,6 @@ Stan comparison:
   LKJ(2) and Beta(2,2) then agree up to constants, as do Normal and HalfNormal factors.
 - Original Stan SHA-256: 69dc8063e69d0451f54c5223edbb34e316742f5001a630f251bbab2be074109d
 - Saved points: models/posteriordb_logp/points/dogs-dogs_nonhierarchical.npz
-- Full evidence: models/posteriordb_logp/records/dogs-dogs_nonhierarchical.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

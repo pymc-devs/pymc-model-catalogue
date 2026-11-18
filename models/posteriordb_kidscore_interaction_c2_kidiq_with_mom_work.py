@@ -18,11 +18,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/kidiq_interaction_c2.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native reference-centered child-score interaction regression from Gelman and Hill (2006), Chapter 4.
 
@@ -35,17 +30,9 @@ Stan comparison:
 - B: Stan = -1876522.7716739054; PyMC = -1876522.7716739047.
 - Raw delta: Stan = -1010324.3010102423; PyMC = -1010324.3010102413.
 - Raw comparison: MATCH; residual = -1.0477378964424133e-09.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.010104243010102423
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- Both predictors use [1, hs-0.5, iq-100, (hs-0.5)*(iq-100)]; beta order is unchanged.
-- Stan implicit flat beta/sigma>0 match PyMC Flat/HalfFlat.
 - Original Stan SHA-256: f0e2de7b978b8ee263d3aa5fccdc4170e2f4d0678af5d6b8a0090162d084e9be
 - Saved points: models/posteriordb_logp/points/kidiq_with_mom_work-kidscore_interaction_c2.npz
-- Full evidence: models/posteriordb_logp/records/kidiq_with_mom_work-kidscore_interaction_c2.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

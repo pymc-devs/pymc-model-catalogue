@@ -16,11 +16,6 @@ Data: arK (upstream posterior: arK-arK)
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/arK-arK.json
 Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/arK
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Conditional autoregression from the posteriordb arK probability model.
 
@@ -34,15 +29,10 @@ Stan comparison:
 - B: Stan = -213.5590502472479; PyMC = -212.86590328480204.
 - Raw delta: Stan = 19.77254553418257; PyMC = 19.7725455341824.
 - Raw comparison: MATCH; residual = 1.7053025658242404e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1977254553418258e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of alpha, lag-ordered beta[1:K], and sigma; row t uses y[t-1],...,y[t-K]. The
-  first K observations only condition the likelihood.
 - HalfCauchy versus a Cauchy density on positive sigma contributes only log(2).
 - Original Stan SHA-256: fd5c71a891f648de3b9b65e2a65885c974fd9478b0a137b6b229f76ff4e01de6
 - Saved points: models/posteriordb_logp/points/arK-arK.npz
-- Full evidence: models/posteriordb_logp/records/arK-arK.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

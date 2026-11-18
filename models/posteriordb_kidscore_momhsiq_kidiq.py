@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.3/kidiq_multi_preds.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native child-score regression from Gelman and Hill (2006), Chapter 3.
 
@@ -34,18 +29,11 @@ Stan comparison:
 - B: Stan = -4268980.8297550175; PyMC = -4268980.136607862.
 - Raw delta: Stan = -3267425.8284581974; PyMC = -3267425.8284581965.
 - Raw comparison: MATCH; residual = -9.313225746154785e-10.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.032675258284581975
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- Both predictors use [1, mom_hs, mom_iq]; beta order is unchanged.
-- Stan sigma>0 with Cauchy(0,2.5), PyMC HalfCauchy(2.5): PyMC-Stan is the constant
-  log(2). Beta has a flat prior in both.
+- Stan sigma>0 with Cauchy(0,2.5) versus PyMC HalfCauchy(2.5): PyMC-Stan is the constant
+  log(2).
 - Original Stan SHA-256: de5689ba783aca3612123239b62e8e7da2b5a61785ac001bb4f7a6a601c99467
 - Saved points: models/posteriordb_logp/points/kidiq-kidscore_momhsiq.npz
-- Full evidence: models/posteriordb_logp/records/kidiq-kidscore_momhsiq.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

@@ -19,11 +19,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/stan-dev/example-models/tree/master/ARM/Ch.5
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native well-switching logistic regression from Gelman and Hill (2006), Chapter 5.
 
@@ -37,19 +32,9 @@ Stan comparison:
 - B: Stan = -1994.319657791627; PyMC = -1994.3196577916267.
 - Raw delta: Stan = 44.97376689762564; PyMC = 44.973766897625865.
 - Raw comparison: MATCH; residual = -2.2737367544323206e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.4497376689762585e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- Both use predictors [cd, ca, cd*ca, assoc, educ/4]; cd=(dist-mean(dist))/100,
-  ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation
-  and coefficient order are retained; all coefficients are flat. Except wells_dist,
-  alpha is the separate intercept.
 - Original Stan SHA-256: 0791694f69f5c63c9aff64c4b88a857df9d14cbca01594c4de5df290a6553708
 - Saved points: models/posteriordb_logp/points/wells_data-wells_daae_c_model.npz
-- Full evidence: models/posteriordb_logp/records/wells_data-wells_daae_c_model.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

@@ -16,11 +16,6 @@ Data: low_dim_gauss_mix (upstream posterior: low_dim_gauss_mix-low_dim_gauss_mix
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/low_dim_gauss_mix-low_dim_gauss_mix.json
 Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/low_dim_gauss_mix
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Two-component Gaussian mixture with ordered means.
 
@@ -35,19 +30,15 @@ Stan comparison:
 - B: Stan = -4432.7715974554385; PyMC = -4431.38530320239.
 - Raw delta: Stan = 628.729891704581; PyMC = 628.72989170458.
 - Raw comparison: MATCH; residual = 9.094947017729282e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 7.287298917045809e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of ordered mu, positive sigma and scalar theta; no relabeling. Both
-  likelihoods marginalize with weights [theta,1-theta] per observation. HalfNormal scale
-  normalizers differ from positive Normal densities only by two log(2) constants.
+- HalfNormal scale normalizers differ from positive Normal densities only by two log(2)
+  constants.
 - Shared-support limitation: original Stan points enforce all ordered or positive-
   ordered constraints. PyMC ordering supplied only by a transform is not separately
   enforced after transforms are removed. These evaluations compare points on the shared
   Stan-valid support, not global support or model equivalence.
 - Original Stan SHA-256: b94ee44ab73502a0053c4a52b7e9d582ca4f466994d7beef4a4e606ff8582344
 - Saved points: models/posteriordb_logp/points/low_dim_gauss_mix-low_dim_gauss_mix.npz
-- Full evidence: models/posteriordb_logp/records/low_dim_gauss_mix-low_dim_gauss_mix.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

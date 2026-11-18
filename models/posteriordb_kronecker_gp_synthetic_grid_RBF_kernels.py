@@ -16,11 +16,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: flaxman2015fast (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://sethrf.com/files/fast-hierarchical-GPs.pdf
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Kronecker Gaussian process from posteriordb and Flaxman et al. (2015).
 
@@ -34,24 +29,15 @@ Stan comparison:
 - B: Stan = -174.18002781900708; PyMC = -1000.5315605489137.
 - Raw delta: Stan = -220.34902225300627; PyMC = -220.3490222530063.
 - Raw comparison: MATCH; residual = 2.842170943040401e-14.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.2034902225300633e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of variance var1, bandwidth bw1, lower correlation Cholesky L and additive
-  noise variance sigma1>1e-5. Omega=L@L.T. The temporal covariance is
-  var1*exp(-bw1*distance^2)+1e-5*I. The flattened PyMC observations y.T.reshape(-1) put
-  category fastest, matching Stan to_vector(y) and temporal_covariance tensor-product
-  Omega. KroneckerNormal sigma=sqrt(sigma1) preserves additive noise variance.
-- The installed LKJCorr has lower-Cholesky support and logp
-  C+sum_i(2*eta-2+K-i)*log(L_ii), with one-based i. This includes the same Cholesky-to-
-  correlation measure term as Stan's lkj_corr_cholesky; no parameter-dependent
-  correction is needed.
+- PyMC flattens observations as y.T.reshape(-1) and passes sigma=sqrt(sigma1) to
+  KroneckerNormal, matching Stan's to_vector(y) ordering and additive noise variance
+  sigma1.
 - Stan's handwritten Gaussian factor omits -n1*n2/2*log(2*pi); PyMC includes it.
   Positive Cauchy and fixed-threshold truncated lognormal normalization differences are
   also parameter-independent.
 - Original Stan SHA-256: c1c2c779849a0d3e57b1f9df8daa5cc6b215a56f35db21912bd4d10b149ece57
 - Saved points: models/posteriordb_logp/points/synthetic_grid_RBF_kernels-kronecker_gp.npz
-- Full evidence: models/posteriordb_logp/records/synthetic_grid_RBF_kernels-kronecker_gp.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

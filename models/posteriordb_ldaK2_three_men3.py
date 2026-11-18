@@ -16,11 +16,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: blei2003latent (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://mc-stan.org/docs/2_18/stan-users-guide/latent-dirichlet-allocation.html
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Latent Dirichlet allocation with two topics and uniform simplex densities.
 
@@ -33,17 +28,10 @@ Stan comparison:
 - B: Stan = -25371.50881000111; PyMC = -25371.508810001153.
 - Raw delta: Stan = 41.401058074319735; PyMC = 41.401058074250614.
 - Raw comparison: MATCH; residual = 6.912159733474255e-11.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.4140105807431973e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of theta with shape (M,2) and phi with shape (2,V), each row a simplex.
-  Priors are Dirichlet(ones). Each token contributes
-  logsumexp_k(log(theta[doc,k])+log(phi[k,word])); topic indicators are marginalized
-  identically, retaining token order and shifting only document/word indices to zero-
-  based.
+- Document and word indices shift from one-based to zero-based.
 - Original Stan SHA-256: 2b943b45446d68148c94c9089ee17f45597eb839e0cd4f94410a817f787327d5
 - Saved points: models/posteriordb_logp/points/three_men3-ldaK2.npz
-- Full evidence: models/posteriordb_logp/records/three_men3-ldaK2.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

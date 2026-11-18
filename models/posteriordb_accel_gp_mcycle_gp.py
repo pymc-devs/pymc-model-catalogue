@@ -16,11 +16,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: bales2019selecting (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://github.com/bbbales2/cmdstan-warmup/blob/develop/examples/accel_gp/
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Finite-basis acceleration model from posteriordb and Bales (2019).
 
@@ -39,21 +34,15 @@ Stan comparison:
 - Adjusted Stan delta = -54043.39771861501.
 - Adjusted comparison: MATCH; residual = -2.1827872842550278e-11.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.0005414339771861502
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of both whitened GP coefficient vectors: for dimension D, spectral SD_m =
-  sdgp*(sqrt(2*pi)*lscale)^(D/2)*exp(-lscale^2*sum(slambda_m^2)/4); both predictors use
-  the supplied Xgp matrices times spectral_SD*zgp, with the scale predictor
-  exponentiated.
-- Student-t intercepts, inverse-gamma lengths and the prior_only switch match. In the
-  measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT GP amplitude
-  priors has dtype int8: sigma**2 overflows to 16. Their native density is therefore
-  HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The named
-  adjustment adds the two source-derived prior log-density differences to Stan. Original
-  targets differ; this runtime discrepancy is not a best-practice reparameterization.
-  Recheck this adjustment after engine upgrades.
+  using adjusted delta_Stan.
+- In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT GP
+  amplitude priors has dtype int8: sigma**2 overflows to 16. Their native density is
+  therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The
+  named adjustment adds the two source-derived prior log-density differences to Stan.
+  Original targets differ; this runtime discrepancy is not a best-practice
+  reparameterization. Recheck this adjustment after engine upgrades.
 - Original Stan SHA-256: a65f0d579c6feb398e345ebe37dbb88017a7ecc00f199f6b07d3377cac419835
 - Saved points: models/posteriordb_logp/points/mcycle_gp-accel_gp.npz
-- Full evidence: models/posteriordb_logp/records/mcycle_gp-accel_gp.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

@@ -17,11 +17,6 @@ Data: normal_2 (upstream posterior: normal_2-normal_mixture)
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/normal_2-normal_mixture.json
 Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/basic_estimators/normal_mixture.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Two-component Normal mixture with known unit standard deviations.
 
@@ -35,14 +30,9 @@ Stan comparison:
 - B: Stan = -51359.06365560339; PyMC = -51359.06365566734.
 - Raw delta: Stan = 1003.4648417635981; PyMC = 1003.4648417636054.
 - Raw comparison: MATCH; residual = -7.275957614183426e-12.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1034648417636055e-05
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of scalar theta and mu[2]; both marginalized Normal likelihoods use weights
-  [theta,1-theta] and known unit SD. No sorting or label permutation is performed.
 - Original Stan SHA-256: 347644c84000e76f74c10314dda7774fd2d3b13cd53f37f049b6bfdc2054c87e
 - Saved points: models/posteriordb_logp/points/normal_2-normal_mixture.npz
-- Full evidence: models/posteriordb_logp/records/normal_2-normal_mixture.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

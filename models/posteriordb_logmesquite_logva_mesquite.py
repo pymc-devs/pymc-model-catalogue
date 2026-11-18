@@ -17,11 +17,6 @@ Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f
 References: gelman2006data (see posteriordb/source/bibliography/references.bib)
 Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/mesquite_va.stan
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Native Gaussian model for log mesquite weight with canopy volume and area.
 
@@ -36,19 +31,9 @@ Stan comparison:
 - B: Stan = -881.2893371061535; PyMC = -881.2893371061538.
 - Raw delta: Stan = -176.47291541041136; PyMC = -176.47291541041182.
 - Raw comparison: MATCH; residual = 4.547473508864641e-13.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.764729154104118e-06
-  using adjusted delta_Stan when an adjustment is present.
-- Identity on all constrained free parameters, including original array order. No
-  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
-  transform and PyMC value-transform Jacobians are disabled.
-- Both use log(weight) as response; [1, log(diam1*diam2*canopy_height),
-  log(diam1*diam2), group]. Beta order is unchanged, with Flat beta and HalfFlat sigma
-  matching Stan's implicit priors. Response transformations are identical fixed-data
-  operations, not parameter transforms requiring a Jacobian correction.
 - Original Stan SHA-256: f21fbceb941f04848fe7a1385e5b5f331e08a259db0fa8655fc724e91f94f7fb
 - Saved points: models/posteriordb_logp/points/mesquite-logmesquite_logva.npz
-- Full evidence: models/posteriordb_logp/records/mesquite-logmesquite_logva.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:

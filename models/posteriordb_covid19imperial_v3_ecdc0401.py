@@ -15,11 +15,6 @@ Data: ecdc0401 (upstream posterior: ecdc0401-covid19imperial_v3)
 Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/ecdc0401-covid19imperial_v3.json
 Reference URL: https://github.com/ImperialCollegeLondon/covid19model
 
-Changes from original:
-- Native PyMC port; the upstream implementation paths above identify the source definitions.
-- Bundled the processed source JSON archive unchanged.
-- Captured the initial point before clearing model initial-value overrides.
-
 Implementation notes:
 Flaxman et al. (2020) intervention renewal model, version 3.
 
@@ -30,22 +25,14 @@ Stan comparison:
 - B: Stan = -143829.9426968772; PyMC = -143828.55640254423.
 - Raw delta: Stan = 8223.13881108095; PyMC = 8223.138811081066.
 - Raw comparison: MATCH; residual = -1.1641532182693481e-10.
-- No parameter-dependent adjustment; only constant offsets may cancel.
 - Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 8.323138811081065e-05
-  using adjusted delta_Stan when an adjustment is present.
-- Identity of all seven parameter blocks; alpha=alpha_hier-log(1.05)/6 is the same
-  deterministic intervention effect. Stan X[country,day,feature] is transposed only as
-  data to PyMC (day,country,feature). Both renewal recursions seed N0 days with y and
-  use N0*y cumulative infections at the first post-seed day; delay convolutions use
-  lag-1 array indices.
-- Both likelihoods use negative-binomial mean E_deaths and shape phi, selecting each
-  country's EpidemicStart..N inclusive in country-major order. The random-kappa
-  truncation normalizer for positive mu is explicitly canceled by the PyMC
-  mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa
-  change only constants.
+- Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature);
+  delay convolutions use lag-1 array indices.
+- The random-kappa truncation normalizer for positive mu is explicitly canceled by the
+  PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal
+  phi/kappa change only constants.
 - Original Stan SHA-256: ea0d293199edfe1f06a9bdece810686d9cc98a64bc50fd23da4760a9c0733216
 - Saved points: models/posteriordb_logp/points/ecdc0401-covid19imperial_v3.npz
-- Full evidence: models/posteriordb_logp/records/ecdc0401-covid19imperial_v3.json
 - Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
