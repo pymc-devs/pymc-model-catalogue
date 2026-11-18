@@ -1121,6 +1121,13 @@
       "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "e88791e3fc029b425236a4d8f49fb67ff9a2c474425b96dfe36167857959b2cf",
       "bench_models.ModelBenchEval_models_multilevel_varying_intercept_slope_noncentered.time_eval": "d4beec0f12f8a9e4d166622741c1fbce154cf48d943ce41635f7ceda18923e50"
     },
+    "8afed912843c0d08689b24d7e33de3773adc6b50/3.14": {
+      "bench_models.ModelBenchBuild_models_BEST.track_compile_time": true,
+      "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": true,
+      "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": true,
+      "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": true,
+      "bench_models.ModelBenchEval_models_BEST.time_eval": true
+    },
     "abaa99d5bba71152e43baf568efd347ed57ea836/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "28451c6b7bc180c2ad5c69518724646290863acb781ff52c52d456e759f398aa",
       "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "12c6d0908b8b8b029aa2ac858def7dd0784a6ab2b6b36501c5aacc54e872ae78",
@@ -1613,6 +1620,9 @@
       "3.12"
     ],
     "86bf330a330352fbc13c934b6ce6749803675f2a": [],
+    "8afed912843c0d08689b24d7e33de3773adc6b50": [
+      "3.14"
+    ],
     "abaa99d5bba71152e43baf568efd347ed57ea836": [
       "3.12"
     ],
@@ -1695,6 +1705,9 @@
       "3.12"
     ],
     "86bf330a330352fbc13c934b6ce6749803675f2a": [],
+    "8afed912843c0d08689b24d7e33de3773adc6b50": [
+      "3.14"
+    ],
     "abaa99d5bba71152e43baf568efd347ed57ea836": [
       "3.12"
     ],
