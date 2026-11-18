@@ -418,6 +418,10 @@
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_n_rewrites": true,
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_peak_rss": true,
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_rewrite_time": true,
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_compile_time": true,
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_n_rewrites": true,
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_peak_rss": true,
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_rewrite_time": true,
       "bench_models.ModelBenchEval_models_BEST.time_eval": "e70085fe6f071b670605444e57ff9f7e4370d91ef892b3f768427adad5fca336",
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "f77971bb0fe7bb40e90c8b4be1f3a4aafe21f596aafd6702bef8b05b3b725d72",
       "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": "f5cadb14872424f72957d0493a94276121c57775042058b06e4720e45edbb90a",
@@ -425,7 +429,8 @@
       "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "8b8ddabfd4215cddc7f33c299b229cbd77d07ea049e514acd0d436618a7a4cb9",
       "bench_models.ModelBenchEval_models_gp_marginal_matern52.time_eval": "5814d4130dfd4f62d6f8704e00bee4bb1d1eab7e482eeea523528d45a47c6421",
       "bench_models.ModelBenchEval_models_irt_survey_zerosum_categorical.time_eval": true,
-      "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": true
+      "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": true,
+      "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": true
     },
     "55b4725c6b4e7c8daa5724c93beb144e33dae716/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "88f2876699608d6bc99025cacd209b10b5d5a409ecac864b8a18d1f7dc41585a",
