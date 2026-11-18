@@ -167,7 +167,12 @@
       "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": true,
       "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": true,
       "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": true,
-      "bench_models.ModelBenchEval_models_BEST.time_eval": true
+      "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_compile_time": true,
+      "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_n_rewrites": true,
+      "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_peak_rss": true,
+      "bench_models.ModelBenchBuild_models_GLM_hierarchical_binomial_rat_tumor.track_rewrite_time": true,
+      "bench_models.ModelBenchEval_models_BEST.time_eval": true,
+      "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": true
     },
     "37b86001c2b07de6d8aed698ce6acbf052a58f64/3.14": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": true,
