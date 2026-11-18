@@ -34,8 +34,12 @@ def build_model():
     converted_data = {}
     mean_purchase_data = {}
     for variant, p, mp in zip(variants, true_conversion_rates, true_mean_purchase):
-        converted_data[variant] = bernoulli.rvs(p, size=samples_per_variant)
-        mean_purchase_data[variant] = expon.rvs(scale=mp, size=samples_per_variant)
+        converted_data[variant] = bernoulli.rvs(
+            p, size=samples_per_variant, random_state=rng
+        )
+        mean_purchase_data[variant] = expon.rvs(
+            scale=mp, size=samples_per_variant, random_state=rng
+        )
 
     # Aggregate
     visitors = []
