@@ -1154,6 +1154,10 @@
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_n_rewrites": true,
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_peak_rss": true,
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_rewrite_time": true,
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_compile_time": true,
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_n_rewrites": true,
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_peak_rss": true,
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_rewrite_time": true,
       "bench_models.ModelBenchEval_models_BEST.time_eval": true,
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": true,
       "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": true,
@@ -1161,7 +1165,8 @@
       "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": true,
       "bench_models.ModelBenchEval_models_gp_marginal_matern52.time_eval": true,
       "bench_models.ModelBenchEval_models_irt_survey_zerosum_categorical.time_eval": true,
-      "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": true
+      "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": true,
+      "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": true
     },
     "abaa99d5bba71152e43baf568efd347ed57ea836/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "28451c6b7bc180c2ad5c69518724646290863acb781ff52c52d456e759f398aa",
