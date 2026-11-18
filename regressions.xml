@@ -25,5 +25,5 @@
                 Latest value: 177.0 (5.36% worse
                 than best value 168.0).</content></entry><entry><id>tag:pymc-model-catalogue.asv,2026-04-13:/5a622ab7d824a134cb7751d930d1b22c1b1d86975406d46b2df9802627229283</id><title xml:lang="en">28.51% bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_n_rewrites</title><updated>2026-11-05T09:07:23Z</updated><link href="index.html#bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_n_rewrites?python=3.12&amp;commits=ea734630f9c23c8c25f0c44c261205d965b45558" /><content xml:lang="en" type="html">&lt;a href="index.html#bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_n_rewrites?python=3.12&amp;commits=ea734630f9c23c8c25f0c44c261205d965b45558"&gt;28.51% regression&lt;/a&gt; on 2026-04-13 20:45:50 in commit &lt;a href="https://github.com/pymc-devs/pymc-model-catalogue/commit/ea734630f9c23c8c25f0c44c261205d965b45558"&gt;ea734630&lt;/a&gt;.&lt;br&gt;
                 New value: 1289.0, old value: 1003.0.&lt;br&gt;
-                Latest value: 1289.0 (29.29% worse
+                Latest value: 1318.0 (32.20% worse
                 than best value 997.0).</content></entry></feed>
