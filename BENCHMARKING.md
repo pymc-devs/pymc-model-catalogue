@@ -80,24 +80,8 @@ These are tooling pins; release-date resolution of model dependencies is kept.
 
 The pin does not refresh saved results: `--skip-existing-successful` will still
 skip earlier successful measurements of the current benchmark version.
-An eval-only run preserves saved build measurements while compiling the target
-once to obtain the callable used for eval samples.
-
-The manual **Refresh eval timings** workflow automates that refresh. It selects
-successful core eval measurements with one call per sample and a per-call time
-below the 0.1-second batching target, restricted to tagged releases. It verifies
-that replacements are batched and that other measurements are unchanged before
-publishing a complete site. A failed refresh leaves the published site intact.
-
-After pushing these changes to `main`, run:
-
-```bash
-gh workflow run refresh-eval.yml --repo pymc-devs/pymc-model-catalogue --ref main
-```
-
-Add `-f dry_run=true` to list affected records without measuring or publishing.
-The workflow uses Python 3.12 and 3.14 to repair both saved environments. Each
-model worker compiles its function once; only the requested eval rows are replaced.
+Use the **Benchmark** workflow's full rerun option, described below, to refresh
+the saved measurements.
 
 ### One target build per model
 
@@ -190,7 +174,6 @@ python scripts/run_benchmarks.py --bench "$(python scripts/core_models.py)" \
 | `backfill.yml` | manual dispatch | Walks the timeline a `step` at a time. First dispatch creates the branch; `reset=true` wipes it back to main. |
 | `benchmark.yml` | push on `timeline`, weekly cron, manual dispatch | Builds each model once and samples eval from its compiled callable. Manual `rerun=true` starts/resumes a full timeline rerun; checkpoints after each model. |
 | `detect-releases.yml` | daily cron | Polls PyPI for new pymc minors, opens a PR against `timeline`. Merging the PR kicks off `benchmark.yml`. |
-| `refresh-eval.yml` | manual dispatch | Replaces single-call core eval timings in tagged releases, verifies other measurements are unchanged, then publishes. Optional dry run lists the affected records. |
 | `experiment.yml` | push on `experiments`, manual dispatch | Runs each changed YAML, keyed by the YAML file's last-touching git SHA for dedup. |
 
 Each timeline checkpoint regenerates `dashboard.html` and, when experiment data
