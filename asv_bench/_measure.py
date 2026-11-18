@@ -63,6 +63,9 @@ def measure_eval(call, eval_class):
 
 
 def write_measurements(model, result, eval_class, started_at, build_seconds):
+    import numba
+    import pytensor
+
     from asv_bench._cache import MODEL_BENCHMARK_VERSION
 
     commit = os.environ.get("CATALOGUE_COMMIT") or os.environ.get("ASV_COMMIT")
@@ -95,6 +98,7 @@ def write_measurements(model, result, eval_class, started_at, build_seconds):
         "model": model, "commit": commit, "env_name": environment,
         "rows": rows, "compile_cache": result["compile_cache"],
         "target_builds": 1, "eval_error": eval_error,
+        "dependencies": {"pytensor": pytensor.__version__, "numba": numba.__version__},
     }
     directory = Path(os.environ["CATALOGUE_BUNDLE_DIR"])
     directory.mkdir(parents=True, exist_ok=True)
