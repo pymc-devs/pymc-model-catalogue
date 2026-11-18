@@ -24,6 +24,8 @@ import pytensor.tensor as pt
 
 
 def build_model():
+    rng = np.random.default_rng(8927)
+
     def get_icm(input_dim, kernel, W=None, kappa=None, B=None, active_dims=None):
         coreg = pm.gp.cov.Coregion(
             input_dim=input_dim, W=W, kappa=kappa, B=B, active_dims=active_dims
@@ -41,7 +43,7 @@ def build_model():
                     mu=0,
                     sigma=5,
                     shape=(num_outputs, 1),
-                    initval=np.random.randn(num_outputs, 1),
+                    initval=rng.standard_normal((num_outputs, 1)),
                 )
         else:
             kappa = None
