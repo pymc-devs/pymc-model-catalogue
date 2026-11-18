@@ -1,0 +1,68 @@
+{
+  "module": "models/posteriordb_blr_sblri.py",
+  "posterior": "sblri-blr",
+  "archive": "models/data/posteriordb_sblri.json.zip",
+  "archive_sha256": "e975f6641b5e08d65cb1e3519f1d0370939afbc82bfbeb3c1f5a07e5bbd717a7",
+  "builder_ast_sha256": "853d2dfada1b30d3086b480334a654380e001102442901f383bcf14e43b5d65e",
+  "stan_model": "blr",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/blr.stan",
+  "stan_sha256": "e6407c4391ab11c0b59f17f3a04132df87aa69b7dae459e173036f16f9e8b161",
+  "library_sha256": "e7e85b90037d6540fee3e3cd4d96cf59de7e60cac66e965552f723c78ebfa402",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "beta.5",
+    "sigma"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "beta.5",
+    "sigma"
+  ],
+  "pymc_parameter_names": [
+    "sigma",
+    "beta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 10967274588157812004,
+      "attempt": 0,
+      "stan_logp": -3244257.0094579956,
+      "pymc_logp": -3244256.3163110074,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 4831625890259508283,
+      "attempt": 0,
+      "stan_logp": -6068280.409912163,
+      "pymc_logp": -6068279.716765175,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/blr.stan parameters/model blocks and models/posteriordb_blr_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "beta, sigma and X are unchanged. Stan sigma>0 with Normal(0,10) versus PyMC HalfNormal(10) adds the constant log(2)."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/sblri-blr.npz",
+  "point_sha256": "fa940ecd8a34442a5f6ceb003d976faf223090f1d39be0fd95286b643c4d56c8",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -2824023.4004541677,
+  "delta_pymc": -2824023.4004541673,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -2824023.4004541677,
+  "residual": -4.656612873077393e-10,
+  "tolerance": 0.02824123400454168,
+  "raw_residual": -4.656612873077393e-10,
+  "raw_tolerance": 0.02824123400454168,
+  "measurement_run": "run-1"
+}

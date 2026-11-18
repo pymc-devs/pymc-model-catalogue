@@ -29,7 +29,25 @@ Implementation notes:
 Native centered seed effects from posteriordb seeds_centered_model.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -128.6663088255901; PyMC = -127.97316164312568.
+- B: Stan = -123.39810550522995; PyMC = -122.70495832276539.
+- Raw delta: Stan = 5.268203320360158; PyMC = 5.268203320360286.
+- Raw comparison: MATCH; residual = -1.2789769243681803e-13.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0526820332036028e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Retain all I unconstrained c values. In both sources b=c-mean(c) is deterministic; it
+  does not replace c with a lower-dimensional zero-sum random variable or introduce an
+  intrinsic improper prior. Coefficient Normal(0,1) priors and Binomial logits match.
+  PyMC HalfCauchy(1) differs from Stan's positive Cauchy only by +log(2).
+- No nonconstant density adjustment is required by these source definitions; parameter-
+  independent constants are omitted from two-point deltas.
+- Original Stan SHA-256: 37512dcebf0e156a8c186637dbdbfd1fb9fee18bcda2a9c5a47be2d0fc2867eb
+- Saved points: models/posteriordb_logp/points/seeds_data-seeds_centered_model.npz
+- Full evidence: models/posteriordb_logp/records/seeds_data-seeds_centered_model.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

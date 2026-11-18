@@ -1,0 +1,57 @@
+{
+  "module": "models/posteriordb_Rate_1_model_Rate_1_data.py",
+  "posterior": "Rate_1_data-Rate_1_model",
+  "archive": "models/data/posteriordb_Rate_1_data.json.zip",
+  "archive_sha256": "de0330f774e9ee9bbe30d743202d2928292ce0cd8a40601b90b99c536221b4f5",
+  "builder_ast_sha256": "4c99d2d39f714f219b7c2c3678fb492a615a39efc347e057409bba807c23f414",
+  "stan_model": "Rate_1_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Rate_1_model.stan",
+  "stan_sha256": "ae95dcc6c2e2953e202fb257181ee24e1cb1f7780819e95d94663dde4fddc795",
+  "library_sha256": "7576f5b4b6be894f96e7bff57d14a24deccb1580f3132a0f76396cec99ad6356",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "theta"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "theta"
+  ],
+  "pymc_parameter_names": [
+    "theta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 13544929744961819934,
+      "attempt": 0,
+      "stan_logp": -1.5191739432523104,
+      "pymc_logp": -1.519173943252311,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 13121298489101981357,
+      "attempt": 0,
+      "stan_logp": -1.4755165919307762,
+      "pymc_logp": -1.4755165919307773,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/Rate_1_model.stan and models/posteriordb_Rate_1_model_Rate_1_data.py::build_model.",
+    "Identical Beta(1,1) prior and Binomial(n,theta) observed count.",
+    "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/Rate_1_data-Rate_1_model.npz",
+  "point_sha256": "24fff5f7aae50958c28b0d5d347e6cb1ca1555fb1592bc502692ca559e737940",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 0.043657351321534144,
+  "delta_pymc": 0.0436573513215337,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 0.043657351321534144,
+  "residual": 4.440892098500626e-16,
+  "tolerance": 1.0004365735132153e-06,
+  "raw_residual": 4.440892098500626e-16,
+  "raw_tolerance": 1.0004365735132153e-06,
+  "measurement_run": "run-1"
+}

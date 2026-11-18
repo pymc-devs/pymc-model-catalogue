@@ -29,7 +29,25 @@ Source: Lee and Wagenmakers (2013), binomial rate examples.
 Exact enumeration integrates the shared survey count across all observed returns.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -18.464896079409947; PyMC = -18.46489607940993.
+- B: Stan = -18.92216108259801; PyMC = -18.92216108259803.
+- Raw delta: Stan = -0.45726500318806274; PyMC = -0.4572650031881018.
+- Raw comparison: MATCH; residual = 3.907985046680551e-14.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.004572650031881e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- theta is unchanged. Both sum the joint binomial likelihood over
+  n=max(1,max(k)),...,nmax with weight 1/nmax; omitted lower n have zero likelihood.
+  Uniform(0,1) adds zero log-normalization.
+- Original Stan SHA-256: 6253492299891332a7746d44976a161a2a557816ef177d68ddedaa703a144f87
+- Saved points: models/posteriordb_logp/points/Survey_data-Survey_model.npz
+- Full evidence: models/posteriordb_logp/records/Survey_data-Survey_model.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

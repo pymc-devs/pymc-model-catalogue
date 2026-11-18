@@ -1,0 +1,64 @@
+{
+  "module": "models/posteriordb_GLM_Binomial_model_GLM_Binomial_data.py",
+  "posterior": "GLM_Binomial_data-GLM_Binomial_model",
+  "archive": "models/data/posteriordb_GLM_Binomial_data.json.zip",
+  "archive_sha256": "09fc115d0825f3bed893d3836ad91146fffa131c7c3621218a95e72ba39a14ac",
+  "builder_ast_sha256": "94f80439eb626508365feb89212bfd800b3ca0e7193aa2bfea586eebc3699a85",
+  "stan_model": "GLM_Binomial_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/GLM_Binomial_model.stan",
+  "stan_sha256": "1cd08265b53a2faea2087055fd5c24eff965c6581c6ce78479a0925ddd3a1144",
+  "library_sha256": "3c8c3c60bb98e0582563299936395480297ff7945cc20bdcaee13e7ef30b3a0b",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "alpha",
+    "beta1",
+    "beta2"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "alpha",
+    "beta1",
+    "beta2"
+  ],
+  "pymc_parameter_names": [
+    "beta2",
+    "beta1",
+    "alpha"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 1878017201089711898,
+      "attempt": 0,
+      "stan_logp": -254.6454361190116,
+      "pymc_logp": -254.64543631086403,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 15464566247221537188,
+      "attempt": 0,
+      "stan_logp": -327.0304780966763,
+      "pymc_logp": -327.03047828852914,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/GLM_Binomial_model.stan parameters/model blocks and models/posteriordb_GLM_Binomial_model_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "Identical year, year^2 and (for Poisson) year^3 predictors; PyMC's Horner expression is algebraically the same linear predictor. All coefficient names, units and bounds are unchanged.",
+    "Both coefficient priors are Normal(0,100), with the same binomial totals."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/GLM_Binomial_data-GLM_Binomial_model.npz",
+  "point_sha256": "921d05b4831cd5246861cc554ca836db807d31ed84fe5006801cdc25d7781cad",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -72.38504197766468,
+  "delta_pymc": -72.38504197766511,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -72.38504197766468,
+  "residual": 4.263256414560601e-13,
+  "tolerance": 1.723850419776651e-06,
+  "raw_residual": 4.263256414560601e-13,
+  "raw_tolerance": 1.723850419776651e-06,
+  "measurement_run": "run-1"
+}

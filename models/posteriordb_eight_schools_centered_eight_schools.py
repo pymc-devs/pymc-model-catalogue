@@ -26,7 +26,25 @@ Implementation notes:
 Native centered school effects from posteriordb eight_schools_centered.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -46.57206565751112; PyMC = -45.87891853518809.
+- B: Stan = -43.81356876639853; PyMC = -43.12042164407549.
+- Raw delta: Stan = 2.7584968911125856; PyMC = 2.7584968911125998.
+- Raw comparison: MATCH; residual = -1.4210854715202004e-14.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.027584968911126e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- mu, tau and the native school coordinates are unchanged. Both use centered
+  theta~Normal(mu,tau). Stan tau>0 with Cauchy(0,5) versus PyMC HalfCauchy(5) differs
+  only by the constant log(2).
+- Original Stan SHA-256: ccaf2d7beed22602f62f276cd4096194ab5de5b5c1d6bb2bae9a3655a3845c05
+- Saved points: models/posteriordb_logp/points/eight_schools-eight_schools_centered.npz
+- Full evidence: models/posteriordb_logp/records/eight_schools-eight_schools_centered.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

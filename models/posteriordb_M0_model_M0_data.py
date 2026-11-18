@@ -29,7 +29,24 @@ Constant detection with exact population-inclusion marginalization.
 Source: Kéry and Schaub (2011), chapter 6.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -243.13503478308752; PyMC = -243.13503478308752.
+- B: Stan = -247.3422894332097; PyMC = -247.3422894332097.
+- Raw delta: Stan = -4.207254650122167; PyMC = -4.207254650122167.
+- Raw comparison: MATCH; residual = 0.0.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0420725465012217e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Both sources marginalize one inclusion indicator over each individual's complete
+  history; Stan's binomial uses the same row sums as PyMC's ZeroInflatedBinomial.
+  Generated population size N is not a free RV.
+- No nonconstant density adjustment is required by these source definitions; parameter-
+  independent constants are omitted from two-point deltas.
+- Original Stan SHA-256: 56f27cc21218cfe634e3d02596617dac693c9f08c724a85bbebbf1fe86bb901c
+- Saved points: models/posteriordb_logp/points/M0_data-M0_model.npz
+- Full evidence: models/posteriordb_logp/records/M0_data-M0_model.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

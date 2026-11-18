@@ -27,7 +27,23 @@ The initial prediction uses mu + phi * mu and zero previous error.
 Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -201.58685607383327; PyMC = -200.8937089553195.
+- B: Stan = -270.99531028711385; PyMC = -270.3021631686002.
+- Raw delta: Stan = -69.40845421328058; PyMC = -69.40845421328069.
+- Raw comparison: MATCH; residual = 1.1368683772161603e-13.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.6940845421328068e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of mu, phi, theta, sigma. Both recursions start with nu[1]=mu+phi*mu and zero
+  pre-series error; later nu[t]=mu+phi*y[t-1]+theta*(y[t-1]-nu[t-1]). Normal errors
+  equal the conditional Normal observation likelihood, with a unit triangular Jacobian.
+- HalfCauchy versus a Cauchy density on positive sigma contributes only log(2).
+- Original Stan SHA-256: aa713e50a5154ab9efda30f2b5fe320d6a77510434ff73cef6708cbf72d1fae8
+- Saved points: models/posteriordb_logp/points/arma-arma11.npz
+- Full evidence: models/posteriordb_logp/records/arma-arma11.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

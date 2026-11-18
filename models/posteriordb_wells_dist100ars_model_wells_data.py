@@ -29,7 +29,26 @@ Native well-switching logistic regression from Gelman and Hill (2006), Chapter 5
 All coefficient densities are constant. Distance uses hundreds of meters.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -2114.8357187561114; PyMC = -2114.8357187561114.
+- B: Stan = -2162.88454187721; PyMC = -2162.88454187721.
+- Raw delta: Stan = -48.048823121098394; PyMC = -48.048823121098394.
+- Raw comparison: MATCH; residual = 0.0.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.4804882312109839e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Both use predictors [dist/100, arsenic]; cd=(dist-mean(dist))/100, ca=arsenic-
+  mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and
+  coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is
+  the separate intercept.
+- Original Stan SHA-256: 3a7b224616882026bd1bb2d34c21ed12b1eed58159df88e3f5c2fe72eeeaccdf
+- Saved points: models/posteriordb_logp/points/wells_data-wells_dist100ars_model.npz
+- Full evidence: models/posteriordb_logp/records/wells_data-wells_dist100ars_model.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

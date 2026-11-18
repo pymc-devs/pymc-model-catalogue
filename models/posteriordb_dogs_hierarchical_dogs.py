@@ -25,7 +25,26 @@ Implementation notes:
 Native shared learning model from posteriordb dogs_hierarchical.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -858.3321218595022; PyMC = -858.3321218595022.
+- B: Stan = -966.0679160441127; PyMC = -966.0679160441127.
+- Raw delta: Stan = -107.73579418461054; PyMC = -107.73579418461054.
+- Raw comparison: MATCH; residual = 0.0.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.0773579418461055e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Despite its name, the original source has only shared probabilities a and b, with
+  implicit Uniform(0,1) priors and no dog random effects. Both likelihoods use
+  a**previous_shock*b**previous_avoid. The first trial has probability one; every
+  bundled first response is one. PyMC preserves that support factor separately as
+  first_shock.
+- No nonconstant density adjustment is required by these source definitions; parameter-
+  independent constants are omitted from two-point deltas.
+- Original Stan SHA-256: 779b2a41c4a7affab0704780336aa92def39e1c91b655c845eaa8dd4bc873d80
+- Saved points: models/posteriordb_logp/points/dogs-dogs_hierarchical.npz
+- Full evidence: models/posteriordb_logp/records/dogs-dogs_hierarchical.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

@@ -1,0 +1,85 @@
+{
+  "module": "models/posteriordb_normal_mixture_k_normal_5.py",
+  "posterior": "normal_5-normal_mixture_k",
+  "archive": "models/data/posteriordb_normal_5.json.zip",
+  "archive_sha256": "a4d19461b4274bafc5600325e41121d3c25b0569ce739189ec8792ced2744425",
+  "builder_ast_sha256": "0f9dfc4f0426a270df959aecd82294139fa960e6b2ca5bb8d6b7a94d8d5f707f",
+  "stan_model": "normal_mixture_k",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/normal_mixture_k.stan",
+  "stan_sha256": "e9a39473b1e2c909097a5b8b265c5f47b8a5d6a609e9bd282f35355d770a5c5a",
+  "library_sha256": "384b1090ccead16b301d9adbad30d891eb5700a7b4b5a21f5603b5468bef5539",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "theta.1",
+    "theta.2",
+    "theta.3",
+    "theta.4",
+    "theta.5",
+    "mu.1",
+    "mu.2",
+    "mu.3",
+    "mu.4",
+    "mu.5",
+    "sigma.1",
+    "sigma.2",
+    "sigma.3",
+    "sigma.4",
+    "sigma.5"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "theta.1",
+    "theta.2",
+    "theta.3",
+    "theta.4",
+    "mu.1",
+    "mu.2",
+    "mu.3",
+    "mu.4",
+    "mu.5",
+    "sigma.1",
+    "sigma.2",
+    "sigma.3",
+    "sigma.4",
+    "sigma.5"
+  ],
+  "pymc_parameter_names": [
+    "sigma",
+    "mu",
+    "theta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 13185093280104362516,
+      "attempt": 0,
+      "stan_logp": -5480.534220963223,
+      "pymc_logp": -5488.869093394437,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 18139174549003830050,
+      "attempt": 0,
+      "stan_logp": -5514.887037286612,
+      "pymc_logp": -5523.221909717825,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned posteriordb Stan normal_mixture_k.stan and the assigned native models/posteriordb_normal_mixture_k_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
+    "Identity of K-simplex theta, unrestricted mu and bounded sigma vectors, retaining component labels. The likelihood is the same per-observation logsumexp over weighted Normal components. PyMC's Dirichlet(ones) and Uniform(0,10) normalizers differ from Stan's implicit bounded flat densities only by constants."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/normal_5-normal_mixture_k.npz",
+  "point_sha256": "7f8b6b27b0a7afda74a4af5dbd6bd5dcb1846c631798b6346785c4ee5cf7309e",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -34.35281632338956,
+  "delta_pymc": -34.35281632338774,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -34.35281632338956,
+  "residual": -1.8189894035458565e-12,
+  "tolerance": 1.3435281632338956e-06,
+  "raw_residual": -1.8189894035458565e-12,
+  "raw_tolerance": 1.3435281632338956e-06,
+  "measurement_run": "run-1"
+}

@@ -76,15 +76,72 @@ See [benchmarking instructions](./BENCHMARKING.md) for selecting entries in ASV.
 ### Validation and intentional departures
 
 The benchmark helper checks finite PyMC logp and gradients and evaluates original
-and frozen graphs. Agreement with Stan logp has not been established for this
-collection. Each model header records its Stan comparison status. Completed
-comparisons should identify the reference revision, parameter points, Jacobian
-settings, logp differences and tolerances. Cross-library comparisons need aligned
-parameterizations, transforms,
-and Jacobian terms; parameter-independent normalization constants can be handled
-by comparing changes in logp. See
+and frozen graphs. The separate two-point comparison harness evaluates the pinned
+original Stan definitions through BridgeStan and the unchanged native PyMC builders.
+Each model header records the measured logps, deltas, adjustments, residual and
+status. Full-precision records and saved parameter arrays are in
+[`models/posteriordb_logp/`](models/posteriordb_logp/).
+
+The recorded two-point outcomes are:
+
+| Outcome | Model/data pairs |
+| --- | ---: |
+| Raw deltas agree | 137 |
+| Agree only after explicit prior or likelihood adjustments | 7 |
+| Numerical mismatch remains | 3 |
+| No Stan reference (discrete M0) | 1 |
+
+The remaining mismatches are `bones_model`, `lotka_volterra`, and `sir`.
+Their measured residuals and unchanged tolerances remain in the model headers.
+
+Both engines evaluate constrained densities with automatic support-transform
+Jacobians disabled. The deterministic points vary all unconstrained coordinates;
+candidate selection checks support and finite densities, never agreement.
+Parameter-independent constants cancel in `delta = logp(B) - logp(A)`. Named
+coordinate-measure or changed-factor adjustments are derived from source, not
+fitted to residuals. Raw and adjusted comparisons remain separate, and adjusted
+agreement does not make changed original targets equivalent.
+
+The tolerance is `1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC))`, using the
+adjusted Stan delta when applicable. ODE solver discrepancies receive no special
+tolerance or correction. These two points do not establish global equivalence,
+identical support, gradient agreement or inference quality. The discrete M0 model
+has no Stan reference. See
 [A Rosetta stone for PyMC and Stan](https://gist.github.com/ricardoV94/c421ddacb3ba7a19ac46efa253ea466c)
-for worked examples.
+for the delta-comparison method.
+
+To reproduce, use a project environment containing PyMC 6.4.0 and BridgeStan
+2.9.0, with its matching Stan 2.39.0 source release and a GCC toolchain. The evidence
+metadata records the remaining package versions and compiler arguments. From the
+repository root:
+
+```bash
+python -m scripts.posteriordb_comparison --phase compile \
+  --cache /tmp/posteriordb-stan-cache --output /tmp/posteriordb-comparison \
+  --bridgestan /path/to/bridgestan-2.9.0
+python -m scripts.posteriordb_comparison --phase evaluate \
+  --cache /tmp/posteriordb-stan-cache --output /tmp/posteriordb-comparison
+```
+
+Use `--model NAME` or `--posterior ID` to select pairs, `--workers 1` to serialize,
+and `--cxx`/`--cc` for explicit compiler paths. Evaluation uses at most four
+processes with numerical libraries limited to one thread each; it does not sample.
+Use a fresh output directory for each evaluation so earlier evidence is retained.
+`python -m scripts.posteriordb_comparison.headers /tmp/posteriordb-comparison`
+renders the model-header sections without modifying model source files.
+
+The seven adjusted cases include the five intentional departures below and two
+runtime prior discrepancies: `accel_gp` and `accel_splines`. In the measured
+installed PyMC/PyTensor, integer `sigma=36` in `HalfStudentT` is `int8`, so
+`sigma**2` overflows to 16. Both affected scale priors consequently have effective
+scale 4 rather than Stan's 36. The comparison accounts for that prior change;
+it does not repair or declare the original models equivalent. See
+[`motorcycle-dtype-diagnostic.json`](models/posteriordb_logp/motorcycle-dtype-diagnostic.json).
+These adjustments require re-review after engine upgrades. Run-specific metadata
+preserves harness hashes; run 3 also records the relevant installed PyMC source
+hashes and PyTensor dtype configuration. Each delivered record identifies its
+measurement run; superseded failures and source snapshots remain in the local
+verification evidence.
 
 The following ports deliberately follow the stated model where it differs from
 the published implementation. Their model headers describe the departures and

@@ -29,7 +29,24 @@ Source: Lee and Wagenmakers (2013), binomial rate examples.
 Predictive counts do not add free variables to the probability model.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -7.016003499815746; PyMC = -7.016003499815746.
+- B: Stan = -7.579023772270681; PyMC = -7.57902377227068.
+- Raw delta: Stan = -0.5630202724549349; PyMC = -0.563020272454934.
+- Raw comparison: MATCH; residual = -8.881784197001252e-16.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0056302027245493e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Both independent Beta(1,1) free rates are retained, including the unobserved
+  thetaprior. Only theta enters the observed Binomial. Generated prior/posterior
+  predictive counts are not free parameters.
+- No nonconstant density adjustment is required by these source definitions; parameter-
+  independent constants are omitted from two-point deltas.
+- Original Stan SHA-256: 7aaf395c9ce53028fceaf8719538c3e8c98eba9884e1b3b843b33d636487d88c
+- Saved points: models/posteriordb_logp/points/Rate_4_data-Rate_4_model.npz
+- Full evidence: models/posteriordb_logp/records/Rate_4_data-Rate_4_model.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

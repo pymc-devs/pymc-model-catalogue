@@ -1,0 +1,61 @@
+{
+  "module": "models/posteriordb_normal_mixture_normal_2.py",
+  "posterior": "normal_2-normal_mixture",
+  "archive": "models/data/posteriordb_normal_2.json.zip",
+  "archive_sha256": "c34231a6c79c1a262444d07f768c7eb65a42aa76541d309d8c93049f023da21e",
+  "builder_ast_sha256": "1608b115ed5e0f7e027ed375c6da863b68a3cdf57376f455e0d69e6ded3df590",
+  "stan_model": "normal_mixture",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/normal_mixture.stan",
+  "stan_sha256": "347644c84000e76f74c10314dda7774fd2d3b13cd53f37f049b6bfdc2054c87e",
+  "library_sha256": "caf3965df9ba06397cd108b1fee78d745c5cc2df9b460fffa39c01898b978845",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "theta",
+    "mu.1",
+    "mu.2"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "theta",
+    "mu.1",
+    "mu.2"
+  ],
+  "pymc_parameter_names": [
+    "mu",
+    "theta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 17604043674734343767,
+      "attempt": 0,
+      "stan_logp": -52362.52849736699,
+      "pymc_logp": -52362.52849743095,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 14050492225639942129,
+      "attempt": 0,
+      "stan_logp": -51359.06365560339,
+      "pymc_logp": -51359.06365566734,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned posteriordb Stan normal_mixture.stan and the assigned native models/posteriordb_normal_mixture_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
+    "Identity of scalar theta and mu[2]; both marginalized Normal likelihoods use weights [theta,1-theta] and known unit SD. No sorting or label permutation is performed."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/normal_2-normal_mixture.npz",
+  "point_sha256": "d9ffcae9615f0a1cb0e0d8b49b43c8e1186f761baceea88e4922abf553692d92",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 1003.4648417635981,
+  "delta_pymc": 1003.4648417636054,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 1003.4648417635981,
+  "residual": -7.275957614183426e-12,
+  "tolerance": 1.1034648417636055e-05,
+  "raw_residual": -7.275957614183426e-12,
+  "raw_tolerance": 1.1034648417636055e-05,
+  "measurement_run": "run-1"
+}

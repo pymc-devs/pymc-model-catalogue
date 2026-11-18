@@ -30,7 +30,32 @@ Standard Normal effects define the noncentered county hierarchy.
 Source: https://mc-stan.org/users/documentation/case-studies/radon.html
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -22549.801863340293; PyMC = -22548.415569075092.
+- B: Stan = -22501.240163090904; PyMC = -22499.85386882575.
+- Raw delta: Stan = 48.561700249389105; PyMC = 48.56170024934181.
+- Raw comparison: MATCH; residual = 4.729372449219227e-11.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.485617002493891e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- County labels are converted from Stan one-based to NumPy zero-based indices without
+  reordering observations or county parameters. Residual SD and all varying-effect SDs
+  retain their names and units.
+- Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
+  the constant log(2), with no changed prior shape.
+- Keep alpha_raw and/or beta_raw as density coordinates: both sources form
+  alpha=mu_alpha+sigma_alpha*alpha_raw and/or beta=mu_beta+sigma_beta*beta_raw. No
+  centered/noncentered conversion or scale Jacobian is applied between these paired
+  sources.
+- beta order is [log_uppm, floor_measure] in both sources.
+- Original Stan SHA-256: d04cab97b0d180cd4889c53986e4a2afa62928d58c54408536f5dfeacd5de806
+- Saved points: models/posteriordb_logp/points/radon_all-radon_hierarchical_intercept_noncentered.npz
+- Full evidence: models/posteriordb_logp/records/radon_all-radon_hierarchical_intercept_noncentered.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

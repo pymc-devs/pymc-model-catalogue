@@ -1,0 +1,64 @@
+{
+  "module": "models/posteriordb_Mt_model_Mt_data.py",
+  "posterior": "Mt_data-Mt_model",
+  "archive": "models/data/posteriordb_Mt_data.json.zip",
+  "archive_sha256": "c16b3b0f162ea53c80e8e3b924969ed7ebdf76cf20138fbb680355e794246287",
+  "builder_ast_sha256": "c2084588e654df804741e7c6033d73c49e904e8eaee25f8dd3ab003bb1ebde96",
+  "stan_model": "Mt_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Mt_model.stan",
+  "stan_sha256": "3391120504996a0369e58658d1872f190d2932e5c7d192f63c3db2057e8d324c",
+  "library_sha256": "37fa5eadcc1cf63d4d17891dc1678685e386502c7cf0241c6ec3e09ce1625e45",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "omega",
+    "p.1",
+    "p.2",
+    "p.3"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "omega",
+    "p.1",
+    "p.2",
+    "p.3"
+  ],
+  "pymc_parameter_names": [
+    "omega",
+    "p"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 9765851471937162667,
+      "attempt": 0,
+      "stan_logp": -333.5695376087196,
+      "pymc_logp": -333.5695376087196,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 10793661614727228687,
+      "attempt": 0,
+      "stan_logp": -330.28450715685545,
+      "pymc_logp": -330.28450715685545,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/Mt_model.stan and models/posteriordb_Mt_model_Mt_data.py::build_model.",
+    "The T detection probabilities retain occasion order. Both sources marginalize inclusion over each complete Bernoulli capture history, not independently at each occasion.",
+    "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/Mt_data-Mt_model.npz",
+  "point_sha256": "19ccfedbe1e407590b512545255c159829d12b00a95440611972cdc984181f0b",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 3.285030451864145,
+  "delta_pymc": 3.285030451864145,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 3.285030451864145,
+  "residual": 0.0,
+  "tolerance": 1.0328503045186415e-06,
+  "raw_residual": 0.0,
+  "raw_tolerance": 1.0328503045186415e-06,
+  "measurement_run": "run-1"
+}

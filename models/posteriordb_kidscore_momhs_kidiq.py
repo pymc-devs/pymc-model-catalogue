@@ -28,7 +28,25 @@ Native child-score regression from Gelman and Hill (2006), Chapter 3.
 The coefficient density is constant. The positive noise scale follows a half-Cauchy law.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -2089221.6174608155; PyMC = -2089220.9243136612.
+- B: Stan = -1326230.7365812259; PyMC = -1326230.0434340718.
+- Raw delta: Stan = 762990.8808795896; PyMC = 762990.8808795894.
+- Raw comparison: MATCH; residual = 2.3283064365386963e-10.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.007630908808795896
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Both predictors use [1, mom_hs]; beta order is unchanged.
+- Stan sigma>0 with Cauchy(0,2.5), PyMC HalfCauchy(2.5): PyMC-Stan is the constant
+  log(2). Beta has a flat prior in both.
+- Original Stan SHA-256: 555e35e50b5628fb981b5f0dafcf899feee4be0e4fcbbc5255f3d7df4128f15b
+- Saved points: models/posteriordb_logp/points/kidiq-kidscore_momhs.npz
+- Full evidence: models/posteriordb_logp/records/kidiq-kidscore_momhs.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

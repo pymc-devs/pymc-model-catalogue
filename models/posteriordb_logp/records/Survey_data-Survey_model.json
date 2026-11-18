@@ -1,0 +1,57 @@
+{
+  "module": "models/posteriordb_Survey_model_Survey_data.py",
+  "posterior": "Survey_data-Survey_model",
+  "archive": "models/data/posteriordb_Survey_data.json.zip",
+  "archive_sha256": "cd837313fec3609c673256cb74fe5b9786e4c3e08bb6cd827dc14b2574653757",
+  "builder_ast_sha256": "460d7baacf05f61a20b5d045d6ff822e28fc0ecf8e9da0c9ea3453dc5254d6ed",
+  "stan_model": "Survey_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Survey_model.stan",
+  "stan_sha256": "6253492299891332a7746d44976a161a2a557816ef177d68ddedaa703a144f87",
+  "library_sha256": "3f337808b6a6f56f2a8bfb5a39fc3431c3eb398f5d012f5e876b1425f26e6bfb",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "theta"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "theta"
+  ],
+  "pymc_parameter_names": [
+    "theta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 17988915264893140614,
+      "attempt": 0,
+      "stan_logp": -18.464896079409947,
+      "pymc_logp": -18.46489607940993,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 11111266273642084620,
+      "attempt": 0,
+      "stan_logp": -18.92216108259801,
+      "pymc_logp": -18.92216108259803,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/Survey_model.stan parameters/model blocks and models/posteriordb_Survey_model_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "theta is unchanged. Both sum the joint binomial likelihood over n=max(1,max(k)),...,nmax with weight 1/nmax; omitted lower n have zero likelihood. Uniform(0,1) adds zero log-normalization."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/Survey_data-Survey_model.npz",
+  "point_sha256": "1bdc7b30ad5814cf180af9b4ec72c7ffec6a890798fbbada33a62b960c58d515",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -0.45726500318806274,
+  "delta_pymc": -0.4572650031881018,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -0.45726500318806274,
+  "residual": 3.907985046680551e-14,
+  "tolerance": 1.004572650031881e-06,
+  "raw_residual": 3.907985046680551e-14,
+  "raw_tolerance": 1.004572650031881e-06,
+  "measurement_run": "run-1"
+}

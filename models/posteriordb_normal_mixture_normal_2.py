@@ -29,7 +29,21 @@ Source: posteriordb normal_mixture model metadata at revision 91027f9.
 The likelihood uses only y. Other dataset fields describe the data generator.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -52362.52849736699; PyMC = -52362.52849743095.
+- B: Stan = -51359.06365560339; PyMC = -51359.06365566734.
+- Raw delta: Stan = 1003.4648417635981; PyMC = 1003.4648417636054.
+- Raw comparison: MATCH; residual = -7.275957614183426e-12.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1034648417636055e-05
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of scalar theta and mu[2]; both marginalized Normal likelihoods use weights
+  [theta,1-theta] and known unit SD. No sorting or label permutation is performed.
+- Original Stan SHA-256: 347644c84000e76f74c10314dda7774fd2d3b13cd53f37f049b6bfdc2054c87e
+- Saved points: models/posteriordb_logp/points/normal_2-normal_mixture.npz
+- Full evidence: models/posteriordb_logp/records/normal_2-normal_mixture.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

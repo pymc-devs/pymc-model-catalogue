@@ -1,0 +1,67 @@
+{
+  "module": "models/posteriordb_hmm_example_hmm_example.py",
+  "posterior": "hmm_example-hmm_example",
+  "archive": "models/data/posteriordb_hmm_example.json.zip",
+  "archive_sha256": "8c346cc7627db1b5614b1eacb81ab9b0926aa63071ba2f3b6d6ec3b492892787",
+  "builder_ast_sha256": "6e948363c2f5db3cd04737d191d744a9e267b8cf703afc7d8dbd8656928fd7cf",
+  "stan_model": "hmm_example",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hmm_example.stan",
+  "stan_sha256": "8ebe19f3469e97153177d69c9dea248207278cc6f3d1d16885f83a791b11c476",
+  "library_sha256": "301acceb7eff303d6472f04608fd2c16e9fb91909a3dd5feb559d9024e87da34",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "theta1.1",
+    "theta1.2",
+    "theta2.1",
+    "theta2.2",
+    "mu.1",
+    "mu.2"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "theta1.1",
+    "theta2.1",
+    "mu.1",
+    "mu.2"
+  ],
+  "pymc_parameter_names": [
+    "theta2",
+    "theta1",
+    "mu"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 17322049847743310253,
+      "attempt": 0,
+      "stan_logp": -1993.254877632162,
+      "pymc_logp": -1993.254877632162,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 7893024237350754715,
+      "attempt": 0,
+      "stan_logp": -2108.9643080736214,
+      "pymc_logp": -2108.964308073621,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned posteriordb Stan hmm_example.stan and the assigned native models/posteriordb_hmm_example_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
+    "Identity of transition simplex rows and positive ordered means. The same Gaussian forward recursion marginalizes hidden states with initial weights one. Explicit uniform simplex densities in PyMC add only constant normalizers to Stan's implicit flat simplex densities.",
+    "Shared-support limitation: original Stan points enforce all ordered or positive-ordered constraints. PyMC ordering supplied only by a transform is not separately enforced after transforms are removed. These evaluations compare points on the shared Stan-valid support, not global support or model equivalence."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/hmm_example-hmm_example.npz",
+  "point_sha256": "796e7b6866d865152bf4f3faeeff7f2459acc6c1deaeaf54d1ef51957627c099",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -115.70943044145929,
+  "delta_pymc": -115.70943044145884,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -115.70943044145929,
+  "residual": -4.547473508864641e-13,
+  "tolerance": 2.1570943044145927e-06,
+  "raw_residual": -4.547473508864641e-13,
+  "raw_tolerance": 2.1570943044145927e-06,
+  "measurement_run": "run-1"
+}

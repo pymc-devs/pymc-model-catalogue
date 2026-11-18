@@ -1,0 +1,76 @@
+{
+  "module": "models/posteriordb_nes_nes2000.py",
+  "posterior": "nes2000-nes",
+  "archive": "models/data/posteriordb_nes2000.json.zip",
+  "archive_sha256": "4170d5780771b54b763315b5c21772befd4ca208c62d23424535f4b4af347439",
+  "builder_ast_sha256": "570c84a2926077a5022ce16f53d67c3bfb435deaddc1602fcde41a0829d84ffd",
+  "stan_model": "nes",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/nes.stan",
+  "stan_sha256": "260e7acec9bef905cae306ff6defb97e525c116f018aba9c687af154c10c8e70",
+  "library_sha256": "44251fd4cd79815c935ad5f5d930ebb51a02491565806e145caeefeee6d98ba5",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "beta.5",
+    "beta.6",
+    "beta.7",
+    "beta.8",
+    "beta.9",
+    "sigma"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "beta.5",
+    "beta.6",
+    "beta.7",
+    "beta.8",
+    "beta.9",
+    "sigma"
+  ],
+  "pymc_parameter_names": [
+    "sigma",
+    "beta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 7416644223188738760,
+      "attempt": 0,
+      "stan_logp": -3028.966902487587,
+      "pymc_logp": -3028.9669024875852,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 18331825282428133006,
+      "attempt": 0,
+      "stan_logp": -9510.142648536486,
+      "pymc_logp": -9510.142648536494,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/nes.stan parameters/model blocks and models/posteriordb_nes_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "Identical beta order [intercept, real_ideo, race_adj, age==2, age==3, age==4, educ1, gender, income], partyid7 response and flat beta/sigma>0 priors."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/nes2000-nes.npz",
+  "point_sha256": "b04e0fbf53245058e4ed824a56519426b00607d04ccead1b9941f5cfd263b5f8",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -6481.175746048899,
+  "delta_pymc": -6481.175746048908,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -6481.175746048899,
+  "residual": 9.094947017729282e-12,
+  "tolerance": 6.581175746048908e-05,
+  "raw_residual": 9.094947017729282e-12,
+  "raw_tolerance": 6.581175746048908e-05,
+  "measurement_run": "run-1"
+}

@@ -28,7 +28,27 @@ One-hidden-layer classification network with ten hidden units.
 Source: Lampinen and Vehtari (2001), as specified by posteriordb.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -6984.3954375624235; PyMC = -6984.395437549347.
+- B: Stan = -6277.298990779531; PyMC = -6277.298990766442.
+- Raw delta: Stan = 707.0964467828926; PyMC = 707.0964467829044.
+- Raw comparison: MATCH; residual = -1.1823431123048067e-11.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 8.070964467829044e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of alpha (M,J), beta (J,K-1), row-vector alpha1 (J,), beta1 (K-1,) and their
+  variances. No transpose or Fortran/C flattening permutation is applied to matrices.
+  The hidden layer is tanh(x@alpha+alpha1), and nonbaseline logits are
+  hidden@beta+beta1. The first category logit is one, not zero; observed labels shift
+  from 1..K to 0..K-1.
+- The variance priors have inverse-gamma shape 0.25 and scales 0.25*(0.05/M^2)^2 and
+  0.25*(0.05/J^2)^2. Conditional weight SDs are square roots of these variances,
+  matching the original priors.
+- Original Stan SHA-256: 2ef44b6ba9b893dadcdcb3f95befe897f492e2f4d67f554307e444beed2f872c
+- Saved points: models/posteriordb_logp/points/mnist_100-nn_rbm1bJ10.npz
+- Full evidence: models/posteriordb_logp/records/mnist_100-nn_rbm1bJ10.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = 127507.2551, grad norm = 3919.2566, 249.2 us/call (5 evals).

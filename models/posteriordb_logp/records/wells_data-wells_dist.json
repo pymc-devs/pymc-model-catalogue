@@ -1,0 +1,59 @@
+{
+  "module": "models/posteriordb_wells_dist_wells_data.py",
+  "posterior": "wells_data-wells_dist",
+  "archive": "models/data/posteriordb_wells_data.json.zip",
+  "archive_sha256": "0ecd7efe3e64c63d849c562e61658fe322509942a882bc515176e016cc57c969",
+  "builder_ast_sha256": "1d1fe0ebbf8468285819b54cbee497c13f19426795cbccd3df0b68395fbdb4c4",
+  "stan_model": "wells_dist",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_dist.stan",
+  "stan_sha256": "33d67128b28b9d4b57c4cd1881a0da40a627334d1fe2ea9b07736c451199afef",
+  "library_sha256": "79e003e66468fa557aabd8578cfefeb1afb56962ba3fdec96286e5a8867d12ad",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "beta.1",
+    "beta.2"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "beta.1",
+    "beta.2"
+  ],
+  "pymc_parameter_names": [
+    "beta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 13323018559031712307,
+      "attempt": 0,
+      "stan_logp": -3351.6919122498107,
+      "pymc_logp": -3351.6919122498107,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 2224338590358950218,
+      "attempt": 0,
+      "stan_logp": -8565.625928281908,
+      "pymc_logp": -8565.625928283498,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/wells_dist.stan parameters/model blocks and models/posteriordb_wells_dist_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "Both use predictors [1, dist], with the intercept stored in beta[0]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/wells_data-wells_dist.npz",
+  "point_sha256": "e5e0363f8d8dbfacad6bc78c3ac9b622a4ce66aa7b0a2b35ff0510a50607d308",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -5213.934016032097,
+  "delta_pymc": -5213.934016033687,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -5213.934016032097,
+  "residual": 1.5897967386990786e-09,
+  "tolerance": 5.313934016033687e-05,
+  "raw_residual": 1.5897967386990786e-09,
+  "raw_tolerance": 5.313934016033687e-05,
+  "measurement_run": "run-1"
+}

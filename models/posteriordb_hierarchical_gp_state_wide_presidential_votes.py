@@ -27,7 +27,28 @@ A shared variance allocation controls independent year, state, region, and GP ef
 Each temporal kernel sums long-scale and short-scale squared-exponential components.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -1662.31697645036; PyMC = -1662.3169761462036.
+- B: Stan = -1656.476995724634; PyMC = -1656.4769953795421.
+- Raw delta: Stan = 5.839980725726036; PyMC = 5.839980766661483.
+- Raw comparison: MATCH; residual = -4.093544703209773e-08.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0583998076666149e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of whitened GP matrices with shape (year,region) and (year,state), never
+  transposed. Both left-multiply each temporal Cholesky factor into these columns.
+  Region covariance=sum over long/short kernels of
+  17*tot_var*prop_var[j]*ExpQuad(length_j)+1e-6*I; state covariance uses the
+  corresponding state components.
+- The 17-simplex prop_var retains its component order: year, region, ten state-region
+  scales, region_long, state_long, region_short, state_short, error. State-region and
+  observation indices shift only from one-based to zero-based. All priors match in these
+  coordinates.
+- Original Stan SHA-256: f97e9de5153301188473b3e0ac922d3891c5de133d0b4172bf40bb0f75b1376e
+- Saved points: models/posteriordb_logp/points/state_wide_presidential_votes-hierarchical_gp.npz
+- Full evidence: models/posteriordb_logp/records/state_wide_presidential_votes-hierarchical_gp.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

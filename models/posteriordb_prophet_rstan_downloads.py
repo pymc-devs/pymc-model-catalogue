@@ -29,7 +29,25 @@ The logistic offset is a time location, not a log-odds intercept.
 Source: Taylor and Letham (2018), as specified by posteriordb.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -1526.0074637737189; PyMC = -1525.314316651395.
+- B: Stan = -1323.1678056449293; PyMC = -1322.4746585226062.
+- Raw delta: Stan = 202.83965812878955; PyMC = 202.83965812878887.
+- Raw comparison: MATCH; residual = 6.821210263296962e-13.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.0283965812878954e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of k, m, delta, sigma_obs and feature beta. Linear trend uses
+  k*t+m+sum(delta_s*max(t-t_change_s,0)). For logistic trend, Stan's continuity
+  recursion telescopes to logit(trend/cap)=k*(t-m)+sum(delta_s*max(t-t_change_s,0));
+  thus m remains a time location, not a log-odds intercept. Additive/multiplicative
+  feature masks and observation order are unchanged.
+- HalfNormal versus positive Normal sigma_obs contributes only log(2).
+- Original Stan SHA-256: e3fcbc4b053e2e8f270ad611eba9fe593146aa24bb01940e91cd4e17450239b5
+- Saved points: models/posteriordb_logp/points/rstan_downloads-prophet.npz
+- Full evidence: models/posteriordb_logp/records/rstan_downloads-prophet.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

@@ -28,7 +28,30 @@ The level bounds apply to every time point without transition normalization.
 Source: sinhrks/stan-statespace, fig07_02, as specified by posteriordb.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -890.3549543316059; PyMC = -893.569279107265.
+- B: Stan = -897.3775675171354; PyMC = -900.591892292794.
+- Raw delta: Stan = -7.022613185529508; PyMC = -7.022613185529053.
+- Raw comparison: MATCH; residual = -4.547473508864641e-13.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.070226131855295e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of bounded level mu, seasonal states, flat beta/lambda and three positive
+  ordered SDs (seasonal,level,observation). Native AR rho=-ones(11) with flat initial
+  eleven states equals Stan's seasonal[t]~Normal(-sum(previous eleven),sigma[0]); level
+  transitions remain unnormalized Normal factors inside the fixed
+  mean(y)+/-3*sample_sd(y) level bounds.
+- Uniform level normalizers and three HalfStudentT versus positive Student-t scale
+  normalizers are parameter-independent.
+- Shared-support limitation: original Stan points enforce all ordered or positive-
+  ordered constraints. PyMC ordering supplied only by a transform is not separately
+  enforced after transforms are removed. These evaluations compare points on the shared
+  Stan-valid support, not global support or model equivalence.
+- Original Stan SHA-256: f0103754c910380b24d6a6619053eb04fb7ee9f74f4acfa301b6f6234e9b8dec
+- Saved points: models/posteriordb_logp/points/uk_drivers-state_space_stochastic_level_stochastic_seasonal.npz
+- Full evidence: models/posteriordb_logp/records/uk_drivers-state_space_stochastic_level_stochastic_seasonal.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

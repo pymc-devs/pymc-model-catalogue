@@ -28,7 +28,23 @@ Source: posteriordb low_dim_gauss_mix_collapse model metadata at revision 91027f
 This named variant keeps both label permutations and does not order the means.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -1789.561133899328; PyMC = -1788.1748396462788.
+- B: Stan = -1687.6652702311083; PyMC = -1686.2789759780596.
+- Raw delta: Stan = 101.89586366821982; PyMC = 101.89586366821914.
+- Raw comparison: MATCH; residual = 6.821210263296962e-13.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.018958636682198e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of unrestricted two-component mu, positive sigma and scalar theta; no
+  relabeling or sorting. Both likelihoods marginalize with weights [theta,1-theta] per
+  observation. HalfNormal scale normalizers differ from positive Normal densities only
+  by two log(2) constants.
+- Original Stan SHA-256: 5aef8bff324b2c25497ef2920153ca6359d1cb846468552b1c9a40e9970b0d52
+- Saved points: models/posteriordb_logp/points/low_dim_gauss_mix_collapse-low_dim_gauss_mix_collapse.npz
+- Full evidence: models/posteriordb_logp/records/low_dim_gauss_mix_collapse-low_dim_gauss_mix_collapse.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

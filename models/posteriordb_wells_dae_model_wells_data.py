@@ -30,7 +30,26 @@ All coefficient densities are constant. Distance uses hundreds of meters.
 Education uses four-year units without centering.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -2216.442683200764; PyMC = -2216.442683200764.
+- B: Stan = -2055.0655135993466; PyMC = -2055.0655135993466.
+- Raw delta: Stan = 161.37716960141734; PyMC = 161.37716960141734.
+- Raw comparison: MATCH; residual = 0.0.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.6137716960141735e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Both use predictors [dist/100, arsenic, educ/4]; cd=(dist-mean(dist))/100, ca=arsenic-
+  mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and
+  coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is
+  the separate intercept.
+- Original Stan SHA-256: 5c0dc0d1ea6c201de429ad018a7abeeb13593cecb1be0dbf59c4a388a2c5f5e0
+- Saved points: models/posteriordb_logp/points/wells_data-wells_dae_model.npz
+- Full evidence: models/posteriordb_logp/records/wells_data-wells_dae_model.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

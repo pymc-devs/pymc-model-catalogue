@@ -1,0 +1,66 @@
+{
+  "module": "models/posteriordb_logearn_interaction_z_earnings.py",
+  "posterior": "earnings-logearn_interaction_z",
+  "archive": "models/data/posteriordb_earnings.json.zip",
+  "archive_sha256": "06a67aa61a99d59aee057486dae51ffad6b4f887e7f8f17733739cf893af312f",
+  "builder_ast_sha256": "d9f90eb2168f34088d7f5fe3c94c6197d664cd3b559bce36d5d853956955b07f",
+  "stan_model": "logearn_interaction_z",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logearn_interaction_z.stan",
+  "stan_sha256": "37e04ae7ae7e92d3d4fffc6720298a56d0a13d87f376ae34b19d3ba731551749",
+  "library_sha256": "f9976d5a0ae3746737fbf5496c29e3e7664f17d33824c2b0a7882e61bb534928",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "sigma"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "sigma"
+  ],
+  "pymc_parameter_names": [
+    "sigma",
+    "beta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 5218028429597915276,
+      "attempt": 0,
+      "stan_logp": -62325.701674457756,
+      "pymc_logp": -62325.70167445774,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 16822979414795604450,
+      "attempt": 0,
+      "stan_logp": -38591.14592114192,
+      "pymc_logp": -38591.14592114192,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/logearn_interaction_z.stan parameters/model blocks and models/posteriordb_logearn_interaction_z_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "Both use log(earn) as response; [1, z_height, male, z_height*male], where z_height=(height-mean(height))/sd(height), using sample SD (ddof=1). Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/earnings-logearn_interaction_z.npz",
+  "point_sha256": "c4f85390d8623dab9c4452955de4d6407b28ec9b029556dd2aadabeb40260745",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 23734.555753315835,
+  "delta_pymc": 23734.55575331582,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 23734.555753315835,
+  "residual": 1.4551915228366852e-11,
+  "tolerance": 0.00023834555753315836,
+  "raw_residual": 1.4551915228366852e-11,
+  "raw_tolerance": 0.00023834555753315836,
+  "measurement_run": "run-1"
+}

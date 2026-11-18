@@ -1,0 +1,60 @@
+{
+  "module": "models/posteriordb_Rate_2_model_Rate_2_data.py",
+  "posterior": "Rate_2_data-Rate_2_model",
+  "archive": "models/data/posteriordb_Rate_2_data.json.zip",
+  "archive_sha256": "92db117ef105d42727deead55593dbc8f0d34bed3640ec4bc51e4f45710ab1c7",
+  "builder_ast_sha256": "1eec6152b89647d3a48006171ed2d463a7be6176451dcd2d701e6fadda5a0f66",
+  "stan_model": "Rate_2_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Rate_2_model.stan",
+  "stan_sha256": "2556299694d2e3420d6d100b5439376bed7f78454816d89cd189d09df0b5877d",
+  "library_sha256": "7b03ed3223f11e79370794448938f8f306d1e0086a95044fdc7fd4eba1b5dbd0",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "theta1",
+    "theta2"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "theta1",
+    "theta2"
+  ],
+  "pymc_parameter_names": [
+    "theta2",
+    "theta1"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 17371778049201273723,
+      "attempt": 0,
+      "stan_logp": -3.079291541514772,
+      "pymc_logp": -3.079291541514775,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 10288449764919571482,
+      "attempt": 0,
+      "stan_logp": -3.376244044403064,
+      "pymc_logp": -3.3762440444030664,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/Rate_2_model.stan and models/posteriordb_Rate_2_model_Rate_2_data.py::build_model.",
+    "Identical independent Beta(1,1) rates and their respective Binomial counts. delta=theta1-theta2 is deterministic, not a density coordinate.",
+    "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/Rate_2_data-Rate_2_model.npz",
+  "point_sha256": "4580690ef2bd035a61b26ee199bef5fb03b488a38af3f093c669cfe8d0f8b67a",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -0.296952502888292,
+  "delta_pymc": -0.29695250288829156,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -0.296952502888292,
+  "residual": -4.440892098500626e-16,
+  "tolerance": 1.0029695250288828e-06,
+  "raw_residual": -4.440892098500626e-16,
+  "raw_tolerance": 1.0029695250288828e-06,
+  "measurement_run": "run-1"
+}

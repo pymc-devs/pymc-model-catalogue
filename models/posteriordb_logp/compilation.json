@@ -1,0 +1,2282 @@
+[
+  {
+    "stan_model": "GLMM1_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/GLMM1_model.stan",
+    "stan_sha256": "c477cfd297db4b9a54fee522211f2c50af98519ccb967d4313727fb484358934",
+    "compiled_source_sha256": "c477cfd297db4b9a54fee522211f2c50af98519ccb967d4313727fb484358934",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_GLMM1_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_GLMM1_model_model.so",
+    "status": "compiled",
+    "library_sha256": "558bbaad0087b6d593670291dbb29f886799d97e02fb28c7651790515cbf0768"
+  },
+  {
+    "stan_model": "M0_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/M0_model.stan",
+    "stan_sha256": "56f27cc21218cfe634e3d02596617dac693c9f08c724a85bbebbf1fe86bb901c",
+    "compiled_source_sha256": "56f27cc21218cfe634e3d02596617dac693c9f08c724a85bbebbf1fe86bb901c",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_M0_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_M0_model_model.so",
+    "status": "compiled",
+    "library_sha256": "d55171defb08b74afaf3f4f4759fae23947df026bcc9f90e32e93138f348a85e"
+  },
+  {
+    "stan_model": "GLM_Poisson_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/GLM_Poisson_model.stan",
+    "stan_sha256": "84186ad779e2add1b934a00e211d9e642ae29cba0e02caf3fedb5c1b29e54f85",
+    "compiled_source_sha256": "84186ad779e2add1b934a00e211d9e642ae29cba0e02caf3fedb5c1b29e54f85",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_GLM_Poisson_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_GLM_Poisson_model_model.so",
+    "status": "compiled",
+    "library_sha256": "7674be14be90e68ff69bb5d2592864aedbe872903184a8e442f8960a9d1f9630"
+  },
+  {
+    "stan_model": "GLM_Binomial_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/GLM_Binomial_model.stan",
+    "stan_sha256": "1cd08265b53a2faea2087055fd5c24eff965c6581c6ce78479a0925ddd3a1144",
+    "compiled_source_sha256": "1cd08265b53a2faea2087055fd5c24eff965c6581c6ce78479a0925ddd3a1144",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_GLM_Binomial_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_GLM_Binomial_model_model.so",
+    "status": "compiled",
+    "library_sha256": "3c8c3c60bb98e0582563299936395480297ff7945cc20bdcaee13e7ef30b3a0b"
+  },
+  {
+    "stan_model": "GLMM_Poisson_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/GLMM_Poisson_model.stan",
+    "stan_sha256": "bd3319630a41a6b52656e5e10c968efb89f21230576368defea971e87fd4f9be",
+    "compiled_source_sha256": "bd3319630a41a6b52656e5e10c968efb89f21230576368defea971e87fd4f9be",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_GLMM_Poisson_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_GLMM_Poisson_model_model.so",
+    "status": "compiled",
+    "library_sha256": "eadf6abfba8cadfd909918f0cf6f562fff365159166867b357504b4806311176"
+  },
+  {
+    "stan_model": "Mb_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Mb_model.stan",
+    "stan_sha256": "fd8975a0bd29c338066cee715a3aeda704382daef4f4db30ffc4deb9f018b43f",
+    "compiled_source_sha256": "fd8975a0bd29c338066cee715a3aeda704382daef4f4db30ffc4deb9f018b43f",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mb_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mb_model_model.so",
+    "status": "compiled",
+    "library_sha256": "e5f868a8bd64075d39d8b0d15437a05a2f8bb40328f9fe6c8996440060227816"
+  },
+  {
+    "stan_model": "Mh_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Mh_model.stan",
+    "stan_sha256": "69dda71b0ec6857c4c5a0e81c014979f57da97c5260b6e3456305a13050b7ad5",
+    "compiled_source_sha256": "69dda71b0ec6857c4c5a0e81c014979f57da97c5260b6e3456305a13050b7ad5",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mh_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mh_model_model.so",
+    "status": "compiled",
+    "library_sha256": "c4599687f15ba789eb214a348696a4d747afe63059fa3f9c565265664ddd4824"
+  },
+  {
+    "stan_model": "Mt_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Mt_model.stan",
+    "stan_sha256": "3391120504996a0369e58658d1872f190d2932e5c7d192f63c3db2057e8d324c",
+    "compiled_source_sha256": "3391120504996a0369e58658d1872f190d2932e5c7d192f63c3db2057e8d324c",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mt_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mt_model_model.so",
+    "status": "compiled",
+    "library_sha256": "37fa5eadcc1cf63d4d17891dc1678685e386502c7cf0241c6ec3e09ce1625e45"
+  },
+  {
+    "stan_model": "Mtbh_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Mtbh_model.stan",
+    "stan_sha256": "97c151a4cccca051c09de3dc1e66fe42980be9c850503db089e2bb8e7a16b451",
+    "compiled_source_sha256": "97c151a4cccca051c09de3dc1e66fe42980be9c850503db089e2bb8e7a16b451",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mtbh_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mtbh_model_model.so",
+    "status": "compiled",
+    "library_sha256": "5397928eca8d192b221c1439a763a08604f610c0842be52e092bd1387c8e25a7"
+  },
+  {
+    "stan_model": "Rate_1_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Rate_1_model.stan",
+    "stan_sha256": "ae95dcc6c2e2953e202fb257181ee24e1cb1f7780819e95d94663dde4fddc795",
+    "compiled_source_sha256": "ae95dcc6c2e2953e202fb257181ee24e1cb1f7780819e95d94663dde4fddc795",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_1_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_1_model_model.so",
+    "status": "compiled",
+    "library_sha256": "7576f5b4b6be894f96e7bff57d14a24deccb1580f3132a0f76396cec99ad6356"
+  },
+  {
+    "stan_model": "Mth_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Mth_model.stan",
+    "stan_sha256": "2e84d69443c0961fe478423206d7ce37ed0688640ce4f48e4725f7be74fc1e92",
+    "compiled_source_sha256": "2e84d69443c0961fe478423206d7ce37ed0688640ce4f48e4725f7be74fc1e92",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mth_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Mth_model_model.so",
+    "status": "compiled",
+    "library_sha256": "429538d6f7fe287d649579422152809a447b5a886359bb5e3e6bfc51e77a9b20"
+  },
+  {
+    "stan_model": "Rate_2_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Rate_2_model.stan",
+    "stan_sha256": "2556299694d2e3420d6d100b5439376bed7f78454816d89cd189d09df0b5877d",
+    "compiled_source_sha256": "2556299694d2e3420d6d100b5439376bed7f78454816d89cd189d09df0b5877d",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_2_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_2_model_model.so",
+    "status": "compiled",
+    "library_sha256": "7b03ed3223f11e79370794448938f8f306d1e0086a95044fdc7fd4eba1b5dbd0"
+  },
+  {
+    "stan_model": "Rate_3_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Rate_3_model.stan",
+    "stan_sha256": "416ea0e377796973a67eddfa956d93e4e5f2204d96889b7b55432275b5e4e0d2",
+    "compiled_source_sha256": "416ea0e377796973a67eddfa956d93e4e5f2204d96889b7b55432275b5e4e0d2",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_3_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_3_model_model.so",
+    "status": "compiled",
+    "library_sha256": "ea359509019ca3275da69e72606191f45a0893fab6093b2cae7f22ee05000e4a"
+  },
+  {
+    "stan_model": "Rate_4_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Rate_4_model.stan",
+    "stan_sha256": "7aaf395c9ce53028fceaf8719538c3e8c98eba9884e1b3b843b33d636487d88c",
+    "compiled_source_sha256": "7aaf395c9ce53028fceaf8719538c3e8c98eba9884e1b3b843b33d636487d88c",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_4_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_4_model_model.so",
+    "status": "compiled",
+    "library_sha256": "7c4b3100d03575a5645c6a7be3cf390f7018378acde262ad0cc6f3251b839ab4"
+  },
+  {
+    "stan_model": "Rate_5_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Rate_5_model.stan",
+    "stan_sha256": "b86503076ff82e0c5a4e183d6274aa1f3f08b867a5de854adfada0d368f5c544",
+    "compiled_source_sha256": "b86503076ff82e0c5a4e183d6274aa1f3f08b867a5de854adfada0d368f5c544",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_5_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Rate_5_model_model.so",
+    "status": "compiled",
+    "library_sha256": "51243708b67a12312a53831b8fb0c4d40188f204983fca529d5269915dadb395"
+  },
+  {
+    "stan_model": "Survey_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Survey_model.stan",
+    "stan_sha256": "6253492299891332a7746d44976a161a2a557816ef177d68ddedaa703a144f87",
+    "compiled_source_sha256": "6253492299891332a7746d44976a161a2a557816ef177d68ddedaa703a144f87",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Survey_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_Survey_model_model.so",
+    "status": "compiled",
+    "library_sha256": "3f337808b6a6f56f2a8bfb5a39fc3431c3eb398f5d012f5e876b1425f26e6bfb"
+  },
+  {
+    "stan_model": "accel_gp",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/accel_gp.stan",
+    "stan_sha256": "a65f0d579c6feb398e345ebe37dbb88017a7ecc00f199f6b07d3377cac419835",
+    "compiled_source_sha256": "a65f0d579c6feb398e345ebe37dbb88017a7ecc00f199f6b07d3377cac419835",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_accel_gp_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_accel_gp_model.so",
+    "status": "compiled",
+    "library_sha256": "647f5ae6cfc28647fb00afef584f91fe3f0c6c67d44763121f3d6ef75e00a5b0"
+  },
+  {
+    "stan_model": "arK",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/arK.stan",
+    "stan_sha256": "fd5c71a891f648de3b9b65e2a65885c974fd9478b0a137b6b229f76ff4e01de6",
+    "compiled_source_sha256": "fd5c71a891f648de3b9b65e2a65885c974fd9478b0a137b6b229f76ff4e01de6",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_arK_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_arK_model.so",
+    "status": "compiled",
+    "library_sha256": "8d5fac4698f4ade9bbbebe3bdbeb47ab5b141ceb465ecd5bd735ed3c64aac78c"
+  },
+  {
+    "stan_model": "arma11",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/arma11.stan",
+    "stan_sha256": "aa713e50a5154ab9efda30f2b5fe320d6a77510434ff73cef6708cbf72d1fae8",
+    "compiled_source_sha256": "aa713e50a5154ab9efda30f2b5fe320d6a77510434ff73cef6708cbf72d1fae8",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_arma11_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_arma11_model.so",
+    "status": "compiled",
+    "library_sha256": "2a031a02ede8839e15c88a131afab86935f8ffb01587ae2efeeb0297327bab4c"
+  },
+  {
+    "stan_model": "accel_splines",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/accel_splines.stan",
+    "stan_sha256": "9996e181a5d23d8c2a127adfa19c4c1e12051abf91539ce40a14249fc94d8bae",
+    "compiled_source_sha256": "9996e181a5d23d8c2a127adfa19c4c1e12051abf91539ce40a14249fc94d8bae",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_accel_splines_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_accel_splines_model.so",
+    "status": "compiled",
+    "library_sha256": "feabe05c452178f5d75cd0591b1f9a325e773b26292263259cb28a7aa22b51b1"
+  },
+  {
+    "stan_model": "bones_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/bones_model.stan",
+    "stan_sha256": "0d478060e879cf4c26f5a5d8eafb2de3e166a1d9e581999c26c00d3a002cf2c4",
+    "compiled_source_sha256": "0d478060e879cf4c26f5a5d8eafb2de3e166a1d9e581999c26c00d3a002cf2c4",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_bones_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_bones_model_model.so",
+    "status": "compiled",
+    "library_sha256": "82ad64a8f9b90c4e73eb97216836caaa9ffb70f86fa55f9dd0098e9c36b0fea5"
+  },
+  {
+    "stan_model": "blr",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/blr.stan",
+    "stan_sha256": "e6407c4391ab11c0b59f17f3a04132df87aa69b7dae459e173036f16f9e8b161",
+    "compiled_source_sha256": "e6407c4391ab11c0b59f17f3a04132df87aa69b7dae459e173036f16f9e8b161",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_blr_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_blr_model.so",
+    "status": "compiled",
+    "library_sha256": "e7e85b90037d6540fee3e3cd4d96cf59de7e60cac66e965552f723c78ebfa402"
+  },
+  {
+    "stan_model": "bym2_offset_only",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/bym2_offset_only.stan",
+    "stan_sha256": "0137ba98292c5dfeeb4cefa006a740f6d362fcf87ca02aa7b668b3040147ead1",
+    "compiled_source_sha256": "0137ba98292c5dfeeb4cefa006a740f6d362fcf87ca02aa7b668b3040147ead1",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_bym2_offset_only_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_bym2_offset_only_model.so",
+    "status": "compiled",
+    "library_sha256": "640d0c1ba31a127d3944aba7a7b57198c59a3b98eda0fca7fcb701c211d1a0a9"
+  },
+  {
+    "stan_model": "covid19imperial_v2",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/covid19imperial_v2.stan",
+    "stan_sha256": "ea0d293199edfe1f06a9bdece810686d9cc98a64bc50fd23da4760a9c0733216",
+    "compiled_source_sha256": "ea0d293199edfe1f06a9bdece810686d9cc98a64bc50fd23da4760a9c0733216",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_covid19imperial_v2_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_covid19imperial_v2_model.so",
+    "status": "compiled",
+    "library_sha256": "1704183d726ec157c73ecfb6e58f325fb739bb441b8358f2fd5f701733c7924a"
+  },
+  {
+    "stan_model": "diamonds",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/diamonds.stan",
+    "stan_sha256": "b499b08e74598f65a5db338ea31cb9db868d1d56a6f580ddf28280dbe7425657",
+    "compiled_source_sha256": "b499b08e74598f65a5db338ea31cb9db868d1d56a6f580ddf28280dbe7425657",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_diamonds_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_diamonds_model.so",
+    "status": "compiled",
+    "library_sha256": "74fbdf7e84def1651acd77db666c9e985e020df8ead6d13f2e5d180231f0f90e"
+  },
+  {
+    "stan_model": "dogs",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dogs.stan",
+    "stan_sha256": "bc4c096706d2bb0558cdd88f171ccafda252d7a62b3cd7d1210642c3508b613a",
+    "compiled_source_sha256": "bc4c096706d2bb0558cdd88f171ccafda252d7a62b3cd7d1210642c3508b613a",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dogs_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dogs_model.so",
+    "status": "compiled",
+    "library_sha256": "b90c9972bf810708dd0ca5a028be8457d6e42b246a1022b46f733c95ba564ff9"
+  },
+  {
+    "stan_model": "covid19imperial_v3",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/covid19imperial_v3.stan",
+    "stan_sha256": "ea0d293199edfe1f06a9bdece810686d9cc98a64bc50fd23da4760a9c0733216",
+    "compiled_source_sha256": "ea0d293199edfe1f06a9bdece810686d9cc98a64bc50fd23da4760a9c0733216",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_covid19imperial_v3_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_covid19imperial_v3_model.so",
+    "status": "compiled",
+    "library_sha256": "b8d9a922f35e6d6d4fee862daec8a5a1f5aab42a1b32a06dcf11b1601fa496ba"
+  },
+  {
+    "stan_model": "dogs_hierarchical",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dogs_hierarchical.stan",
+    "stan_sha256": "779b2a41c4a7affab0704780336aa92def39e1c91b655c845eaa8dd4bc873d80",
+    "compiled_source_sha256": "779b2a41c4a7affab0704780336aa92def39e1c91b655c845eaa8dd4bc873d80",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dogs_hierarchical_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dogs_hierarchical_model.so",
+    "status": "compiled",
+    "library_sha256": "d63f113f5ff5254880d78e692bf54d9d46e39db1660cd7d701491d6c29d2a49c"
+  },
+  {
+    "stan_model": "dogs_log",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dogs_log.stan",
+    "stan_sha256": "f0257153c50d7ef91d9958607c159ae9097d622e3d5ed9778cd3be60fd91b56b",
+    "compiled_source_sha256": "f0257153c50d7ef91d9958607c159ae9097d622e3d5ed9778cd3be60fd91b56b",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dogs_log_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dogs_log_model.so",
+    "status": "compiled",
+    "library_sha256": "2c5bb4bd90ef94220470bf592c71d1804e30ec64ccc60a38844ffc9cd9e2aa22"
+  },
+  {
+    "stan_model": "dugongs_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dugongs_model.stan",
+    "stan_sha256": "abdf86f018dc0b6e9213222648f3fafc14eae13629769e40cca7490877b05e6b",
+    "compiled_source_sha256": "abdf86f018dc0b6e9213222648f3fafc14eae13629769e40cca7490877b05e6b",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dugongs_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dugongs_model_model.so",
+    "status": "compiled",
+    "library_sha256": "48fb12bfb8329d418220fd919b9278bf0e62689868ffb4de94717cfdf63ae177"
+  },
+  {
+    "stan_model": "earn_height",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/earn_height.stan",
+    "stan_sha256": "cabef66313b5b1568716951892387134a46d92865a84710445970cc69bda163a",
+    "compiled_source_sha256": "cabef66313b5b1568716951892387134a46d92865a84710445970cc69bda163a",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_earn_height_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_earn_height_model.so",
+    "status": "compiled",
+    "library_sha256": "8b83db92df8b1b1fd5410f81b294abd77a7cf5a41109b22eae3fb3e0a9064a5b"
+  },
+  {
+    "stan_model": "eight_schools_centered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/eight_schools_centered.stan",
+    "stan_sha256": "ccaf2d7beed22602f62f276cd4096194ab5de5b5c1d6bb2bae9a3655a3845c05",
+    "compiled_source_sha256": "ccaf2d7beed22602f62f276cd4096194ab5de5b5c1d6bb2bae9a3655a3845c05",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_eight_schools_centered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_eight_schools_centered_model.so",
+    "status": "compiled",
+    "library_sha256": "a82a9a4d9dfec8e1d10fd6dba37ed83cabd3ff7f21aa02de6baf5d84d296aac2"
+  },
+  {
+    "stan_model": "dogs_nonhierarchical",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dogs_nonhierarchical.stan",
+    "stan_sha256": "69dc8063e69d0451f54c5223edbb34e316742f5001a630f251bbab2be074109d",
+    "compiled_source_sha256": "69dc8063e69d0451f54c5223edbb34e316742f5001a630f251bbab2be074109d",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dogs_nonhierarchical_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_dogs_nonhierarchical_model.so",
+    "status": "compiled",
+    "library_sha256": "052b1ea115aaf1ed729625b2bb60aeb4c92f5869f9c2d18744715325ccd31f67"
+  },
+  {
+    "stan_model": "eight_schools_noncentered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/eight_schools_noncentered.stan",
+    "stan_sha256": "b28d5326b1936cce0014c98c2591d1ba5c1d21987ea5a5d0d9c074c6d6ce9253",
+    "compiled_source_sha256": "b28d5326b1936cce0014c98c2591d1ba5c1d21987ea5a5d0d9c074c6d6ce9253",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_eight_schools_noncentered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_eight_schools_noncentered_model.so",
+    "status": "compiled",
+    "library_sha256": "978526668b34c6d00c1d24e9621a8c4f00e840f6aa1fe47a796705e7f3b595d2"
+  },
+  {
+    "stan_model": "election88_full",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/election88_full.stan",
+    "stan_sha256": "cc0cac4d2d729adf98d1b12d06db2fa53327e3fc3bc700a1e7f28b3690ef858d",
+    "compiled_source_sha256": "cc0cac4d2d729adf98d1b12d06db2fa53327e3fc3bc700a1e7f28b3690ef858d",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_election88_full_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_election88_full_model.so",
+    "status": "compiled",
+    "library_sha256": "b09b7e713947c54d73fa676b4dfeecf2d38de970733cc1e79b3024b08e0cdb30"
+  },
+  {
+    "stan_model": "garch11",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/garch11.stan",
+    "stan_sha256": "bbfe1929a9dbf6f5a4066f6099d90fc8c3e1bf1c65e1072b47af19534c60a679",
+    "compiled_source_sha256": "bbfe1929a9dbf6f5a4066f6099d90fc8c3e1bf1c65e1072b47af19534c60a679",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_garch11_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_garch11_model.so",
+    "status": "compiled",
+    "library_sha256": "7b961f3bc026de51967087e87024eec33ef99f7623a4a3ca4ff225b7218a30b7"
+  },
+  {
+    "stan_model": "gp_pois_regr",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/gp_pois_regr.stan",
+    "stan_sha256": "d44142b5a950cfa68302de8d14c57e0ef0f9bcb7069375d22a74f84b7f78c270",
+    "compiled_source_sha256": "d44142b5a950cfa68302de8d14c57e0ef0f9bcb7069375d22a74f84b7f78c270",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_gp_pois_regr_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_gp_pois_regr_model.so",
+    "status": "compiled",
+    "library_sha256": "7363bdedafc1df6408d2772d74c6a0ddc862d1c56245ded66673744a726de991"
+  },
+  {
+    "stan_model": "gp_regr",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/gp_regr.stan",
+    "stan_sha256": "bfbba64339a06d6ca5e0619aa0e3bffee2865504ee00768dd999066182db9873",
+    "compiled_source_sha256": "bfbba64339a06d6ca5e0619aa0e3bffee2865504ee00768dd999066182db9873",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_gp_regr_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_gp_regr_model.so",
+    "status": "compiled",
+    "library_sha256": "070f21f28f1cf48ea25e572dab28c2853047348cccdde479cc34da08509c19f9"
+  },
+  {
+    "stan_model": "gpcm_latent_reg_irt",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/gpcm_latent_reg_irt.stan",
+    "stan_sha256": "b624e19f288c892778eabc80b4afde9f6822ac9622202787950adf4d5ba6d10b",
+    "compiled_source_sha256": "b624e19f288c892778eabc80b4afde9f6822ac9622202787950adf4d5ba6d10b",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_gpcm_latent_reg_irt_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_gpcm_latent_reg_irt_model.so",
+    "status": "compiled",
+    "library_sha256": "f51df10d2344943b45e02ae4f58121efe6898c85b75652d0e273c0f28df667dd"
+  },
+  {
+    "stan_model": "grsm_latent_reg_irt",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/grsm_latent_reg_irt.stan",
+    "stan_sha256": "88399731bf82063c69f6b0bead80a3fba0966e6d85ade9729fde54e853b459e5",
+    "compiled_source_sha256": "88399731bf82063c69f6b0bead80a3fba0966e6d85ade9729fde54e853b459e5",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_grsm_latent_reg_irt_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_grsm_latent_reg_irt_model.so",
+    "status": "compiled",
+    "library_sha256": "224775ce9e2f06f25e169b9e494e5608d5cf7b13b4305f4227509244eb13fc71"
+  },
+  {
+    "stan_model": "hmm_drive_0",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hmm_drive_0.stan",
+    "stan_sha256": "febb25a020c125d594c0c39058e68847fbfe49c20f80ec3c6ea0851a3b8f75e1",
+    "compiled_source_sha256": "febb25a020c125d594c0c39058e68847fbfe49c20f80ec3c6ea0851a3b8f75e1",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hmm_drive_0_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hmm_drive_0_model.so",
+    "status": "compiled",
+    "library_sha256": "1e59aa9967dce1ca70d880f94844b0cdc77b87c5f2327ad0cd04552aae838651"
+  },
+  {
+    "stan_model": "hier_2pl",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hier_2pl.stan",
+    "stan_sha256": "86e17a66416ff8ffefa0c2cee1ccf07af46090e2c6177577eb7e4bd0e7cdf636",
+    "compiled_source_sha256": "86e17a66416ff8ffefa0c2cee1ccf07af46090e2c6177577eb7e4bd0e7cdf636",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hier_2pl_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hier_2pl_model.so",
+    "status": "compiled",
+    "library_sha256": "4c8c0de268cbd744a43d4fc3aeb1b43c2cd96fb0cbfd7ce30b820e9983d5a68e"
+  },
+  {
+    "stan_model": "hmm_drive_1",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hmm_drive_1.stan",
+    "stan_sha256": "295e47fe6cf70adb9c16af0697fb6f3803aad993c3ee800a34e9b437883abb75",
+    "compiled_source_sha256": "295e47fe6cf70adb9c16af0697fb6f3803aad993c3ee800a34e9b437883abb75",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hmm_drive_1_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hmm_drive_1_model.so",
+    "status": "compiled",
+    "library_sha256": "93c6f1042090903ebb4f38bd9c86740aa3519df3241f529e7886b769a25c1019"
+  },
+  {
+    "stan_model": "hierarchical_gp",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hierarchical_gp.stan",
+    "stan_sha256": "f97e9de5153301188473b3e0ac922d3891c5de133d0b4172bf40bb0f75b1376e",
+    "compiled_source_sha256": "f97e9de5153301188473b3e0ac922d3891c5de133d0b4172bf40bb0f75b1376e",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hierarchical_gp_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hierarchical_gp_model.so",
+    "status": "compiled",
+    "library_sha256": "de5b2a9bb19b9e41d22b28b6dfc917bb971a18227e7dc5b928f1faf31f339404"
+  },
+  {
+    "stan_model": "hmm_example",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hmm_example.stan",
+    "stan_sha256": "8ebe19f3469e97153177d69c9dea248207278cc6f3d1d16885f83a791b11c476",
+    "compiled_source_sha256": "8ebe19f3469e97153177d69c9dea248207278cc6f3d1d16885f83a791b11c476",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hmm_example_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hmm_example_model.so",
+    "status": "compiled",
+    "library_sha256": "301acceb7eff303d6472f04608fd2c16e9fb91909a3dd5feb559d9024e87da34"
+  },
+  {
+    "stan_model": "hmm_gaussian",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hmm_gaussian.stan",
+    "stan_sha256": "2f76768fec16648e6a49782166c8c70862d22fb72e12349906b25cf8e6e837d7",
+    "compiled_source_sha256": "2f76768fec16648e6a49782166c8c70862d22fb72e12349906b25cf8e6e837d7",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hmm_gaussian_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_hmm_gaussian_model.so",
+    "status": "compiled",
+    "library_sha256": "40dcc05f5e0b6c1b75ad1ececed766ad68027fac5867719cf9010bf2ff5c312d"
+  },
+  {
+    "stan_model": "iohmm_reg",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/iohmm_reg.stan",
+    "stan_sha256": "9203ab44e94440c2bc51f96551c4e8ef94bbebfb6481c601320883ee983d7c32",
+    "compiled_source_sha256": "9203ab44e94440c2bc51f96551c4e8ef94bbebfb6481c601320883ee983d7c32",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_iohmm_reg_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_iohmm_reg_model.so",
+    "status": "compiled",
+    "library_sha256": "0c075db102aceb1519fec18bc7bf25da6934cef2aa57444dd251a99536c15b9e"
+  },
+  {
+    "stan_model": "irt_2pl",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/irt_2pl.stan",
+    "stan_sha256": "27947f5afa47a63c8587213c7d5598e701aa11209dff0b117d635578d028c922",
+    "compiled_source_sha256": "27947f5afa47a63c8587213c7d5598e701aa11209dff0b117d635578d028c922",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_irt_2pl_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_irt_2pl_model.so",
+    "status": "compiled",
+    "library_sha256": "c4528a9bde716dab1f106c2fb9271f312df0a7ed8f05252a4471cc12c90f59b5"
+  },
+  {
+    "stan_model": "kidscore_interaction_c2",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_interaction_c2.stan",
+    "stan_sha256": "f0e2de7b978b8ee263d3aa5fccdc4170e2f4d0678af5d6b8a0090162d084e9be",
+    "compiled_source_sha256": "f0e2de7b978b8ee263d3aa5fccdc4170e2f4d0678af5d6b8a0090162d084e9be",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_interaction_c2_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_interaction_c2_model.so",
+    "status": "compiled",
+    "library_sha256": "41589ddca89d36be092f942ee33c2fb385c004955b8ba98bac7afa853792244c"
+  },
+  {
+    "stan_model": "kidscore_interaction_c",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_interaction_c.stan",
+    "stan_sha256": "ab4821a0785f15ebcdea112d6436db3c2433f26aca8d10798f2824f752406727",
+    "compiled_source_sha256": "ab4821a0785f15ebcdea112d6436db3c2433f26aca8d10798f2824f752406727",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_interaction_c_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_interaction_c_model.so",
+    "status": "compiled",
+    "library_sha256": "efc840d1d3f581c3909371ac8cdda0d517d3c72136e16863e540635dfa6f8d8a"
+  },
+  {
+    "stan_model": "kidscore_interaction",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_interaction.stan",
+    "stan_sha256": "da69847f12b07ca3e1e77a7e9aa349497dbbe2f0251b94b46c24c51b5309ad91",
+    "compiled_source_sha256": "da69847f12b07ca3e1e77a7e9aa349497dbbe2f0251b94b46c24c51b5309ad91",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_interaction_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_interaction_model.so",
+    "status": "compiled",
+    "library_sha256": "915a955f063862cfef90644f01367f964f991e7c29eb013c02fad5b563b039e2"
+  },
+  {
+    "stan_model": "kidscore_interaction_z",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_interaction_z.stan",
+    "stan_sha256": "af2ebd6cd04a66deaf879899b548cb6401c7d250dd6cae7f55c726a8e7f734d6",
+    "compiled_source_sha256": "af2ebd6cd04a66deaf879899b548cb6401c7d250dd6cae7f55c726a8e7f734d6",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_interaction_z_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_interaction_z_model.so",
+    "status": "compiled",
+    "library_sha256": "a10a8008105bcd8558643861260cc7a13a9033fef9aa5c91733abe9a3f96eb88"
+  },
+  {
+    "stan_model": "kidscore_mom_work",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_mom_work.stan",
+    "stan_sha256": "fe41ba28792cddf91df4f46e5b48c2bcf33c0f1a193148fc36b4a52483640d27",
+    "compiled_source_sha256": "fe41ba28792cddf91df4f46e5b48c2bcf33c0f1a193148fc36b4a52483640d27",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_mom_work_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_mom_work_model.so",
+    "status": "compiled",
+    "library_sha256": "7c8bf7b0b4967b9fc9e4ea63af7d399b392fc4b25d9aebdc79bc977da8b5ebdc"
+  },
+  {
+    "stan_model": "kidscore_momhs",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_momhs.stan",
+    "stan_sha256": "555e35e50b5628fb981b5f0dafcf899feee4be0e4fcbbc5255f3d7df4128f15b",
+    "compiled_source_sha256": "555e35e50b5628fb981b5f0dafcf899feee4be0e4fcbbc5255f3d7df4128f15b",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_momhs_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_momhs_model.so",
+    "status": "compiled",
+    "library_sha256": "eedb0244d52b6ba004ffcdd8b700aaf493a40613dbf351f54a175d41198d65ea"
+  },
+  {
+    "stan_model": "kidscore_momhsiq",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_momhsiq.stan",
+    "stan_sha256": "de5689ba783aca3612123239b62e8e7da2b5a61785ac001bb4f7a6a601c99467",
+    "compiled_source_sha256": "de5689ba783aca3612123239b62e8e7da2b5a61785ac001bb4f7a6a601c99467",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_momhsiq_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_momhsiq_model.so",
+    "status": "compiled",
+    "library_sha256": "4f38810a3c4b3520543185099fc784c75987fd16067579d640e66522ad35a0c1"
+  },
+  {
+    "stan_model": "kidscore_momiq",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_momiq.stan",
+    "stan_sha256": "4a09d0baf54d23c5a9f2aebaaf212c4017b839ba5b9f04910ec98cb698593a2f",
+    "compiled_source_sha256": "4a09d0baf54d23c5a9f2aebaaf212c4017b839ba5b9f04910ec98cb698593a2f",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_momiq_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kidscore_momiq_model.so",
+    "status": "compiled",
+    "library_sha256": "1c1f9a380a5b29919cf9b61d3e1da207b6cb5338605ea022176b27b63d57518c"
+  },
+  {
+    "stan_model": "kilpisjarvi",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kilpisjarvi.stan",
+    "stan_sha256": "49c1f6d1d7a12595957549ffac0159496c7216037dd07e7ff345e088394aba0a",
+    "compiled_source_sha256": "49c1f6d1d7a12595957549ffac0159496c7216037dd07e7ff345e088394aba0a",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kilpisjarvi_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kilpisjarvi_model.so",
+    "status": "compiled",
+    "library_sha256": "313eb1bf05b56218eb1747c65213d42cbb176d0564bda8e0ede5ae877798f1e5"
+  },
+  {
+    "stan_model": "ldaK2",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/ldaK2.stan",
+    "stan_sha256": "2b943b45446d68148c94c9089ee17f45597eb839e0cd4f94410a817f787327d5",
+    "compiled_source_sha256": "2b943b45446d68148c94c9089ee17f45597eb839e0cd4f94410a817f787327d5",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_ldaK2_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_ldaK2_model.so",
+    "status": "compiled",
+    "library_sha256": "f942a3440bb32db13c1a3b19db5222db3d40a7c264c6588db4d0cf4cdea9d1d4"
+  },
+  {
+    "stan_model": "log10earn_height",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/log10earn_height.stan",
+    "stan_sha256": "69df8e51be53f4e4ac8a2756927a3b7dc2ca61cbaf4c6a65d790298287a049c2",
+    "compiled_source_sha256": "69df8e51be53f4e4ac8a2756927a3b7dc2ca61cbaf4c6a65d790298287a049c2",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_log10earn_height_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_log10earn_height_model.so",
+    "status": "compiled",
+    "library_sha256": "de7010314a40e1606156f56b6d0f126f99f0367f049b35beba26e96c9d65aa24"
+  },
+  {
+    "stan_model": "ldaK5",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/ldaK5.stan",
+    "stan_sha256": "514ebdd2564b2cbb90f64ba59f252a2a8b4447a6008685b04141ddec820933a6",
+    "compiled_source_sha256": "514ebdd2564b2cbb90f64ba59f252a2a8b4447a6008685b04141ddec820933a6",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_ldaK5_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_ldaK5_model.so",
+    "status": "compiled",
+    "library_sha256": "6123be5c8fa95f5a48fde61050b247c2ea2ab5730de516f865dfc196fee54f67"
+  },
+  {
+    "stan_model": "kronecker_gp",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kronecker_gp.stan",
+    "stan_sha256": "c1c2c779849a0d3e57b1f9df8daa5cc6b215a56f35db21912bd4d10b149ece57",
+    "compiled_source_sha256": "c1c2c779849a0d3e57b1f9df8daa5cc6b215a56f35db21912bd4d10b149ece57",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kronecker_gp_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_kronecker_gp_model.so",
+    "status": "compiled",
+    "library_sha256": "420075b967b51496bd472e8f511cee17286d5f22e74f74ff66beccdd909f2025"
+  },
+  {
+    "stan_model": "logearn_height",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logearn_height.stan",
+    "stan_sha256": "2eca5eaba6ba31d6964eec624e819d84f7ba0a06a0289920b2276d933a31d64e",
+    "compiled_source_sha256": "2eca5eaba6ba31d6964eec624e819d84f7ba0a06a0289920b2276d933a31d64e",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_height_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_height_model.so",
+    "status": "compiled",
+    "library_sha256": "6a8809138ba575237cc2a413f0f5180d144b69acab7a6b7e9d6a3c606b507e04"
+  },
+  {
+    "stan_model": "logearn_height_male",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logearn_height_male.stan",
+    "stan_sha256": "ec123759efa70e17517de7512ab5e33f23bfd6c03b2d94515df6aec8ea490c47",
+    "compiled_source_sha256": "ec123759efa70e17517de7512ab5e33f23bfd6c03b2d94515df6aec8ea490c47",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_height_male_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_height_male_model.so",
+    "status": "compiled",
+    "library_sha256": "4b021487844cffc9cb1ff672b46df778dc3d7b3b684d608857e3230f58c6c894"
+  },
+  {
+    "stan_model": "logearn_interaction",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logearn_interaction.stan",
+    "stan_sha256": "44c458ff3828043954961741018ee98c56bc14716d6e93dc046c31499e40c7fb",
+    "compiled_source_sha256": "44c458ff3828043954961741018ee98c56bc14716d6e93dc046c31499e40c7fb",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_interaction_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_interaction_model.so",
+    "status": "compiled",
+    "library_sha256": "83aae586b1f1f76de1eaea4c67ac01b2de1c3cab65bf9a219b4277c7f5435a72"
+  },
+  {
+    "stan_model": "logearn_interaction_z",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logearn_interaction_z.stan",
+    "stan_sha256": "37e04ae7ae7e92d3d4fffc6720298a56d0a13d87f376ae34b19d3ba731551749",
+    "compiled_source_sha256": "37e04ae7ae7e92d3d4fffc6720298a56d0a13d87f376ae34b19d3ba731551749",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_interaction_z_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_interaction_z_model.so",
+    "status": "compiled",
+    "library_sha256": "f9976d5a0ae3746737fbf5496c29e3e7664f17d33824c2b0a7882e61bb534928"
+  },
+  {
+    "stan_model": "logearn_logheight_male",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logearn_logheight_male.stan",
+    "stan_sha256": "8855b00850ebc51d2ce10d58f0b8d212153e21f0b7c8bd5601e367282c798255",
+    "compiled_source_sha256": "8855b00850ebc51d2ce10d58f0b8d212153e21f0b7c8bd5601e367282c798255",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_logheight_male_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logearn_logheight_male_model.so",
+    "status": "compiled",
+    "library_sha256": "f3f9a8b53aa542e77d1942cdb72d1931b67c413509c8867382b5c6651981a5dc"
+  },
+  {
+    "stan_model": "logmesquite_logva",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logmesquite_logva.stan",
+    "stan_sha256": "f21fbceb941f04848fe7a1385e5b5f331e08a259db0fa8655fc724e91f94f7fb",
+    "compiled_source_sha256": "f21fbceb941f04848fe7a1385e5b5f331e08a259db0fa8655fc724e91f94f7fb",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_logva_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_logva_model.so",
+    "status": "compiled",
+    "library_sha256": "4780ca67748d270235b48105a74671940cabc4a76812f2a73c9de30f014dbe99"
+  },
+  {
+    "stan_model": "logistic_regression_rhs",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logistic_regression_rhs.stan",
+    "stan_sha256": "b5c3167d819c155b81558c8889295c7bd1b1d4a7d137ce1bcd04783825c7b00b",
+    "compiled_source_sha256": "b5c3167d819c155b81558c8889295c7bd1b1d4a7d137ce1bcd04783825c7b00b",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logistic_regression_rhs_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logistic_regression_rhs_model.so",
+    "status": "compiled",
+    "library_sha256": "5eb1c02e4f1e43b20ced2ba1068369643a7c8d2e50f975534c0a79874dda04bb"
+  },
+  {
+    "stan_model": "logmesquite_logvas",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logmesquite_logvas.stan",
+    "stan_sha256": "e0fdd63267a96b0701b09bdddf7b54256ea0850569d380b158d5864f780bd311",
+    "compiled_source_sha256": "e0fdd63267a96b0701b09bdddf7b54256ea0850569d380b158d5864f780bd311",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_logvas_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_logvas_model.so",
+    "status": "compiled",
+    "library_sha256": "6b098fa266f3a480a134cffacc721733f0e4e65ebafc609ddf978a17ade53de9"
+  },
+  {
+    "stan_model": "logmesquite_logvash",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logmesquite_logvash.stan",
+    "stan_sha256": "100f4d97f30927b394c0284e92d62686fa5d16cb0cefc62c7e950fc4b7595296",
+    "compiled_source_sha256": "100f4d97f30927b394c0284e92d62686fa5d16cb0cefc62c7e950fc4b7595296",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_logvash_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_logvash_model.so",
+    "status": "compiled",
+    "library_sha256": "54d35accb69aebb7dd1df58811bdbd00ba0630880e9da4f4c51636f0520c9a8e"
+  },
+  {
+    "stan_model": "logmesquite_logvolume",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logmesquite_logvolume.stan",
+    "stan_sha256": "14615192a3579e2b9bdfd474389da63fbd32a0a5e1cd392c897560b8886b8aad",
+    "compiled_source_sha256": "14615192a3579e2b9bdfd474389da63fbd32a0a5e1cd392c897560b8886b8aad",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_logvolume_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_logvolume_model.so",
+    "status": "compiled",
+    "library_sha256": "3d97dde680597e2dc606cdf1807d54464d7d73c4721edf8f62ebaf3190533c69"
+  },
+  {
+    "stan_model": "logmesquite",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logmesquite.stan",
+    "stan_sha256": "fdeda33c27e66799a4e3a3da6f74c16c6bbf58ab7bf568bce0d5999d120498d3",
+    "compiled_source_sha256": "fdeda33c27e66799a4e3a3da6f74c16c6bbf58ab7bf568bce0d5999d120498d3",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_logmesquite_model.so",
+    "status": "compiled",
+    "library_sha256": "3dafb1e98040d032536b8f82e5e890f354e445aa5f59e732777ca7d1141fad6d"
+  },
+  {
+    "stan_model": "losscurve_sislob",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/losscurve_sislob.stan",
+    "stan_sha256": "b7e3d55e53d230a391b87e03fc9eec6007322a79ddec748ac1a4dee1741bc4b4",
+    "compiled_source_sha256": "b7e3d55e53d230a391b87e03fc9eec6007322a79ddec748ac1a4dee1741bc4b4",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_losscurve_sislob_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_losscurve_sislob_model.so",
+    "status": "compiled",
+    "library_sha256": "09e29006db3499eda75872f09058f81dba21a276a9ff57f0b1b58838be43ee81"
+  },
+  {
+    "stan_model": "lotka_volterra",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/lotka_volterra.stan",
+    "stan_sha256": "f1cb4dda6af07ea721d5a38c6cbe8e3b60f7d48294db0374f331dc9803fe4328",
+    "compiled_source_sha256": "f1cb4dda6af07ea721d5a38c6cbe8e3b60f7d48294db0374f331dc9803fe4328",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_lotka_volterra_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_lotka_volterra_model.so",
+    "status": "compiled",
+    "library_sha256": "de0b9595e5f5c03322e0ce820c90f554d8ff9fcee1d511ecd23d767d6d4b9749"
+  },
+  {
+    "stan_model": "low_dim_gauss_mix_collapse",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/low_dim_gauss_mix_collapse.stan",
+    "stan_sha256": "5aef8bff324b2c25497ef2920153ca6359d1cb846468552b1c9a40e9970b0d52",
+    "compiled_source_sha256": "5aef8bff324b2c25497ef2920153ca6359d1cb846468552b1c9a40e9970b0d52",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_low_dim_gauss_mix_collapse_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_low_dim_gauss_mix_collapse_model.so",
+    "status": "compiled",
+    "library_sha256": "4299d142e8283dbb905026e6370b23597beff2da728cb33df4459454ec6558d9"
+  },
+  {
+    "stan_model": "low_dim_gauss_mix",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/low_dim_gauss_mix.stan",
+    "stan_sha256": "b94ee44ab73502a0053c4a52b7e9d582ca4f466994d7beef4a4e606ff8582344",
+    "compiled_source_sha256": "b94ee44ab73502a0053c4a52b7e9d582ca4f466994d7beef4a4e606ff8582344",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_low_dim_gauss_mix_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_low_dim_gauss_mix_model.so",
+    "status": "compiled",
+    "library_sha256": "7fb97b6f9d33b12ed159cb05c23af30cca444657e1583393b336ad31e8ae91a0"
+  },
+  {
+    "stan_model": "mesquite",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/mesquite.stan",
+    "stan_sha256": "5233a18e3656e4239b9a5e1c4bddc31803d3ce69c2dbb46a80b50c67e5efa036",
+    "compiled_source_sha256": "5233a18e3656e4239b9a5e1c4bddc31803d3ce69c2dbb46a80b50c67e5efa036",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_mesquite_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_mesquite_model.so",
+    "status": "compiled",
+    "library_sha256": "9378d12e817ec30d9e42a638776fdb85d1d6c8b047c1a8b2d1dac7bacb1fe488"
+  },
+  {
+    "stan_model": "lsat_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/lsat_model.stan",
+    "stan_sha256": "9f3d0abccfb55fcab634d81a19d74507409b836c549224b923b237ecf9f2c817",
+    "compiled_source_sha256": "9f3d0abccfb55fcab634d81a19d74507409b836c549224b923b237ecf9f2c817",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_lsat_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_lsat_model_model.so",
+    "status": "compiled",
+    "library_sha256": "c7a402aec15f5d303c3c472e5d6cc8f700c880a3b77b2804f32ffe0c7ea6ee5c"
+  },
+  {
+    "stan_model": "2pl_latent_reg_irt",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/2pl_latent_reg_irt.stan",
+    "stan_sha256": "96c8f931ea6ff2569863cf1afa8b255aefe441516ab06705519b16ef1dc461b8",
+    "compiled_source_sha256": "96c8f931ea6ff2569863cf1afa8b255aefe441516ab06705519b16ef1dc461b8",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_2pl_latent_reg_irt_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_2pl_latent_reg_irt_model.so",
+    "status": "compiled",
+    "library_sha256": "18ffe215199c85ed42caca717bd8bfa7f9ff8b186b2601cccad573c8c3ad9945"
+  },
+  {
+    "stan_model": "multi_occupancy",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/multi_occupancy.stan",
+    "stan_sha256": "2da8b97338d43107b8c9d97500ca3b9f526891ad6ace2eb11715c06c2c45b052",
+    "compiled_source_sha256": "2da8b97338d43107b8c9d97500ca3b9f526891ad6ace2eb11715c06c2c45b052",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_multi_occupancy_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_multi_occupancy_model.so",
+    "status": "compiled",
+    "library_sha256": "80a604d7d792a1915dc233e508cd82092fb1acefb3b8ad30f23cf43ce0f91e4f"
+  },
+  {
+    "stan_model": "nes_logit_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/nes_logit_model.stan",
+    "stan_sha256": "d72a517f816195755bb5e25f743320a0a85d9107c30ce0ae970f9332983bb6a1",
+    "compiled_source_sha256": "d72a517f816195755bb5e25f743320a0a85d9107c30ce0ae970f9332983bb6a1",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_nes_logit_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_nes_logit_model_model.so",
+    "status": "compiled",
+    "library_sha256": "d203b0e80fa503944e149700f4cf07caa4f7c48802f6169ef1b08eac16a93742"
+  },
+  {
+    "stan_model": "nes",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/nes.stan",
+    "stan_sha256": "260e7acec9bef905cae306ff6defb97e525c116f018aba9c687af154c10c8e70",
+    "compiled_source_sha256": "260e7acec9bef905cae306ff6defb97e525c116f018aba9c687af154c10c8e70",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_nes_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_nes_model.so",
+    "status": "compiled",
+    "library_sha256": "44251fd4cd79815c935ad5f5d930ebb51a02491565806e145caeefeee6d98ba5"
+  },
+  {
+    "stan_model": "normal_mixture",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/normal_mixture.stan",
+    "stan_sha256": "347644c84000e76f74c10314dda7774fd2d3b13cd53f37f049b6bfdc2054c87e",
+    "compiled_source_sha256": "347644c84000e76f74c10314dda7774fd2d3b13cd53f37f049b6bfdc2054c87e",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_normal_mixture_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_normal_mixture_model.so",
+    "status": "compiled",
+    "library_sha256": "caf3965df9ba06397cd108b1fee78d745c5cc2df9b460fffa39c01898b978845"
+  },
+  {
+    "stan_model": "nn_rbm1bJ100",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/nn_rbm1bJ100.stan",
+    "stan_sha256": "810f47fa99f782219c6b16fdb23e719e126dfb678997c0ae0f4b3498a0cdc801",
+    "compiled_source_sha256": "810f47fa99f782219c6b16fdb23e719e126dfb678997c0ae0f4b3498a0cdc801",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_nn_rbm1bJ100_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_nn_rbm1bJ100_model.so",
+    "status": "compiled",
+    "library_sha256": "37e91b96fd1c91e239dcaeafe0f07d58232a165afd481cf9d71746759a03782e"
+  },
+  {
+    "stan_model": "normal_mixture_k",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/normal_mixture_k.stan",
+    "stan_sha256": "e9a39473b1e2c909097a5b8b265c5f47b8a5d6a609e9bd282f35355d770a5c5a",
+    "compiled_source_sha256": "e9a39473b1e2c909097a5b8b265c5f47b8a5d6a609e9bd282f35355d770a5c5a",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_normal_mixture_k_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_normal_mixture_k_model.so",
+    "status": "compiled",
+    "library_sha256": "384b1090ccead16b301d9adbad30d891eb5700a7b4b5a21f5603b5468bef5539"
+  },
+  {
+    "stan_model": "nn_rbm1bJ10",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/nn_rbm1bJ10.stan",
+    "stan_sha256": "2ef44b6ba9b893dadcdcb3f95befe897f492e2f4d67f554307e444beed2f872c",
+    "compiled_source_sha256": "2ef44b6ba9b893dadcdcb3f95befe897f492e2f4d67f554307e444beed2f872c",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_nn_rbm1bJ10_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_nn_rbm1bJ10_model.so",
+    "status": "compiled",
+    "library_sha256": "ca5360ad0c19e42953d568849da973028eaab44080407bed610cf093d06a279b"
+  },
+  {
+    "stan_model": "pilots",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/pilots.stan",
+    "stan_sha256": "4bf2c1e00ab66ce90a014b1f48ee7d129601b93783f0cb850b5dacc5109fae19",
+    "compiled_source_sha256": "4bf2c1e00ab66ce90a014b1f48ee7d129601b93783f0cb850b5dacc5109fae19",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_pilots_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_pilots_model.so",
+    "status": "compiled",
+    "library_sha256": "2af58f76b29eff85712b421c2b8dbf4d5a983a3fa8f9d73d4c9d5bd3f33b1ec3"
+  },
+  {
+    "stan_model": "one_comp_mm_elim_abs",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/one_comp_mm_elim_abs.stan",
+    "stan_sha256": "dbb2bdf39dd21bdf83f062b59a2d5f210b5ccd372d93631302d723a5b5f57d9c",
+    "compiled_source_sha256": "dbb2bdf39dd21bdf83f062b59a2d5f210b5ccd372d93631302d723a5b5f57d9c",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_one_comp_mm_elim_abs_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_one_comp_mm_elim_abs_model.so",
+    "status": "compiled",
+    "library_sha256": "d1ab52c0ab02ff940ec5fb41032adcdb1cd3bfba999df86b11999efe29cbd3a6"
+  },
+  {
+    "stan_model": "radon_county_intercept",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_county_intercept.stan",
+    "stan_sha256": "95b4c2b8aac6fb56de6d170f324e03cc37e8a87279e5ce9e48ce935dcb729a57",
+    "compiled_source_sha256": "95b4c2b8aac6fb56de6d170f324e03cc37e8a87279e5ce9e48ce935dcb729a57",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_county_intercept_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_county_intercept_model.so",
+    "status": "compiled",
+    "library_sha256": "c7ea986d5f2e635009c4bb77b173bdb6929823c3bea3b949d85a48000f1c3e6f"
+  },
+  {
+    "stan_model": "prophet",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/prophet.stan",
+    "stan_sha256": "e3fcbc4b053e2e8f270ad611eba9fe593146aa24bb01940e91cd4e17450239b5",
+    "compiled_source_sha256": "e3fcbc4b053e2e8f270ad611eba9fe593146aa24bb01940e91cd4e17450239b5",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_prophet_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_prophet_model.so",
+    "status": "compiled",
+    "library_sha256": "8a7c1d7336afd0ef1e58843bc0a062bd58099cf5bf01586751239948fc52c3bc"
+  },
+  {
+    "stan_model": "radon_county",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_county.stan",
+    "stan_sha256": "a198eede373add8ab481a34eee83fc23410299b5c5982dd0bcbb738eb21ffd55",
+    "compiled_source_sha256": "a198eede373add8ab481a34eee83fc23410299b5c5982dd0bcbb738eb21ffd55",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_county_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_county_model.so",
+    "status": "compiled",
+    "library_sha256": "0885f9e391d0499fd0d5631a0f55674973e659c45a60aa6407d55cf836a37daf"
+  },
+  {
+    "stan_model": "radon_hierarchical_intercept_centered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_hierarchical_intercept_centered.stan",
+    "stan_sha256": "cab61c2340d2ba66b5f45f8b9a5ddf3bbe8e43ec19583661542f8e2a853dd14b",
+    "compiled_source_sha256": "cab61c2340d2ba66b5f45f8b9a5ddf3bbe8e43ec19583661542f8e2a853dd14b",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_hierarchical_intercept_centered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_hierarchical_intercept_centered_model.so",
+    "status": "compiled",
+    "library_sha256": "976ea7297eaf822d50406716f3805e74bca3ff23034c551bb88dd063a3ebdbce"
+  },
+  {
+    "stan_model": "radon_hierarchical_intercept_noncentered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_hierarchical_intercept_noncentered.stan",
+    "stan_sha256": "d04cab97b0d180cd4889c53986e4a2afa62928d58c54408536f5dfeacd5de806",
+    "compiled_source_sha256": "d04cab97b0d180cd4889c53986e4a2afa62928d58c54408536f5dfeacd5de806",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_hierarchical_intercept_noncentered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_hierarchical_intercept_noncentered_model.so",
+    "status": "compiled",
+    "library_sha256": "aa3565a3891dedf00d78747f5c00daa8a394600d6f73acb0b3240cba4c463296"
+  },
+  {
+    "stan_model": "radon_partially_pooled_centered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_partially_pooled_centered.stan",
+    "stan_sha256": "7c56bbcfc3e0922edb5874c67eb10bc8b174bef0d4c63e916558e37862fc3a4a",
+    "compiled_source_sha256": "7c56bbcfc3e0922edb5874c67eb10bc8b174bef0d4c63e916558e37862fc3a4a",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_partially_pooled_centered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_partially_pooled_centered_model.so",
+    "status": "compiled",
+    "library_sha256": "b707f483f2270cdc2102b76e259f18c91e556813dbe3f34601f8e8433b998268"
+  },
+  {
+    "stan_model": "radon_pooled",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_pooled.stan",
+    "stan_sha256": "680277f397ca17ab3603fa8acb0042fe547cdedfd19d4bc22aedd40e3ae7d0de",
+    "compiled_source_sha256": "680277f397ca17ab3603fa8acb0042fe547cdedfd19d4bc22aedd40e3ae7d0de",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_pooled_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_pooled_model.so",
+    "status": "compiled",
+    "library_sha256": "2679b4efcc331b0416b989c68db0e6cc7dd3fb012371ac552aeb7c6d38e70920"
+  },
+  {
+    "stan_model": "radon_partially_pooled_noncentered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_partially_pooled_noncentered.stan",
+    "stan_sha256": "21ffc6d64e8599cd6501175103d93e7a287f9553097254fa1ec8d968479fbfd5",
+    "compiled_source_sha256": "21ffc6d64e8599cd6501175103d93e7a287f9553097254fa1ec8d968479fbfd5",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_partially_pooled_noncentered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_partially_pooled_noncentered_model.so",
+    "status": "compiled",
+    "library_sha256": "b238a314688a1d58409421ca99fc655fc4deed8bb7d97630f161e459c5d9ff8b"
+  },
+  {
+    "stan_model": "radon_variable_intercept_centered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_variable_intercept_centered.stan",
+    "stan_sha256": "53b33d4b26ec179c1de9ea83082f7fed26224a9869336ed9dce1e2a04c83942f",
+    "compiled_source_sha256": "53b33d4b26ec179c1de9ea83082f7fed26224a9869336ed9dce1e2a04c83942f",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_intercept_centered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_intercept_centered_model.so",
+    "status": "compiled",
+    "library_sha256": "a6ec925e68e63938f4628ae8fa313abade2c9b42d3e8944e9ada52219252244b"
+  },
+  {
+    "stan_model": "radon_variable_intercept_noncentered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_variable_intercept_noncentered.stan",
+    "stan_sha256": "db097f50d6f6158ceff725f520179ae74f2debe1ced50d899cac92787fd62861",
+    "compiled_source_sha256": "db097f50d6f6158ceff725f520179ae74f2debe1ced50d899cac92787fd62861",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_intercept_noncentered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_intercept_noncentered_model.so",
+    "status": "compiled",
+    "library_sha256": "e4f0206d12bdf706dbe86a3705e2651b66bdb9bd5c9d85cff427b7c1bd347c2c"
+  },
+  {
+    "stan_model": "radon_variable_intercept_slope_centered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_variable_intercept_slope_centered.stan",
+    "stan_sha256": "b41732368f4f389a6ce0aa1a6d169387521500a23294436b0230595e9a745ae2",
+    "compiled_source_sha256": "b41732368f4f389a6ce0aa1a6d169387521500a23294436b0230595e9a745ae2",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_intercept_slope_centered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_intercept_slope_centered_model.so",
+    "status": "compiled",
+    "library_sha256": "29618dfa0124884283c3f068fd9d0e898e46d7578e38e43b2ef472b452d806a0"
+  },
+  {
+    "stan_model": "radon_variable_slope_centered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_variable_slope_centered.stan",
+    "stan_sha256": "67b12c10b03d91e0e487ab7b072bfb2f9a6539bda62db0329e6e8220965506dc",
+    "compiled_source_sha256": "67b12c10b03d91e0e487ab7b072bfb2f9a6539bda62db0329e6e8220965506dc",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_slope_centered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_slope_centered_model.so",
+    "status": "compiled",
+    "library_sha256": "cac763b316de087fed9b609265edc5c0b60b0e7587b3bae525e37600f4822db9"
+  },
+  {
+    "stan_model": "radon_variable_intercept_slope_noncentered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_variable_intercept_slope_noncentered.stan",
+    "stan_sha256": "b37c4aebfe629591a306bbd630e74528ae9c9c1b23d00726c6633247927f34cb",
+    "compiled_source_sha256": "b37c4aebfe629591a306bbd630e74528ae9c9c1b23d00726c6633247927f34cb",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_intercept_slope_noncentered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_intercept_slope_noncentered_model.so",
+    "status": "compiled",
+    "library_sha256": "ed9d84bf4d57c7d2cc1339536dca205f349bf9c08bef1c7b62a5913e3c52d685"
+  },
+  {
+    "stan_model": "radon_variable_slope_noncentered",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_variable_slope_noncentered.stan",
+    "stan_sha256": "df643cc1f652bcd53376378e80a607e1e1622f8eb515f9ca67525b9fd4347891",
+    "compiled_source_sha256": "df643cc1f652bcd53376378e80a607e1e1622f8eb515f9ca67525b9fd4347891",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_slope_noncentered_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_radon_variable_slope_noncentered_model.so",
+    "status": "compiled",
+    "library_sha256": "575e7fe01e9a9af6c611f2cbf839679851239ea7f72028c6f48894824fb2b13b"
+  },
+  {
+    "stan_model": "rats_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/rats_model.stan",
+    "stan_sha256": "c01395015d523c02784e538927b7c2b9cf36114d93729bd25a81d566e05eca19",
+    "compiled_source_sha256": "c01395015d523c02784e538927b7c2b9cf36114d93729bd25a81d566e05eca19",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_rats_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_rats_model_model.so",
+    "status": "compiled",
+    "library_sha256": "0565630aa193ac7364ffd5cbf725ae56450c94ac242d419ab8986220a5782b22"
+  },
+  {
+    "stan_model": "seeds_centered_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/seeds_centered_model.stan",
+    "stan_sha256": "37512dcebf0e156a8c186637dbdbfd1fb9fee18bcda2a9c5a47be2d0fc2867eb",
+    "compiled_source_sha256": "37512dcebf0e156a8c186637dbdbfd1fb9fee18bcda2a9c5a47be2d0fc2867eb",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_seeds_centered_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_seeds_centered_model_model.so",
+    "status": "compiled",
+    "library_sha256": "9883d333981683b34ae60aef86553f57928e66d679080e796b437084589585f3"
+  },
+  {
+    "stan_model": "seeds_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/seeds_model.stan",
+    "stan_sha256": "11548246c12d4afdbb7455a2a249522bbdf255084041d48408c1ba5daf10ab8d",
+    "compiled_source_sha256": "11548246c12d4afdbb7455a2a249522bbdf255084041d48408c1ba5daf10ab8d",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_seeds_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_seeds_model_model.so",
+    "status": "compiled",
+    "library_sha256": "810d8d5493db8e4b03868a5a3ed9268bc4dcf183dff24a05c95c7ecfb2726c94"
+  },
+  {
+    "stan_model": "seeds_stanified_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/seeds_stanified_model.stan",
+    "stan_sha256": "a57822f654e024467fb7522ae013de10f0a4ba14797255b8c172c4418e57ecc4",
+    "compiled_source_sha256": "a57822f654e024467fb7522ae013de10f0a4ba14797255b8c172c4418e57ecc4",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_seeds_stanified_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_seeds_stanified_model_model.so",
+    "status": "compiled",
+    "library_sha256": "356a72a140ddf7f594576a60f6e163abdf168c0472310bdb618aecbdbe30158c"
+  },
+  {
+    "stan_model": "sesame_one_pred_a",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/sesame_one_pred_a.stan",
+    "stan_sha256": "8fa82cd7e6c4d1f23db8de2cd0f8a5eb6efedc8369ddccc5e4f3476a61d6fc73",
+    "compiled_source_sha256": "8fa82cd7e6c4d1f23db8de2cd0f8a5eb6efedc8369ddccc5e4f3476a61d6fc73",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_sesame_one_pred_a_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_sesame_one_pred_a_model.so",
+    "status": "compiled",
+    "library_sha256": "05469db4858c6dcbf4731c7786bb25a8ad5fc74cfcd5ab02d0deffb03952bc07"
+  },
+  {
+    "stan_model": "soil_incubation",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/soil_incubation.stan",
+    "stan_sha256": "6c845fcee0e9e5a49508c5b3395bb09613495b2773d93dbeef9f72664ce10e57",
+    "compiled_source_sha256": "6c845fcee0e9e5a49508c5b3395bb09613495b2773d93dbeef9f72664ce10e57",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_soil_incubation_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_soil_incubation_model.so",
+    "status": "compiled",
+    "library_sha256": "1fd0ae839c490b92f1403192d5a7af70f4066f638c7a05583c2c4654e6f90392"
+  },
+  {
+    "stan_model": "sir",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/sir.stan",
+    "stan_sha256": "7d4cf584bf79ffec37b8adab67067bf544b1e8f62835e49859b2d423dbedb619",
+    "compiled_source_sha256": "7d4cf584bf79ffec37b8adab67067bf544b1e8f62835e49859b2d423dbedb619",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_sir_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_sir_model.so",
+    "status": "compiled",
+    "library_sha256": "2ba5c02541a1686fcd398edbe1f5d48c6ef862f97bece708e12859cccbf00748"
+  },
+  {
+    "stan_model": "surgical_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/surgical_model.stan",
+    "stan_sha256": "10fdd6ddf107af6c0ef7ead174b5ad6f341ae3b3b80c54650d88e22d5c459696",
+    "compiled_source_sha256": "10fdd6ddf107af6c0ef7ead174b5ad6f341ae3b3b80c54650d88e22d5c459696",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_surgical_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_surgical_model_model.so",
+    "status": "compiled",
+    "library_sha256": "0c1f8d2986488cf49c1bd3fad8f4ee00c3cc1e13e341798accf37fc31f362e78"
+  },
+  {
+    "stan_model": "state_space_stochastic_level_stochastic_seasonal",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/state_space_stochastic_level_stochastic_seasonal.stan",
+    "stan_sha256": "f0103754c910380b24d6a6619053eb04fb7ee9f74f4acfa301b6f6234e9b8dec",
+    "compiled_source_sha256": "f0103754c910380b24d6a6619053eb04fb7ee9f74f4acfa301b6f6234e9b8dec",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_state_space_stochastic_level_stochastic_seasonal_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_state_space_stochastic_level_stochastic_seasonal_model.so",
+    "status": "compiled",
+    "library_sha256": "1dc3a47cc579d72277a3deb62f866cfaf9d5c2d8dfec0d07335ed41ec0555d34"
+  },
+  {
+    "stan_model": "wells_daae_c_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_daae_c_model.stan",
+    "stan_sha256": "0791694f69f5c63c9aff64c4b88a857df9d14cbca01594c4de5df290a6553708",
+    "compiled_source_sha256": "0791694f69f5c63c9aff64c4b88a857df9d14cbca01594c4de5df290a6553708",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_daae_c_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_daae_c_model_model.so",
+    "status": "compiled",
+    "library_sha256": "a14d0227c7f610f5bcca9a38fea5f1aaebac3118ebd97c4136d8c5ff55d80a4a"
+  },
+  {
+    "stan_model": "wells_dae_c_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_dae_c_model.stan",
+    "stan_sha256": "0284ca32ef2523fb09f5be590e5415de7a40b09d24d068f10c3062a44b0eb331",
+    "compiled_source_sha256": "0284ca32ef2523fb09f5be590e5415de7a40b09d24d068f10c3062a44b0eb331",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dae_c_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dae_c_model_model.so",
+    "status": "compiled",
+    "library_sha256": "8c7d7aeb66ced82f0e4e38b2b450b367e3a91a45b65c138d70365eb588bcff38"
+  },
+  {
+    "stan_model": "wells_dae_inter_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_dae_inter_model.stan",
+    "stan_sha256": "6c97e5b043c59f7ec82f94148354f157b52185ac73d368d25143732b425e1698",
+    "compiled_source_sha256": "6c97e5b043c59f7ec82f94148354f157b52185ac73d368d25143732b425e1698",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dae_inter_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dae_inter_model_model.so",
+    "status": "compiled",
+    "library_sha256": "be5ada21e37f9d9c454393e97227638e9b9c1a3c3d5083e7314a2567089061d3"
+  },
+  {
+    "stan_model": "wells_dae_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_dae_model.stan",
+    "stan_sha256": "5c0dc0d1ea6c201de429ad018a7abeeb13593cecb1be0dbf59c4a388a2c5f5e0",
+    "compiled_source_sha256": "5c0dc0d1ea6c201de429ad018a7abeeb13593cecb1be0dbf59c4a388a2c5f5e0",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dae_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dae_model_model.so",
+    "status": "compiled",
+    "library_sha256": "9145fb1f3aff1de630c2435fdf5a6d626019c254d7b01883be0436056eda4215"
+  },
+  {
+    "stan_model": "wells_dist100_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_dist100_model.stan",
+    "stan_sha256": "e32bd4a05563e46dd0d678659eb167be2abcc377b080183ae7087a0c7cb518c5",
+    "compiled_source_sha256": "e32bd4a05563e46dd0d678659eb167be2abcc377b080183ae7087a0c7cb518c5",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dist100_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dist100_model_model.so",
+    "status": "compiled",
+    "library_sha256": "2d43e920ba927a258c6a72c52cef44f82038a831e637f5724854a5ffd8c14e12"
+  },
+  {
+    "stan_model": "wells_dist100ars_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_dist100ars_model.stan",
+    "stan_sha256": "3a7b224616882026bd1bb2d34c21ed12b1eed58159df88e3f5c2fe72eeeaccdf",
+    "compiled_source_sha256": "3a7b224616882026bd1bb2d34c21ed12b1eed58159df88e3f5c2fe72eeeaccdf",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dist100ars_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dist100ars_model_model.so",
+    "status": "compiled",
+    "library_sha256": "0f32a70966e3879984668a9b93eafab7dc7b1211cabc65b68e6aa591c8d7f885"
+  },
+  {
+    "stan_model": "wells_dist",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_dist.stan",
+    "stan_sha256": "33d67128b28b9d4b57c4cd1881a0da40a627334d1fe2ea9b07736c451199afef",
+    "compiled_source_sha256": "33d67128b28b9d4b57c4cd1881a0da40a627334d1fe2ea9b07736c451199afef",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dist_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_dist_model.so",
+    "status": "compiled",
+    "library_sha256": "79e003e66468fa557aabd8578cfefeb1afb56962ba3fdec96286e5a8867d12ad"
+  },
+  {
+    "stan_model": "wells_interaction_c_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_interaction_c_model.stan",
+    "stan_sha256": "6e288f00a6d9acc05a2eaeb3f298797a3afd36800f8500928aaf3f23a1e6fee0",
+    "compiled_source_sha256": "6e288f00a6d9acc05a2eaeb3f298797a3afd36800f8500928aaf3f23a1e6fee0",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_interaction_c_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_interaction_c_model_model.so",
+    "status": "compiled",
+    "library_sha256": "88e898227500aa2a51e41af0b9aa5f9c06be210cec18032115a06995a5238d75"
+  },
+  {
+    "stan_model": "wells_interaction_model",
+    "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_interaction_model.stan",
+    "stan_sha256": "42d51e3a6d1325703f4ec4f8f3b934f7a2d5b1ab8dc8be96e9771d229d92a087",
+    "compiled_source_sha256": "42d51e3a6d1325703f4ec4f8f3b934f7a2d5b1ab8dc8be96e9771d229d92a087",
+    "command": [
+      "make",
+      "-j1",
+      "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_interaction_model_model.so",
+      "O=1",
+      "CXX_TYPE=gcc",
+      "TBB_CXX_TYPE=gcc",
+      "CXX=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-g++",
+      "CC=/home/fonnesbeck/Repos/pymc-model-catalogue/.pixi/envs/default/bin/x86_64-conda-linux-gnu-gcc"
+    ],
+    "library": "/tmp/pymc-model-catalogue-stan-reference/build/pdb_wells_interaction_model_model.so",
+    "status": "compiled",
+    "library_sha256": "0078273b4966e79439f6936b67840834dfc043f737449819c8d6c8d731076da1"
+  }
+]

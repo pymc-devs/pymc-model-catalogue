@@ -30,7 +30,29 @@ The county hierarchy uses centered Normal effects.
 Source: https://mc-stan.org/users/documentation/case-studies/radon.html
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -1802.5181112703349; PyMC = -1801.1318170051404.
+- B: Stan = -2069.328868008498; PyMC = -2067.942573743304.
+- Raw delta: Stan = -266.81075673816304; PyMC = -266.8107567381635.
+- Raw comparison: MATCH; residual = 4.547473508864641e-13.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.6681075673816346e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- County labels are converted from Stan one-based to NumPy zero-based indices without
+  reordering observations or county parameters. Residual SD and all varying-effect SDs
+  retain their names and units.
+- Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
+  the constant log(2), with no changed prior shape.
+- Both sources retain centered county alpha and/or beta.
+- beta order is [log_uppm, floor_measure] in both sources.
+- Original Stan SHA-256: cab61c2340d2ba66b5f45f8b9a5ddf3bbe8e43ec19583661542f8e2a853dd14b
+- Saved points: models/posteriordb_logp/points/radon_mn-radon_hierarchical_intercept_centered.npz
+- Full evidence: models/posteriordb_logp/records/radon_mn-radon_hierarchical_intercept_centered.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

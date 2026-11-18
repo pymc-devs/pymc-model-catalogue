@@ -1,0 +1,71 @@
+{
+  "module": "models/posteriordb_arK_arK.py",
+  "posterior": "arK-arK",
+  "archive": "models/data/posteriordb_arK.json.zip",
+  "archive_sha256": "6f2acbacb04655927bfc9173c42e51fc330bf08c6184242a62b7e39c22abe410",
+  "builder_ast_sha256": "02737e285d7fad85690b4334c3ebd20acf3e14455ef67dd53bf337c222197270",
+  "stan_model": "arK",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/arK.stan",
+  "stan_sha256": "fd5c71a891f648de3b9b65e2a65885c974fd9478b0a137b6b229f76ff4e01de6",
+  "library_sha256": "8d5fac4698f4ade9bbbebe3bdbeb47ab5b141ceb465ecd5bd735ed3c64aac78c",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "alpha",
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "beta.5",
+    "sigma"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "alpha",
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "beta.5",
+    "sigma"
+  ],
+  "pymc_parameter_names": [
+    "sigma",
+    "beta",
+    "alpha"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 13462664068926021419,
+      "attempt": 0,
+      "stan_logp": -233.33159578143048,
+      "pymc_logp": -232.63844881898444,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 10806896630383645392,
+      "attempt": 0,
+      "stan_logp": -213.5590502472479,
+      "pymc_logp": -212.86590328480204,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned posteriordb Stan arK.stan and the assigned native models/posteriordb_arK_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
+    "Identity of alpha, lag-ordered beta[1:K], and sigma; row t uses y[t-1],...,y[t-K]. The first K observations only condition the likelihood.",
+    "HalfCauchy versus a Cauchy density on positive sigma contributes only log(2)."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/arK-arK.npz",
+  "point_sha256": "ed890622c181bed8e0435b839983898d85eabcf99797f2ecf363b79305e8317a",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 19.77254553418257,
+  "delta_pymc": 19.7725455341824,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 19.77254553418257,
+  "residual": 1.7053025658242404e-13,
+  "tolerance": 1.1977254553418258e-06,
+  "raw_residual": 1.7053025658242404e-13,
+  "raw_tolerance": 1.1977254553418258e-06,
+  "measurement_run": "run-1"
+}

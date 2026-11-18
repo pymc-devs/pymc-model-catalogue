@@ -27,7 +27,24 @@ Latent Dirichlet allocation with two topics and uniform simplex densities.
 Source: Blei, Ng, and Jordan (2003), as specified by posteriordb.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -1316.1619373814558; PyMC = -1316.161937381456.
+- B: Stan = -1315.32528153365; PyMC = -1315.32528153365.
+- Raw delta: Stan = 0.8366558478057868; PyMC = 0.8366558478060142.
+- Raw comparison: MATCH; residual = -2.2737367544323206e-13.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.00836655847806e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of theta with shape (M,2) and phi with shape (2,V), each row a simplex.
+  Priors are Dirichlet(ones). Each token contributes
+  logsumexp_k(log(theta[doc,k])+log(phi[k,word])); topic indicators are marginalized
+  identically, retaining token order and shifting only document/word indices to zero-
+  based.
+- Original Stan SHA-256: 2b943b45446d68148c94c9089ee17f45597eb839e0cd4f94410a817f787327d5
+- Saved points: models/posteriordb_logp/points/three_docs1200-ldaK2.npz
+- Full evidence: models/posteriordb_logp/records/three_docs1200-ldaK2.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -1323.4223, grad norm = 40.0000, 86.0 us/call (5 evals).

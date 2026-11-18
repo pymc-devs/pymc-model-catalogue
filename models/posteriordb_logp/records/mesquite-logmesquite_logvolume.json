@@ -1,0 +1,62 @@
+{
+  "module": "models/posteriordb_logmesquite_logvolume_mesquite.py",
+  "posterior": "mesquite-logmesquite_logvolume",
+  "archive": "models/data/posteriordb_mesquite.json.zip",
+  "archive_sha256": "ec9db3a2e390892473e6172d76386ba9b26c3633a9682532eb34217189dcb0ac",
+  "builder_ast_sha256": "ed8f8c9c29809d55fd20bdf2c1543dabd48fe8cf694385669fc2bad433cfd201",
+  "stan_model": "logmesquite_logvolume",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logmesquite_logvolume.stan",
+  "stan_sha256": "14615192a3579e2b9bdfd474389da63fbd32a0a5e1cd392c897560b8886b8aad",
+  "library_sha256": "3d97dde680597e2dc606cdf1807d54464d7d73c4721edf8f62ebaf3190533c69",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "sigma"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "sigma"
+  ],
+  "pymc_parameter_names": [
+    "sigma",
+    "beta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 12970391223978893188,
+      "attempt": 0,
+      "stan_logp": -371.95733646573,
+      "pymc_logp": -371.9573364657301,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 13381248246978925689,
+      "attempt": 0,
+      "stan_logp": -741.7119178580231,
+      "pymc_logp": -741.711917858023,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/logmesquite_logvolume.stan parameters/model blocks and models/posteriordb_logmesquite_logvolume_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "Both use log(weight) as response; [1, log(diam1*diam2*canopy_height)]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response transformations are identical fixed-data operations, not parameter transforms requiring a Jacobian correction."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/mesquite-logmesquite_logvolume.npz",
+  "point_sha256": "1a5ee6423df3a1d32847a33e9a9670aad1385430cf617fce16747ab6453c7b07",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -369.75458139229306,
+  "delta_pymc": -369.75458139229283,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -369.75458139229306,
+  "residual": -2.2737367544323206e-13,
+  "tolerance": 4.697545813922931e-06,
+  "raw_residual": -2.2737367544323206e-13,
+  "raw_tolerance": 4.697545813922931e-06,
+  "measurement_run": "run-1"
+}

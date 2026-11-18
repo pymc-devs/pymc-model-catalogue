@@ -28,7 +28,25 @@ Native centered child-score interaction regression from Gelman and Hill (2006), 
 Both predictors use their sample means. The coefficients and positive noise scale have constant densities.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -1329245.3365258172; PyMC = -1329245.3365258162.
+- B: Stan = -1916575.1875751258; PyMC = -1916575.187575127.
+- Raw delta: Stan = -587329.8510493087; PyMC = -587329.8510493108.
+- Raw comparison: MATCH; residual = 2.0954757928848267e-09.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.005874298510493108
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Both predictors use [1, hs-mean(hs), iq-mean(iq), centered_hs*centered_iq]; beta order
+  is unchanged.
+- Stan implicit flat beta/sigma>0 match PyMC Flat/HalfFlat.
+- Original Stan SHA-256: ab4821a0785f15ebcdea112d6436db3c2433f26aca8d10798f2824f752406727
+- Saved points: models/posteriordb_logp/points/kidiq_with_mom_work-kidscore_interaction_c.npz
+- Full evidence: models/posteriordb_logp/records/kidiq_with_mom_work-kidscore_interaction_c.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

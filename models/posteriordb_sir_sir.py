@@ -30,7 +30,22 @@ Initial compartment sizes and the water concentration constant remain fixed.
 Incidence counts measure susceptible losses between consecutive observation times.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -9172.264842237479; PyMC = -9169.49208716104.
+- B: Stan = -8161.621032291843; PyMC = -8158.848429295431.
+- Raw delta: Stan = 1010.6438099456354; PyMC = 1010.6436578656085.
+- Raw comparison: MISMATCH; residual = 0.0001520800269645406.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1106438099456355e-05
+  using adjusted delta_Stan when an adjustment is present.
+- Same constrained parameters and probability factors up to normalization constants.
+  Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
+  is applied.
+- Original Stan SHA-256: 7d4cf584bf79ffec37b8adab67067bf544b1e8f62835e49859b2d423dbedb619
+- Saved points: models/posteriordb_logp/points/sir-sir.npz
+- Full evidence: models/posteriordb_logp/records/sir-sir.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Original: logp = -8849.2832, grad norm = 6315.5231, 14027.6 us/call (5 evals).
@@ -71,6 +86,10 @@ def build_model():
     initial_state = np.asarray(data["y0"], dtype=float)
     incidence_observed = np.asarray(data["stoi_hat"], dtype="int64")
     bacteria_observed = np.asarray(data["B_hat"], dtype=float)
+    # Stan uses integrate_ode_rk45 with its default solver controls.
+    # PyMC 6.4 DifferentialEquation uses SciPy odeint (LSODA) defaults.
+    # The equations are unchanged, but solver and tolerance differences can
+    # change evaluated logp and gradients, not just a normalization constant.
     dynamics = DifferentialEquation(
         func=_sir_waterborne_dynamics,
         times=times,

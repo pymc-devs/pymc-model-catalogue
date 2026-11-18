@@ -30,7 +30,26 @@ Source: Gelman and Hill (2006), ARM.
 The likelihood uses the transformed response, without a response Jacobian.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -6910.397305276828; PyMC = -6910.397305276836.
+- B: Stan = -185649.29039842458; PyMC = -185649.2903984243.
+- Raw delta: Stan = -178738.89309314775; PyMC = -178738.89309314746.
+- Raw comparison: MATCH; residual = -2.9103830456733704e-10.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.0017883889309314774
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Both use log10(earn) as response; [1, height]. Beta order is unchanged, with Flat beta
+  and HalfFlat sigma matching Stan's implicit priors. Response transformations are
+  identical fixed-data operations, not parameter transforms requiring a Jacobian
+  correction.
+- Original Stan SHA-256: 69df8e51be53f4e4ac8a2756927a3b7dc2ca61cbaf4c6a65d790298287a049c2
+- Saved points: models/posteriordb_logp/points/earnings-log10earn_height.npz
+- Full evidence: models/posteriordb_logp/records/earnings-log10earn_height.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

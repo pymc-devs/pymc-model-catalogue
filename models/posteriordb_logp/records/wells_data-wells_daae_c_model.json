@@ -1,0 +1,68 @@
+{
+  "module": "models/posteriordb_wells_daae_c_model_wells_data.py",
+  "posterior": "wells_data-wells_daae_c_model",
+  "archive": "models/data/posteriordb_wells_data.json.zip",
+  "archive_sha256": "0ecd7efe3e64c63d849c562e61658fe322509942a882bc515176e016cc57c969",
+  "builder_ast_sha256": "54e1d76269ef15fda84c50e10c8a6a50d66e19d752f9a39334dfd28d28e38187",
+  "stan_model": "wells_daae_c_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_daae_c_model.stan",
+  "stan_sha256": "0791694f69f5c63c9aff64c4b88a857df9d14cbca01594c4de5df290a6553708",
+  "library_sha256": "a14d0227c7f610f5bcca9a38fea5f1aaebac3118ebd97c4136d8c5ff55d80a4a",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "alpha",
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "beta.5"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "alpha",
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "beta.5"
+  ],
+  "pymc_parameter_names": [
+    "beta",
+    "alpha"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 2183616403444263513,
+      "attempt": 0,
+      "stan_logp": -2039.2934246892526,
+      "pymc_logp": -2039.2934246892526,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 6280890124200363945,
+      "attempt": 0,
+      "stan_logp": -1994.319657791627,
+      "pymc_logp": -1994.3196577916267,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/wells_daae_c_model.stan parameters/model blocks and models/posteriordb_wells_daae_c_model_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "Both use predictors [cd, ca, cd*ca, assoc, educ/4]; cd=(dist-mean(dist))/100, ca=arsenic-mean(arsenic), ce=(educ-mean(educ))/4 where present. Original observation and coefficient order are retained; all coefficients are flat. Except wells_dist, alpha is the separate intercept."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/wells_data-wells_daae_c_model.npz",
+  "point_sha256": "8f2a8fe1a4598fc7375a4514645a638746daeabe6a20885ebaecd9c928e4713c",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 44.97376689762564,
+  "delta_pymc": 44.973766897625865,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 44.97376689762564,
+  "residual": -2.2737367544323206e-13,
+  "tolerance": 1.4497376689762585e-06,
+  "raw_residual": -2.2737367544323206e-13,
+  "raw_tolerance": 1.4497376689762585e-06,
+  "measurement_run": "run-1"
+}

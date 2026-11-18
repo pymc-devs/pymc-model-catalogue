@@ -1,0 +1,64 @@
+{
+  "module": "models/posteriordb_radon_pooled_radon_all.py",
+  "posterior": "radon_all-radon_pooled",
+  "archive": "models/data/posteriordb_radon_all.json.zip",
+  "archive_sha256": "3f30c7909d530be01e70ab9e98f9f5d5e83371bb15c6dd168696aefd805b5672",
+  "builder_ast_sha256": "b27bff2d7f6c7e5147f1d6de3109f7500367046237549e421c3d9d7d7ef3bd01",
+  "stan_model": "radon_pooled",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_pooled.stan",
+  "stan_sha256": "680277f397ca17ab3603fa8acb0042fe547cdedfd19d4bc22aedd40e3ae7d0de",
+  "library_sha256": "2679b4efcc331b0416b989c68db0e6cc7dd3fb012371ac552aeb7c6d38e70920",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "alpha",
+    "beta",
+    "sigma_y"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "alpha",
+    "beta",
+    "sigma_y"
+  ],
+  "pymc_parameter_names": [
+    "sigma_y",
+    "beta",
+    "alpha"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 2722768653830671745,
+      "attempt": 0,
+      "stan_logp": -24706.489744389342,
+      "pymc_logp": -24705.796597272732,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 14087078118140147374,
+      "attempt": 0,
+      "stan_logp": -22623.248817100746,
+      "pymc_logp": -22622.555669984133,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/radon_pooled.stan parameters/model blocks and models/posteriordb_radon_pooled_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "County labels are converted from Stan one-based to NumPy zero-based indices without reordering observations or county parameters. Residual SD and all varying-effect SDs retain their names and units.",
+    "Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes the constant log(2), with no changed prior shape."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/radon_all-radon_pooled.npz",
+  "point_sha256": "094126fcdbeb2237ac37c1a67a34abb16618ff2192da60a37a6cac744b4d8584",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 2083.240927288596,
+  "delta_pymc": 2083.2409272886,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 2083.240927288596,
+  "residual": -3.637978807091713e-12,
+  "tolerance": 2.1832409272885998e-05,
+  "raw_residual": -3.637978807091713e-12,
+  "raw_tolerance": 2.1832409272885998e-05,
+  "measurement_run": "run-1"
+}

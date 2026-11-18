@@ -29,7 +29,27 @@ Source: Bales et al. (2019), with the ggplot2 diamonds data.
 The intercept has its density at the centered predictor origin.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -217519.159394572; PyMC = -217519.15939455116.
+- B: Stan = -182886.15666732893; PyMC = -182886.15666730888.
+- Raw delta: Stan = 34633.00272724306; PyMC = 34633.002727242274.
+- Raw comparison: MATCH; residual = 7.8580342233181e-10.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.00034733002727243065
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Both discard X's intercept column and center each remaining column by its mean. Use
+  the original centered Intercept, not generated b_Intercept=Intercept-means_X@b. b and
+  sigma are unchanged. Stan explicitly subtracts StudentT(3,0,10)'s log survival at
+  zero, so its sigma normalization already matches HalfStudentT(3,10). Both honor
+  prior_only.
+- Original Stan SHA-256: b499b08e74598f65a5db338ea31cb9db868d1d56a6f580ddf28280dbe7425657
+- Saved points: models/posteriordb_logp/points/diamonds-diamonds.npz
+- Full evidence: models/posteriordb_logp/records/diamonds-diamonds.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

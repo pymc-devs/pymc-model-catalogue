@@ -28,7 +28,27 @@ Native county radon hierarchy from posteriordb, Bales et al. (2019).
 The county model uses bounded uniform scale distributions.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -62822.486080068884; PyMC = -62831.69642056915.
+- B: Stan = -62947.435689867634; PyMC = -62956.6460303676.
+- Raw delta: Stan = -124.94960979875032; PyMC = -124.949609798452.
+- Raw comparison: MATCH; residual = -2.9831426218152046e-10.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.249496097987503e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- County labels are converted from Stan one-based to NumPy zero-based indices without
+  reordering observations or county parameters. Residual SD and all varying-effect SDs
+  retain their names and units.
+- a, mu_a, sigma_a, sigma_y are unchanged. Stan implicit SD priors on (0,100) versus
+  PyMC Uniform(0,100) contribute only -2*log(100).
+- Original Stan SHA-256: a198eede373add8ab481a34eee83fc23410299b5c5982dd0bcbb738eb21ffd55
+- Saved points: models/posteriordb_logp/points/radon_mod-radon_county.npz
+- Full evidence: models/posteriordb_logp/records/radon_mod-radon_county.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

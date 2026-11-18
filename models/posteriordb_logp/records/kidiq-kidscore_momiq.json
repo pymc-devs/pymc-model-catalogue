@@ -1,0 +1,63 @@
+{
+  "module": "models/posteriordb_kidscore_momiq_kidiq.py",
+  "posterior": "kidiq-kidscore_momiq",
+  "archive": "models/data/posteriordb_kidiq.json.zip",
+  "archive_sha256": "16d341a99ec8178231eab660d8fda084a44145f6a241daf35276d0192d13b92d",
+  "builder_ast_sha256": "b949cb6baee0155a2f75d7d1cab3d8f10b79e26efb718ac242e782b7a2839eed",
+  "stan_model": "kidscore_momiq",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_momiq.stan",
+  "stan_sha256": "4a09d0baf54d23c5a9f2aebaaf212c4017b839ba5b9f04910ec98cb698593a2f",
+  "library_sha256": "1c1f9a380a5b29919cf9b61d3e1da207b6cb5338605ea022176b27b63d57518c",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "sigma"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "sigma"
+  ],
+  "pymc_parameter_names": [
+    "sigma",
+    "beta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 11558547189174557306,
+      "attempt": 0,
+      "stan_logp": -1898952.5453926628,
+      "pymc_logp": -1898951.8522455075,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 9813882481410606252,
+      "attempt": 0,
+      "stan_logp": -1759958.4851688948,
+      "pymc_logp": -1759957.7920217412,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/kidscore_momiq.stan parameters/model blocks and models/posteriordb_kidscore_momiq_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "Both predictors use [1, mom_iq]; beta order is unchanged.",
+    "Stan sigma>0 with Cauchy(0,2.5), PyMC HalfCauchy(2.5): PyMC-Stan is the constant log(2). Beta has a flat prior in both."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/kidiq-kidscore_momiq.npz",
+  "point_sha256": "ab1a53f7fc16a78c57929ee2e5887e7faac16d252a3684f79671c155de3cf40d",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 138994.060223768,
+  "delta_pymc": 138994.06022376637,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 138994.060223768,
+  "residual": 1.6298145055770874e-09,
+  "tolerance": 0.0013909406022376799,
+  "raw_residual": 1.6298145055770874e-09,
+  "raw_tolerance": 0.0013909406022376799,
+  "measurement_run": "run-1"
+}

@@ -29,7 +29,27 @@ Native hierarchical two-parameter logistic model from Furr (2016).
 Item effects use the centered bivariate Gaussian law.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -14329.097424843068; PyMC = -14328.404277323887.
+- B: Stan = -14105.817678299081; PyMC = -14105.1245307799.
+- Raw delta: Stan = 223.27974654398713; PyMC = 223.27974654398713.
+- Raw comparison: MATCH; residual = 0.0.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.232797465439871e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Set xi[i,:]=[xi1[i],xi2[i]] and correlation_unit=(L_Omega[1,0]+1)/2. rho=L_Omega[1,0];
+  diag(tau)*[[1,0],[rho,sqrt(1-rho^2)]] is the same bivariate covariance Cholesky
+  factor. Item discrimination=exp(xi[:,0]), difficulty=xi[:,1], and abilities theta
+  remain centered.
+- In dimension two LKJ(eta=4) has density proportional to (1-rho^2)^3; Beta(4,4) on
+  u=(rho+1)/2 is its exact coordinate rewrite. log|d rho/d u|=log(2) is constant and
+  omitted from delta adjustments; stacking the item vectors is a permutation with unit
+  absolute determinant.
+- Original Stan SHA-256: 86e17a66416ff8ffefa0c2cee1ccf07af46090e2c6177577eb7e4bd0e7cdf636
+- Saved points: models/posteriordb_logp/points/sat-hier_2pl.npz
+- Full evidence: models/posteriordb_logp/records/sat-hier_2pl.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

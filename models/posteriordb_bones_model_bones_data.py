@@ -28,7 +28,26 @@ Native skeletal maturity model from the BUGS bones example.
 Missing grades do not contribute a likelihood factor.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -1639.9838350060193; PyMC = -1639.9838353052326.
+- B: Stan = -1650.3197544900816; PyMC = -1650.319761646184.
+- Raw delta: Stan = -10.335919484062288; PyMC = -10.335926340951346.
+- Raw comparison: MISMATCH; residual = 6.8568890583264874e-06.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.1033592634095134e-06
+  using adjusted delta_Stan when an adjustment is present.
+- theta retains child order and Normal(0,36) SD. Stan's categories 1..ncat become PyMC
+  categories 0..ncat-1; missing grade=-1 entries are omitted in both. OrderedLogistic
+  eta=delta*theta and cutpoints delta*gamma reproduce Stan's differences of
+  inv_logit(delta*(theta-gamma)). The bundled discriminations are positive and active
+  thresholds ordered.
+- No nonconstant density adjustment is required by these source definitions; parameter-
+  independent constants are omitted from two-point deltas.
+- Original Stan SHA-256: 0d478060e879cf4c26f5a5d8eafb2de3e166a1d9e581999c26c00d3a002cf2c4
+- Saved points: models/posteriordb_logp/points/bones_data-bones_model.npz
+- Full evidence: models/posteriordb_logp/records/bones_data-bones_model.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.
@@ -67,6 +86,10 @@ def build_model():
             child, indicator = np.nonzero(
                 (grade != -1) & (category_count[None, :] == count)
             )
+            # Stan uses sigmoid(delta * (theta-gamma)) directly, whereas
+            # OrderedLogistic uses complementary cumulative probabilities.
+            # These are algebraically equivalent but can differ in floating-
+            # point tails; the recorded delta does not pass the strict tolerance.
             pm.OrderedLogistic(
                 f"grade_{count}_categories",
                 eta=discrimination[indicator] * theta[child],

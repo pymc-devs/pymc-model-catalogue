@@ -28,7 +28,27 @@ Native radon model from the posteriordb radon case study.
 Source: https://mc-stan.org/users/documentation/case-studies/radon.html
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -24706.489744389342; PyMC = -24705.796597272732.
+- B: Stan = -22623.248817100746; PyMC = -22622.555669984133.
+- Raw delta: Stan = 2083.240927288596; PyMC = 2083.2409272886.
+- Raw comparison: MATCH; residual = -3.637978807091713e-12.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.1832409272885998e-05
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- County labels are converted from Stan one-based to NumPy zero-based indices without
+  reordering observations or county parameters. Residual SD and all varying-effect SDs
+  retain their names and units.
+- Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
+  the constant log(2), with no changed prior shape.
+- Original Stan SHA-256: 680277f397ca17ab3603fa8acb0042fe547cdedfd19d4bc22aedd40e3ae7d0de
+- Saved points: models/posteriordb_logp/points/radon_all-radon_pooled.npz
+- Full evidence: models/posteriordb_logp/records/radon_all-radon_pooled.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

@@ -1,0 +1,60 @@
+{
+  "module": "models/posteriordb_nes_logit_model_nes_logit_data.py",
+  "posterior": "nes_logit_data-nes_logit_model",
+  "archive": "models/data/posteriordb_nes_logit_data.json.zip",
+  "archive_sha256": "76af25eb4b46c1aa35c2e6c8c98810148d3de1042266336721494ee5f083d06e",
+  "builder_ast_sha256": "e7ce0a974d42ebdf6aa56fcd3c4ad753fb156367c092c1e85d1d9ed61337bcb5",
+  "stan_model": "nes_logit_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/nes_logit_model.stan",
+  "stan_sha256": "d72a517f816195755bb5e25f743320a0a85d9107c30ce0ae970f9332983bb6a1",
+  "library_sha256": "d203b0e80fa503944e149700f4cf07caa4f7c48802f6169ef1b08eac16a93742",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "alpha",
+    "beta.1"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "alpha",
+    "beta.1"
+  ],
+  "pymc_parameter_names": [
+    "beta",
+    "alpha"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 8751325086224636766,
+      "attempt": 0,
+      "stan_logp": -823.8426202699114,
+      "pymc_logp": -823.8426202699114,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 7632651242982731309,
+      "attempt": 0,
+      "stan_logp": -816.3904366646025,
+      "pymc_logp": -816.3904366646025,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/nes_logit_model.stan parameters/model blocks and models/posteriordb_nes_logit_model_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "Identical flat alpha and length-one beta; logit=alpha+beta[0]*income."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/nes_logit_data-nes_logit_model.npz",
+  "point_sha256": "506820e2dca2c9709493b8edca8bf00743fc5ea74fd32f5caa8a853d24094c41",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 7.45218360530896,
+  "delta_pymc": 7.45218360530896,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 7.45218360530896,
+  "residual": 0.0,
+  "tolerance": 1.0745218360530895e-06,
+  "raw_residual": 0.0,
+  "raw_tolerance": 1.0745218360530895e-06,
+  "measurement_run": "run-1"
+}

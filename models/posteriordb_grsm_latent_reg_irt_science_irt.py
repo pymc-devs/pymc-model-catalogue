@@ -38,7 +38,21 @@ It changes the induced coefficient priors for fims_Aus_Jpn_irt-2pl_latent_reg_ir
 The intercept-only science_irt-grsm_latent_reg_irt pair does not change.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -4234.376571594136; PyMC = -4230.3414701054735.
+- B: Stan = -4284.753997951464; PyMC = -4280.718896462794.
+- Raw delta: Stan = -50.37742635732775; PyMC = -50.37742635732047.
+- Raw comparison: MATCH; residual = -7.275957614183426e-12.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.5037742635732774e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Append minus the sum to beta_free (and kappa_free when present) for ZeroSumNormal.
+  Fixed prior scale 3 makes the subspace-volume and normalization offsets constant.
+- Original Stan SHA-256: 88399731bf82063c69f6b0bead80a3fba0966e6d85ade9729fde54e853b459e5
+- Saved points: models/posteriordb_logp/points/science_irt-grsm_latent_reg_irt.npz
+- Full evidence: models/posteriordb_logp/records/science_irt-grsm_latent_reg_irt.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.
@@ -61,6 +75,10 @@ def build_model():
         scale = np.ones(design.shape[1])
         if design.shape[1] > 1:
             center[1:] = design[:, 1:].mean(axis=0)
+            # Stan's minmax_count expression assigns a Boolean instead of
+            # accumulating endpoint counts, so binary columns use two SDs.
+            # Range scaling would change the induced coefficient priors,
+            # but this branch is inactive for the bundled intercept-only data.
             scale[1:] = [
                 np.ptp(column)
                 if np.unique(column).size == 2
@@ -108,6 +126,10 @@ def build_model():
     coords["step"] = np.arange(1, n_steps + 1)
     with pm.Model(coords=coords) as model:
         theta, alpha = _item_response_latent_regression(data)
+        # Stan constrains each vector by setting its last effect to minus
+        # the sum of the others, then applies Normal(0, 3) to all effects.
+        # ZeroSumNormal preserves both constrained densities in different
+        # coordinates, up to constant volume factors at this fixed scale.
         beta = pm.ZeroSumNormal("beta", sigma=3, dims="item")
         kappa = pm.ZeroSumNormal("kappa", sigma=3, dims="step")
         threshold_sum = pt.concatenate([pt.zeros(1), pt.cumsum(kappa)])

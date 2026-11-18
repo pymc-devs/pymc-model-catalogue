@@ -1,0 +1,60 @@
+{
+  "module": "models/posteriordb_Rate_4_model_Rate_4_data.py",
+  "posterior": "Rate_4_data-Rate_4_model",
+  "archive": "models/data/posteriordb_Rate_4_data.json.zip",
+  "archive_sha256": "d3a1b76b173776148bec6f56f20dda0e14aeb89ea2383548b7e0041fe2b74c41",
+  "builder_ast_sha256": "2b6742dcd0a0b70d314fb2d5e272b05578d7d5d64b83ae8ca17f77548a480444",
+  "stan_model": "Rate_4_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Rate_4_model.stan",
+  "stan_sha256": "7aaf395c9ce53028fceaf8719538c3e8c98eba9884e1b3b843b33d636487d88c",
+  "library_sha256": "7c4b3100d03575a5645c6a7be3cf390f7018378acde262ad0cc6f3251b839ab4",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "theta",
+    "thetaprior"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "theta",
+    "thetaprior"
+  ],
+  "pymc_parameter_names": [
+    "theta",
+    "thetaprior"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 13653580909333734831,
+      "attempt": 0,
+      "stan_logp": -7.016003499815746,
+      "pymc_logp": -7.016003499815746,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 18361423200892380101,
+      "attempt": 0,
+      "stan_logp": -7.579023772270681,
+      "pymc_logp": -7.57902377227068,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/Rate_4_model.stan and models/posteriordb_Rate_4_model_Rate_4_data.py::build_model.",
+    "Both independent Beta(1,1) free rates are retained, including the unobserved thetaprior. Only theta enters the observed Binomial. Generated prior/posterior predictive counts are not free parameters.",
+    "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/Rate_4_data-Rate_4_model.npz",
+  "point_sha256": "c27cdc7f7e483e725504962bc293e0c0c1a0af9738f354b90b95b7dbe05f974b",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -0.5630202724549349,
+  "delta_pymc": -0.563020272454934,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -0.5630202724549349,
+  "residual": -8.881784197001252e-16,
+  "tolerance": 1.0056302027245493e-06,
+  "raw_residual": -8.881784197001252e-16,
+  "raw_tolerance": 1.0056302027245493e-06,
+  "measurement_run": "run-1"
+}

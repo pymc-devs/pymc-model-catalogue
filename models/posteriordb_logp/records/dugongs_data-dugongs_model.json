@@ -1,0 +1,66 @@
+{
+  "module": "models/posteriordb_dugongs_model_dugongs_data.py",
+  "posterior": "dugongs_data-dugongs_model",
+  "archive": "models/data/posteriordb_dugongs_data.json.zip",
+  "archive_sha256": "44b80942203caca9546646d14d9adce3f898b5789ecbf4f023ed25790b757b5c",
+  "builder_ast_sha256": "ce60fd75d8fa1a9812f8e72b05fc9d4a26a53ab1fd1c671ee8c34d7c6943eeb8",
+  "stan_model": "dugongs_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dugongs_model.stan",
+  "stan_sha256": "abdf86f018dc0b6e9213222648f3fafc14eae13629769e40cca7490877b05e6b",
+  "library_sha256": "48fb12bfb8329d418220fd919b9278bf0e62689868ffb4de94717cfdf63ae177",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "alpha",
+    "beta",
+    "lambda",
+    "tau"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "alpha",
+    "beta",
+    "lambda",
+    "tau"
+  ],
+  "pymc_parameter_names": [
+    "tau",
+    "lambda",
+    "beta",
+    "alpha"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 5535199539958937077,
+      "attempt": 0,
+      "stan_logp": -131.96739041849747,
+      "pymc_logp": -131.96739060844538,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 16843657368037683453,
+      "attempt": 0,
+      "stan_logp": -109.4324822421098,
+      "pymc_logp": -109.43248243205778,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/dugongs_model.stan and models/posteriordb_dugongs_model_dugongs_data.py::build_model.",
+    "Keep the original precision tau, with Gamma(shape=0.0001,rate=0.0001) in both sources. sigma=tau**(-1/2) is deterministic, not a new free coordinate, so no tau-to-sigma Jacobian applies. The lambda interval (0.5,1), Normal coefficient priors, and growth likelihood are unchanged.",
+    "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/dugongs_data-dugongs_model.npz",
+  "point_sha256": "16b8d8eb558fdb4fff28a4bb16c9b51a91695607b61304ed9a808ecb9040ad61",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 22.534908176387674,
+  "delta_pymc": 22.534908176387603,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 22.534908176387674,
+  "residual": 7.105427357601002e-14,
+  "tolerance": 1.2253490817638768e-06,
+  "raw_residual": 7.105427357601002e-14,
+  "raw_tolerance": 1.2253490817638768e-06,
+  "measurement_run": "run-1"
+}

@@ -28,7 +28,26 @@ Native Gaussian model for mesquite weight.
 Source: Gelman and Hill (2006), ARM.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -17118066.261075526; PyMC = -17118066.261075526.
+- B: Stan = -21128507.765528917; PyMC = -21128507.76552892.
+- Raw delta: Stan = -4010441.504453391; PyMC = -4010441.5044533946.
+- Raw comparison: MATCH; residual = 3.725290298461914e-09.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.040105415044533944
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Both use weight as response; [1, diam1, diam2, canopy_height, total_height, density,
+  group]. Beta order is unchanged, with Flat beta and HalfFlat sigma matching Stan's
+  implicit priors. Response transformations are identical fixed-data operations, not
+  parameter transforms requiring a Jacobian correction.
+- Original Stan SHA-256: 5233a18e3656e4239b9a5e1c4bddc31803d3ce69c2dbb46a80b50c67e5efa036
+- Saved points: models/posteriordb_logp/points/mesquite-mesquite.npz
+- Full evidence: models/posteriordb_logp/records/mesquite-mesquite.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

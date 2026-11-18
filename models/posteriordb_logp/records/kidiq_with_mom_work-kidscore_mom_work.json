@@ -1,0 +1,67 @@
+{
+  "module": "models/posteriordb_kidscore_mom_work_kidiq_with_mom_work.py",
+  "posterior": "kidiq_with_mom_work-kidscore_mom_work",
+  "archive": "models/data/posteriordb_kidiq_with_mom_work.json.zip",
+  "archive_sha256": "0c82d40ace4c75bba4bc8824d4ece044e1d5f8700d479ea672001ab475254913",
+  "builder_ast_sha256": "8bf91d815323a96619d4df0d5e270689c2fa738c3c4611fc8dd8219dcacdfe82",
+  "stan_model": "kidscore_mom_work",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_mom_work.stan",
+  "stan_sha256": "fe41ba28792cddf91df4f46e5b48c2bcf33c0f1a193148fc36b4a52483640d27",
+  "library_sha256": "7c8bf7b0b4967b9fc9e4ea63af7d399b392fc4b25d9aebdc79bc977da8b5ebdc",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "sigma"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "beta.1",
+    "beta.2",
+    "beta.3",
+    "beta.4",
+    "sigma"
+  ],
+  "pymc_parameter_names": [
+    "sigma",
+    "beta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 10878676087004763319,
+      "attempt": 0,
+      "stan_logp": -3489148.4822633765,
+      "pymc_logp": -3489148.4822633765,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 10360461389861175322,
+      "attempt": 0,
+      "stan_logp": -1357896.0004124728,
+      "pymc_logp": -1357896.0004124732,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/kidscore_mom_work.stan parameters/model blocks and models/posteriordb_kidscore_mom_work_*.py build_model (each dataset variant inspected).",
+    "Identity on all constrained free parameters, including original array order. No coordinate-change Jacobian or parameter-dependent factor correction. Stan support-transform and PyMC value-transform Jacobians are disabled.",
+    "Both predictors use [1, mom_work==2, mom_work==3, mom_work==4]; beta order is unchanged.",
+    "Stan implicit flat beta/sigma>0 match PyMC Flat/HalfFlat."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/kidiq_with_mom_work-kidscore_mom_work.npz",
+  "point_sha256": "0463fbc7b3d46a63e9ff11b4ea200bf77cf267a3fdd8ec0569570acb95294295",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 2131252.4818509035,
+  "delta_pymc": 2131252.4818509035,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 2131252.4818509035,
+  "residual": 0.0,
+  "tolerance": 0.021313524818509035,
+  "raw_residual": 0.0,
+  "raw_tolerance": 0.021313524818509035,
+  "measurement_run": "run-1"
+}

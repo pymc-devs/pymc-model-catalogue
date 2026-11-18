@@ -1,0 +1,57 @@
+{
+  "module": "models/posteriordb_Rate_5_model_Rate_5_data.py",
+  "posterior": "Rate_5_data-Rate_5_model",
+  "archive": "models/data/posteriordb_Rate_5_data.json.zip",
+  "archive_sha256": "ad52821b8361c34b147784137eddc949dd27e65a677b81b276fc6145c592a48d",
+  "builder_ast_sha256": "e1bc9a2a72d45e9dad6e867bb1dd41f2ae5fa85b971bf6fceb5f4016ed98ebe6",
+  "stan_model": "Rate_5_model",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Rate_5_model.stan",
+  "stan_sha256": "b86503076ff82e0c5a4e183d6274aa1f3f08b867a5de854adfada0d368f5c544",
+  "library_sha256": "51243708b67a12312a53831b8fb0c4d40188f204983fca529d5269915dadb395",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "theta"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "theta"
+  ],
+  "pymc_parameter_names": [
+    "theta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 11667411693296128979,
+      "attempt": 0,
+      "stan_logp": -13.865169993120485,
+      "pymc_logp": -13.865169993120485,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 10350686628618972844,
+      "attempt": 0,
+      "stan_logp": -13.87246475492653,
+      "pymc_logp": -13.87246475492653,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned stan/Rate_5_model.stan and models/posteriordb_Rate_5_model_Rate_5_data.py::build_model.",
+    "Identical Beta(1,1) common rate and two Binomial counts; generated posterior-predictive counts do not enter either density.",
+    "No nonconstant density adjustment is required by these source definitions; parameter-independent constants are omitted from two-point deltas."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/Rate_5_data-Rate_5_model.npz",
+  "point_sha256": "894fa968ae7fb434f603b96ea6bf7adb8c77e6a587b6329f4f8dafe96a347c64",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": -0.007294761806043937,
+  "delta_pymc": -0.007294761806043937,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": -0.007294761806043937,
+  "residual": 0.0,
+  "tolerance": 1.0000729476180604e-06,
+  "raw_residual": 0.0,
+  "raw_tolerance": 1.0000729476180604e-06,
+  "measurement_run": "run-1"
+}

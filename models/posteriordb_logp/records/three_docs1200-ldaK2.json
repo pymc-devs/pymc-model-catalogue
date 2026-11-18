@@ -1,0 +1,74 @@
+{
+  "module": "models/posteriordb_ldaK2_three_docs1200.py",
+  "posterior": "three_docs1200-ldaK2",
+  "archive": "models/data/posteriordb_three_docs1200.json.zip",
+  "archive_sha256": "1ac0f7efdc3143f6c11bb9daac6fccdaa8b4057edc40ddf5b7a70170bc1e6fd5",
+  "builder_ast_sha256": "02bd0e552fdaf321c77d77feaede3195bf6dcf0c38c671192d758cdf5e48bdae",
+  "stan_model": "ldaK2",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/ldaK2.stan",
+  "stan_sha256": "2b943b45446d68148c94c9089ee17f45597eb839e0cd4f94410a817f787327d5",
+  "library_sha256": "f942a3440bb32db13c1a3b19db5222db3d40a7c264c6588db4d0cf4cdea9d1d4",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "theta.1.1",
+    "theta.2.1",
+    "theta.3.1",
+    "theta.1.2",
+    "theta.2.2",
+    "theta.3.2",
+    "phi.1.1",
+    "phi.2.1",
+    "phi.1.2",
+    "phi.2.2",
+    "phi.1.3",
+    "phi.2.3"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "theta.1.1",
+    "theta.2.1",
+    "theta.3.1",
+    "phi.1.1",
+    "phi.2.1",
+    "phi.1.2",
+    "phi.2.2"
+  ],
+  "pymc_parameter_names": [
+    "phi",
+    "theta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 5618040995608214113,
+      "attempt": 0,
+      "stan_logp": -1316.1619373814558,
+      "pymc_logp": -1316.161937381456,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 10596218905068430302,
+      "attempt": 0,
+      "stan_logp": -1315.32528153365,
+      "pymc_logp": -1315.32528153365,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned posteriordb Stan ldaK2.stan and the assigned native models/posteriordb_ldaK2_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
+    "Identity of theta with shape (M,2) and phi with shape (2,V), each row a simplex. Priors are Dirichlet(ones). Each token contributes logsumexp_k(log(theta[doc,k])+log(phi[k,word])); topic indicators are marginalized identically, retaining token order and shifting only document/word indices to zero-based."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/three_docs1200-ldaK2.npz",
+  "point_sha256": "6177f9700e7707f14c68483ef58dde71a24e2aec53de80249b51ef13ab58d5a2",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 0.8366558478057868,
+  "delta_pymc": 0.8366558478060142,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 0.8366558478057868,
+  "residual": -2.2737367544323206e-13,
+  "tolerance": 1.00836655847806e-06,
+  "raw_residual": -2.2737367544323206e-13,
+  "raw_tolerance": 1.00836655847806e-06,
+  "measurement_run": "run-1"
+}

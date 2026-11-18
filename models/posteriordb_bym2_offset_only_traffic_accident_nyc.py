@@ -31,7 +31,24 @@ The ICAR law retains the published soft sum constraint.
 Source: https://mc-stan.org/users/documentation/case-studies/icar_stan.html
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -6434575.605012348; PyMC = -6434574.9118651245.
+- B: Stan = -7250370.332527916; PyMC = -7250369.639380687.
+- Raw delta: Stan = -815794.727515568; PyMC = -815794.7275155624.
+- Raw comparison: MATCH; residual = -5.587935447692871e-09.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.00815894727515568
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of spatial phi and unstructured theta; convolved
+  effect=sqrt(1-rho)*theta+sqrt(rho/scaling_factor)*phi. The ICAR factor uses one copy
+  per undirected edge and Normal(sum(phi);0,0.001*N), matching the original soft sum
+  constraint without centering or projection.
+- HalfNormal versus a Normal density on positive sigma contributes only log(2).
+- Original Stan SHA-256: 0137ba98292c5dfeeb4cefa006a740f6d362fcf87ca02aa7b668b3040147ead1
+- Saved points: models/posteriordb_logp/points/traffic_accident_nyc-bym2_offset_only.npz
+- Full evidence: models/posteriordb_logp/records/traffic_accident_nyc-bym2_offset_only.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

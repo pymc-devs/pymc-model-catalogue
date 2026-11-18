@@ -30,7 +30,27 @@ Source: Gelman and Hill (2006), ARM.
 The likelihood uses the transformed response, without a response Jacobian.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -62325.701674457756; PyMC = -62325.70167445774.
+- B: Stan = -38591.14592114192; PyMC = -38591.14592114192.
+- Raw delta: Stan = 23734.555753315835; PyMC = 23734.55575331582.
+- Raw comparison: MATCH; residual = 1.4551915228366852e-11.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.00023834555753315836
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Both use log(earn) as response; [1, z_height, male, z_height*male], where
+  z_height=(height-mean(height))/sd(height), using sample SD (ddof=1). Beta order is
+  unchanged, with Flat beta and HalfFlat sigma matching Stan's implicit priors. Response
+  transformations are identical fixed-data operations, not parameter transforms
+  requiring a Jacobian correction.
+- Original Stan SHA-256: 37e04ae7ae7e92d3d4fffc6720298a56d0a13d87f376ae34b19d3ba731551749
+- Saved points: models/posteriordb_logp/points/earnings-logearn_interaction_z.npz
+- Full evidence: models/posteriordb_logp/records/earnings-logearn_interaction_z.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

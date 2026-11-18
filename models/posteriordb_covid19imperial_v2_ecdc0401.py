@@ -25,7 +25,29 @@ Implementation notes:
 Flaxman et al. (2020) intervention renewal model, version 2.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -149542.47281955343; PyMC = -149541.08652522057.
+- B: Stan = -161867.29561338143; PyMC = -161865.9093190484.
+- Raw delta: Stan = -12324.822793828003; PyMC = -12324.822793827829.
+- Raw comparison: MATCH; residual = -1.7462298274040222e-10.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.00012424822793828002
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of all seven parameter blocks; alpha=alpha_hier-log(1.05)/6 is the same
+  deterministic intervention effect. Stan X[country,day,feature] is transposed only as
+  data to PyMC (day,country,feature). Both renewal recursions seed N0 days with y and
+  use N0*y cumulative infections at the first post-seed day; delay convolutions use
+  lag-1 array indices.
+- Both likelihoods use negative-binomial mean E_deaths and shape phi, selecting each
+  country's EpidemicStart..N inclusive in country-major order. The random-kappa
+  truncation normalizer for positive mu is explicitly canceled by the PyMC
+  mu_constraint_normalization potential. ifr_noise truncation and HalfNormal phi/kappa
+  change only constants.
+- Original Stan SHA-256: ea0d293199edfe1f06a9bdece810686d9cc98a64bc50fd23da4760a9c0733216
+- Saved points: models/posteriordb_logp/points/ecdc0401-covid19imperial_v2.npz
+- Full evidence: models/posteriordb_logp/records/ecdc0401-covid19imperial_v2.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

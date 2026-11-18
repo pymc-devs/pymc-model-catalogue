@@ -27,7 +27,26 @@ Implementation notes:
 Native cubic Poisson mixed model from posteriordb GLMM_Poisson_model.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -26260.430777006368; PyMC = -26260.430777173864.
+- B: Stan = -22924.862764090765; PyMC = -22924.86276425826.
+- Raw delta: Stan = 3335.5680129156026; PyMC = 3335.5680129156026.
+- Raw comparison: MATCH; residual = 0.0.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 3.435568012915602e-05
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Identical year, year^2 and (for Poisson) year^3 predictors; PyMC's Horner expression
+  is algebraically the same linear predictor. All coefficient names, units and bounds
+  are unchanged.
+- Both retain centered eps~Normal(0,sigma) and identical explicit Uniform priors.
+- Original Stan SHA-256: bd3319630a41a6b52656e5e10c968efb89f21230576368defea971e87fd4f9be
+- Saved points: models/posteriordb_logp/points/GLMM_Poisson_data-GLMM_Poisson_model.npz
+- Full evidence: models/posteriordb_logp/records/GLMM_Poisson_data-GLMM_Poisson_model.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

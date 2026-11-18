@@ -40,7 +40,27 @@ It changes the induced coefficient priors for fims_Aus_Jpn_irt-2pl_latent_reg_ir
 The intercept-only science_irt-grsm_latent_reg_irt pair does not change.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -5187.562842107589; PyMC = -5185.548142726041.
+- B: Stan = -5290.972236161646; PyMC = -5288.961746628744.
+- Raw delta: Stan = -103.40939405405697; PyMC = -103.41360390270256.
+- Raw comparison: MISMATCH; residual = 0.004209848645587044.
+- Additive Stan adjustment changed_student_t_coefficient_prior: A =
+  -0.0028511805874233964; B = -0.007061029243367489.
+- Adjusted Stan delta = -103.41360390271292.
+- Adjusted comparison: MATCH; residual = -1.035971308738226e-11.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 2.0341360390271293e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Append minus the sum to beta_free (and kappa_free when present) for ZeroSumNormal.
+  Fixed prior scale 3 makes the subspace-volume and normalization offsets constant.
+- Original targets differ: binary covariate scaling changes coefficient priors. Map
+  lambda_PyMC=lambda_Stan*scale_PyMC/scale_Stan to preserve physical slopes and latent
+  means; add the StudentT(3) prior difference. The Jacobian is data-only.
+- Original Stan SHA-256: b624e19f288c892778eabc80b4afde9f6822ac9622202787950adf4d5ba6d10b
+- Saved points: models/posteriordb_logp/points/timssAusTwn_irt-gpcm_latent_reg_irt.npz
+- Full evidence: models/posteriordb_logp/records/timssAusTwn_irt-gpcm_latent_reg_irt.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.
@@ -63,6 +83,10 @@ def build_model():
         scale = np.ones(design.shape[1])
         if design.shape[1] > 1:
             center[1:] = design[:, 1:].mean(axis=0)
+            # Stan's minmax_count expression assigns a Boolean instead of
+            # accumulating endpoint counts, so binary columns use two SDs.
+            # Range scaling fixes this, but retaining the lambda_adj prior
+            # changes the induced priors on original-scale coefficients.
             scale[1:] = [
                 np.ptp(column)
                 if np.unique(column).size == 2
@@ -118,6 +142,10 @@ def build_model():
     coords["item_step"] = np.arange(n_steps)
     with pm.Model(coords=coords) as model:
         theta, alpha = _item_response_latent_regression(data)
+        # Stan sets the last effect to minus the sum of the free effects,
+        # then applies Normal(0, 3) to the full vector. ZeroSumNormal uses
+        # different coordinates for that same constrained density; the
+        # volume factor is constant because the prior scale is fixed.
         beta = pm.ZeroSumNormal("beta", sigma=3, dims="item_step")
         threshold_sum = pt.concatenate(
             [

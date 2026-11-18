@@ -30,7 +30,31 @@ The likelihood marginalizes site occupancy and species availability exactly.
 Species effects use the centered bivariate Gaussian law.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -2216.558948724705; PyMC = -2215.172654428967.
+- B: Stan = -2567.8440496981566; PyMC = -2566.457755402418.
+- Raw delta: Stan = -351.2851009734518; PyMC = -351.28510097345134.
+- Raw comparison: MATCH; residual = -4.547473508864641e-13.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 4.512851009734518e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Map correlation_unit=(rho_uv+1)/2 and uv=column_stack(uv1,uv2), retaining all S
+  species, including S-n never-observed species. The PyMC Cholesky factor induces the
+  same covariance with diagonals sigma_uv**2 and off-diagonal
+  sigma_uv[0]*sigma_uv[1]*rho_uv. Stan already evaluates Beta(2,2) at (rho_uv+1)/2
+  without a Jacobian; its value equals PyMC's Beta density at correlation_unit. The
+  coordinate determinant |d rho_uv/d correlation_unit|=2 is constant (log(2));
+  normalizing Stan's rho prior removes the same constant. The two positive Cauchy-to-
+  HalfCauchy normalizations add only 2*log(2) to raw PyMC logp. Observed and never-
+  observed inclusion/occupancy mixtures match, including the J-fold zero-site likelihood
+  for each never-observed species; no latent species are discarded.
+- No nonconstant density adjustment is required by these source definitions; parameter-
+  independent constants are omitted from two-point deltas.
+- Original Stan SHA-256: 2da8b97338d43107b8c9d97500ca3b9f526891ad6ace2eb11715c06c2c45b052
+- Saved points: models/posteriordb_logp/points/butterfly-multi_occupancy.npz
+- Full evidence: models/posteriordb_logp/records/butterfly-multi_occupancy.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

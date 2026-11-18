@@ -1,0 +1,67 @@
+{
+  "module": "models/posteriordb_low_dim_gauss_mix_low_dim_gauss_mix.py",
+  "posterior": "low_dim_gauss_mix-low_dim_gauss_mix",
+  "archive": "models/data/posteriordb_low_dim_gauss_mix.json.zip",
+  "archive_sha256": "9b5ea284321417a7816b0426a0c96788a6824e6ceb4ec4ecd89493779720b8f9",
+  "builder_ast_sha256": "b3865d41cf24e6dbba4e8d5b3d91c41500db18f84cc2a0f5407426a5f427d1a2",
+  "stan_model": "low_dim_gauss_mix",
+  "stan_url": "https://raw.githubusercontent.com/stan-dev/posteriordb/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/low_dim_gauss_mix.stan",
+  "stan_sha256": "b94ee44ab73502a0053c4a52b7e9d582ca4f466994d7beef4a4e606ff8582344",
+  "library_sha256": "7fb97b6f9d33b12ed159cb05c23af30cca444657e1583393b336ad31e8ae91a0",
+  "stan_model_info": "BridgeStan version: 2.9.0\nStan version: 2.39.0\nStan C++ Defines:\n\tSTAN_THREADS=false\n\tSTAN_MPI=false\n\tSTAN_OPENCL=false\n\tSTAN_NO_RANGE_CHECKS=false\n\tBRIDGESTAN_AD_HESSIAN=false\nStan Compiler Details:\n\tstanc_version = stanc3 v2.39.0\n\tstancflags = \n",
+  "stan_parameter_names": [
+    "mu.1",
+    "mu.2",
+    "sigma.1",
+    "sigma.2",
+    "theta"
+  ],
+  "stan_unconstrained_parameter_names": [
+    "mu.1",
+    "mu.2",
+    "sigma.1",
+    "sigma.2",
+    "theta"
+  ],
+  "pymc_parameter_names": [
+    "sigma",
+    "mu",
+    "theta"
+  ],
+  "center_overrides": {},
+  "points": {
+    "a": {
+      "seed": 14691360504209861456,
+      "attempt": 0,
+      "stan_logp": -5061.501489160019,
+      "pymc_logp": -5060.11519490697,
+      "adjustments": {}
+    },
+    "b": {
+      "seed": 11713366785303478549,
+      "attempt": 0,
+      "stan_logp": -4432.7715974554385,
+      "pymc_logp": -4431.38530320239,
+      "adjustments": {}
+    }
+  },
+  "notes": [
+    "Sources: pinned posteriordb Stan low_dim_gauss_mix.stan and the assigned native models/posteriordb_low_dim_gauss_mix_*.py builder(s). Original constrained parameter shapes/index order are preserved unless explicitly mapped below; automatic support-transform Jacobians are disabled in both engines.",
+    "Identity of ordered mu, positive sigma and scalar theta; no relabeling. Both likelihoods marginalize with weights [theta,1-theta] per observation. HalfNormal scale normalizers differ from positive Normal densities only by two log(2) constants.",
+    "Shared-support limitation: original Stan points enforce all ordered or positive-ordered constraints. PyMC ordering supplied only by a transform is not separately enforced after transforms are removed. These evaluations compare points on the shared Stan-valid support, not global support or model equivalence."
+  ],
+  "rejected_candidates": [],
+  "point_file": "points/low_dim_gauss_mix-low_dim_gauss_mix.npz",
+  "point_sha256": "4be13281cf6490ab7c8da163b2d627da8b1e56d350d9cce6dfa1e595642e1538",
+  "status": "match",
+  "raw_status": "match",
+  "delta_stan": 628.729891704581,
+  "delta_pymc": 628.72989170458,
+  "delta_adjustment": 0.0,
+  "adjusted_delta_stan": 628.729891704581,
+  "residual": 9.094947017729282e-13,
+  "tolerance": 7.287298917045809e-06,
+  "raw_residual": 9.094947017729282e-13,
+  "raw_tolerance": 7.287298917045809e-06,
+  "measurement_run": "run-1"
+}

@@ -28,7 +28,7 @@ Explicit population inclusion with constant detection.
 Source: Kéry and Schaub (2011), chapter 6.
 
 Stan comparison:
-- No upstream Stan implementation; the source has discrete free variables.
+- Not applicable: this discrete PyMC-only definition has no Stan reference.
 
 Benchmark results:
 

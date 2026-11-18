@@ -26,7 +26,26 @@ Implementation notes:
 Native noncentered school effects from posteriordb eight_schools_noncentered.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -44.15124349654224; PyMC = -43.458096374219195.
+- B: Stan = -44.22979687321376; PyMC = -43.53664975089073.
+- Raw delta: Stan = -0.07855337667151474; PyMC = -0.07855337667153606.
+- Raw comparison: MATCH; residual = 2.1316282072803006e-14.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 1.0007855337667153e-06
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- mu, tau and the native school coordinates are unchanged. Both use
+  theta_trans~Normal(0,1), theta=mu+tau*theta_trans; do not substitute centered theta as
+  the density coordinate. Stan tau>0 with Cauchy(0,5) versus PyMC HalfCauchy(5) differs
+  only by the constant log(2).
+- Original Stan SHA-256: b28d5326b1936cce0014c98c2591d1ba5c1d21987ea5a5d0d9c074c6d6ce9253
+- Saved points: models/posteriordb_logp/points/eight_schools-eight_schools_noncentered.npz
+- Full evidence: models/posteriordb_logp/records/eight_schools-eight_schools_noncentered.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.

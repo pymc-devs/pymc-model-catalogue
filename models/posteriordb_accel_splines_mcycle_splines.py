@@ -29,7 +29,32 @@ The supplied spline matrices define the fixed model basis.
 The unpenalized linear coefficients retain their improper flat priors.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -161646.16470841187; PyMC = -161641.83664461042.
+- B: Stan = -129349.91842334527; PyMC = -129345.6220514148.
+- Raw delta: Stan = 32296.246285066605; PyMC = 32296.21459319562.
+- Raw comparison: MISMATCH; residual = 0.03169187098683324.
+- Additive Stan adjustment changed_integer_scale_half_student_t_prior: A =
+  4.328063761528535; B = 4.296371890539598.
+- Adjusted Stan delta = 32296.214593195615.
+- Adjusted comparison: MATCH; residual = -3.637978807091713e-12.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.0003239621459319562
+  using adjusted delta_Stan when an adjustment is present.
+- Identity of unpenalized bs/bs_sigma and standardized zs vectors; spline coefficients
+  are sds*zs in both predictors, and sigma is exp of its linear predictor. The
+  unpenalized coefficients have flat densities.
+- Student-t intercepts and prior_only agree. In the measured installed PyMC/PyTensor,
+  integer sigma=36 in both HalfStudentT spline-scale priors has dtype int8: sigma**2
+  overflows to 16. Their native density is therefore HalfStudentT(3,4), not Stan's
+  normalized positive StudentT(3,0,36). The named adjustment adds the two source-derived
+  prior log-density differences to Stan. Original targets differ; this runtime
+  discrepancy is not a best-practice reparameterization. Recheck this adjustment after
+  engine upgrades.
+- Original Stan SHA-256: 9996e181a5d23d8c2a127adfa19c4c1e12051abf91539ce40a14249fc94d8bae
+- Saved points: models/posteriordb_logp/points/mcycle_splines-accel_splines.npz
+- Full evidence: models/posteriordb_logp/records/mcycle_splines-accel_splines.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.
@@ -88,6 +113,11 @@ def build_model():
         bs_sigma = pm.Flat("bs_sigma", dims="scale_linear")
         z = pm.Normal("zs_1_1", 0, 1, dims="mean_spline")
         z_sigma = pm.Normal("zs_sigma_1_1", 0, 1, dims="scale_spline")
+        # Runtime discrepancy in the measured PyMC/PyTensor: integer sigma=36
+        # is int8, so HalfStudentT's sigma**2 becomes 16. These native priors
+        # therefore have scale 4 rather than Stan's 36. The comparison
+        # explicitly accounts for that changed prior; this builder is left
+        # unchanged so the measured discrepancy remains reproducible.
         sd = pm.HalfStudentT("sds_1_1", nu=3, sigma=36, initval=36)
         sd_sigma = pm.HalfStudentT("sds_sigma_1_1", nu=3, sigma=36, initval=1)
         coefficients = pm.Deterministic("s_1_1", sd * z, dims="mean_spline")

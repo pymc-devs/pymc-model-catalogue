@@ -29,7 +29,25 @@ Each predictor uses its sample mean and twice its sample standard deviation.
 All parameter densities are constant on their supports.
 
 Stan comparison:
-- Not recorded.
+- BridgeStan 2.9.0, PyMC 6.4.0; delta = logp(B) - logp(A).
+- Constrained densities; automatic support-transform Jacobians disabled in both.
+- A: Stan = -765529.1913012981; PyMC = -765529.1913012983.
+- B: Stan = -2005859.811291326; PyMC = -2005859.8112913256.
+- Raw delta: Stan = -1240330.619990028; PyMC = -1240330.6199900273.
+- Raw comparison: MATCH; residual = -6.984919309616089e-10.
+- No parameter-dependent adjustment; only constant offsets may cancel.
+- Tolerance: 1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC)) = 0.012404306199900279
+  using adjusted delta_Stan when an adjustment is present.
+- Identity on all constrained free parameters, including original array order. No
+  coordinate-change Jacobian or parameter-dependent factor correction. Stan support-
+  transform and PyMC value-transform Jacobians are disabled.
+- Both predictors use [1, z_hs, z_iq, z_hs*z_iq], with each z=(x-mean(x))/(2*sd(x));
+  Stan sd and NumPy std(ddof=1) both use sample SD; beta order is unchanged.
+- Stan implicit flat beta/sigma>0 match PyMC Flat/HalfFlat.
+- Original Stan SHA-256: af2ebd6cd04a66deaf879899b548cb6401c7d250dd6cae7f55c726a8e7f734d6
+- Saved points: models/posteriordb_logp/points/kidiq_with_mom_work-kidscore_interaction_z.npz
+- Full evidence: models/posteriordb_logp/records/kidiq_with_mom_work-kidscore_interaction_z.json
+- Two-point evidence only; no global equivalence, support or inference claim.
 
 Benchmark results:
 - Not measured.
