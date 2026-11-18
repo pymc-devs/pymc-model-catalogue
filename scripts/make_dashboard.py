@@ -11,8 +11,8 @@ self-contained HTML file with embedded data and Plotly plots.
 The generated page is a dense sparkline grid: one row per model, one
 column per metric plus the model name (the grid sizes itself from
 METRIC_ORDER). No horizontal scroll, no chart
-chrome, hover tooltips show (pymc tag, formatted value, commit
-short-hash). Counts only pymc versions that actually have data, not
+chrome. Hover tooltips show the PyMC release, measurement, Python environment,
+and dependency versions when recorded. Counts only PyMC versions with data, not
 just tagged commits.
 
 Each benchmark environment has its own series. Historical measurements
@@ -44,9 +44,31 @@ METRIC_ORDER = [
 ]
 
 
+def load_dependencies(src: Path) -> dict:
+    path = Path(__file__).resolve().parents[1] / "versions" / "benchmark_dependencies.json"
+    known = json.loads(path.read_text())
+    dependencies = {}
+    for path in (src / "results" / "ci").glob("*-virtualenv-py*.json"):
+        result = json.loads(path.read_text())
+        sha = result["commit_hash"]
+        environment = f"ci · Python {result['python']}"
+        versions = known["commits"].get(sha, {}).get(environment)
+        columns = result["result_columns"]
+        if not versions or "started_at" not in columns:
+            continue
+        index = columns.index("started_at")
+        for name, row in result["results"].items():
+            # A later run can use different packages at the same timeline SHA.
+            started_at = row[index] if len(row) > index else None
+            if started_at is not None and known["started_at_min"] <= started_at <= known["started_at_max"]:
+                dependencies[sha, environment, name] = versions
+    return dependencies
+
+
 def load_data(src: Path) -> tuple[dict, dict]:
     idx = json.loads((src / "index.json").read_text())
     revs = {int(k): v for k, v in idx["revision_to_hash"].items()}
+    dependencies = load_dependencies(src)
 
     # SHA → tag name. We index by SHA (not asv revision number) so
     # orphaned measurements at commits that no current tag points to
@@ -93,10 +115,13 @@ def load_data(src: Path) -> tuple[dict, dict]:
             tag = sha_to_tag.get(sha)
             if tag is None:
                 continue
-            points.append({
+            point = {
                 "tag": tag, "hash": sha, "value": value,
                 "environment": environment,
-            })
+            }
+            if versions := dependencies.get((sha, environment, name)):
+                point.update(versions)
+            points.append(point)
         if points:
             # ASV writes a separate graph per environment. Keep all of them;
             # assigning here used to replace the entire historical series
@@ -289,8 +314,11 @@ function makeSparkline(div, pts, metric, versions) {
       mode: 'lines+markers',
       line: { color, width: 1.5, shape: 'linear' },
       marker: { size: 4, color },
-      hovertemplate: '%{text}<br>%{fullData.name}<extra></extra>',
-      text: points.map(p => `<b>${p.tag}</b><br>${formatValue(metric, p.value)}`),
+      hovertemplate: '%{text}<extra></extra>',
+      text: points.map(p => [
+        `<b>${p.tag}</b>`, formatValue(metric, p.value), environment,
+        p.pytensor && `PyTensor ${p.pytensor} · Numba ${p.numba}`,
+      ].filter(Boolean).join('<br>')),
     }];
   });
   const layout = {
