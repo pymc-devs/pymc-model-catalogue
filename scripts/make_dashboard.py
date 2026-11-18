@@ -11,13 +11,13 @@ self-contained HTML file with embedded data and Plotly plots.
 The generated page is a dense sparkline grid: one row per model, one
 column per metric plus the model name (the grid sizes itself from
 METRIC_ORDER). No horizontal scroll, no chart
-chrome, hover tooltips show (pymc tag, formatted value, commit
-short-hash). Counts only pymc versions that actually have data, not
+chrome. Hover tooltips show the PyMC release, measurement, Python environment,
+and dependency versions when recorded. Counts only PyMC versions with data, not
 just tagged commits.
 
 Each benchmark environment has its own series. Historical measurements
 remain visible when a later run uses a different Python version.
-Lines for the newest Python version label their last measured value.
+Each chart labels its newest measured point, preferring newer Python on ties.
 A checkbox restricts all plots to the latest six measured versions,
 with linear axes rescaled to that window.
 
@@ -44,9 +44,33 @@ METRIC_ORDER = [
 ]
 
 
+def load_dependencies(src: Path) -> dict:
+    path = Path(__file__).resolve().parents[1] / "versions" / "benchmark_dependencies.json"
+    known = json.loads(path.read_text())
+    dependencies = {}
+    for path in (src / "results" / "ci").glob("*-virtualenv-py*.json"):
+        result = json.loads(path.read_text())
+        sha = result["commit_hash"]
+        environment = f"ci · Python {result['python']}"
+        for name, versions in result.get("benchmark_dependencies", {}).items():
+            dependencies[sha, environment, name] = versions
+        historical = known["commits"].get(sha, {}).get(environment)
+        columns = result["result_columns"]
+        if not historical or "started_at" not in columns:
+            continue
+        index = columns.index("started_at")
+        for name, row in result["results"].items():
+            # A later run can use different packages at the same timeline SHA.
+            started_at = row[index] if len(row) > index else None
+            if started_at is not None and known["started_at_min"] <= started_at <= known["started_at_max"]:
+                dependencies.setdefault((sha, environment, name), historical)
+    return dependencies
+
+
 def load_data(src: Path) -> tuple[dict, dict]:
     idx = json.loads((src / "index.json").read_text())
     revs = {int(k): v for k, v in idx["revision_to_hash"].items()}
+    dependencies = load_dependencies(src)
 
     # SHA → tag name. We index by SHA (not asv revision number) so
     # orphaned measurements at commits that no current tag points to
@@ -93,10 +117,13 @@ def load_data(src: Path) -> tuple[dict, dict]:
             tag = sha_to_tag.get(sha)
             if tag is None:
                 continue
-            points.append({
+            point = {
                 "tag": tag, "hash": sha, "value": value,
                 "environment": environment,
-            })
+            }
+            if versions := dependencies.get((sha, environment, name)):
+                point.update(versions)
+            points.append(point)
         if points:
             # ASV writes a separate graph per environment. Keep all of them;
             # assigning here used to replace the entire historical series
@@ -196,6 +223,7 @@ _HTML_TEMPLATE = """<!doctype html>
     <input type="checkbox" id="latest-versions" /> Latest 6 versions only
   </label>
   <div class="links">
+    <a href="https://github.com/pymc-devs/pymc-model-catalogue">GitHub</a>
     <a href="experiments.html">experiments</a>
     <a href="./">default asv view</a>
   </div>
@@ -219,8 +247,6 @@ const LAYOUT_BASE = {
 const PLOTLY_CONFIG = { displayModeBar: false, responsive: true };
 const COLORS = ['#1f77b4', '#d95f02', '#2ca02c', '#9467bd', '#8c564b'];
 const pythonVersion = environment => environment.match(/Python ([0-9]+(?:[.][0-9]+)*)/)?.[1] || '';
-const latestPythonVersion = PAYLOAD.environments.map(pythonVersion)
-  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).at(-1);
 
 function environmentColor(environment) {
   return COLORS[PAYLOAD.environments.indexOf(environment) % COLORS.length];
@@ -259,12 +285,20 @@ function makeSparkline(div, pts, metric, versions) {
     return;
   }
   const annotations = [];
+  // Label the newest measured release, preferring the newer Python on ties.
+  const last = pts.filter(p => Number.isFinite(p.value)).reduce((latest, point) => {
+    if (!latest) return point;
+    const releaseOrder = versions.indexOf(point.tag) - versions.indexOf(latest.tag);
+    const pythonOrder = pythonVersion(point.environment).localeCompare(
+      pythonVersion(latest.environment), undefined, { numeric: true },
+    );
+    return releaseOrder > 0 || (releaseOrder === 0 && pythonOrder > 0) ? point : latest;
+  }, null);
   const traces = PAYLOAD.environments.flatMap(environment => {
     const points = pts.filter(p => p.environment === environment);
     if (points.length === 0) return [];
     const color = environmentColor(environment);
-    const last = points.findLast(p => Number.isFinite(p.value));
-    if (last && pythonVersion(environment) === latestPythonVersion) {
+    if (last && last.environment === environment) {
       annotations.push({
         x: last.tag, y: last.value,
         xref: 'x', yref: 'y',
@@ -272,7 +306,7 @@ function makeSparkline(div, pts, metric, versions) {
         font: { color, size: 8 },
         showarrow: false,
         xanchor: 'left', yanchor: 'middle', xshift: 4,
-        hovertext: `${last.tag}<br>${environment}`,
+        captureevents: true,
       });
     }
     return [{
@@ -282,8 +316,11 @@ function makeSparkline(div, pts, metric, versions) {
       mode: 'lines+markers',
       line: { color, width: 1.5, shape: 'linear' },
       marker: { size: 4, color },
-      hovertemplate: '%{text}<br>%{fullData.name}<extra></extra>',
-      text: points.map(p => `<b>${p.tag}</b><br>${formatValue(metric, p.value)}`),
+      hovertemplate: '%{text}<extra></extra>',
+      text: points.map(p => [
+        `<b>${p.tag}</b>`, formatValue(metric, p.value), environment,
+        p.pytensor && `PyTensor ${p.pytensor} · Numba ${p.numba}`,
+      ].filter(Boolean).join('<br>')),
     }];
   });
   const layout = {
@@ -295,7 +332,21 @@ function makeSparkline(div, pts, metric, versions) {
     },
     annotations,
   };
-  Plotly.newPlot(div, traces, layout, PLOTLY_CONFIG);
+  Plotly.newPlot(div, traces, layout, PLOTLY_CONFIG).then(() => {
+    if (!last) return;
+    const curveNumber = traces.findIndex(trace => trace.name === last.environment);
+    const pointNumber = traces[curveNumber].x.indexOf(last.tag);
+    // The value label is another hover target for its point, with the same
+    // tooltip and trace color. Rebind when Plotly redraws it after a resize.
+    const bindLabelHover = () => {
+      const label = div.querySelector('.annotation-text-g');
+      if (!label) return;
+      label.onpointerenter = () => Plotly.Fx.hover(div, [{ curveNumber, pointNumber }]);
+      label.onpointerleave = () => Plotly.Fx.unhover(div);
+    };
+    bindLabelHover();
+    div.on('plotly_afterplot', bindLabelHover);
+  });
 }
 
 function render() {

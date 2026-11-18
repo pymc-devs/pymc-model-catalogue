@@ -20,7 +20,7 @@ Metric definitions (intentional, don't "correct" these):
   microseconds, so calling this ``compile_time`` reflects what it
   actually measures.
 - ``eval_time`` — steady-state per-call timing via asv's native timing
-  machinery, implemented in ``bench_models.py``.
+  machinery, implemented in ``_measure.py``.
 - ``n_rewrites`` — count of ``rewriting: ...`` lines printed by pytensor
   under ``config.optimizer_verbose = True``.
 - ``peak_rss`` — highest RSS during the build, in bytes.
@@ -139,10 +139,38 @@ def build_and_measure(model_path: str, *, mode: str = "NUMBA") -> dict:
             fn, x = build_logp_fn(model, ip, mode=mode, with_grad=not discrete)
         rewrite_time = perf_counter() - t0
 
-        # covers the first call on purpose: that is when NUMBA JITs
-        t1 = perf_counter()
-        out = fn(x)
-        compile_time = perf_counter() - t1
+        # Covers the first call on purpose: that is when NUMBA JITs.
+        # Cache counters and compiler events distinguish JIT from disk loads.
+        compile_cache = None
+        if mode == "NUMBA":
+            from numba.core import event
+
+            class CompileCounter(event.Listener):
+                count = 0
+
+                def on_start(self, evt):
+                    self.count += 1
+
+                def on_end(self, evt):
+                    pass
+
+            counter = CompileCounter()
+            dispatcher = fn.vm.jit_fn
+            signatures = len(dispatcher.signatures)
+            with event.install_listener("numba:compile", counter):
+                t1 = perf_counter()
+                out = fn(x)
+                compile_time = perf_counter() - t1
+            compile_cache = {
+                "signatures_before_first_call": signatures,
+                "cache_hits": sum(dispatcher.stats.cache_hits.values()),
+                "cache_misses": sum(dispatcher.stats.cache_misses.values()),
+                "compile_events": counter.count,
+            }
+        else:
+            t1 = perf_counter()
+            out = fn(x)
+            compile_time = perf_counter() - t1
 
     n_rewrites = sum(
         1 for line in buf.getvalue().splitlines() if line.startswith(_REWRITE_PREFIX)
@@ -159,6 +187,7 @@ def build_and_measure(model_path: str, *, mode: str = "NUMBA") -> dict:
     return {
         "rewrite_time": rewrite_time,
         "compile_time": compile_time,
+        "compile_cache": compile_cache,
         "n_rewrites": n_rewrites,
         "peak_rss": tracker.peak,
         "peak_rss_delta": tracker.delta,

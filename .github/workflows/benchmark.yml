@@ -2,10 +2,10 @@ name: Benchmark
 
 # Regular timeline benchmark run. Triggered on push to `timeline` (usually
 # from merging a detect-releases PR) plus manual dispatch and a weekly
-# safety-net cron. Walks all synthetic commits on the current branch in
-# order and runs each under asv with --skip-existing-successful, so any
-# already-measured commit is a no-op. Publishes to gh-pages after each
-# commit so partial progress is durable — if the install hook breaks on
+# safety-net cron. Walks the timeline in order, building each model once and
+# sampling eval from the same compiled callable. Skips successful measurements
+# unless a full rerun is pending. Publishes to gh-pages after each model
+# so partial progress is durable — if the install hook breaks on
 # one pymc version, everything before it is still visible on the
 # dashboard.
 
@@ -13,11 +13,19 @@ on:
   push:
     branches: [timeline]
   workflow_dispatch:
+    inputs:
+      rerun:
+        description: "Start a full rerun, or resume the unfinished full rerun"
+        type: boolean
+        default: false
+      rerun_id:
+        description: "Optional rerun name: reuse to resume, change to start fresh"
+        required: false
   schedule:
     - cron: '17 3 * * 1'
 
 concurrency:
-  group: benchmark-${{ github.ref }}
+  group: benchmark-refs/heads/timeline
   cancel-in-progress: false
 
 jobs:
@@ -28,8 +36,15 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          ref: timeline
           fetch-depth: 0
           fetch-tags: true  # pymc-<ver> tags feed asv's x-axis labels
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: |
+            3.12
+            3.14
 
       - uses: astral-sh/setup-uv@v5
         with:
@@ -91,6 +106,8 @@ jobs:
       - name: Walk timeline commits, publishing after each
         env:
           BENCH: ${{ steps.filter.outputs.regex }}
+          RERUN: ${{ inputs.rerun || false }}
+          RERUN_ID: ${{ inputs.rerun_id }}
           REMOTE: "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
         run: |
           set -euo pipefail
@@ -119,6 +136,9 @@ jobs:
           # crashes, the other 39 are still on disk and worth
           # publishing. See backfill.yml for the full rationale.
           failed_commits=""
+          rerun_args=()
+          if [ "$RERUN" = "true" ]; then rerun_args+=(--rerun); fi
+          if [ -n "$RERUN_ID" ]; then rerun_args+=(--rerun-id "$RERUN_ID"); fi
           for sha in $commits; do
             short=$(git rev-parse --short=10 "$sha")
             echo "::group::benchmark $short"
@@ -136,37 +156,18 @@ jobs:
               git tag "pymc-$ver" "$sha" && new_tags=1
             fi
 
-            if ! asv run -v --show-stderr --launch-method=spawn --skip-existing-successful --machine ci --bench "$BENCH" "${sha}^!"; then
+            if ! python scripts/run_benchmarks.py --bench "$BENCH" --commit "$sha" \
+              --checkpoint-script scripts/publish_benchmarks.sh "${rerun_args[@]}" \
+              -v --show-stderr --launch-method=spawn --skip-existing-successful --machine ci; then
               echo "::warning::commit $short had benchmark failures — publishing partial results"
               failed_commits="${failed_commits} ${short}"
             fi
-            asv publish
-
-            # Preserve .git and the experiments/ subtree (experiment.yml owns it).
-            (cd .gh-pages-push && find . -mindepth 1 -maxdepth 1 \
-              ! -name .git ! -name experiments -exec rm -rf {} +)
-            cp -a .asv/html/. .gh-pages-push/
-            mkdir -p .gh-pages-push/results
-            cp -a .asv/results/. .gh-pages-push/results/
-
-            # Publish a complete site each time. Waiting until the walk ends
-            # to recreate these pages leaves their URLs returning 404.
-            python scripts/make_dashboard.py .gh-pages-push .gh-pages-push/dashboard.html
-            if [ -d .gh-pages-push/experiments ]; then
-              python scripts/make_experiment_dashboard.py .gh-pages-push .gh-pages-push/experiments.html
-            fi
-
-            # Rebase onto any concurrent gh-pages update (e.g. an
-            # experiment.yml push) so our push stays fast-forward. The
-            # experiments/ subtree was excluded from the wipe above, so
-            # there's nothing to conflict on.
-            (cd .gh-pages-push && \
-              git add -A && \
-              (git commit -q -m "Publish timeline through $short" || echo "no changes") && \
-              git pull --rebase --autostash -q origin gh-pages 2>/dev/null || true; \
-              git push -q origin gh-pages)
+            BENCHMARK_SHA="$sha" bash scripts/publish_benchmarks.sh
             echo "::endgroup::"
           done
+
+          python scripts/run_benchmarks.py --bench "$BENCH" --finish-rerun
+          BENCHMARK_SHA=rerun bash scripts/publish_benchmarks.sh
 
           if [ -n "$failed_commits" ]; then
             echo "::warning::commits with at least one failed benchmark:$failed_commits"

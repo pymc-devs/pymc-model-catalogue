@@ -1,0 +1,32 @@
+{
+  "sources": [
+    "https://github.com/pymc-devs/pymc-model-catalogue/actions/runs/44149591172",
+    "https://github.com/pymc-devs/pymc-model-catalogue/actions/runs/44270808697",
+    "https://github.com/pymc-devs/pymc-model-catalogue/actions/runs/44283919133"
+  ],
+  "started_at_min": 1794940559000,
+  "started_at_max": 1795003039000,
+  "commits": {
+    "3ec601cf6911b5e8d577a87a4da721d2459e44df": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.20.0"}},
+    "55b4725c6b4e7c8daa5724c93beb144e33dae716": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.20.0"}},
+    "ede5e699914c33a36e8f0b5267c3882e9179dfa1": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.20.0"}},
+    "ea734630f9c23c8c25f0c44c261205d965b45558": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.23.0"}},
+    "b48154cb79eedecefda8fd63bea1958966fdaa65": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.25.5"}},
+    "02af68f7b66fc8287e4ea312ef1610d582a4054e": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.25.5"}},
+    "b3a8a955701c7c0b263a722b380665c8f9efa176": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.26.4"}},
+    "1c3f46e8f6d30e9e51b6f54a9d8a191f38ec9bb6": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.26.4"}},
+    "84065a42e5bd0b1d83958898e79b357c3a68ad36": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.28.1"}},
+    "abaa99d5bba71152e43baf568efd347ed57ea836": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.30.2"}},
+    "3f70524a1654d1b21c918f1f0a31035c655dc205": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.31.2"}},
+    "0ce20b4cb401f0c00cf212a66434e4db1fe2091d": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.31.2"}},
+    "d0011ab3e23758ec08e32e512eec588eeeb8ab78": {"ci · Python 3.12": {"numba": "0.59.1", "pytensor": "2.31.7"}},
+    "3b20f3354919c0d3486f3c37640e1a774076a797": {"ci · Python 3.12": {"numba": "0.62.1", "pytensor": "2.35.0"}},
+    "817e1b58142dad3ba24aaa610da34009b9acc342": {"ci · Python 3.12": {"numba": "0.62.1", "pytensor": "2.36.1"}},
+    "eed427dcd50779a122e142d280520cf6121cb417": {"ci · Python 3.12": {"numba": "0.62.1", "pytensor": "2.38.0"}},
+    "53fc4ec4e7235368eaa1ddd4e625f9ebb383caad": {"ci · Python 3.12": {"numba": "0.62.1", "pytensor": "3.0.2"}, "ci · Python 3.14": {"numba": "0.65.1", "pytensor": "3.0.2"}},
+    "7d467d0db6b0301c6af4845e94367acd5d3df523": {"ci · Python 3.12": {"numba": "0.65.1", "pytensor": "3.1.2"}, "ci · Python 3.14": {"numba": "0.65.1", "pytensor": "3.1.2"}},
+    "7f7dbf5a52a28357da00f8486551a5b2bff8f634": {"ci · Python 3.12": {"numba": "0.65.1", "pytensor": "3.2.2"}, "ci · Python 3.14": {"numba": "0.65.1", "pytensor": "3.2.2"}},
+    "5d6216635ca3aab3165f12818a9fd6bfd2388d83": {"ci · Python 3.12": {"numba": "0.65.1", "pytensor": "3.2.2"}, "ci · Python 3.14": {"numba": "0.65.1", "pytensor": "3.2.2"}},
+    "37b86001c2b07de6d8aed698ce6acbf052a58f64": {"ci · Python 3.14": {"numba": "0.65.1", "pytensor": "3.3.7"}}
+  }
+}
