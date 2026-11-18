@@ -126,13 +126,19 @@ checkpoint is published after each model. If a job times out, the unfinished
 model is repeated; published successful values are skipped.
 Failed benchmarks remain pending for another attempt. Normal runs also resume
 an active campaign, rather than accepting older successful values as refreshed.
+Completion requires both a success recorded in this campaign and a saved finite
+result with the current benchmark version. ASV rounding durations or statistics
+while saving another model does not invalidate completed measurements.
 
 An optional `rerun_id` names a campaign. Reuse its name to resume it, or choose
 a different name to deliberately remeasure everything. Without a name,
 `rerun=true` resumes an active campaign and starts a new one after the previous
 campaign completes. Changes to benchmark/model code require a new campaign;
-UI-only changes do not invalidate checkpointed measurements. No old values are
-deleted when a campaign starts: they are replaced as measurements finish.
+UI-only and checkpoint-only changes do not invalidate completed measurements.
+Older checkpoints are upgraded only after verifying that all other benchmark
+files match; an incompatible explicitly named campaign is rejected rather than
+silently restarted. No old values are deleted when a campaign starts: they are
+replaced as measurements finish.
 
 This checks out `timeline` even when dispatched from `main`. Each release
 reuses its successful saved Python 3.12/3.14 environments; new releases use
