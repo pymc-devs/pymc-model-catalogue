@@ -837,11 +837,16 @@
       "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_n_rewrites": "a67032ce56a288bcd0c43deacdb363176b15bcdc3a1e20aaca649b7e6eaf7d39",
       "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_peak_rss": "3a634115b246d36cabf220f5edc68c06cb15179748d831cfa2aaa2c565c92f7c",
       "bench_models.ModelBenchBuild_models_frailty_coxph_individual.track_rewrite_time": "0b7aa2cf4a19fe00f50bd6a70fc5a680617a37dbd376a8b1d4d5a777039303aa",
+      "bench_models.ModelBenchBuild_models_gp_marginal_matern52.track_compile_time": "a70c85d2055259986c8ec01b9a15ad359029a6df140fd1af89351728bd1066bf",
+      "bench_models.ModelBenchBuild_models_gp_marginal_matern52.track_n_rewrites": "234dd7be81e6242f5c8307b45e4c1873578fb7368dde79a824fe0088208b5c49",
+      "bench_models.ModelBenchBuild_models_gp_marginal_matern52.track_peak_rss": "0cacf90afd701699e2314c79aae60371ec7c78190fa89d6392788e5e9996e68c",
+      "bench_models.ModelBenchBuild_models_gp_marginal_matern52.track_rewrite_time": "22d98caf85bc0e1d7e15542d14af96b3c437badb15c8e5f0a56c841d2300a45e",
       "bench_models.ModelBenchEval_models_BEST.time_eval": "3bb601b103cf76661e807ae3171586a20fa39a596529a7218c3ee6d75c51b9e5",
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "22ee075fa17c3073552c767fc1731fca2e1a6416d12825d34a6a168a247d5857",
       "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": "b1514d38cfb5d29dae4c9224a2c74267e03bfb83683e4539429261b89f428748",
       "bench_models.ModelBenchEval_models_eight_schools_noncentered.time_eval": "8f01e5c34e9b8544fe979ed27f6f72dd63870bb9aadfd375067065a20b9a4e10",
-      "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "4cd44a4addc6503a35d01c77e64ddabaa2d51f7ff93ee40e7f1e1b965af28f80"
+      "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "4cd44a4addc6503a35d01c77e64ddabaa2d51f7ff93ee40e7f1e1b965af28f80",
+      "bench_models.ModelBenchEval_models_gp_marginal_matern52.time_eval": "5fc6cb77e0099b65be425daabdc75512f6427f197adc8c746662a1cf4edf8b36"
     }
   },
   "environments": {
