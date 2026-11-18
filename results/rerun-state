@@ -446,7 +446,7 @@
       "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_n_rewrites": "3eb8967d9c808d4cb5ef1a9ca6f8f698520b5004eb20439158bd0207fcbc5044",
       "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_peak_rss": "b2b4e3e5a88f43ba3774c4c850cbe6b10d9489bf5912089cdd203a1fdf2dd2e6",
       "bench_models.ModelBenchBuild_models_irt_survey_zerosum_categorical.track_rewrite_time": "82cb6baf990fa43892c6877f7f3639e73f6d6e77cb83f97c71218e987c392568",
-      "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_compile_time": "23c2c65b0e2afc1dad1b6fde24eeb74f585a5c01171a3c08b7a1917f844ef6b7",
+      "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_compile_time": "9565e230fe07b508ad4ce64e2b9cc4f22c31068efbf8f38892c758aab1ae2f4d",
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_n_rewrites": "de208e5111bc156ef995e4bf2972e233c226fd17dd4d1d07a8af2ded115c498c",
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_peak_rss": "70281c3efcbf97db5b3db43c1f549f14fe44ff993f878a4f83b2634a393f04db",
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_rewrite_time": "a52cf132a5cba95c2e4ec764395bda0bf62e3f78475c72f0588225911c410882",
@@ -465,7 +465,7 @@
       "bench_models.ModelBenchEval_models_eight_schools_noncentered.time_eval": "d8171b1361a68fba0f5140bd4d2b9f966ed586a49fea2ae09935421fb22f690f",
       "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "f8e8f067497784f76de6e313304498d7e8e9b285449a4e917296f3df054215c0",
       "bench_models.ModelBenchEval_models_irt_survey_zerosum_categorical.time_eval": "da3e9c1c2ebf0e9da62dea6e70da64f49925b059b5c60b8cb037ea0d3ee2c7ee",
-      "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": "a9873ec10c5d92bdac82e6edd433036a3bdef31cd194f71a00592ab92e3d3617",
+      "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": "4102ba74db281d88b11f73d10c9e4a39a172ba36fded30ee92238bf7bb3aabe9",
       "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "f7703f591e0b260e6c03bef4da28f82204a8085993796dbe2b325158fbfd3f3d",
       "bench_models.ModelBenchEval_models_multilevel_varying_intercept_slope_noncentered.time_eval": "5d26e3ab469451d88baaf9398a30d2e531927265a191777f6dcd621e849440b8"
     },
