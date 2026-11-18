@@ -175,9 +175,14 @@
       "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_n_rewrites": true,
       "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_peak_rss": true,
       "bench_models.ModelBenchBuild_models_bayesian_var_ireland.track_rewrite_time": true,
+      "bench_models.ModelBenchBuild_models_eight_schools_noncentered.track_compile_time": true,
+      "bench_models.ModelBenchBuild_models_eight_schools_noncentered.track_n_rewrites": true,
+      "bench_models.ModelBenchBuild_models_eight_schools_noncentered.track_peak_rss": true,
+      "bench_models.ModelBenchBuild_models_eight_schools_noncentered.track_rewrite_time": true,
       "bench_models.ModelBenchEval_models_BEST.time_eval": true,
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": true,
-      "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": true
+      "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": true,
+      "bench_models.ModelBenchEval_models_eight_schools_noncentered.time_eval": true
     },
     "3b20f3354919c0d3486f3c37640e1a774076a797/3.12": {
       "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "f1878221d9d8e733c7cbf137b01db5dbe01a5fb5fd2ec95949751d2cf03aa68f",
