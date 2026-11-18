@@ -450,7 +450,7 @@
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_n_rewrites": "de208e5111bc156ef995e4bf2972e233c226fd17dd4d1d07a8af2ded115c498c",
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_peak_rss": "70281c3efcbf97db5b3db43c1f549f14fe44ff993f878a4f83b2634a393f04db",
       "bench_models.ModelBenchBuild_models_lkj_cholesky_cov_mvnormal.track_rewrite_time": "a52cf132a5cba95c2e4ec764395bda0bf62e3f78475c72f0588225911c410882",
-      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_compile_time": "7422c8ffdc6d54770a97f75667910c160085538dfb99d408984158faa2b56c81",
+      "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_compile_time": "a24fac1fc69322d1ec53f066a8cab5d5f336c55767e6432f0165a000723d72e5",
       "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_n_rewrites": "d70b54311d599c84d87ac0df0e5b56156b6564a6dbc9b6ad5cde2e56ca945600",
       "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_peak_rss": "a5f45c1738310e346f6d6917d2f7b1db3e4d0c9dbc7b5ef5c970d9a044e9d559",
       "bench_models.ModelBenchBuild_models_marginalized_gaussian_mixture_model.track_rewrite_time": "e838409d364bcbc62600f3bc2b905085d6760fb1901053e39a7cdbeaa0462b5a",
@@ -466,7 +466,7 @@
       "bench_models.ModelBenchEval_models_frailty_coxph_individual.time_eval": "f8e8f067497784f76de6e313304498d7e8e9b285449a4e917296f3df054215c0",
       "bench_models.ModelBenchEval_models_irt_survey_zerosum_categorical.time_eval": "da3e9c1c2ebf0e9da62dea6e70da64f49925b059b5c60b8cb037ea0d3ee2c7ee",
       "bench_models.ModelBenchEval_models_lkj_cholesky_cov_mvnormal.time_eval": "4102ba74db281d88b11f73d10c9e4a39a172ba36fded30ee92238bf7bb3aabe9",
-      "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "f7703f591e0b260e6c03bef4da28f82204a8085993796dbe2b325158fbfd3f3d",
+      "bench_models.ModelBenchEval_models_marginalized_gaussian_mixture_model.time_eval": "99bea4b75834498ba56fef36fd6dbc1b7e5d523f8cb5e23928a4d53ec65d82bb",
       "bench_models.ModelBenchEval_models_multilevel_varying_intercept_slope_noncentered.time_eval": "5d26e3ab469451d88baaf9398a30d2e531927265a191777f6dcd621e849440b8"
     },
     "817e1b58142dad3ba24aaa610da34009b9acc342/3.12": {
