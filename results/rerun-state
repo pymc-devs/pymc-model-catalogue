@@ -802,7 +802,7 @@
       "bench_models.ModelBenchEval_models_multilevel_varying_intercept_slope_noncentered.time_eval": "47b2e418ec1b389ee50d69304b04eaa3b8e3c3853a4546c4e524fe648f0cee9b"
     },
     "ea734630f9c23c8c25f0c44c261205d965b45558/3.12": {
-      "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "1b4d2b111047ea993cb5b74e076bfa55bc177da427d77c235a3635a0af7e0f72",
+      "bench_models.ModelBenchBuild_models_BEST.track_compile_time": "aa080e9b0394f4c4f705533599901d1ac0a3f2b0b0579c232745a5dfcc410c14",
       "bench_models.ModelBenchBuild_models_BEST.track_n_rewrites": "1131ae97fa45bbf7f16be6fe5c6bfbdd2c3df61f5ebbde64230642ca45e808c5",
       "bench_models.ModelBenchBuild_models_BEST.track_peak_rss": "698936b97af4437b948a280093dd3cee47d3b1b581af6e4bc5a6c9c6c230daed",
       "bench_models.ModelBenchBuild_models_BEST.track_rewrite_time": "2ac329b58ff2404a018dabca863d5868f48bd3c30b786c3f528f081629df7f47",
@@ -842,7 +842,7 @@
       "bench_models.ModelBenchBuild_models_multilevel_varying_intercept_slope_noncentered.track_n_rewrites": "e43b9b83abca17284631e1ddbb2837229bf0404330995c7e13f2e5228fb95913",
       "bench_models.ModelBenchBuild_models_multilevel_varying_intercept_slope_noncentered.track_peak_rss": "60815db4b2bfbb89ae709a5ba0d4b42cfdddcd5866be930ccc739f2ccb940137",
       "bench_models.ModelBenchBuild_models_multilevel_varying_intercept_slope_noncentered.track_rewrite_time": "de4ec63d0a2bd8822d8a806583fc86d78317d85824163e6e5cede2db9c24b07d",
-      "bench_models.ModelBenchEval_models_BEST.time_eval": "f37df0c57e13ac42cbf6a7f65fa665fc5e4fec8264568416858f687588aae67b",
+      "bench_models.ModelBenchEval_models_BEST.time_eval": "0e683a541797b40110d1600159612699378f54959b78373fa73d41ed8d395195",
       "bench_models.ModelBenchEval_models_GLM_hierarchical_binomial_rat_tumor.time_eval": "5ae2251a5ff7753c54ab74aa57ab2ab674c1a57591c4fc05ddf081ba24846cf8",
       "bench_models.ModelBenchEval_models_bayesian_var_ireland.time_eval": "9263a1a6c38ad4ec2e105ea36af43fd095e0a922fedde70f6c07693180eb1ce7",
       "bench_models.ModelBenchEval_models_discrete_occupancy_crossbill.time_eval": "5b952c9eec9675edc007b178f42f99e773fb30ff5bce27eddb61d23103206556",
