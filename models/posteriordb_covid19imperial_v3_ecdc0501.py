@@ -1,6 +1,11 @@
 """Epidemic model v3.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -876866.5062562419; PyMC = -876865.1199619081.
+- B: Stan = -894399.6426052969; PyMC = -894398.2563109635.
+- Raw delta: Stan = -17533.136349054985; PyMC = -17533.13634905545.
+- Raw comparison: MATCH; residual = 4.656612873077393e-10.
+- Tolerance: 0.0001763313634905545
 """
 
 import json

@@ -1,6 +1,11 @@
 """Logistic Mixed Effects Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -628.7830399113662; PyMC = -628.783040103219.
+- B: Stan = -903.8250716435396; PyMC = -903.8250718353919.
+- Raw delta: Stan = -275.0420317321733; PyMC = -275.04203173217286.
+- Raw comparison: MATCH; residual = -4.547473508864641e-13.
+- Tolerance: 3.750420317321733e-06
 """
 
 import json

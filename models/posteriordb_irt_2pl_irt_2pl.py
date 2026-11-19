@@ -1,6 +1,11 @@
 """Two Parameter Logistic Item Response Theory Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -1548.950210050591; PyMC = -1546.870768538983.
+- B: Stan = -1533.3844413914348; PyMC = -1531.3049998798278.
+- Raw delta: Stan = 15.56576865915622; PyMC = 15.565768659155083.
+- Raw comparison: MATCH; residual = 1.1368683772161603e-12.
+- Tolerance: 1.1556576865915621e-06
 """
 
 import json

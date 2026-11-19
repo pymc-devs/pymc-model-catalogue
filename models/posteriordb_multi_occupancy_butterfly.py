@@ -1,6 +1,11 @@
 """Multiple Species-Site Occupancy Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -2216.558948724705; PyMC = -2215.172654428967.
+- B: Stan = -2567.8440496981566; PyMC = -2566.457755402418.
+- Raw delta: Stan = -351.2851009734518; PyMC = -351.28510097345134.
+- Raw comparison: MATCH; residual = -4.547473508864641e-13.
+- Tolerance: 4.512851009734518e-06
 """
 
 import json

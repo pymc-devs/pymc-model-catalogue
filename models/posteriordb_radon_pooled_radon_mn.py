@@ -1,6 +1,11 @@
 """A pooled linear model for the Radon dataset.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -2074.1853621070295; PyMC = -2073.49221499042.
+- B: Stan = -1725.9305325752941; PyMC = -1725.237385458685.
+- Raw delta: Stan = 348.25482953173537; PyMC = 348.25482953173514.
+- Raw comparison: MATCH; residual = 2.2737367544323206e-13.
+- Tolerance: 4.482548295317354e-06
 """
 
 import json

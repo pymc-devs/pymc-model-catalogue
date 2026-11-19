@@ -1,6 +1,11 @@
 """K Component Gaussian Mixture Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -5480.534220963223; PyMC = -5488.869093394437.
+- B: Stan = -5514.887037286612; PyMC = -5523.221909717825.
+- Raw delta: Stan = -34.35281632338956; PyMC = -34.35281632338774.
+- Raw comparison: MATCH; residual = -1.8189894035458565e-12.
+- Tolerance: 1.3435281632338956e-06
 """
 
 import json

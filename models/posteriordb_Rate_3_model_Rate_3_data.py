@@ -1,6 +1,11 @@
 """Common rate of success from two trials.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -3.756980106360462; PyMC = -3.756980106360465.
+- B: Stan = -3.556700839794817; PyMC = -3.5567008397948205.
+- Raw delta: Stan = 0.2002792665656452; PyMC = 0.20027926656564432.
+- Raw comparison: MATCH; residual = 8.881784197001252e-16.
+- Tolerance: 1.0020027926656564e-06
 """
 
 import json

@@ -1,6 +1,11 @@
 """Rating scale and generalized rating scale models with latent regression.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -4234.376571594136; PyMC = -4230.3414701054735.
+- B: Stan = -4284.753997951464; PyMC = -4280.718896462794.
+- Raw delta: Stan = -50.37742635732775; PyMC = -50.37742635732047.
+- Raw comparison: MATCH; residual = -7.275957614183426e-12.
+- Tolerance: 1.5037742635732774e-06
 """
 
 import json

@@ -1,6 +1,11 @@
 """A county intercept model with county level covariate for the Radon dataset.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -1802.5181112703349; PyMC = -1801.1318170051404.
+- B: Stan = -2069.328868008498; PyMC = -2067.942573743304.
+- Raw delta: Stan = -266.81075673816304; PyMC = -266.8107567381635.
+- Raw comparison: MATCH; residual = 4.547473508864641e-13.
+- Tolerance: 3.6681075673816346e-06
 """
 
 import json

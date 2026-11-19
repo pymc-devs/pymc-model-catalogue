@@ -1,6 +1,11 @@
 """Interacting Linear Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -1265544.0744717761; PyMC = -1265543.381324622.
+- B: Stan = -1672581.928865948; PyMC = -1672581.235718796.
+- Raw delta: Stan = -407037.85439417185; PyMC = -407037.85439417395.
+- Raw comparison: MATCH; residual = 2.0954757928848267e-09.
+- Tolerance: 0.004071378543941739
 """
 
 import json

@@ -1,6 +1,11 @@
 """BYM2 model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -6434575.605012348; PyMC = -6434574.9118651245.
+- B: Stan = -7250370.332527916; PyMC = -7250369.639380687.
+- Raw delta: Stan = -815794.727515568; PyMC = -815794.7275155624.
+- Raw comparison: MATCH; residual = -5.587935447692871e-09.
+- Tolerance: 0.00815894727515568
 """
 
 import json

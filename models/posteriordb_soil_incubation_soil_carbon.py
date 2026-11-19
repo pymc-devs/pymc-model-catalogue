@@ -1,6 +1,11 @@
 """Two Pool Linear Model with Feedback.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -32.35121812756171; PyMC = -28.885478931878026.
+- B: Stan = -31.536547018749822; PyMC = -28.070807010787178.
+- Raw delta: Stan = 0.8146711088118863; PyMC = 0.8146719210908486.
+- Raw comparison: MATCH; residual = -8.122789623143944e-07.
+- Tolerance: 1.0081467192109083e-06
 """
 
 import json

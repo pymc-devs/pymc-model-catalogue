@@ -1,6 +1,11 @@
 """Generalized Autoregressive Conditional Heteroscedastic Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -752.9671745691298; PyMC = -752.96717456913.
+- B: Stan = -761.0105067059353; PyMC = -761.0105067059361.
+- Raw delta: Stan = -8.043332136805475; PyMC = -8.043332136806157.
+- Raw comparison: MATCH; residual = 6.821210263296962e-13.
+- Tolerance: 1.0804333213680616e-06
 """
 
 import json

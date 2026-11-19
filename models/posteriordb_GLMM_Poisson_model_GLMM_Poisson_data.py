@@ -1,6 +1,11 @@
 """Mixed Model to Predict Population Size with Random Site and Year Effects.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -26260.430777006368; PyMC = -26260.430777173864.
+- B: Stan = -22924.862764090765; PyMC = -22924.86276425826.
+- Raw delta: Stan = 3335.5680129156026; PyMC = 3335.5680129156026.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 3.435568012915602e-05
 """
 
 import json

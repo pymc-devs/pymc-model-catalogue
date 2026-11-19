@@ -1,6 +1,11 @@
 """Hierarchical Logistic Mixed Effects Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -858.3321218595022; PyMC = -858.3321218595022.
+- B: Stan = -966.0679160441127; PyMC = -966.0679160441127.
+- Raw delta: Stan = -107.73579418461054; PyMC = -107.73579418461054.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 2.0773579418461055e-06
 """
 
 import json

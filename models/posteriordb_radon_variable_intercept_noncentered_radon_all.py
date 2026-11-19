@@ -1,6 +1,11 @@
 """Variable intercept hierarchical model (non-centered).
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -24677.87908584188; PyMC = -24676.49279154477.
+- B: Stan = -26830.194559009662; PyMC = -26828.808264712476.
+- Raw delta: Stan = -2152.3154731677823; PyMC = -2152.315473167706.
+- Raw comparison: MATCH; residual = -7.639755494892597e-11.
+- Tolerance: 2.2523154731677823e-05
 """
 
 import json

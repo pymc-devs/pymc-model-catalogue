@@ -1,6 +1,11 @@
 """Hierarchical Loss Curve Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -574.1474428807884; PyMC = -574.1474428731698.
+- B: Stan = -556.634734886495; PyMC = -556.6347348788763.
+- Raw delta: Stan = 17.51270799429335; PyMC = 17.512707994293464.
+- Raw comparison: MATCH; residual = -1.1368683772161603e-13.
+- Tolerance: 1.1751270799429345e-06
 """
 
 import json

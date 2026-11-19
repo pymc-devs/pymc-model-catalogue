@@ -1,6 +1,11 @@
 """Multiple Factor Level Predictors Linear Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -3489148.4822633765; PyMC = -3489148.4822633765.
+- B: Stan = -1357896.0004124728; PyMC = -1357896.0004124732.
+- Raw delta: Stan = 2131252.4818509035; PyMC = 2131252.4818509035.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 0.021313524818509035
 """
 
 import json

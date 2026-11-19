@@ -1,6 +1,11 @@
 """Multiple Interacting Predictors Conventionally Centered Linear Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -866198.4706636631; PyMC = -866198.4706636635.
+- B: Stan = -1876522.7716739054; PyMC = -1876522.7716739047.
+- Raw delta: Stan = -1010324.3010102423; PyMC = -1010324.3010102413.
+- Raw comparison: MATCH; residual = -1.0477378964424133e-09.
+- Tolerance: 0.010104243010102423
 """
 
 import json

@@ -1,6 +1,15 @@
 """HMM with Gaussian emission.
 
-Stan comparison: MISMATCH; MATCH after likelihood adjustment.
+Stan comparison:
+- A: Stan = -87074.08921999834; PyMC = -86148.52959186646.
+- B: Stan = -60347.245630767924; PyMC = -59397.338385377116.
+- Raw delta: Stan = 26726.84358923041; PyMC = 26751.191206489348.
+- Raw comparison: MISMATCH; residual = -24.347617258936225.
+- Additive Stan adjustment: A = 922.7870394095662; B
+  = 947.1346566686552.
+- Adjusted Stan delta = 26751.1912064895.
+- Adjusted comparison: MATCH; residual = 1.5279510989785194e-10.
+- Tolerance: 0.00026851191206489505
 PyMC uses state-specific initial emissions; Stan sums them across states.
 """
 

@@ -57,8 +57,8 @@ explicit `posteriordb_<model>_<dataset>.py` file under `models/` or
 `models_discrete/`, with bundled source JSON archives. These ports target PyMC 6.4.
 
 See [`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md) for the source index.
-Model docstrings contain a short description, Stan comparison status, and a brief
-explanation for adjustments or unresolved mismatches.
+Model docstrings contain a short description, measured Stan/PyMC logps and delta
+comparisons, and a brief explanation for adjustments or unresolved mismatches.
 
 ```python
 from models.posteriordb_blr_sblri import build_model
@@ -76,8 +76,8 @@ See [benchmarking instructions](./BENCHMARKING.md) for selecting entries in ASV.
 ### Validation and intentional departures
 
 The benchmark helper checks finite PyMC logp and gradients. Model docstrings
-summarize the two-point Stan logp-delta checks as MATCH, MISMATCH, or NOT APPLICABLE.
-Adjusted matches are distinguished from raw matches.
+record Stan and PyMC logps at two points, their deltas, residuals, tolerances and
+MATCH/MISMATCH status. Adjusted matches include the additive corrections to Stan.
 
 The recorded two-point outcomes are:
 
@@ -94,6 +94,7 @@ Comparisons use constrained densities with automatic support-transform Jacobians
 disabled, following
 [A Rosetta stone for PyMC and Stan](https://gist.github.com/ricardoV94/c421ddacb3ba7a19ac46efa253ea466c).
 Parameter-independent constants cancel in `delta = logp(B) - logp(A)`.
+Residuals are Stan delta minus PyMC delta; adjustments are added to Stan logp.
 Two points do not establish global equivalence, and agreement after a prior or
 likelihood adjustment does not make the original targets equivalent.
 
@@ -117,11 +118,13 @@ reference or documented density adjustments.
 | --- | --- | --- | --- |
 | `hmm_gaussian` | Likelihood | Use the first observation's state-specific emission density. | [Original HMM definition](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271) |
 | `iohmm_reg` | Likelihood | Use destination-state gating weights. Native Gaussian mixtures eliminate the conditionally independent states. | [Original description and generator](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L840-L875) |
-| `dogs_nonhierarchical` | Prior | Use the declared covariance `diag(sigma) @ Omega @ diag(sigma)`. | [Native module and source notes](models/posteriordb_dogs_nonhierarchical_dogs.py) |
+| `dogs_nonhierarchical` | Prior | Use the declared covariance `diag(sigma) @ Omega @ diag(sigma)`. | [PyMC implementation](models/posteriordb_dogs_nonhierarchical_dogs.py) |
 | `2pl_latent_reg_irt`, `gpcm_latent_reg_irt` | Induced prior | Scale binary covariates by their range, not twice their sample standard deviation. | [Furr's model description, sections 1.1 and 1.3](https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html) |
 
 The shared scaling correction also covers `grsm_latent_reg_irt`. Its bundled intercept-only dataset does not change.
-Canonical identifiers retain the source model/data identity. See the corresponding module docstrings for correction details and references.
+Canonical identifiers retain the source model/data identity. See the
+[source index](./POSTERIORDB_MODELS.md) for references and model docstrings for
+the numerical comparisons.
 
 ## What it's useful for
 
@@ -173,7 +176,8 @@ Layout:
 
 Most models are extracted from
 [pymc-examples](https://github.com/pymc-devs/pymc-examples); the rest come from
-Statistical Rethinking and from papers (provenance is in each file's docstring).
+Statistical Rethinking and from papers. For posteriordb source information, see
+[`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md).
 
 ## Benchmarking & the timeline
 

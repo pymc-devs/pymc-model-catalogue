@@ -1,6 +1,11 @@
 """Variable slope hierarchical Radon model (centered).
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -1655.5983458105893; PyMC = -1654.212051513419.
+- B: Stan = -1946.2232737183672; PyMC = -1944.836979421197.
+- Raw delta: Stan = -290.6249279077779; PyMC = -290.6249279077779.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 3.9062492790777785e-06
 """
 
 import json

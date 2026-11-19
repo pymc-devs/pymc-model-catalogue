@@ -1,6 +1,15 @@
 """Partial credit and generalized partial credit models with latent regression.
 
-Stan comparison: MISMATCH; MATCH after prior adjustment.
+Stan comparison:
+- A: Stan = -5187.562842107589; PyMC = -5185.548142726041.
+- B: Stan = -5290.972236161646; PyMC = -5288.961746628744.
+- Raw delta: Stan = -103.40939405405697; PyMC = -103.41360390270256.
+- Raw comparison: MISMATCH; residual = 0.004209848645587044.
+- Additive Stan adjustment: A =
+  -0.0028511805874233964; B = -0.007061029243367489.
+- Adjusted Stan delta = -103.41360390271292.
+- Adjusted comparison: MATCH; residual = -1.035971308738226e-11.
+- Tolerance: 2.0341360390271293e-06
 Different scaling of binary covariates changes the coefficient priors.
 """
 

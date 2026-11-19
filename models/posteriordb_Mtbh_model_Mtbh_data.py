@@ -1,6 +1,11 @@
 """Capture-recapture model with time, behavioral and individual detection effects.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -348.2499600792822; PyMC = -349.3485724197596.
+- B: Stan = -343.17282999664394; PyMC = -344.27144233712136.
+- Raw delta: Stan = 5.077130082638234; PyMC = 5.077130082638234.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 1.0507713008263823e-06
 """
 
 import json

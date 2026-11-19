@@ -1,6 +1,11 @@
 """Random Effect Logistic Regression for Seed Germination Proportion.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -108.67160481789708; PyMC = -107.97845763543252.
+- B: Stan = -125.66468137272972; PyMC = -124.97153419026515.
+- Raw delta: Stan = -16.99307655483264; PyMC = -16.993076554832626.
+- Raw comparison: MATCH; residual = -1.4210854715202004e-14.
+- Tolerance: 1.1699307655483265e-06
 """
 
 import json

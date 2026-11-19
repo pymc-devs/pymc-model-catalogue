@@ -1,6 +1,11 @@
 """Logistic Regression Model for Voting Preference based on Income.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -823.8426202699114; PyMC = -823.8426202699114.
+- B: Stan = -816.3904366646025; PyMC = -816.3904366646025.
+- Raw delta: Stan = 7.45218360530896; PyMC = 7.45218360530896.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 1.0745218360530895e-06
 """
 
 import json

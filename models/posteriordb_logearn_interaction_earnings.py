@@ -1,6 +1,11 @@
 """Multiple Predictors Interacting Log-linear Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -7115.324664263505; PyMC = -7115.324664263505.
+- B: Stan = -188564.7367665402; PyMC = -188564.7367665403.
+- Raw delta: Stan = -181449.41210227672; PyMC = -181449.4121022768.
+- Raw comparison: MATCH; residual = 8.731149137020111e-11.
+- Tolerance: 0.001815494121022768
 """
 
 import json

@@ -1,6 +1,11 @@
 """Structured Time Series model with stochastic level and stochastic seasonal.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -890.3549543316059; PyMC = -893.569279107265.
+- B: Stan = -897.3775675171354; PyMC = -900.591892292794.
+- Raw delta: Stan = -7.022613185529508; PyMC = -7.022613185529053.
+- Raw comparison: MATCH; residual = -4.547473508864641e-13.
+- Tolerance: 1.070226131855295e-06
 """
 
 import json

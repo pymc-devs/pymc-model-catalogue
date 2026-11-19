@@ -1,6 +1,11 @@
 """Hierarchical intercept model for the Radon dataset (centered).
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -23132.18531423766; PyMC = -23130.799019908536.
+- B: Stan = -26812.21417938787; PyMC = -26810.8278850587.
+- Raw delta: Stan = -3680.0288651502087; PyMC = -3680.028865150165.
+- Raw comparison: MATCH; residual = -4.3655745685100555e-11.
+- Tolerance: 3.7800288651502085e-05
 """
 
 import json

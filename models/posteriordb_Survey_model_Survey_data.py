@@ -1,6 +1,11 @@
 """Inferring the Return Rate and Number of Surveys from Observed Returns.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -18.464896079409947; PyMC = -18.46489607940993.
+- B: Stan = -18.92216108259801; PyMC = -18.92216108259803.
+- Raw delta: Stan = -0.45726500318806274; PyMC = -0.4572650031881018.
+- Raw comparison: MATCH; residual = 3.907985046680551e-14.
+- Tolerance: 1.004572650031881e-06
 """
 
 import json

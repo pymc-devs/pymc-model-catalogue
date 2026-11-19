@@ -1,6 +1,11 @@
 """Structural Time Series Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -1526.0074637737189; PyMC = -1525.314316651395.
+- B: Stan = -1323.1678056449293; PyMC = -1322.4746585226062.
+- Raw delta: Stan = 202.83965812878955; PyMC = 202.83965812878887.
+- Raw comparison: MATCH; residual = 6.821210263296962e-13.
+- Tolerance: 3.0283965812878954e-06
 """
 
 import json

@@ -1,6 +1,11 @@
 """Lotka-Volterra Error Model.
 
-Stan comparison: MISMATCH.
+Stan comparison:
+- A: Stan = -257.10417041859887; PyMC = -256.72246199321796.
+- B: Stan = -182.3569016532067; PyMC = -181.98098398931793.
+- Raw delta: Stan = 74.74726876539216; PyMC = 74.74147800390003.
+- Raw comparison: MISMATCH; residual = 0.005790761492136198.
+- Tolerance: 1.7474726876539216e-06
 Different ODE solvers are a suspected cause; this is not confirmed.
 """
 

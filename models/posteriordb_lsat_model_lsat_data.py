@@ -1,6 +1,11 @@
 """Random Effects (Rasch) Model for True Difficulty of LSAT Questions.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -4649.540355460236; PyMC = -4648.847208663369.
+- B: Stan = -4287.590745592309; PyMC = -4286.897598795441.
+- Raw delta: Stan = 361.9496098679274; PyMC = 361.9496098679283.
+- Raw comparison: MATCH; residual = -9.094947017729282e-13.
+- Tolerance: 4.619496098679283e-06
 """
 
 import json

@@ -1,6 +1,11 @@
 """Hierarchical Gaussian Process.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -1662.31697645036; PyMC = -1662.3169761462036.
+- B: Stan = -1656.476995724634; PyMC = -1656.4769953795421.
+- Raw delta: Stan = 5.839980725726036; PyMC = 5.839980766661483.
+- Raw comparison: MATCH; residual = -4.093544703209773e-08.
+- Tolerance: 1.0583998076666149e-06
 """
 
 import json

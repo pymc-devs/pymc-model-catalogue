@@ -1,6 +1,11 @@
 """A one compartment model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -47.953679678651916; PyMC = -45.18109126320565.
+- B: Stan = -44.48394585873322; PyMC = -41.71135715146996.
+- Raw delta: Stan = 3.4697338199186945; PyMC = 3.46973411173569.
+- Raw comparison: MATCH; residual = -2.918169954568839e-07.
+- Tolerance: 1.0346973411173568e-06
 """
 
 import json

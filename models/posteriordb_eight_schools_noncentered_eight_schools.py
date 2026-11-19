@@ -1,6 +1,11 @@
 """A non-centered hierarchical model for 8 schools.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -44.15124349654224; PyMC = -43.458096374219195.
+- B: Stan = -44.22979687321376; PyMC = -43.53664975089073.
+- Raw delta: Stan = -0.07855337667151474; PyMC = -0.07855337667153606.
+- Raw comparison: MATCH; residual = 2.1316282072803006e-14.
+- Tolerance: 1.0007855337667153e-06
 """
 
 import json

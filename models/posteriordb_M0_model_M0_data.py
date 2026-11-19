@@ -1,6 +1,11 @@
 """Inferring population size with constant detection probability.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -243.13503478308752; PyMC = -243.13503478308752.
+- B: Stan = -247.3422894332097; PyMC = -247.3422894332097.
+- Raw delta: Stan = -4.207254650122167; PyMC = -4.207254650122167.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 1.0420725465012217e-06
 """
 
 import json

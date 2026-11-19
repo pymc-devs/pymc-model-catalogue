@@ -1,6 +1,11 @@
 """Success Rate of Peregrine broods.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -254.6454361190116; PyMC = -254.64543631086403.
+- B: Stan = -327.0304780966763; PyMC = -327.03047828852914.
+- Raw delta: Stan = -72.38504197766468; PyMC = -72.38504197766511.
+- Raw comparison: MATCH; residual = 4.263256414560601e-13.
+- Tolerance: 1.723850419776651e-06
 """
 
 import json

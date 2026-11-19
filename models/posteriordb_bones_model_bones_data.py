@@ -1,6 +1,11 @@
 """Latent Trait Model for Multiple Ordered Categorical Responses.
 
-Stan comparison: MISMATCH.
+Stan comparison:
+- A: Stan = -1639.9838350060193; PyMC = -1639.9838353052326.
+- B: Stan = -1650.3197544900816; PyMC = -1650.319761646184.
+- Raw delta: Stan = -10.335919484062288; PyMC = -10.335926340951346.
+- Raw comparison: MISMATCH; residual = 6.8568890583264874e-06.
+- Tolerance: 1.1033592634095134e-06
 The numerical discrepancy remains unexplained.
 """
 

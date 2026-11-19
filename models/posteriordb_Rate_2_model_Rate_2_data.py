@@ -1,6 +1,11 @@
 """Difference in success rates.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -3.079291541514772; PyMC = -3.079291541514775.
+- B: Stan = -3.376244044403064; PyMC = -3.3762440444030664.
+- Raw delta: Stan = -0.296952502888292; PyMC = -0.29695250288829156.
+- Raw comparison: MATCH; residual = -4.440892098500626e-16.
+- Tolerance: 1.0029695250288828e-06
 """
 
 import json

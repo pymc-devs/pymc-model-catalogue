@@ -1,6 +1,11 @@
 """Multiple Highly Correlated Predictors Linear Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -381768.952124134; PyMC = -381768.95212419797.
+- B: Stan = -45519254.86296274; PyMC = -45519254.86296279.
+- Raw delta: Stan = -45137485.910838604; PyMC = -45137485.91083859.
+- Raw comparison: MATCH; residual = -1.4901161193847656e-08.
+- Tolerance: 0.451375859108386
 """
 
 import json

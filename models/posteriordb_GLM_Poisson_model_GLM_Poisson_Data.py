@@ -1,6 +1,11 @@
 """Poisson GLM for modeling a population of Peregrines.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -19247.726566493642; PyMC = -19260.402643382677.
+- B: Stan = -14928.78196329504; PyMC = -14941.458040184076.
+- Raw delta: Stan = 4318.944603198603; PyMC = 4318.944603198601.
+- Raw comparison: MATCH; residual = 1.8189894035458565e-12.
+- Tolerance: 4.4189446031986024e-05
 """
 
 import json

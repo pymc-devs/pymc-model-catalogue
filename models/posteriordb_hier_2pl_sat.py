@@ -1,6 +1,11 @@
 """Hierarchical Two-Parameter Logistic Item Response Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -14329.097424843068; PyMC = -14328.404277323887.
+- B: Stan = -14105.817678299081; PyMC = -14105.1245307799.
+- Raw delta: Stan = 223.27974654398713; PyMC = 223.27974654398713.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 3.232797465439871e-06
 """
 
 import json

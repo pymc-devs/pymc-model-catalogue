@@ -1,6 +1,11 @@
 """Logarithmic Mixed Effects Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -730.8670110448141; PyMC = -730.867011044815.
+- B: Stan = -391.2564909183006; PyMC = -391.25649091830047.
+- Raw delta: Stan = 339.61052012651356; PyMC = 339.6105201265145.
+- Raw comparison: MATCH; residual = -9.094947017729282e-13.
+- Tolerance: 4.396105201265145e-06
 """
 
 import json

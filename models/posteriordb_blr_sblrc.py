@@ -1,6 +1,11 @@
 """A Bayesian linear regression model with vague priors.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -792509.0486571618; PyMC = -792508.3555101727.
+- B: Stan = -959988.8302412318; PyMC = -959988.1370942437.
+- Raw delta: Stan = -167479.78158407006; PyMC = -167479.781584071.
+- Raw comparison: MATCH; residual = 9.313225746154785e-10.
+- Tolerance: 0.00167579781584071
 """
 
 import json

@@ -1,6 +1,11 @@
 """Two Component Gaussian Mixture Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -52362.52849736699; PyMC = -52362.52849743095.
+- B: Stan = -51359.06365560339; PyMC = -51359.06365566734.
+- Raw delta: Stan = 1003.4648417635981; PyMC = 1003.4648417636054.
+- Raw comparison: MATCH; residual = -7.275957614183426e-12.
+- Tolerance: 1.1034648417636055e-05
 """
 
 import json

@@ -1,6 +1,11 @@
 """Multiple Linearly Transformed Predictors Interacting Log-linear Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -62325.701674457756; PyMC = -62325.70167445774.
+- B: Stan = -38591.14592114192; PyMC = -38591.14592114192.
+- Raw delta: Stan = 23734.555753315835; PyMC = 23734.55575331582.
+- Raw comparison: MATCH; residual = 1.4551915228366852e-11.
+- Tolerance: 0.00023834555753315836
 """
 
 import json

@@ -1,6 +1,11 @@
 """One Predictor Linear Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -2089221.6174608155; PyMC = -2089220.9243136612.
+- B: Stan = -1326230.7365812259; PyMC = -1326230.0434340718.
+- Raw delta: Stan = 762990.8808795896; PyMC = 762990.8808795894.
+- Raw comparison: MATCH; residual = 2.3283064365386963e-10.
+- Tolerance: 0.007630908808795896
 """
 
 import json

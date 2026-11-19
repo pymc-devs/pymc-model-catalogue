@@ -1,6 +1,11 @@
 """Inferring population size considering immediate trap-response.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -801.2928365793337; PyMC = -801.2928365793337.
+- B: Stan = -785.5224343593771; PyMC = -785.5224343593771.
+- Raw delta: Stan = 15.770402219956509; PyMC = 15.770402219956509.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 1.1577040221995651e-06
 """
 
 import json

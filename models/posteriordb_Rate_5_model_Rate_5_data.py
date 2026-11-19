@@ -1,6 +1,11 @@
 """Common Rate of Success From Two Trials with Posterior Predictives.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -13.865169993120485; PyMC = -13.865169993120485.
+- B: Stan = -13.87246475492653; PyMC = -13.87246475492653.
+- Raw delta: Stan = -0.007294761806043937; PyMC = -0.007294761806043937.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 1.0000729476180604e-06
 """
 
 import json

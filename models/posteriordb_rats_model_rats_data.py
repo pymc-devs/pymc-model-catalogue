@@ -1,6 +1,11 @@
 """Normal Hierarchical Model to Model Rats' Weight Over Time.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -5468930.328995618; PyMC = -5468930.328995745.
+- B: Stan = -4398362.244870762; PyMC = -4398362.244870891.
+- Raw delta: Stan = 1070568.0841248557; PyMC = 1070568.0841248538.
+- Raw comparison: MATCH; residual = 1.862645149230957e-09.
+- Tolerance: 0.010706680841248557
 """
 
 import json

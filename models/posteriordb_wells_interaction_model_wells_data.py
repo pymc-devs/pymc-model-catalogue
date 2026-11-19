@@ -1,6 +1,11 @@
 """2-Predictor Logistic regression model with interactions for decision to switch wells.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -2032.6199086607278; PyMC = -2032.619908660728.
+- B: Stan = -2309.673060142438; PyMC = -2309.673060142438.
+- Raw delta: Stan = -277.0531514817101; PyMC = -277.05315148170985.
+- Raw comparison: MATCH; residual = -2.2737367544323206e-13.
+- Tolerance: 3.770531514817101e-06
 """
 
 import json

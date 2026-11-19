@@ -1,6 +1,11 @@
 """Gaussian Process regression.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -76.2113812525413; PyMC = -74.82508545021304.
+- B: Stan = -80.3124765261045; PyMC = -78.92618072377616.
+- Raw delta: Stan = -4.101095273563203; PyMC = -4.101095273563118.
+- Raw comparison: MATCH; residual = -8.526512829121202e-14.
+- Tolerance: 1.041010952735632e-06
 """
 
 import json

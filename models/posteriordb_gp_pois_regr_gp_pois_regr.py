@@ -1,6 +1,11 @@
 """Gaussian Process Poisson Regression.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -1043.0656157679641; PyMC = -1042.3724671461957.
+- B: Stan = -1044.0478221953438; PyMC = -1043.3546735735754.
+- Raw delta: Stan = -0.9822064273796514; PyMC = -0.9822064273796514.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 1.0098220642737965e-06
 """
 
 import json

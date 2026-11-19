@@ -1,6 +1,11 @@
 """Logistic Regression with Regularized Horseshoe Prior.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -4399.5640593160515; PyMC = -3334.196820339009.
+- B: Stan = -4569.633927230235; PyMC = -3504.2666882539274.
+- Raw delta: Stan = -170.0698679141833; PyMC = -170.06986791491863.
+- Raw comparison: MATCH; residual = 7.353264663834125e-10.
+- Tolerance: 2.7006986791491864e-06
 """
 
 import json

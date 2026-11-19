@@ -1,6 +1,11 @@
 """Generalized Linear Mixed Model for Peregrine Population Size.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -68148.75210242545; PyMC = -68150.36154039991.
+- B: Stan = -69482.35951328461; PyMC = -69483.96895125911.
+- Raw delta: Stan = -1333.6074108591565; PyMC = -1333.6074108592002.
+- Raw comparison: MATCH; residual = 4.3655745685100555e-11.
+- Tolerance: 1.4336074108592003e-05
 """
 
 import json

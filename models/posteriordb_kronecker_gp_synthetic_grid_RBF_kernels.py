@@ -1,6 +1,11 @@
 """Kronecker Gaussian Process.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = 46.16899443399919; PyMC = -780.1825382959074.
+- B: Stan = -174.18002781900708; PyMC = -1000.5315605489137.
+- Raw delta: Stan = -220.34902225300627; PyMC = -220.3490222530063.
+- Raw comparison: MATCH; residual = 2.842170943040401e-14.
+- Tolerance: 3.2034902225300633e-06
 """
 
 import json

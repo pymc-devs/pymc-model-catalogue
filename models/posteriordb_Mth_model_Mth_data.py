@@ -1,7 +1,12 @@
 """Capture-recapture model where detection probability varies by occasion and
 heterogeneity.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -906.2858929392463; PyMC = -907.8953308817512.
+- B: Stan = -911.5362897761099; PyMC = -913.1457277186146.
+- Raw delta: Stan = -5.250396836863615; PyMC = -5.250396836863388.
+- Raw comparison: MATCH; residual = -2.2737367544323206e-13.
+- Tolerance: 1.052503968368636e-06
 """
 
 import json

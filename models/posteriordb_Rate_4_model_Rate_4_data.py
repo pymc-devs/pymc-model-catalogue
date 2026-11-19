@@ -1,6 +1,11 @@
 """Success rate of a trial with prior and posterior inference.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -7.016003499815746; PyMC = -7.016003499815746.
+- B: Stan = -7.579023772270681; PyMC = -7.57902377227068.
+- Raw delta: Stan = -0.5630202724549349; PyMC = -0.563020272454934.
+- Raw comparison: MATCH; residual = -8.881784197001252e-16.
+- Tolerance: 1.0056302027245493e-06
 """
 
 import json

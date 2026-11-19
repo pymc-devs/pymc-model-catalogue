@@ -1,6 +1,15 @@
 """Input Output HMM.
 
-Stan comparison: MISMATCH; MATCH after likelihood adjustment.
+Stan comparison:
+- A: Stan = -12251.424541381222; PyMC = -12250.068644344123.
+- B: Stan = -13444.51019509857; PyMC = -13441.722573636545.
+- Raw delta: Stan = -1193.0856537173477; PyMC = -1191.6539292924226.
+- Raw comparison: MISMATCH; residual = -1.4317244249250507.
+- Additive Stan adjustment: A = -1.416690903932249;
+  B = 0.01503352099825861.
+- Adjusted Stan delta = -1191.6539292924172.
+- Adjusted comparison: MATCH; residual = 5.4569682106375694e-12.
+- Tolerance: 1.2916539292924226e-05
 PyMC gates destination states rather than source states.
 """
 

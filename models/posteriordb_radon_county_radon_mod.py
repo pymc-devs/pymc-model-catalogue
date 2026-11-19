@@ -1,6 +1,11 @@
 """Hierarchical Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -62822.486080068884; PyMC = -62831.69642056915.
+- B: Stan = -62947.435689867634; PyMC = -62956.6460303676.
+- Raw delta: Stan = -124.94960979875032; PyMC = -124.949609798452.
+- Raw comparison: MATCH; residual = -2.9831426218152046e-10.
+- Tolerance: 2.249496097987503e-06
 """
 
 import json

@@ -1,6 +1,11 @@
 """Waterborne susceptible-infected-recovered model.
 
-Stan comparison: MISMATCH.
+Stan comparison:
+- A: Stan = -9172.264842237479; PyMC = -9169.49208716104.
+- B: Stan = -8161.621032291843; PyMC = -8158.848429295431.
+- Raw delta: Stan = 1010.6438099456354; PyMC = 1010.6436578656085.
+- Raw comparison: MISMATCH; residual = 0.0001520800269645406.
+- Tolerance: 1.1106438099456355e-05
 Different ODE solvers are a suspected cause; this is not confirmed.
 """
 

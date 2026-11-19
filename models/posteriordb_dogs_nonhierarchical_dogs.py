@@ -1,6 +1,15 @@
 """Non-Hierarchical Logistic Mixed Effects Model.
 
-Stan comparison: MISMATCH; MATCH after prior adjustment.
+Stan comparison:
+- A: Stan = -964.1082378541431; PyMC = -962.0262129394036.
+- B: Stan = -871.1298048632541; PyMC = -869.0412251422583.
+- Raw delta: Stan = 92.97843299088902; PyMC = 92.98498779714532.
+- Raw comparison: MISMATCH; residual = -0.006554806256303891.
+- Additive Stan adjustment: A =
+  0.002583351320819993; B = 0.009138157577196493.
+- Adjusted Stan delta = 92.9849877971454.
+- Adjusted comparison: MATCH; residual = 7.105427357601002e-14.
+- Tolerance: 1.9298498779714537e-06
 PyMC's Cholesky orientation changes the dog-effects covariance and joint prior.
 """
 

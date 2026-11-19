@@ -1,7 +1,12 @@
 """3-Input logistic regression model with interactions and centered inputs for decision to
 switch wells.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -2207.1985552011647; PyMC = -2207.1985552011647.
+- B: Stan = -2102.371072860153; PyMC = -2102.371072860153.
+- Raw delta: Stan = 104.82748234101155; PyMC = 104.82748234101155.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 2.0482748234101153e-06
 """
 
 import json

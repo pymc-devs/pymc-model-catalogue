@@ -1,6 +1,11 @@
 """LDA with 5 topics.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -205189.15496980018; PyMC = -205189.15496980195.
+- B: Stan = -205072.78648196885; PyMC = -205072.78648197.
+- Raw delta: Stan = 116.36848783132154; PyMC = 116.36848783196183.
+- Raw comparison: MATCH; residual = -6.402842700481415e-10.
+- Tolerance: 2.1636848783196183e-06
 """
 
 import json

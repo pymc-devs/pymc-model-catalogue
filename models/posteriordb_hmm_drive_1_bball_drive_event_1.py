@@ -1,6 +1,11 @@
 """Hidden Markov Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -215339.99545139476; PyMC = -215339.99545139473.
+- B: Stan = -239662.78143514544; PyMC = -239662.78143514533.
+- Raw delta: Stan = -24322.785983750684; PyMC = -24322.785983750597.
+- Raw comparison: MATCH; residual = -8.731149137020111e-11.
+- Tolerance: 0.0002442278598375069
 """
 
 import json

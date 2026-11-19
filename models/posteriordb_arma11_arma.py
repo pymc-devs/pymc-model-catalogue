@@ -1,6 +1,11 @@
 """Autoregressive Moving Average.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -201.58685607383327; PyMC = -200.8937089553195.
+- B: Stan = -270.99531028711385; PyMC = -270.3021631686002.
+- Raw delta: Stan = -69.40845421328058; PyMC = -69.40845421328069.
+- Raw comparison: MATCH; residual = 1.1368683772161603e-13.
+- Tolerance: 1.6940845421328068e-06
 """
 
 import json

@@ -1,7 +1,12 @@
 """Linear model for the effect of encouragement to watch on actually watching Sesame
 Street.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -335.9748676806489; PyMC = -335.97486768064965.
+- B: Stan = -337.3023539131388; PyMC = -337.30235391313954.
+- Raw delta: Stan = -1.327486232489889; PyMC = -1.327486232489889.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 1.013274862324899e-06
 """
 
 import json

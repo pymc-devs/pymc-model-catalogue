@@ -1,6 +1,11 @@
 """Logistic-Normal Heterogeneity Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -753.2032385618709; PyMC = -754.8126765043747.
+- B: Stan = -747.3552538441143; PyMC = -748.9646917866185.
+- Raw delta: Stan = 5.847984717756617; PyMC = 5.847984717756276.
+- Raw comparison: MATCH; residual = 3.410605131648481e-13.
+- Tolerance: 1.058479847177566e-06
 """
 
 import json

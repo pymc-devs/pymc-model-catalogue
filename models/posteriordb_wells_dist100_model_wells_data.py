@@ -1,6 +1,11 @@
 """Logistic regression model for decision to switch wells.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -2116.4961435323917; PyMC = -2116.4961435323917.
+- B: Stan = -2069.1450016549925; PyMC = -2069.145001654993.
+- Raw delta: Stan = 47.351141877399186; PyMC = 47.35114187739873.
+- Raw comparison: MATCH; residual = 4.547473508864641e-13.
+- Tolerance: 1.4735114187739919e-06
 """
 
 import json

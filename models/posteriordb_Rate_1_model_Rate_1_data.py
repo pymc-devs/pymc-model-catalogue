@@ -1,6 +1,11 @@
 """Predicting the rate of correct test question answers.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -1.5191739432523104; PyMC = -1.519173943252311.
+- B: Stan = -1.4755165919307762; PyMC = -1.4755165919307773.
+- Raw delta: Stan = 0.043657351321534144; PyMC = 0.0436573513215337.
+- Raw comparison: MATCH; residual = 4.440892098500626e-16.
+- Tolerance: 1.0004365735132153e-06
 """
 
 import json

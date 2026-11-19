@@ -1,6 +1,11 @@
 """A One Layer Restricted Boltzmann Machine Neural Network (100 hidden units).
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -271514.2967306021; PyMC = -271514.29673058644.
+- B: Stan = -274624.68105277163; PyMC = -274624.6810527595.
+- Raw delta: Stan = -3110.384322169528; PyMC = -3110.3843221730785.
+- Raw comparison: MATCH; residual = 3.550667315721512e-09.
+- Tolerance: 3.210384322173078e-05
 """
 
 import json

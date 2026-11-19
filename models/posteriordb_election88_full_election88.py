@@ -1,6 +1,11 @@
 """Generalized Linear Mixed Effects Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -8556.772621101387; PyMC = -8579.798472670835.
+- B: Stan = -8628.412684196437; PyMC = -8651.438535765885.
+- Raw delta: Stan = -71.64006309505021; PyMC = -71.64006309505021.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 1.716400630950502e-06
 """
 
 import json

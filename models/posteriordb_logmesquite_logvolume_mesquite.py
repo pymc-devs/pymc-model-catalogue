@@ -1,6 +1,11 @@
 """Log-Log Model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -371.95733646573; PyMC = -371.9573364657301.
+- B: Stan = -741.7119178580231; PyMC = -741.711917858023.
+- Raw delta: Stan = -369.75458139229306; PyMC = -369.75458139229283.
+- Raw comparison: MATCH; residual = -2.2737367544323206e-13.
+- Tolerance: 4.697545813922931e-06
 """
 
 import json

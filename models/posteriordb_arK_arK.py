@@ -1,6 +1,11 @@
 """Autoregressive-5 model.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -233.33159578143048; PyMC = -232.63844881898444.
+- B: Stan = -213.5590502472479; PyMC = -212.86590328480204.
+- Raw delta: Stan = 19.77254553418257; PyMC = 19.7725455341824.
+- Raw comparison: MATCH; residual = 1.7053025658242404e-13.
+- Tolerance: 1.1977254553418258e-06
 """
 
 import json

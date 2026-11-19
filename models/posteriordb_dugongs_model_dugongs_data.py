@@ -1,6 +1,11 @@
 """Dugong Age and Length.
 
-Stan comparison: MATCH.
+Stan comparison:
+- A: Stan = -131.96739041849747; PyMC = -131.96739060844538.
+- B: Stan = -109.4324822421098; PyMC = -109.43248243205778.
+- Raw delta: Stan = 22.534908176387674; PyMC = 22.534908176387603.
+- Raw comparison: MATCH; residual = 7.105427357601002e-14.
+- Tolerance: 1.2253490817638768e-06
 """
 
 import json

@@ -1,6 +1,15 @@
 """Spline model for acceleration mean and standard deviation.
 
-Stan comparison: MISMATCH; MATCH after prior adjustment.
+Stan comparison:
+- A: Stan = -161646.16470841187; PyMC = -161641.83664461042.
+- B: Stan = -129349.91842334527; PyMC = -129345.6220514148.
+- Raw delta: Stan = 32296.246285066605; PyMC = 32296.21459319562.
+- Raw comparison: MISMATCH; residual = 0.03169187098683324.
+- Additive Stan adjustment: A =
+  4.328063761528535; B = 4.296371890539598.
+- Adjusted Stan delta = 32296.214593195615.
+- Adjusted comparison: MATCH; residual = -3.637978807091713e-12.
+- Tolerance: 0.0003239621459319562
 Integer overflow changed the HalfStudentT scale priors in the measured PyMC runtime.
 """
 
