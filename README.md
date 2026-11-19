@@ -46,6 +46,11 @@ frozen = freeze_dims_and_data(frozen)
 Pass `ip` explicitly: initialization overrides are cleared for freezing, so a
 model's default point need not be valid (for example, ordered mixture means).
 
+Transforms such as `Ordered` constrain inference coordinates, but do not
+constrain `pm.draw` or prior predictive draws. Where a port relies on a transform
+to enforce Stan's positivity or ordering constraints, these draws do not follow
+the constrained Stan prior.
+
 For the exact logp/dlogp compilation used by the benchmarks (raveled input,
 NUMBA mode, version-robust across old pymc releases) reuse
 `models/_benchmark.py:build_logp_fn`.
