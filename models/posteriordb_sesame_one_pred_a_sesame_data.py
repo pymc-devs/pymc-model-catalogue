@@ -1,7 +1,7 @@
 """
 Model: Linear model for the effect of encouragement to watch on actually watching Sesame Street
 Source: posteriordb/posterior_database/models/stan/sesame_one_pred_a.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: A linear model with one predictor.
 
 Stan comparison:

@@ -1,7 +1,7 @@
 """
 Model: Random Effects Model to Rank Hospitals on True Failure Probability
 Source: posteriordb/posterior_database/models/stan/surgical_model.stan
-Authors: MRC Biostatistics Unit (cited work)
+Authors: MRC Biostatistics Unit
 Description: Random effects model assuming the probabilities of failure over hospitals are similar
     in some way.
 

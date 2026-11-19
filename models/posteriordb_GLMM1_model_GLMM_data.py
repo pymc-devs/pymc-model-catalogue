@@ -1,7 +1,7 @@
 """
 Model: Generalized Linear Mixed Model for Peregrine Population Size
 Source: posteriordb/posterior_database/models/stan/GLMM1_model.stan
-Authors: M Kery, M Schaub (cited work)
+Authors: M. Kery, M. Schaub
 Description: A GLMM for modeling peregrine population size with a random effect being the site of
     observation.
 

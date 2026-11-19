@@ -1,7 +1,7 @@
 """
 Model: Interacting Linear Model
 Source: posteriordb/posterior_database/models/stan/kidscore_interaction.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq
 
 Stan comparison:

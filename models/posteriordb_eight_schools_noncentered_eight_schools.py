@@ -1,8 +1,7 @@
 """
 Model: A non-centered hierarchical model for 8 schools
 Source: posteriordb/posterior_database/models/stan/eight_schools_noncentered.stan
-Authors: Rubin, Donald B; Gelman, Andrew and Carlin, John B and Stern, Hal S and Dunson, David B and
-    Vehtari, Aki and Rubin, Donald B (cited work)
+Authors: Donald B Rubin, Andrew Gelman, John B Carlin, Hal S Stern, David B Dunson, Aki Vehtari
 Description: A non-centered hierarchical model for the 8 schools example of Rubin (1981)
 
 Stan comparison:

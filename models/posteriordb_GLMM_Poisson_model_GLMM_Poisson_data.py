@@ -1,7 +1,7 @@
 """
 Model: Mixed Model to Predict Population Size with Random Site and Year Effects
 Source: posteriordb/posterior_database/models/stan/GLMM_Poisson_model.stan
-Authors: M Kery, M Schaub (cited work)
+Authors: M. Kery, M. Schaub
 Description: A GLMM for modeling peregrine population size with a random effect being the site and
     year of observation using the Poisson distribution to model counts.
 

@@ -1,7 +1,7 @@
 """
 Model: Multiple Factor Level Predictors Linear Model
 Source: posteriordb/posterior_database/models/stan/kidscore_mom_work.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: kid_score ~ as.factor(mom_work)
 
 Stan comparison:

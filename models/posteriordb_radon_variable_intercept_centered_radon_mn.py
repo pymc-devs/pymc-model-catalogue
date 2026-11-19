@@ -1,7 +1,7 @@
 """
 Model: Variable intercept hierarchical model (centered)
 Source: posteriordb/posterior_database/models/stan/radon_variable_intercept_centered.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: A linear model with different intercepts per county, a global regression coefficient,
     and a hierarchical prior. This model uses a centered parametrization.
 

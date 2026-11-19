@@ -1,7 +1,7 @@
 """
 Model: Logistic-Normal Heterogeneity Model
 Source: posteriordb/posterior_database/models/stan/Mh_model.stan
-Authors: M Kery, M Schaub (cited work)
+Authors: M. Kery, M. Schaub
 Description: Heterogeneity is inherent difference in the behaviour of individuals. Individual
     heterogeneity is modeled as random noise around some mean on a logit-transformed scale, and the
     model for the noise is the normal distribution.

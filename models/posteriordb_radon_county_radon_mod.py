@@ -1,7 +1,7 @@
 """
 Model: Hierarchical Model
 Source: posteriordb/posterior_database/models/stan/radon_county.stan
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
+Authors: Ben Bales, Arya Pourzanjani, Aki Vehtari, Linda Petzold
 Description: y ~ (1|county)
 
 Stan comparison:

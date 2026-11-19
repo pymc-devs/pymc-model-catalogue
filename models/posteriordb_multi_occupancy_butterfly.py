@@ -1,8 +1,7 @@
 """
 Model: Multiple Species-Site Occupancy Model
 Source: posteriordb/posterior_database/models/stan/multi_occupancy.stan
-Authors: Dorazio, Robert M and Royle, J Andrew and Söderström, Bo and Glimsk{"a}r, Anders (cited
-    work)
+Authors: Robert M Dorazio, J Andrew Royle, Bo Söderström, Anders Glimskär
 Description: Hierarchical species-site occupancy model for species richness, accounting for
     imperfect detection.
 

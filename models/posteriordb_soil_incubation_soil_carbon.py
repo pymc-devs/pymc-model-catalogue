@@ -1,7 +1,7 @@
 """
 Model: Two Pool Linear Model with Feedback
 Source: posteriordb/posterior_database/models/stan/soil_incubation.stan
-Authors: Sierra, Carlos and Müller, Markus and Trumbore, Susan E (cited work)
+Authors: Carlos Sierra, Markus Müller, Susan E Trumbore
 Description: A statistical two-pool model with decomposition rates for each pool as well as transfer
     rates from one pool to another.
 

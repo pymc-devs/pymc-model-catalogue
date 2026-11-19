@@ -1,7 +1,7 @@
 """
 Model: Capture-recapture model where detection probability varies by occasion and heterogeneity
 Source: posteriordb/posterior_database/models/stan/Mth_model.stan
-Authors: M Kery, M Schaub (cited work)
+Authors: M. Kery, M. Schaub
 Description: Capture-recapture population model with additive occasion and individual effects on
     detection probability.
 

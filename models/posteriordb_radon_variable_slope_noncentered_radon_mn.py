@@ -1,7 +1,7 @@
 """
 Model: Variable slope hierarchical Radon model (non-centered)
 Source: posteriordb/posterior_database/models/stan/radon_variable_slope_noncentered.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: A linear model with a global intercept and different regression coefficients using an
     hierarchical prior. This model uses a non-centered parametrization.
 

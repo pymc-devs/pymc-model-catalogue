@@ -1,7 +1,7 @@
 """
 Model: Multiple Interacting Predictors Conventionally Centered Linear Model
 Source: posteriordb/posterior_database/models/stan/kidscore_interaction_c2.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: kid_score ~ c2_mom_hs + c2_mom_iq + c2_mom_hs:c2_mom_iq, c2_mom_hs <- mom_hs - 0.5,
     c2_mom_iq <- mom_iq - 100
 

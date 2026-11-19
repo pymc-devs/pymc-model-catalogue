@@ -1,7 +1,7 @@
 """
 Model: Structural Time Series Model
 Source: posteriordb/posterior_database/models/stan/prophet.stan
-Authors: Taylor, Sean J and Letham, Benjamin (cited work)
+Authors: Sean J Taylor, Benjamin Letham
 Description: Structural Time Series Model
 
 Stan comparison:

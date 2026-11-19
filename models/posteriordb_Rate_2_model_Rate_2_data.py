@@ -1,7 +1,7 @@
 """
 Model: Difference in success rates
 Source: posteriordb/posterior_database/models/stan/Rate_2_model.stan
-Authors: M D Lee, E Wagenmakers (cited work)
+Authors: M. D. Lee, E. Wagenmakers
 Description: Predicting the difference between the success rates of two trials
 
 Stan comparison:

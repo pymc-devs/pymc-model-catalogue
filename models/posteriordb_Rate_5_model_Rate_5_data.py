@@ -1,7 +1,7 @@
 """
 Model: Common Rate of Success From Two Trials with Posterior Predictives
 Source: posteriordb/posterior_database/models/stan/Rate_5_model.stan
-Authors: M D Lee, E Wagenmakers (cited work)
+Authors: M. D. Lee, E. Wagenmakers
 Description: Inference of a common rate of success from two trials with posterior predictive for
     each trial for checking the adequacy of the model.
 

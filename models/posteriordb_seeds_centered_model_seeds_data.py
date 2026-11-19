@@ -1,7 +1,7 @@
 """
 Model: Random Effect Logistic Regression for Seed Germination Proportion
 Source: posteriordb/posterior_database/models/stan/seeds_centered_model.stan
-Authors: Martin J. Crowder (cited work)
+Authors: Martin J. Crowder
 Description: Logistic random-effects model for seed germination with overdispersion, centered
     coefficients and a direct scale prior.
 

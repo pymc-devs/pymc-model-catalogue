@@ -1,7 +1,7 @@
 """
 Model: Common rate of success from two trials
 Source: posteriordb/posterior_database/models/stan/Rate_3_model.stan
-Authors: M D Lee, E Wagenmakers (cited work)
+Authors: M. D. Lee, E. Wagenmakers
 Description: Inference of a common rate of success from two trials
 
 Stan comparison:

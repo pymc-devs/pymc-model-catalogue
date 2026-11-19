@@ -1,7 +1,7 @@
 """
 Model: 2-Predictor Logistic regression model with interactions for decision to switch wells
 Source: posteriordb/posterior_database/models/stan/wells_interaction_model.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: Performs logistic regression using two predictors (distance from nearest safe well and
     arsenic levels) and their interaction.
 

@@ -1,7 +1,7 @@
 """
 Model: Multiple Predictors Log-Log Model
 Source: posteriordb/posterior_database/models/stan/logmesquite.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: log(weight) ~ log(diam1) + log(diam2) + log(canopy.height) + log(total.height) +
     log(density) + group
 

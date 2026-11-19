@@ -1,7 +1,7 @@
 """
 Model: Multiple Interacting Predictors Standardized Linear Model
 Source: posteriordb/posterior_database/models/stan/kidscore_interaction_z.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: kid_score ~ z_mom_hs + z_mom_iq + z_mom_hs:z_mom_iq
 
 Stan comparison:

@@ -1,7 +1,7 @@
 """
 Model: Logistic Mixed Effects Model
 Source: posteriordb/posterior_database/models/stan/dogs.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: y ~ logistic(n_avoid + n_shock)
 
 Stan comparison:

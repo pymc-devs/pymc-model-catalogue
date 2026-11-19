@@ -1,7 +1,7 @@
 """
 Model: Predicting the rate of correct test question answers
 Source: posteriordb/posterior_database/models/stan/Rate_1_model.stan
-Authors: M D Lee, E Wagenmakers (cited work)
+Authors: M. D. Lee, E. Wagenmakers
 Description: Predicting the rate of correct answers for one subject over questions with the same
     difficulty.
 

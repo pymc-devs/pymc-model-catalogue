@@ -1,7 +1,7 @@
 """
 Model: One Predictor Log10-linear Model
 Source: posteriordb/posterior_database/models/stan/log10earn_height.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: log10(earn) ~ height
 
 Stan comparison:

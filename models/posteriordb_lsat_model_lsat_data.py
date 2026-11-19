@@ -1,7 +1,7 @@
 """
 Model: Random Effects (Rasch) Model for True Difficulty of LSAT Questions
 Source: posteriordb/posterior_database/models/stan/lsat_model.stan
-Authors: MRC Biostatistics Unit (cited work)
+Authors: MRC Biostatistics Unit
 Description: Rasch model for correct LSAT responses, with item difficulty and latent student
     ability.
 

@@ -1,7 +1,7 @@
 """
 Model: Simple SIR model
 Source: posteriordb/posterior_database/models/stan/sir.stan
-Authors: Grad, Yonatan H and Miller, Joel C and Lipsitch, Marc (cited work)
+Authors: Yonatan H Grad, Joel C Miller, Marc Lipsitch
 Description: Waterborne SIR dynamics with Poisson incidence and lognormal bacteria observations.
 
 Stan comparison:

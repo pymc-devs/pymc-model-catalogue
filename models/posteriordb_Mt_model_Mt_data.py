@@ -1,7 +1,7 @@
 """
 Model: Capture-recapture model where detection probability varies by occasion
 Source: posteriordb/posterior_database/models/stan/Mt_model.stan
-Authors: M Kery, M Schaub (cited work)
+Authors: M. Kery, M. Schaub
 Description: A capture-recapture sampling model where that assumes detection probability p varies
     only by occasion, perhaps because of weather conditions or because different traps or detection
     devices were used

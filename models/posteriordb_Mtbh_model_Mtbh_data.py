@@ -1,7 +1,7 @@
 """
 Model: Capture-recapture model where detection probability varies by occasion
 Source: posteriordb/posterior_database/models/stan/Mtbh_model.stan
-Authors: M Kery, M Schaub (cited work)
+Authors: M. Kery, M. Schaub
 Description: The model Mtbh estimates the size of a closed population from capture-recapture data
     which has additive effects of time, behavior, and individual heterogeneity on the detection
     probability of a species

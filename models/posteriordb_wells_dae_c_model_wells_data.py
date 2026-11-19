@@ -1,7 +1,7 @@
 """
 Model: 3-Predictor logistic regression model with centered inputs for decision to switch wells
 Source: posteriordb/posterior_database/models/stan/wells_dae_c_model.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: Performs logistic regression using three centered predictors (distance from nearest
     safe well, arsenic levels, and years in education).
 

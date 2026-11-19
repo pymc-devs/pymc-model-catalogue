@@ -1,7 +1,7 @@
 """
 Model: Lotka-Volterra Error Model
 Source: posteriordb/posterior_database/models/stan/lotka_volterra.stan
-Authors: Lotka, AJ; Volterra, Vito (cited work)
+Authors: AJ Lotka, Vito Volterra
 Description: A statistical model to account for measurement error and unexplained variation that
     uses the deterministic solutions to the Lotka-Volterra equations as expected population sizes
 

@@ -1,7 +1,7 @@
 """
 Model: Logistic regression model for decision to switch wells
 Source: posteriordb/posterior_database/models/stan/wells_dist.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: Performs logistic regression using one predictor (distance from nearest safe well).
 
 Stan comparison:

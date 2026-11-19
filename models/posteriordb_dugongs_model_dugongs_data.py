@@ -1,7 +1,7 @@
 """
 Model: Dugong Age and Length
 Source: posteriordb/posterior_database/models/stan/dugongs_model.stan
-Authors: MRC Biostatistics Unit (cited work)
+Authors: MRC Biostatistics Unit
 Description: Model of age and length data of dugongs using a nonlinear growth curve with no
     inflection point.
 

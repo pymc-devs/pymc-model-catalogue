@@ -1,7 +1,7 @@
 """
 Model: Logarithmic Mixed Effects Model
 Source: posteriordb/posterior_database/models/stan/dogs_log.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: y ~ exp(n_avoid + n_shock)
 
 Stan comparison:

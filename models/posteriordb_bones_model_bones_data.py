@@ -1,7 +1,7 @@
 """
 Model: Latent Trait Model for Multiple Ordered Categorical Responses
 Source: posteriordb/posterior_database/models/stan/bones_model.stan
-Authors: Alex F. Roche and Howard Wainer and David Thissen (cited work)
+Authors: Alex F. Roche, Howard Wainer, David Thissen
 Description: Model to predict skeletal age by calibrating 34 indicators of skeletal maturity.
 
 Stan comparison:

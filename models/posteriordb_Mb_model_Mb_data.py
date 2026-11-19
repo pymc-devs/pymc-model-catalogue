@@ -1,7 +1,7 @@
 """
 Model: Inferring population size considering immediate trap-response
 Source: posteriordb/posterior_database/models/stan/Mb_model.stan
-Authors: M Kery, M Schaub (cited work)
+Authors: M. Kery, M. Schaub
 Description: Capture-recapture population model where capture probability is modeled by a different
     parameter for p depending on whether an animal was caught immediately before or not.
 

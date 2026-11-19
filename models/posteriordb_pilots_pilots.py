@@ -1,7 +1,7 @@
 """
 Model: Linear Mixed Effects Model
 Source: posteriordb/posterior_database/models/stan/pilots.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: y ~ 1 + (1 | group) + (1 | scenario))
 
 Stan comparison:

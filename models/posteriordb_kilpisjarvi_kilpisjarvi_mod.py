@@ -1,7 +1,7 @@
 """
 Model: Multiple Highly Correlated Predictors Linear Model
 Source: posteriordb/posterior_database/models/stan/kilpisjarvi.stan
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
+Authors: Ben Bales, Arya Pourzanjani, Aki Vehtari, Linda Petzold
 Description: y ~ x
 
 Stan comparison:

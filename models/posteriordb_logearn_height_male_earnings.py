@@ -1,7 +1,7 @@
 """
 Model: Multiple Predictors Log-linear Model
 Source: posteriordb/posterior_database/models/stan/logearn_height_male.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: log(earn) ~ height + male
 
 Stan comparison:

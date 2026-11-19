@@ -1,7 +1,7 @@
 """
 Model: Multiple Linearly Transformed Predictors Interacting Log-linear Model
 Source: posteriordb/posterior_database/models/stan/logearn_interaction_z.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: log(earn) ~ z_height + male + z_height:male
 
 Stan comparison:

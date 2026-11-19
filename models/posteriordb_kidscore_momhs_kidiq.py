@@ -1,7 +1,7 @@
 """
 Model: One Predictor Linear Model
 Source: posteriordb/posterior_database/models/stan/kidscore_momhs.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: kid_score ~ mom_hs
 
 Stan comparison:

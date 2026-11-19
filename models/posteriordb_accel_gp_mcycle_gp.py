@@ -1,7 +1,7 @@
 """
 Model: Gaussian Processes that model the mean and std of acceleration
 Source: posteriordb/posterior_database/models/stan/accel_gp.stan
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
+Authors: Ben Bales, Arya Pourzanjani, Aki Vehtari, Linda Petzold
 Description: Finite-basis Gaussian processes model acceleration mean and log standard deviation.
 
 Stan comparison:

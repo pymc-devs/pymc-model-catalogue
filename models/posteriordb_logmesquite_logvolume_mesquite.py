@@ -1,7 +1,7 @@
 """
 Model: Log-Log Model
 Source: posteriordb/posterior_database/models/stan/logmesquite_logvolume.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: log(weight) ~ log(canopy_volume) canopy_volume <- diam1 * diam2 * canopy_height
 
 Stan comparison:

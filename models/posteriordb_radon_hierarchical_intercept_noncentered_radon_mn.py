@@ -1,7 +1,7 @@
 """
 Model: A county intercept model with county level covariate for the Radon dataset (non-centered)
 Source: posteriordb/posterior_database/models/stan/radon_hierarchical_intercept_noncentered.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Authors: Andrew Gelman, Jennifer Hill
 Description: A linear model with different intercepts per county and county level log_uppm
     covariate. This model is a non-centered parametrization.
 

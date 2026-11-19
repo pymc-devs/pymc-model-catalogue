@@ -1,7 +1,7 @@
 """
 Model: Multiple Highly Correlated Predictors Log-Log Model
 Source: posteriordb/posterior_database/models/stan/diamonds.stan
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
+Authors: Ben Bales, Arya Pourzanjani, Aki Vehtari, Linda Petzold
 Description: log(price) ~ carat * (log(x) + log(y) + log(z)) + cut + color + clarity
 
 Stan comparison:

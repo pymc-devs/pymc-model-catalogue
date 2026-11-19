@@ -1,7 +1,7 @@
 """
 Model: A One Layer Restricted Boltzmann Machine Neural Network
 Source: posteriordb/posterior_database/models/stan/nn_rbm1bJ10.stan
-Authors: Lampinen, Jouko and Vehtari, Aki (cited work)
+Authors: Jouko Lampinen, Aki Vehtari
 Description: A One Layer Restricted Boltzmann Machine Neural Network with added bias and 10 hidden
     units. The implementation follows that of Lampainen and Vehtari (2001).
 

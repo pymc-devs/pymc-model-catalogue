@@ -1,7 +1,7 @@
 """
 Model: Inferring population size with constant detection probability
 Source: posteriordb/posterior_database/models/pymc/M0_model_discrete.py
-Authors: M Kery, M Schaub (cited work)
+Authors: M. Kery, M. Schaub
 Description: Capture-recapture model with constant detection probability and explicit population-
     inclusion indicators.
 

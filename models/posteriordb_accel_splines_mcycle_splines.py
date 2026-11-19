@@ -1,7 +1,7 @@
 """
 Model: Splines for time-series data with varying mean and std
 Source: posteriordb/posterior_database/models/stan/accel_splines.stan
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
+Authors: Ben Bales, Arya Pourzanjani, Aki Vehtari, Linda Petzold
 Description: Splines model time-varying acceleration mean and standard deviation.
 
 Stan comparison:

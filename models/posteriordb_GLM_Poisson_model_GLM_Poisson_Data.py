@@ -1,7 +1,7 @@
 """
 Model: Poisson GLM for modeling a population of Peregrines
 Source: posteriordb/posterior_database/models/stan/GLM_Poisson_model.stan
-Authors: M Kery, M Schaub (cited work)
+Authors: M. Kery, M. Schaub
 Description: Poisson Generalised Linear Model where the linear predictor is a cubic polynomial
     function of time.
 
