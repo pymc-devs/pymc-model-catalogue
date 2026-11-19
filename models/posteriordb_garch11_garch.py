@@ -56,7 +56,9 @@ def build_model():
             variance = pt.concatenate([first_variance[None], later_variance])
         else:
             variance = first_variance[None]
-        pm.Normal("y", mu=mu, sigma=pt.sqrt(variance), observed=y, dims="time")
+        pm.Normal(
+            "y", mu=mu, sigma=pt.sqrt(variance), observed=observations, dims="time"
+        )
     ip = model.initial_point()
     model.rvs_to_initial_values = {rv: None for rv in model.free_RVs}
     return model, ip

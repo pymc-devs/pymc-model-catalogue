@@ -95,7 +95,9 @@ def build_model():
         hidden = pt.tanh(pt.dot(x, alpha) + alpha1)
         nonbaseline_logits = pt.dot(hidden, beta) + beta1
         # The first category logit equals one, not zero.
-        logits = pt.concatenate((pt.ones((data["N"], 1)), nonbaseline_logits), axis=1)
+        logits = pt.concatenate(
+            (pt.ones_like(nonbaseline_logits[:, :1]), nonbaseline_logits), axis=1
+        )
         pm.Categorical(
             "y",
             logit_p=logits,

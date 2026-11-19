@@ -35,13 +35,16 @@ from models.eight_schools_centered import build_model
 model, ip = build_model()        # a pm.Model + a valid initial point dict
 
 with model:
-    idata = pm.sample()          # ...or compile model.logp(), inspect the graph, etc.
+    idata = pm.sample(initvals=ip, nuts_sampler="pymc")
 
 # Frozen form (dims/data baked in), e.g. for rewrite/compile studies:
 from pymc.model.transform.optimization import freeze_dims_and_data
 frozen, _ = build_model()
 frozen = freeze_dims_and_data(frozen)
 ```
+
+Pass `ip` explicitly: initialization overrides are cleared for freezing, so a
+model's default point need not be valid (for example, ordered mixture means).
 
 For the exact logp/dlogp compilation used by the benchmarks (raveled input,
 NUMBA mode, version-robust across old pymc releases) reuse
@@ -58,7 +61,7 @@ explicit `posteriordb_<model>_<dataset>.py` file under `models/` or
 
 See [`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md) for the source index.
 Model docstrings contain a short description, measured Stan/PyMC logps and delta
-comparisons, and a brief explanation for adjustments or unresolved mismatches.
+comparisons, adjustments or unresolved mismatches, and model-specific limitations.
 
 ```python
 from models.posteriordb_blr_sblri import build_model
@@ -69,6 +72,10 @@ model, ip = build_model()
 from models.posteriordb import blr_sblrc
 other_model, other_ip = blr_sblrc()
 ```
+
+The ARMA/GARCH ports accept same-length data updates through `observations`.
+The MNIST ports accept new prediction batches through `x`; update the
+`observation` coordinates when the batch length changes.
 
 Run a pair with `python models/posteriordb_blr_sblri.py`.
 See [benchmarking instructions](./BENCHMARKING.md) for selecting entries in ASV.

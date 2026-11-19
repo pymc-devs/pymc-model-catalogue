@@ -7,6 +7,11 @@ Changes from original:
 - Changed the Cholesky orientation to use the declared dog-effects covariance; this changes their
   joint prior.
 
+Limitations:
+- Posterior predictive y draws condition on observed trial histories. They
+  are one-step conditional predictions, not Stan's recursively generated
+  y_rep sequences.
+
 Stan comparison:
 - A: Stan = -964.1082378541431; PyMC = -962.0262129394036.
 - B: Stan = -871.1298048632541; PyMC = -869.0412251422583.

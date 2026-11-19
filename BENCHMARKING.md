@@ -165,12 +165,12 @@ See [`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md) for the model/data index.
 python models/posteriordb_blr_sblri.py
 
 # Select one pair in ASV.
-asv run --launch-method=spawn --environment="existing:$(command -v python)" \
+python scripts/run_benchmarks.py --launch-method=spawn --environment="existing:$(command -v python)" \
   --set-commit-hash "$(git rev-parse HEAD)" \
   --bench 'ModelBench(?:Build|Eval)_models_posteriordb_blr_sblri\.'
 
 # Select every posteriordb pair, including the discrete entry.
-asv run --launch-method=spawn --environment="existing:$(command -v python)" \
+python scripts/run_benchmarks.py --launch-method=spawn --environment="existing:$(command -v python)" \
   --set-commit-hash "$(git rev-parse HEAD)" \
   --bench 'ModelBench(?:Build|Eval)_models(?:_discrete)?_posteriordb_'
 ```

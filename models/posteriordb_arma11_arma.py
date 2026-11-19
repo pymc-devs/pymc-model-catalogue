@@ -59,7 +59,7 @@ def build_model():
             )
         else:
             prediction = first_prediction[None]
-        pm.Normal("y", mu=prediction, sigma=sigma, observed=y, dims="time")
+        pm.Normal("y", mu=prediction, sigma=sigma, observed=observations, dims="time")
     ip = model.initial_point()
     model.rvs_to_initial_values = {rv: None for rv in model.free_RVs}
     return model, ip

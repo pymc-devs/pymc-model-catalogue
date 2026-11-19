@@ -4,6 +4,11 @@ Source: posteriordb/posterior_database/models/stan/bones_model.stan
 Authors: Alex F. Roche, Howard Wainer, David Thissen
 Description: Model to predict skeletal age by calibrating 34 indicators of skeletal maturity.
 
+Limitations:
+- OrderedLogistic can round category probabilities to zero in the tails
+  (e.g. theta[0] = -5), yielding -inf logp where Stan remains finite.
+  Sampling over the full prior support can encounter this numerical failure.
+
 Stan comparison:
 - A: Stan = -1639.9838350060193; PyMC = -1639.9838353052326.
 - B: Stan = -1650.3197544900816; PyMC = -1650.319761646184.

@@ -3,6 +3,11 @@ Model: Hierarchical Logistic Mixed Effects Model
 Source: posteriordb/posterior_database/models/stan/dogs_hierarchical.stan
 Description: Hierarchical Logistic Mixed Effects Model.
 
+Limitations:
+- Posterior predictive y draws condition on observed trial histories. They
+  are one-step conditional predictions, not Stan's recursively generated
+  y_rep sequences.
+
 Stan comparison:
 - A: Stan = -858.3321218595022; PyMC = -858.3321218595022.
 - B: Stan = -966.0679160441127; PyMC = -966.0679160441127.
