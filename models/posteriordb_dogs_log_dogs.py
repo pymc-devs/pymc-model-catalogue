@@ -1,4 +1,8 @@
-"""Logarithmic Mixed Effects Model.
+"""
+Model: Logarithmic Mixed Effects Model
+Source: posteriordb/posterior_database/models/stan/dogs_log.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: y ~ exp(n_avoid + n_shock)
 
 Stan comparison:
 - A: Stan = -730.8670110448141; PyMC = -730.867011044815.

@@ -1,4 +1,8 @@
-"""Multiple Predictors Linear Model.
+"""
+Model: Multiple Predictors Linear Model
+Source: posteriordb/posterior_database/models/stan/mesquite.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: weight ~ diam1 + diam2 + canopy.height + total.height + density + group
 
 Stan comparison:
 - A: Stan = -17118066.261075526; PyMC = -17118066.261075526.

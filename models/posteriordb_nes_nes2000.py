@@ -1,4 +1,9 @@
-"""Multiple Predictor Linear Model.
+"""
+Model: Multiple Predictor Linear Model
+Source: posteriordb/posterior_database/models/stan/nes.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + gender +
+    income
 
 Stan comparison:
 - A: Stan = -3028.966902487587; PyMC = -3028.9669024875852.
@@ -6,6 +11,11 @@ Stan comparison:
 - Raw delta: Stan = -6481.175746048899; PyMC = -6481.175746048908.
 - Raw comparison: MATCH; residual = 9.094947017729282e-12.
 - Tolerance: 6.581175746048908e-05
+
+Benchmark results:
+- Original:  logp = -1042.3892, grad norm = 169.9735, 15.9 us/call (5 evals).
+- Frozen:    logp = -1042.3892, grad norm = 169.9735, 15.0 us/call (5 evals).
+- Local NUMBA validation; short timings are indicative.
 """
 
 import json

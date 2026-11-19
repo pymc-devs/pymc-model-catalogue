@@ -1,4 +1,9 @@
-"""3-Predictor logistic regression model for decision to switch wells.
+"""
+Model: 3-Predictor logistic regression model for decision to switch wells.
+Source: posteriordb/posterior_database/models/stan/wells_dae_model.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: Performs logistic regression using three predictors (distance from nearest safe well,
+    arsenic levels, and years in education).
 
 Stan comparison:
 - A: Stan = -2216.442683200764; PyMC = -2216.442683200764.

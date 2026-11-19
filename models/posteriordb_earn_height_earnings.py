@@ -1,4 +1,8 @@
-"""One Predictor Linear Model.
+"""
+Model: One Predictor Linear Model
+Source: posteriordb/posterior_database/models/stan/earn_height.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: earn ~ height
 
 Stan comparison:
 - A: Stan = -400986929008.98285; PyMC = -400986929008.98267.

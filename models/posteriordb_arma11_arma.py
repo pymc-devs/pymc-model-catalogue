@@ -1,4 +1,7 @@
-"""Autoregressive Moving Average.
+"""
+Model: Autoregressive Moving Average
+Source: posteriordb/posterior_database/models/stan/arma11.stan
+Description: An ARMA(1, 1) time series model.
 
 Stan comparison:
 - A: Stan = -201.58685607383327; PyMC = -200.8937089553195.

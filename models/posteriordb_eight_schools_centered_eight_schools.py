@@ -1,4 +1,9 @@
-"""A centered hierarchical model for 8 schools.
+"""
+Model: A centered hierarchical model for 8 schools
+Source: posteriordb/posterior_database/models/stan/eight_schools_centered.stan
+Authors: Rubin, Donald B; Gelman, Andrew and Carlin, John B and Stern, Hal S and Dunson, David B and
+    Vehtari, Aki and Rubin, Donald B (cited work)
+Description: A centered hierarchical model for the 8 schools example of Rubin (1981)
 
 Stan comparison:
 - A: Stan = -46.57206565751112; PyMC = -45.87891853518809.

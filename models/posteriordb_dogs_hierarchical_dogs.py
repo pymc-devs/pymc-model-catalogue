@@ -1,4 +1,7 @@
-"""Hierarchical Logistic Mixed Effects Model.
+"""
+Model: Hierarchical Logistic Mixed Effects Model
+Source: posteriordb/posterior_database/models/stan/dogs_hierarchical.stan
+Description: Hierarchical Logistic Mixed Effects Model.
 
 Stan comparison:
 - A: Stan = -858.3321218595022; PyMC = -858.3321218595022.

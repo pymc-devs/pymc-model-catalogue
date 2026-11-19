@@ -1,4 +1,8 @@
-"""Multiple Interacting Predictors Standardized Linear Model.
+"""
+Model: Multiple Interacting Predictors Standardized Linear Model
+Source: posteriordb/posterior_database/models/stan/kidscore_interaction_z.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: kid_score ~ z_mom_hs + z_mom_iq + z_mom_hs:z_mom_iq
 
 Stan comparison:
 - A: Stan = -765529.1913012981; PyMC = -765529.1913012983.

@@ -1,5 +1,8 @@
-"""Linear model for the effect of encouragement to watch on actually watching Sesame
-Street.
+"""
+Model: Linear model for the effect of encouragement to watch on actually watching Sesame Street
+Source: posteriordb/posterior_database/models/stan/sesame_one_pred_a.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: A linear model with one predictor.
 
 Stan comparison:
 - A: Stan = -335.9748676806489; PyMC = -335.97486768064965.

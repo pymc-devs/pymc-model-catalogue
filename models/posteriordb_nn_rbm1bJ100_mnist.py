@@ -1,4 +1,9 @@
-"""A One Layer Restricted Boltzmann Machine Neural Network (100 hidden units).
+"""
+Model: A One Layer Restricted Boltzmann Machine Neural Network (100 hidden units)
+Source: posteriordb/posterior_database/models/stan/nn_rbm1bJ100.stan
+Authors: Lampinen, Jouko and Vehtari, Aki (cited work)
+Description: A One Layer Restricted Boltzmann Machine Neural Network with added bias and 100 hidden
+    units. The implementation follows that of Lampainen and Vehtari (2001).
 
 Stan comparison:
 - A: Stan = -271514.2967306021; PyMC = -271514.29673058644.

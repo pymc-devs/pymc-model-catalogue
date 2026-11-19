@@ -1,16 +1,19 @@
-"""Gaussian-process model for acceleration mean and standard deviation.
+"""
+Model: Gaussian Processes that model the mean and std of acceleration
+Source: posteriordb/posterior_database/models/stan/accel_gp.stan
+Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
+Description: Finite-basis Gaussian processes model acceleration mean and log standard deviation.
 
 Stan comparison:
 - A: Stan = -155371.18965842773; PyMC = -155366.87455612782.
 - B: Stan = -209414.58318585833; PyMC = -209410.2722747428.
 - Raw delta: Stan = -54043.3935274306; PyMC = -54043.397718614986.
 - Raw comparison: MISMATCH; residual = 0.004191184387309477.
-- Additive Stan adjustment: A =
-  4.315102260010999; B = 4.310911075603358.
+- Additive Stan adjustment: A = 4.315102260010999; B = 4.310911075603358.
 - Adjusted Stan delta = -54043.39771861501.
 - Adjusted comparison: MATCH; residual = -2.1827872842550278e-11.
 - Tolerance: 0.0005414339771861502
-Integer overflow changed the HalfStudentT scale priors in the measured PyMC runtime.
+- Integer overflow changed the HalfStudentT scale priors in the measured PyMC runtime.
 """
 
 import json

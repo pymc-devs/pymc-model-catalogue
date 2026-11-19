@@ -1,4 +1,9 @@
-"""Poisson GLM for modeling a population of Peregrines.
+"""
+Model: Poisson GLM for modeling a population of Peregrines
+Source: posteriordb/posterior_database/models/stan/GLM_Poisson_model.stan
+Authors: M Kery, M Schaub (cited work)
+Description: Poisson Generalised Linear Model where the linear predictor is a cubic polynomial
+    function of time.
 
 Stan comparison:
 - A: Stan = -19247.726566493642; PyMC = -19260.402643382677.

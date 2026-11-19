@@ -1,6 +1,12 @@
-"""Capture-recapture population model with explicit inclusion indicators.
+"""
+Model: Inferring population size with constant detection probability
+Source: posteriordb/posterior_database/models/pymc/M0_model_discrete.py
+Authors: M Kery, M Schaub (cited work)
+Description: Capture-recapture model with constant detection probability and explicit population-
+    inclusion indicators.
 
-Stan comparison: NOT APPLICABLE (no corresponding Stan model).
+Stan comparison:
+- Not applicable: no corresponding Stan model for the explicit discrete latents.
 """
 
 import json

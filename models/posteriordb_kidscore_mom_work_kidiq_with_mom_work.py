@@ -1,4 +1,8 @@
-"""Multiple Factor Level Predictors Linear Model.
+"""
+Model: Multiple Factor Level Predictors Linear Model
+Source: posteriordb/posterior_database/models/stan/kidscore_mom_work.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: kid_score ~ as.factor(mom_work)
 
 Stan comparison:
 - A: Stan = -3489148.4822633765; PyMC = -3489148.4822633765.

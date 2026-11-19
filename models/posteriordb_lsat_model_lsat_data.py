@@ -1,4 +1,9 @@
-"""Random Effects (Rasch) Model for True Difficulty of LSAT Questions.
+"""
+Model: Random Effects (Rasch) Model for True Difficulty of LSAT Questions
+Source: posteriordb/posterior_database/models/stan/lsat_model.stan
+Authors: MRC Biostatistics Unit (cited work)
+Description: Rasch model for correct LSAT responses, with item difficulty and latent student
+    ability.
 
 Stan comparison:
 - A: Stan = -4649.540355460236; PyMC = -4648.847208663369.

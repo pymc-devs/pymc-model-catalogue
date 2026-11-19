@@ -1,4 +1,8 @@
-"""A county intercept model (no pooling) for the Radon dataset.
+"""
+Model: A county intercept model (no pooling) for the Radon dataset
+Source: posteriordb/posterior_database/models/stan/radon_county_intercept.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: A linear model with different intercepts per county.
 
 Stan comparison:
 - A: Stan = -2260.925627204436; PyMC = -2260.232482773764.

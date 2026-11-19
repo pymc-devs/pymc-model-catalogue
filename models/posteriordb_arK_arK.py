@@ -1,4 +1,7 @@
-"""Autoregressive-5 model.
+"""
+Model: Autoregressive-5 model
+Source: posteriordb/posterior_database/models/stan/arK.stan
+Description: An AR(5) time series model.
 
 Stan comparison:
 - A: Stan = -233.33159578143048; PyMC = -232.63844881898444.

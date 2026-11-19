@@ -1,4 +1,9 @@
-"""2-Predictor Logistic regression model with interactions for decision to switch wells.
+"""
+Model: 2-Predictor Logistic regression model with interactions for decision to switch wells
+Source: posteriordb/posterior_database/models/stan/wells_interaction_model.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: Performs logistic regression using two predictors (distance from nearest safe well and
+    arsenic levels) and their interaction.
 
 Stan comparison:
 - A: Stan = -2032.6199086607278; PyMC = -2032.619908660728.

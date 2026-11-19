@@ -1,4 +1,8 @@
-"""Multiple Predictors Log-linear Model.
+"""
+Model: Multiple Predictors Log-linear Model
+Source: posteriordb/posterior_database/models/stan/logearn_height_male.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: log(earn) ~ height + male
 
 Stan comparison:
 - A: Stan = -5158.349540037462; PyMC = -5158.349540037472.

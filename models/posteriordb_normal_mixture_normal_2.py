@@ -1,4 +1,8 @@
-"""Two Component Gaussian Mixture Model.
+"""
+Model: Two Component Gaussian Mixture Model
+Source: posteriordb/posterior_database/models/stan/normal_mixture.stan
+Description: a gaussian mixture with unknown proportion and means, known variance p(y|mu,theta) =
+    theta * Normal(y|mu[1],1) + (1-theta) * Normal(y|mu[2],1)
 
 Stan comparison:
 - A: Stan = -52362.52849736699; PyMC = -52362.52849743095.

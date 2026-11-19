@@ -1,4 +1,8 @@
-"""Success rate of a trial with prior and posterior inference.
+"""
+Model: Success rate of a trial with prior and posterior inference
+Source: posteriordb/posterior_database/models/stan/Rate_4_model.stan
+Authors: M D Lee, E Wagenmakers (cited work)
+Description: Inference of the success rate of a trial with prior and posterior inference
 
 Stan comparison:
 - A: Stan = -7.016003499815746; PyMC = -7.016003499815746.

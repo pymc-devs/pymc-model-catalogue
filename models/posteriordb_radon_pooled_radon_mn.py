@@ -1,4 +1,8 @@
-"""A pooled linear model for the Radon dataset.
+"""
+Model: A pooled linear model for the Radon dataset
+Source: posteriordb/posterior_database/models/stan/radon_pooled.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: A simple pooled linear model.
 
 Stan comparison:
 - A: Stan = -2074.1853621070295; PyMC = -2073.49221499042.

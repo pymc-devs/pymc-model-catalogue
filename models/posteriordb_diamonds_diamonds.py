@@ -1,4 +1,8 @@
-"""Multiple Highly Correlated Predictors Log-Log Model.
+"""
+Model: Multiple Highly Correlated Predictors Log-Log Model
+Source: posteriordb/posterior_database/models/stan/diamonds.stan
+Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
+Description: log(price) ~ carat * (log(x) + log(y) + log(z)) + cut + color + clarity
 
 Stan comparison:
 - A: Stan = -217519.159394572; PyMC = -217519.15939455116.

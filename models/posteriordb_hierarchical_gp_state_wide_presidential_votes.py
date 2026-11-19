@@ -1,4 +1,7 @@
-"""Hierarchical Gaussian Process.
+"""
+Model: Hierarchical Gaussian Process
+Source: posteriordb/posterior_database/models/stan/hierarchical_gp.stan
+Description: Hierarchical Gaussian Process
 
 Stan comparison:
 - A: Stan = -1662.31697645036; PyMC = -1662.3169761462036.

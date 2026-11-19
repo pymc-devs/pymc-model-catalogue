@@ -1,4 +1,8 @@
-"""One Predictor Log-linear Model.
+"""
+Model: One Predictor Log-linear Model
+Source: posteriordb/posterior_database/models/stan/logearn_height.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: log(earn) ~ height
 
 Stan comparison:
 - A: Stan = -1804.8224042939457; PyMC = -1804.8224042939423.

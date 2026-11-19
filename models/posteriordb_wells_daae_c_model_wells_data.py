@@ -1,4 +1,9 @@
-"""4-Predictor logistic regression model with centered inputs for decision to switch wells.
+"""
+Model: 4-Predictor logistic regression model with centered inputs for decision to switch wells
+Source: posteriordb/posterior_database/models/stan/wells_daae_c_model.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: Logistic regression for well switching using centered distance, arsenic, education and
+    community-association predictors.
 
 Stan comparison:
 - A: Stan = -2039.2934246892526; PyMC = -2039.2934246892526.

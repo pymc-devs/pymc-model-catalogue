@@ -1,4 +1,8 @@
-"""One Predictor Linear Model.
+"""
+Model: One Predictor Linear Model
+Source: posteriordb/posterior_database/models/stan/kidscore_momhs.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: kid_score ~ mom_hs
 
 Stan comparison:
 - A: Stan = -2089221.6174608155; PyMC = -2089220.9243136612.

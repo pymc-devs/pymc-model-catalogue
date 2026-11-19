@@ -1,4 +1,8 @@
-"""A one compartment model.
+"""
+Model: A one compartment model
+Source: posteriordb/posterior_database/models/stan/one_comp_mm_elim_abs.stan
+Description: One-compartment pharmacokinetic model with Michaelis-Menten elimination and a fixed
+    initial concentration.
 
 Stan comparison:
 - A: Stan = -47.953679678651916; PyMC = -45.18109126320565.
@@ -6,6 +10,11 @@ Stan comparison:
 - Raw delta: Stan = 3.4697338199186945; PyMC = 3.46973411173569.
 - Raw comparison: MATCH; residual = -2.918169954568839e-07.
 - Tolerance: 1.0346973411173568e-06
+
+Benchmark results:
+- Original:  logp = -44.3001, grad norm = 13.5193, 7444.0 us/call (5 evals).
+- Frozen:    logp = -44.3001, grad norm = 13.5193, 7692.5 us/call (5 evals).
+- Local NUMBA validation, including object-mode ODE execution; short timings are indicative.
 """
 
 import json

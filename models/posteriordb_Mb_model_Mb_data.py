@@ -1,4 +1,9 @@
-"""Inferring population size considering immediate trap-response.
+"""
+Model: Inferring population size considering immediate trap-response
+Source: posteriordb/posterior_database/models/stan/Mb_model.stan
+Authors: M Kery, M Schaub (cited work)
+Description: Capture-recapture population model where capture probability is modeled by a different
+    parameter for p depending on whether an animal was caught immediately before or not.
 
 Stan comparison:
 - A: Stan = -801.2928365793337; PyMC = -801.2928365793337.
@@ -6,6 +11,11 @@ Stan comparison:
 - Raw delta: Stan = 15.770402219956509; PyMC = 15.770402219956509.
 - Raw comparison: MATCH; residual = 0.0.
 - Tolerance: 1.1577040221995651e-06
+
+Benchmark results:
+- Original:  logp = -802.2076, grad norm = 84.2924, 38.5 us/call (5 evals).
+- Frozen:    logp = -802.2076, grad norm = 84.2924, 63.3 us/call (5 evals).
+- Local NUMBA validation; short timings are indicative.
 """
 
 import json

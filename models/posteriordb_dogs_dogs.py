@@ -1,4 +1,8 @@
-"""Logistic Mixed Effects Model.
+"""
+Model: Logistic Mixed Effects Model
+Source: posteriordb/posterior_database/models/stan/dogs.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: y ~ logistic(n_avoid + n_shock)
 
 Stan comparison:
 - A: Stan = -628.7830399113662; PyMC = -628.783040103219.

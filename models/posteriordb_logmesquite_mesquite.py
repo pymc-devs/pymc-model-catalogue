@@ -1,4 +1,9 @@
-"""Multiple Predictors Log-Log Model.
+"""
+Model: Multiple Predictors Log-Log Model
+Source: posteriordb/posterior_database/models/stan/logmesquite.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: log(weight) ~ log(diam1) + log(diam2) + log(canopy.height) + log(total.height) +
+    log(density) + group
 
 Stan comparison:
 - A: Stan = -727.4638896522694; PyMC = -727.4638896522692.

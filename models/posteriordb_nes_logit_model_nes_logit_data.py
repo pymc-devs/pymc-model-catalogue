@@ -1,4 +1,9 @@
-"""Logistic Regression Model for Voting Preference based on Income.
+"""
+Model: Logistic Regression Model for Voting Preference based on Income
+Source: posteriordb/posterior_database/models/stan/nes_logit_model.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: Logistic regression to estimate the probability of supporting a candidate inferring on
+    income.
 
 Stan comparison:
 - A: Stan = -823.8426202699114; PyMC = -823.8426202699114.

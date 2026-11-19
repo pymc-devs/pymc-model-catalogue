@@ -1,4 +1,9 @@
-"""Two Pool Linear Model with Feedback.
+"""
+Model: Two Pool Linear Model with Feedback
+Source: posteriordb/posterior_database/models/stan/soil_incubation.stan
+Authors: Sierra, Carlos and Müller, Markus and Trumbore, Susan E (cited work)
+Description: A statistical two-pool model with decomposition rates for each pool as well as transfer
+    rates from one pool to another.
 
 Stan comparison:
 - A: Stan = -32.35121812756171; PyMC = -28.885478931878026.
@@ -6,6 +11,11 @@ Stan comparison:
 - Raw delta: Stan = 0.8146711088118863; PyMC = 0.8146719210908486.
 - Raw comparison: MATCH; residual = -8.122789623143944e-07.
 - Tolerance: 1.0081467192109083e-06
+
+Benchmark results:
+- Original:  logp = -42.8159, grad norm = 15.6056, 3636.9 us/call (5 evals).
+- Frozen:    logp = -42.8159, grad norm = 15.6056, 4063.1 us/call (5 evals).
+- Local NUMBA validation, including object-mode ODE execution; short timings are indicative.
 """
 
 import json

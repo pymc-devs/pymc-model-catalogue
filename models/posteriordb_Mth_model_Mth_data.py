@@ -1,5 +1,9 @@
-"""Capture-recapture model where detection probability varies by occasion and
-heterogeneity.
+"""
+Model: Capture-recapture model where detection probability varies by occasion and heterogeneity
+Source: posteriordb/posterior_database/models/stan/Mth_model.stan
+Authors: M Kery, M Schaub (cited work)
+Description: Capture-recapture population model with additive occasion and individual effects on
+    detection probability.
 
 Stan comparison:
 - A: Stan = -906.2858929392463; PyMC = -907.8953308817512.

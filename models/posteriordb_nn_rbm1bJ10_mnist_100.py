@@ -1,4 +1,9 @@
-"""A One Layer Restricted Boltzmann Machine Neural Network.
+"""
+Model: A One Layer Restricted Boltzmann Machine Neural Network
+Source: posteriordb/posterior_database/models/stan/nn_rbm1bJ10.stan
+Authors: Lampinen, Jouko and Vehtari, Aki (cited work)
+Description: A One Layer Restricted Boltzmann Machine Neural Network with added bias and 10 hidden
+    units. The implementation follows that of Lampainen and Vehtari (2001).
 
 Stan comparison:
 - A: Stan = -6984.3954375624235; PyMC = -6984.395437549347.
@@ -6,6 +11,11 @@ Stan comparison:
 - Raw delta: Stan = 707.0964467828926; PyMC = 707.0964467829044.
 - Raw comparison: MATCH; residual = -1.1823431123048067e-11.
 - Tolerance: 8.070964467829044e-06
+
+Benchmark results:
+- Original:  logp = 127507.2551, grad norm = 3919.2566, 249.2 us/call (5 evals).
+- Frozen:    logp = 127507.2551, grad norm = 3919.2566, 272.1 us/call (5 evals).
+- Local NUMBA validation; short timings are indicative.
 """
 
 import json

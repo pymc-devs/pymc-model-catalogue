@@ -1,4 +1,8 @@
-"""Difference in success rates.
+"""
+Model: Difference in success rates
+Source: posteriordb/posterior_database/models/stan/Rate_2_model.stan
+Authors: M D Lee, E Wagenmakers (cited work)
+Description: Predicting the difference between the success rates of two trials
 
 Stan comparison:
 - A: Stan = -3.079291541514772; PyMC = -3.079291541514775.

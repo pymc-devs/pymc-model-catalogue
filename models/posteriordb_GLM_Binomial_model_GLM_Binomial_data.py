@@ -1,4 +1,8 @@
-"""Success Rate of Peregrine broods.
+"""
+Model: Success Rate of Peregrine broods
+Source: posteriordb/posterior_database/models/stan/GLM_Binomial_model.stan
+Authors: M Kery, M Schaub (cited work)
+Description: Binomial GLM for modeling the success rate of Peregrine broods in the French Jura.
 
 Stan comparison:
 - A: Stan = -254.6454361190116; PyMC = -254.64543631086403.

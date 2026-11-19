@@ -1,4 +1,7 @@
-"""Generalized Autoregressive Conditional Heteroscedastic Model.
+"""
+Model: Generalized Autoregressive Conditional Heteroscedastic Model
+Source: posteriordb/posterior_database/models/stan/garch11.stan
+Description: A GARCH(1, 1) time series model.
 
 Stan comparison:
 - A: Stan = -752.9671745691298; PyMC = -752.96717456913.

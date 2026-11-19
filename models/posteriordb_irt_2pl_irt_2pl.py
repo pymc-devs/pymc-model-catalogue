@@ -1,4 +1,7 @@
-"""Two Parameter Logistic Item Response Theory Model.
+"""
+Model: Two Parameter Logistic Item Response Theory Model
+Source: posteriordb/posterior_database/models/stan/irt_2pl.stan
+Description: Hierarchical item response theory model.
 
 Stan comparison:
 - A: Stan = -1548.950210050591; PyMC = -1546.870768538983.

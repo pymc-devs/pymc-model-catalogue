@@ -1,4 +1,8 @@
-"""LDA with 5 topics.
+"""
+Model: LDA with 5 topics
+Source: posteriordb/posterior_database/models/stan/ldaK5.stan
+Authors: Blei, David M and Ng, Andrew Y and Jordan, Michael I (cited work)
+Description: Latent Dirichlet Allocation (LDA) with token indicators marginalized out.
 
 Stan comparison:
 - A: Stan = -211921.01610942537; PyMC = -211921.01610942508.

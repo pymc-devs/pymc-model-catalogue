@@ -1,4 +1,8 @@
-"""Logistic Regression with Regularized Horseshoe Prior.
+"""
+Model: Logistic Regression with Regularized Horseshoe Prior
+Source: posteriordb/posterior_database/models/stan/logistic_regression_rhs.stan
+Authors: Piironen, Juho and Vehtari, Aki and others (cited work)
+Description: y ~ Ber(x)
 
 Stan comparison:
 - A: Stan = -17073.680040363008; PyMC = -12937.670709589542.

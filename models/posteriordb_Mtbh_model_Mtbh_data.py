@@ -1,4 +1,10 @@
-"""Capture-recapture model with time, behavioral and individual detection effects.
+"""
+Model: Capture-recapture model where detection probability varies by occasion
+Source: posteriordb/posterior_database/models/stan/Mtbh_model.stan
+Authors: M Kery, M Schaub (cited work)
+Description: The model Mtbh estimates the size of a closed population from capture-recapture data
+    which has additive effects of time, behavior, and individual heterogeneity on the detection
+    probability of a species
 
 Stan comparison:
 - A: Stan = -348.2499600792822; PyMC = -349.3485724197596.

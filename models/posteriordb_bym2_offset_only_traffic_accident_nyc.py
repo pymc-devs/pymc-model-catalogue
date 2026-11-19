@@ -1,4 +1,8 @@
-"""BYM2 model.
+"""
+Model: BYM2 model
+Source: posteriordb/posterior_database/models/stan/bym2_offset_only.stan
+Description: Spatial count model combining structured and unstructured random effects with a shared
+    scale and a spatial mixing parameter.
 
 Stan comparison:
 - A: Stan = -6434575.605012348; PyMC = -6434574.9118651245.

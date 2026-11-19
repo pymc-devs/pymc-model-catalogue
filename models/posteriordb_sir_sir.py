@@ -1,4 +1,8 @@
-"""Waterborne susceptible-infected-recovered model.
+"""
+Model: Simple SIR model
+Source: posteriordb/posterior_database/models/stan/sir.stan
+Authors: Grad, Yonatan H and Miller, Joel C and Lipsitch, Marc (cited work)
+Description: Waterborne SIR dynamics with Poisson incidence and lognormal bacteria observations.
 
 Stan comparison:
 - A: Stan = -9172.264842237479; PyMC = -9169.49208716104.
@@ -6,7 +10,12 @@ Stan comparison:
 - Raw delta: Stan = 1010.6438099456354; PyMC = 1010.6436578656085.
 - Raw comparison: MISMATCH; residual = 0.0001520800269645406.
 - Tolerance: 1.1106438099456355e-05
-Different ODE solvers are a suspected cause; this is not confirmed.
+- Different ODE solvers are a suspected cause; this is not confirmed.
+
+Benchmark results:
+- Original:  logp = -8849.2832, grad norm = 6315.5231, 14027.6 us/call (5 evals).
+- Frozen:    logp = -8849.2832, grad norm = 6315.5231, 12936.7 us/call (5 evals).
+- Local NUMBA validation, including object-mode ODE execution; short timings are indicative.
 """
 
 import json

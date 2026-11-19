@@ -1,4 +1,8 @@
-"""Hierarchical Model.
+"""
+Model: Hierarchical Model
+Source: posteriordb/posterior_database/models/stan/radon_county.stan
+Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
+Description: y ~ (1|county)
 
 Stan comparison:
 - A: Stan = -62822.486080068884; PyMC = -62831.69642056915.

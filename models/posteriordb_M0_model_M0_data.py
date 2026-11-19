@@ -1,4 +1,9 @@
-"""Inferring population size with constant detection probability.
+"""
+Model: Inferring population size with constant detection probability
+Source: posteriordb/posterior_database/models/stan/M0_model.stan
+Authors: M Kery, M Schaub (cited work)
+Description: Detection probability of an individual is assumed constant over individuals and over
+    time periods
 
 Stan comparison:
 - A: Stan = -243.13503478308752; PyMC = -243.13503478308752.

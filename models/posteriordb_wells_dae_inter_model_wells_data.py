@@ -1,5 +1,11 @@
-"""3-Input logistic regression model with interactions and centered inputs for decision to
-switch wells.
+"""
+Model: 3-Input logistic regression model with interactions and centered inputs for decision to
+    switch wells
+Source: posteriordb/posterior_database/models/stan/wells_dae_inter_model.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: Performs logistic regression using three centered inputs (distance from nearest safe
+    well, log-scaled arsenic levels, and years in education) and the interactions between each pair
+    of inputs.
 
 Stan comparison:
 - A: Stan = -2207.1985552011647; PyMC = -2207.1985552011647.

@@ -1,4 +1,9 @@
-"""Variable intercept hierarchical model (non-centered).
+"""
+Model: Variable intercept hierarchical model (non-centered)
+Source: posteriordb/posterior_database/models/stan/radon_variable_intercept_noncentered.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: A linear model with different intercepts per county, a global regression coefficient,
+    and a hierarchical prior. This model uses a non-centered parametrization.
 
 Stan comparison:
 - A: Stan = -1743.7915490044484; PyMC = -1742.4052547072802.

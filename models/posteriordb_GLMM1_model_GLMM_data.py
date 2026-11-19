@@ -1,4 +1,9 @@
-"""Generalized Linear Mixed Model for Peregrine Population Size.
+"""
+Model: Generalized Linear Mixed Model for Peregrine Population Size
+Source: posteriordb/posterior_database/models/stan/GLMM1_model.stan
+Authors: M Kery, M Schaub (cited work)
+Description: A GLMM for modeling peregrine population size with a random effect being the site of
+    observation.
 
 Stan comparison:
 - A: Stan = -68148.75210242545; PyMC = -68150.36154039991.

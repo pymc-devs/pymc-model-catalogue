@@ -1,4 +1,9 @@
-"""Dugong Age and Length.
+"""
+Model: Dugong Age and Length
+Source: posteriordb/posterior_database/models/stan/dugongs_model.stan
+Authors: MRC Biostatistics Unit (cited work)
+Description: Model of age and length data of dugongs using a nonlinear growth curve with no
+    inflection point.
 
 Stan comparison:
 - A: Stan = -131.96739041849747; PyMC = -131.96739060844538.

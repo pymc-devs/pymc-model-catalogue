@@ -1,4 +1,10 @@
-"""Multiple Species-Site Occupancy Model.
+"""
+Model: Multiple Species-Site Occupancy Model
+Source: posteriordb/posterior_database/models/stan/multi_occupancy.stan
+Authors: Dorazio, Robert M and Royle, J Andrew and Söderström, Bo and Glimsk{"a}r, Anders (cited
+    work)
+Description: Hierarchical species-site occupancy model for species richness, accounting for
+    imperfect detection.
 
 Stan comparison:
 - A: Stan = -2216.558948724705; PyMC = -2215.172654428967.

@@ -1,4 +1,7 @@
-"""Structured Time Series model with stochastic level and stochastic seasonal.
+"""
+Model: Structured Time Series model with stochastic level and stochastic seasonal
+Source: posteriordb/posterior_database/models/stan/state_space_stochastic_level_stochastic_seasonal.stan
+Description: Structured Time Series model with stochastic level and stochastic seasonal
 
 Stan comparison:
 - A: Stan = -890.3549543316059; PyMC = -893.569279107265.

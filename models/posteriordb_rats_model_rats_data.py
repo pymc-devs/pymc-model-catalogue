@@ -1,4 +1,8 @@
-"""Normal Hierarchical Model to Model Rats' Weight Over Time.
+"""
+Model: Normal Hierarchical Model to Model Rats' Weight Over Time
+Source: posteriordb/posterior_database/models/stan/rats_model.stan
+Authors: Alan E. Gelfand and Susan E. Hills and Amy Racine-Poon and Adrian F. M. Smith (cited work)
+Description: The model is essentially a random effects linear growth curve.
 
 Stan comparison:
 - A: Stan = -5468930.328995618; PyMC = -5468930.328995745.

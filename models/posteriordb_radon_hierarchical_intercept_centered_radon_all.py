@@ -1,4 +1,9 @@
-"""A county intercept model with county level covariate for the Radon dataset.
+"""
+Model: A county intercept model with county level covariate for the Radon dataset
+Source: posteriordb/posterior_database/models/stan/radon_hierarchical_intercept_centered.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: A linear model with different intercepts per county and county level log_uppm
+    covariate. This model is a centered parametrization.
 
 Stan comparison:
 - A: Stan = -24190.418540994804; PyMC = -24189.03224672959.

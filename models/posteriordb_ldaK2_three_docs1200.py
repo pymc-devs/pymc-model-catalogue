@@ -1,4 +1,8 @@
-"""LDA with 2 topics.
+"""
+Model: LDA with 2 topics
+Source: posteriordb/posterior_database/models/stan/ldaK2.stan
+Authors: Blei, David M and Ng, Andrew Y and Jordan, Michael I (cited work)
+Description: Latent Dirichlet Allocation (LDA) with token indicators marginalized out and 2 topics.
 
 Stan comparison:
 - A: Stan = -1316.1619373814558; PyMC = -1316.161937381456.
@@ -6,6 +10,11 @@ Stan comparison:
 - Raw delta: Stan = 0.8366558478057868; PyMC = 0.8366558478060142.
 - Raw comparison: MATCH; residual = -2.2737367544323206e-13.
 - Tolerance: 1.00836655847806e-06
+
+Benchmark results:
+- Original:  logp = -1323.4223, grad norm = 40.0000, 86.0 us/call (5 evals).
+- Frozen:    logp = -1323.4223, grad norm = 40.0000, 71.3 us/call (5 evals).
+- Local NUMBA validation; short timings are indicative.
 """
 
 import json

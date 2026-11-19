@@ -1,4 +1,9 @@
-"""Hierarchical intercept model for the Radon dataset (centered).
+"""
+Model: Hierarchical intercept model for the Radon dataset (centered)
+Source: posteriordb/posterior_database/models/stan/radon_partially_pooled_centered.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: A linear model with different intercepts per county and a hierarchical prior. This
+    model uses a centered parametrization.
 
 Stan comparison:
 - A: Stan = -23132.18531423766; PyMC = -23130.799019908536.

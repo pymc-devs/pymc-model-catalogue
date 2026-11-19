@@ -1,4 +1,9 @@
-"""Generalized Linear Mixed Effects Model.
+"""
+Model: Generalized Linear Mixed Effects Model
+Source: posteriordb/posterior_database/models/stan/election88_full.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: y ~ logistic(black + female + v_prev_full + (1 | age) + (1 | age_edu) + (1 | state) +
+    (1 | region_full))
 
 Stan comparison:
 - A: Stan = -8556.772621101387; PyMC = -8579.798472670835.

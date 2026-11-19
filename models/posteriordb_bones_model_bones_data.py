@@ -1,4 +1,8 @@
-"""Latent Trait Model for Multiple Ordered Categorical Responses.
+"""
+Model: Latent Trait Model for Multiple Ordered Categorical Responses
+Source: posteriordb/posterior_database/models/stan/bones_model.stan
+Authors: Alex F. Roche and Howard Wainer and David Thissen (cited work)
+Description: Model to predict skeletal age by calibrating 34 indicators of skeletal maturity.
 
 Stan comparison:
 - A: Stan = -1639.9838350060193; PyMC = -1639.9838353052326.
@@ -6,7 +10,7 @@ Stan comparison:
 - Raw delta: Stan = -10.335919484062288; PyMC = -10.335926340951346.
 - Raw comparison: MISMATCH; residual = 6.8568890583264874e-06.
 - Tolerance: 1.1033592634095134e-06
-The numerical discrepancy remains unexplained.
+- The numerical discrepancy remains unexplained.
 """
 
 import json

@@ -1,4 +1,7 @@
-"""Hidden Markov Model.
+"""
+Model: Hidden Markov Model
+Source: posteriordb/posterior_database/models/stan/hmm_example.stan
+Description: A Hidden Markov Model
 
 Stan comparison:
 - A: Stan = -1993.254877632162; PyMC = -1993.254877632162.
@@ -6,6 +9,11 @@ Stan comparison:
 - Raw delta: Stan = -115.70943044145929; PyMC = -115.70943044145884.
 - Raw comparison: MATCH; residual = -4.547473508864641e-13.
 - Tolerance: 2.1570943044145927e-06
+
+Benchmark results:
+- Original:  logp = -259.1863, grad norm = 721.6521, 212.5 us/call (5 evals).
+- Frozen:    logp = -259.1863, grad norm = 721.6521, 185.2 us/call (5 evals).
+- Local NUMBA validation; short timings are indicative.
 """
 
 import json

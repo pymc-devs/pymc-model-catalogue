@@ -1,4 +1,8 @@
-"""Logistic regression model for decision to switch wells.
+"""
+Model: Logistic regression model for decision to switch wells
+Source: posteriordb/posterior_database/models/stan/wells_dist.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: Performs logistic regression using one predictor (distance from nearest safe well).
 
 Stan comparison:
 - A: Stan = -3351.6919122498107; PyMC = -3351.6919122498107.

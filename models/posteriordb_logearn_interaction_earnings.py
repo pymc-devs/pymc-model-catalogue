@@ -1,4 +1,8 @@
-"""Multiple Predictors Interacting Log-linear Model.
+"""
+Model: Multiple Predictors Interacting Log-linear Model
+Source: posteriordb/posterior_database/models/stan/logearn_interaction.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: log(earn) ~ height + male + height:male
 
 Stan comparison:
 - A: Stan = -7115.324664263505; PyMC = -7115.324664263505.

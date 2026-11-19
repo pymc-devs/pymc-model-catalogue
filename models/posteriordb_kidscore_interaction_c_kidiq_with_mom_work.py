@@ -1,4 +1,8 @@
-"""Multiple Interacting Predictors Centered Linear Model.
+"""
+Model: Multiple Interacting Predictors Centered Linear Model
+Source: posteriordb/posterior_database/models/stan/kidscore_interaction_c.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: kid_score ~ c_mom_hs + c_mom_iq + c_mom_hs:c_mom_iq
 
 Stan comparison:
 - A: Stan = -1329245.3365258172; PyMC = -1329245.3365258162.

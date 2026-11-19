@@ -1,4 +1,7 @@
-"""A Two-Dimensional Gaussian Mixture Model.
+"""
+Model: A Two-Dimensional Gaussian Mixture Model
+Source: posteriordb/posterior_database/models/stan/low_dim_gauss_mix.stan
+Description: A Two-Dimensional Gaussian Mixture Model
 
 Stan comparison:
 - A: Stan = -5061.501489160019; PyMC = -5060.11519490697.

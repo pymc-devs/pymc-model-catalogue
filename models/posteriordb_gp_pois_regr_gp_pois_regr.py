@@ -1,4 +1,8 @@
-"""Gaussian Process Poisson Regression.
+"""
+Model: Gaussian Process Poisson Regression
+Source: posteriordb/posterior_database/models/stan/gp_pois_regr.stan
+Description: Poisson regression with a one-dimensional latent Gaussian process using the exponential
+    quadratic covariance function.
 
 Stan comparison:
 - A: Stan = -1043.0656157679641; PyMC = -1042.3724671461957.

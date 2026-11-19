@@ -1,4 +1,9 @@
-"""Variable intercept and slope hierarchical Radon model (noncentered).
+"""
+Model: Variable intercept and slope hierarchical Radon model (noncentered)
+Source: posteriordb/posterior_database/models/stan/radon_variable_intercept_slope_noncentered.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: A linear model with hierarchical intercept and slope coefficients using an hierarchical
+    prior. This model uses a non-centered parametrization.
 
 Stan comparison:
 - A: Stan = -30914.39997481495; PyMC = -30912.32053333721.

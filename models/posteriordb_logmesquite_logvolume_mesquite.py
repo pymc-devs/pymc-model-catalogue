@@ -1,4 +1,8 @@
-"""Log-Log Model.
+"""
+Model: Log-Log Model
+Source: posteriordb/posterior_database/models/stan/logmesquite_logvolume.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: log(weight) ~ log(canopy_volume) canopy_volume <- diam1 * diam2 * canopy_height
 
 Stan comparison:
 - A: Stan = -371.95733646573; PyMC = -371.9573364657301.

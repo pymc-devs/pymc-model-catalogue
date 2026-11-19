@@ -1,4 +1,9 @@
-"""Inferring the Return Rate and Number of Surveys from Observed Returns.
+"""
+Model: Inferring the Return Rate and Number of Surveys from Observed Returns
+Source: posteriordb/posterior_database/models/stan/Survey_model.stan
+Authors: M D Lee, E Wagenmakers (cited work)
+Description: Inference for the joint probability distribution of the rate of return and the number
+    of surveys by observing the number of returned surveys.
 
 Stan comparison:
 - A: Stan = -18.464896079409947; PyMC = -18.46489607940993.

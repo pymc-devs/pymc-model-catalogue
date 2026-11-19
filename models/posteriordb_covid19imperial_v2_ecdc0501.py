@@ -1,4 +1,9 @@
-"""Epidemic model v2.
+"""
+Model: Epidemic model v2 of Flaxman et al (2020)
+Source: posteriordb/posterior_database/models/stan/covid19imperial_v2.stan
+Authors: Flaxman, Seth and Mishra, Swapnil and Gandy, Axel and Unwin, H and Coupland, H and Mellan,
+    T and Zhu, H and Berah, T and Eaton, J and Perez Guzman, P and others (cited work)
+Description: A Bayesian model for estimating intervention effects in the 2020 covid-19 pandemic.
 
 Stan comparison:
 - A: Stan = -810040.6624105042; PyMC = -810039.2761161726.

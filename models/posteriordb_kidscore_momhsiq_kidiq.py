@@ -1,4 +1,8 @@
-"""Multiple Predictors Linear Model.
+"""
+Model: Multiple Predictors Linear Model
+Source: posteriordb/posterior_database/models/stan/kidscore_momhsiq.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: kid_score ~ mom_hs + mom_iq
 
 Stan comparison:
 - A: Stan = -1001555.0012968204; PyMC = -1001554.3081496654.

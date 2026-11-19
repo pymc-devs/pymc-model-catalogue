@@ -1,4 +1,9 @@
-"""A non-centered hierarchical model for 8 schools.
+"""
+Model: A non-centered hierarchical model for 8 schools
+Source: posteriordb/posterior_database/models/stan/eight_schools_noncentered.stan
+Authors: Rubin, Donald B; Gelman, Andrew and Carlin, John B and Stern, Hal S and Dunson, David B and
+    Vehtari, Aki and Rubin, Donald B (cited work)
+Description: A non-centered hierarchical model for the 8 schools example of Rubin (1981)
 
 Stan comparison:
 - A: Stan = -44.15124349654224; PyMC = -43.458096374219195.

@@ -1,4 +1,9 @@
-"""Random Effect Logistic Regression for Seed Germination Proportion.
+"""
+Model: Random Effect Logistic Regression for Seed Germination Proportion
+Source: posteriordb/posterior_database/models/stan/seeds_model.stan
+Authors: Martin J. Crowder (cited work)
+Description: The model is essentially a random effects logistic, allowing for over-dispersion.
+    Models the proportion of germination of different seeds in different root extracts.
 
 Stan comparison:
 - A: Stan = -166.12208642194116; PyMC = -166.12208680564652.

@@ -1,4 +1,9 @@
-"""Kronecker Gaussian Process.
+"""
+Model: Kronecker Gaussian Process
+Source: posteriordb/posterior_database/models/stan/kronecker_gp.stan
+Authors: Flaxman, Seth and Gelman, Andrew and Neill, Daniel and Smola, Alex and Vehtari, Aki and
+    Wilson, Andrew Gordon (cited work)
+Description: Gaussian Process using Kronecker structure
 
 Stan comparison:
 - A: Stan = 46.16899443399919; PyMC = -780.1825382959074.

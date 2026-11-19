@@ -1,4 +1,9 @@
-"""Variable slope hierarchical Radon model (centered).
+"""
+Model: Variable slope hierarchical Radon model (centered)
+Source: posteriordb/posterior_database/models/stan/radon_variable_slope_centered.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: A linear model with a global intercept and different regression coefficients using an
+    hierarchical prior. This model uses a centered parametrization.
 
 Stan comparison:
 - A: Stan = -24633.010587621415; PyMC = -24631.62429332425.

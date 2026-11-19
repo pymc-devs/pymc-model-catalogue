@@ -1,4 +1,8 @@
-"""Multiple Linearly Transformed Predictors Interacting Log-linear Model.
+"""
+Model: Multiple Linearly Transformed Predictors Interacting Log-linear Model
+Source: posteriordb/posterior_database/models/stan/logearn_interaction_z.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: log(earn) ~ z_height + male + z_height:male
 
 Stan comparison:
 - A: Stan = -62325.701674457756; PyMC = -62325.70167445774.

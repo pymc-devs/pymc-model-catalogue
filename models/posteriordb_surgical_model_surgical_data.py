@@ -1,4 +1,9 @@
-"""Random Effects Model to Rank Hospitals on True Failure Probability.
+"""
+Model: Random Effects Model to Rank Hospitals on True Failure Probability
+Source: posteriordb/posterior_database/models/stan/surgical_model.stan
+Authors: MRC Biostatistics Unit (cited work)
+Description: Random effects model assuming the probabilities of failure over hospitals are similar
+    in some way.
 
 Stan comparison:
 - A: Stan = -1414.6703595926172; PyMC = -1414.6703596885425.

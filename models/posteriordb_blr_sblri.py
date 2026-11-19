@@ -1,4 +1,7 @@
-"""A Bayesian linear regression model with vague priors.
+"""
+Model: A Bayesian linear regression model with vague priors
+Source: posteriordb/posterior_database/models/stan/blr.stan
+Description: A Bayesian linear regression model with vague priors.
 
 Stan comparison:
 - A: Stan = -3244257.0094579956; PyMC = -3244256.3163110074.
@@ -6,6 +9,11 @@ Stan comparison:
 - Raw delta: Stan = -2824023.4004541677; PyMC = -2824023.4004541673.
 - Raw comparison: MATCH; residual = -4.656612873077393e-10.
 - Tolerance: 0.02824123400454168
+
+Benchmark results:
+- Original:  logp = -26110.0910, grad norm = 56791.0468, 9.6 us/call (5 evals).
+- Frozen:    logp = -26110.0910, grad norm = 56791.0468, 9.1 us/call (5 evals).
+- Local NUMBA validation; short timings are indicative.
 """
 
 import json

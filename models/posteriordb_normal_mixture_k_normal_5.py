@@ -1,4 +1,7 @@
-"""K Component Gaussian Mixture Model.
+"""
+Model: K Component Gaussian Mixture Model
+Source: posteriordb/posterior_database/models/stan/normal_mixture_k.stan
+Description: a Gaussian mixture with unknown proportions, means and variances
 
 Stan comparison:
 - A: Stan = -5480.534220963223; PyMC = -5488.869093394437.

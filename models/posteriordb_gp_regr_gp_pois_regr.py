@@ -1,4 +1,8 @@
-"""Gaussian Process regression.
+"""
+Model: Gaussian Process regression
+Source: posteriordb/posterior_database/models/stan/gp_regr.stan
+Description: One-dimensional Gaussian process Regression using the exponential quadratic covariance
+    function.
 
 Stan comparison:
 - A: Stan = -76.2113812525413; PyMC = -74.82508545021304.

@@ -1,4 +1,9 @@
-"""2-Predictor Logistic regression model for decision to switch wells.
+"""
+Model: 2-Predictor Logistic regression model for decision to switch wells
+Source: posteriordb/posterior_database/models/stan/wells_dist100ars_model.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: Performs logistic regression using two predictors (distance from nearest safe well and
+    arsenic levels). Rescales distance to 100-meter units.
 
 Stan comparison:
 - A: Stan = -2114.8357187561114; PyMC = -2114.8357187561114.

@@ -1,4 +1,8 @@
-"""Multiple Highly Correlated Predictors Linear Model.
+"""
+Model: Multiple Highly Correlated Predictors Linear Model
+Source: posteriordb/posterior_database/models/stan/kilpisjarvi.stan
+Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
+Description: y ~ x
 
 Stan comparison:
 - A: Stan = -381768.952124134; PyMC = -381768.95212419797.

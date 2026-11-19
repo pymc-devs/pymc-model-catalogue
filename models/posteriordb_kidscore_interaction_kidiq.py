@@ -1,4 +1,8 @@
-"""Interacting Linear Model.
+"""
+Model: Interacting Linear Model
+Source: posteriordb/posterior_database/models/stan/kidscore_interaction.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq
 
 Stan comparison:
 - A: Stan = -1265544.0744717761; PyMC = -1265543.381324622.

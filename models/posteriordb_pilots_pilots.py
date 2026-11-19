@@ -1,4 +1,8 @@
-"""Linear Mixed Effects Model.
+"""
+Model: Linear Mixed Effects Model
+Source: posteriordb/posterior_database/models/stan/pilots.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: y ~ 1 + (1 | group) + (1 | scenario))
 
 Stan comparison:
 - A: Stan = -255.80167956170123; PyMC = -269.6171903115181.

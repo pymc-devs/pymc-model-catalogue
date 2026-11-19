@@ -1,4 +1,7 @@
-"""A Two-Dimensional (unordered) Gaussian Mixture Model.
+"""
+Model: A Two-Dimensional (unordered) Gaussian Mixture Model
+Source: posteriordb/posterior_database/models/stan/low_dim_gauss_mix_collapse.stan
+Description: A Two-Dimensional Gaussian Mixture Model
 
 Stan comparison:
 - A: Stan = -1789.561133899328; PyMC = -1788.1748396462788.

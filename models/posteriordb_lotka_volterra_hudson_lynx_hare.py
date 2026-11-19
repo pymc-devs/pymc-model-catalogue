@@ -1,4 +1,9 @@
-"""Lotka-Volterra Error Model.
+"""
+Model: Lotka-Volterra Error Model
+Source: posteriordb/posterior_database/models/stan/lotka_volterra.stan
+Authors: Lotka, AJ; Volterra, Vito (cited work)
+Description: A statistical model to account for measurement error and unexplained variation that
+    uses the deterministic solutions to the Lotka-Volterra equations as expected population sizes
 
 Stan comparison:
 - A: Stan = -257.10417041859887; PyMC = -256.72246199321796.
@@ -6,7 +11,12 @@ Stan comparison:
 - Raw delta: Stan = 74.74726876539216; PyMC = 74.74147800390003.
 - Raw comparison: MISMATCH; residual = 0.005790761492136198.
 - Tolerance: 1.7474726876539216e-06
-Different ODE solvers are a suspected cause; this is not confirmed.
+- Different ODE solvers are a suspected cause; this is not confirmed.
+
+Benchmark results:
+- Original:  logp = -148.2680, grad norm = 62.0095, 26068.9 us/call (5 evals).
+- Frozen:    logp = -148.2680, grad norm = 62.0095, 32025.4 us/call (5 evals).
+- Local NUMBA validation, including object-mode ODE execution; short timings are indicative.
 """
 
 import json

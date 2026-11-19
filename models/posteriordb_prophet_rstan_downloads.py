@@ -1,4 +1,8 @@
-"""Structural Time Series Model.
+"""
+Model: Structural Time Series Model
+Source: posteriordb/posterior_database/models/stan/prophet.stan
+Authors: Taylor, Sean J and Letham, Benjamin (cited work)
+Description: Structural Time Series Model
 
 Stan comparison:
 - A: Stan = -1526.0074637737189; PyMC = -1525.314316651395.

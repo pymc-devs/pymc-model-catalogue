@@ -1,16 +1,26 @@
-"""Non-Hierarchical Logistic Mixed Effects Model.
+"""
+Model: Non-Hierarchical Logistic Mixed Effects Model
+Source: posteriordb/posterior_database/models/stan/dogs_nonhierarchical.stan
+Description: Logistic Mixed Effects Model.
+
+Changes from original:
+- Changed the Cholesky orientation to use the declared dog-effects covariance; this changes their
+  joint prior.
 
 Stan comparison:
 - A: Stan = -964.1082378541431; PyMC = -962.0262129394036.
 - B: Stan = -871.1298048632541; PyMC = -869.0412251422583.
 - Raw delta: Stan = 92.97843299088902; PyMC = 92.98498779714532.
 - Raw comparison: MISMATCH; residual = -0.006554806256303891.
-- Additive Stan adjustment: A =
-  0.002583351320819993; B = 0.009138157577196493.
+- Additive Stan adjustment: A = 0.002583351320819993; B = 0.009138157577196493.
 - Adjusted Stan delta = 92.9849877971454.
 - Adjusted comparison: MATCH; residual = 7.105427357601002e-14.
 - Tolerance: 1.9298498779714537e-06
-PyMC's Cholesky orientation changes the dog-effects covariance and joint prior.
+
+Benchmark results:
+- Original:  logp = -922.6830, grad norm = 482.4855, 45.7 us/call (5 evals).
+- Frozen:    logp = -922.6830, grad norm = 482.4855, 43.2 us/call (5 evals).
+- Local NUMBA validation; short timings are indicative.
 """
 
 import json

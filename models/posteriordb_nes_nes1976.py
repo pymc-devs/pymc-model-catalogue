@@ -1,4 +1,9 @@
-"""Multiple Predictor Linear Model.
+"""
+Model: Multiple Predictor Linear Model
+Source: posteriordb/posterior_database/models/stan/nes.stan
+Authors: Gelman, Andrew and Hill, Jennifer (cited work)
+Description: partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + gender +
+    income
 
 Stan comparison:
 - A: Stan = -13661.767182168329; PyMC = -13661.767182168349.

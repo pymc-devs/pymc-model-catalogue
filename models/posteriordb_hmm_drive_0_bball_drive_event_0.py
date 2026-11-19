@@ -1,4 +1,7 @@
-"""Hidden Markov Model.
+"""
+Model: Hidden Markov Model
+Source: posteriordb/posterior_database/models/stan/hmm_drive_0.stan
+Description: A Hidden Markov Model with exponential distribution for emission probabilities
 
 Stan comparison:
 - A: Stan = -12878.145767652091; PyMC = -12878.145767652126.

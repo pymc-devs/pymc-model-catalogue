@@ -1,4 +1,7 @@
-"""Hierarchical Loss Curve Model.
+"""
+Model: Hierarchical Loss Curve Model
+Source: posteriordb/posterior_database/models/stan/losscurve_sislob.stan
+Description: Hierarchical Loss Curve Model
 
 Stan comparison:
 - A: Stan = -574.1474428807884; PyMC = -574.1474428731698.

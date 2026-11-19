@@ -1,16 +1,27 @@
-"""Two-parameter logistic item theory model with latent regression.
+"""
+Model: Two-parameter logistic item theory model with latent regression
+Source: posteriordb/posterior_database/models/stan/2pl_latent_reg_irt.stan
+Description: Two-parameter logistic item response model with item difficulty, discrimination and
+    latent regression on person-level covariates.
+
+Changes from original:
+- Scaled binary covariates by their range rather than twice their standard deviation, changing the
+  induced coefficient priors.
 
 Stan comparison:
 - A: Stan = -5447.38105313543; PyMC = -5445.415477402245.
 - B: Stan = -5549.40077511055; PyMC = -5547.401838847258.
 - Raw delta: Stan = -102.01972197511986; PyMC = -101.98636144501234.
 - Raw comparison: MISMATCH; residual = -0.033360530107529485.
-- Additive Stan adjustment: A =
-  -0.05197484520454432; B = -0.01861431509717404.
+- Additive Stan adjustment: A = -0.05197484520454432; B = -0.01861431509717404.
 - Adjusted Stan delta = -101.98636144501249.
 - Adjusted comparison: MATCH; residual = -1.5631940186722204e-13.
 - Tolerance: 2.0198636144501246e-06
-Different scaling of binary covariates changes the coefficient priors.
+
+Benchmark results:
+- Original:  logp = -5361.5964, grad norm = 468.4698, 349.7 us/call (5 evals).
+- Frozen:    logp = -5361.5964, grad norm = 468.4698, 282.4 us/call (5 evals).
+- Local NUMBA validation; short timings are indicative.
 """
 
 import json

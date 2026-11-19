@@ -1,4 +1,10 @@
-"""Hierarchical Two-Parameter Logistic Item Response Model.
+"""
+Model: Hierarchical Two-Parameter Logistic Item Response Model
+Source: posteriordb/posterior_database/models/stan/hier_2pl.stan
+Authors: Furr, Daniel (cited work)
+Description: Hierachical item response theory model that includes parameters for both the difficulty
+    and discrimination of items. Item parameter pairs are modeled as correlated draws from a
+    bivariate normal distribution
 
 Stan comparison:
 - A: Stan = -14329.097424843068; PyMC = -14328.404277323887.

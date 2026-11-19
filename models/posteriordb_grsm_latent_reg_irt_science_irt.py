@@ -1,4 +1,11 @@
-"""Rating scale and generalized rating scale models with latent regression.
+"""
+Model: Rating scale and generalized rating scale models with latent regression
+Source: posteriordb/posterior_database/models/stan/grsm_latent_reg_irt.stan
+Description: The rating scale model (Andrich 1978) is used for item response data that involves
+    Likert scale responses. This model extends the RSM by including a discrimination term
+
+Changes from original:
+- Scaled binary covariates by their range rather than twice their standard deviation.
 
 Stan comparison:
 - A: Stan = -4234.376571594136; PyMC = -4230.3414701054735.
