@@ -1,36 +1,6 @@
-"""
-Model: Hierarchical Logistic Mixed Effects Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dogs_hierarchical.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/dogs_hierarchical.py
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/dogs_hierarchical.py
-Upstream catalogue contributor: Mans Magnusson
-Description: Hierarchical Logistic Mixed Effects Model.
+"""Hierarchical Logistic Mixed Effects Model.
 
-Data: dogs (upstream posterior: dogs-dogs_hierarchical)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/dogs.json.zip
-    Archive SHA-256: afe0a4a0f7508de3edd7ac52db9370edc744fbfaf4ec857629912d20cb3ed75a
-    Local archive: data/posteriordb_dogs.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/dogs-dogs_hierarchical.json
-Reference URL: https://github.com/stan-dev/example-models/tree/master/ARM/Ch.24
-
-Implementation notes:
-Native shared learning model from posteriordb dogs_hierarchical.
-
-Stan comparison:
-- A: Stan = -858.3321218595022; PyMC = -858.3321218595022.
-- B: Stan = -966.0679160441127; PyMC = -966.0679160441127.
-- Raw delta: Stan = -107.73579418461054; PyMC = -107.73579418461054.
-- Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 2.0773579418461055e-06
-- The first trial has probability one; every bundled first response is one. PyMC
-  preserves that support factor separately as first_shock.
-- Original Stan SHA-256: 779b2a41c4a7affab0704780336aa92def39e1c91b655c845eaa8dd4bc873d80
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

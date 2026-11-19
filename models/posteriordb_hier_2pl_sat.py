@@ -1,43 +1,6 @@
-"""
-Model: Hierarchical Two-Parameter Logistic Item Response Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hier_2pl.stan
-Authors: Furr, Daniel (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/hier_2pl.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: Hierachical item response theory model that includes parameters for both the difficulty
-    and discrimination of items. Item parameter pairs are modeled as correlated draws from a
-    bivariate normal distribution
+"""Hierarchical Two-Parameter Logistic Item Response Model.
 
-Data: sat (upstream posterior: sat-hier_2pl)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/sat.json.zip
-    Archive SHA-256: 8a11aec0e71f152de6ca8b4bacf09c21d74d6c6d6c24423fdf1647950ec23a31
-    Local archive: data/posteriordb_sat.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/sat-hier_2pl.json
-References: furr2016hier (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://mc-stan.org/users/documentation/case-studies/hierarchical_2pl.html
-
-Implementation notes:
-Native hierarchical two-parameter logistic model from Furr (2016).
-
-Item effects use the centered bivariate Gaussian law.
-
-Stan comparison:
-- A: Stan = -14329.097424843068; PyMC = -14328.404277323887.
-- B: Stan = -14105.817678299081; PyMC = -14105.1245307799.
-- Raw delta: Stan = 223.27974654398713; PyMC = 223.27974654398713.
-- Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 3.232797465439871e-06
-- Set xi[i,:]=[xi1[i],xi2[i]] and correlation_unit=(L_Omega[1,0]+1)/2.
-- In dimension two LKJ(eta=4) has density proportional to (1-rho^2)^3; Beta(4,4) on
-  u=(rho+1)/2 is its exact coordinate rewrite. log|d rho/d u|=log(2) is constant and
-  omitted from delta adjustments; stacking the item vectors is a permutation with unit
-  absolute determinant.
-- Original Stan SHA-256: 86e17a66416ff8ffefa0c2cee1ccf07af46090e2c6177577eb7e4bd0e7cdf636
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

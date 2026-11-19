@@ -1,42 +1,6 @@
-"""
-Model: Structural Time Series Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/prophet.stan
-Authors: Taylor, Sean J and Letham, Benjamin (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/prophet.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: Structural Time Series Model
+"""Structural Time Series Model.
 
-Data: rstan_downloads (upstream posterior: rstan_downloads-prophet)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/rstan_downloads.json.zip
-    Archive SHA-256: a5403e3347731ec0c978dcfe1d81d5f7b62d3f2cad9b5f6be64e89260d298371
-    Local archive: data/posteriordb_rstan_downloads.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/rstan_downloads-prophet.json
-References: taylor2018forecasting (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/facebook/prophet/master/R/inst/stan/prophet.stan
-
-Implementation notes:
-Prophet trend and regression from the posteriordb prophet probability model.
-
-The hinge basis preserves continuity for linear trends and logistic log odds.
-The logistic offset is a time location, not a log-odds intercept.
-Source: Taylor and Letham (2018), as specified by posteriordb.
-
-Stan comparison:
-- A: Stan = -1526.0074637737189; PyMC = -1525.314316651395.
-- B: Stan = -1323.1678056449293; PyMC = -1322.4746585226062.
-- Raw delta: Stan = 202.83965812878955; PyMC = 202.83965812878887.
-- Raw comparison: MATCH; residual = 6.821210263296962e-13.
-- Tolerance: 3.0283965812878954e-06
-- For the logistic trend, PyMC uses the telescoped form
-  logit(trend/cap)=k*(t-m)+sum(delta_s*max(t-t_change_s,0)) in place of Stan's
-  continuity recursion; m remains a time location, not a log-odds intercept.
-- HalfNormal versus positive Normal sigma_obs contributes only log(2).
-- Original Stan SHA-256: e3fcbc4b053e2e8f270ad611eba9fe593146aa24bb01940e91cd4e17450239b5
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

@@ -1,43 +1,6 @@
-"""
-Model: Two Pool Linear Model with Feedback
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/soil_incubation.stan
-Authors: Sierra, Carlos and Müller, Markus and Trumbore, Susan E (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/soil_incubation.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: A statistical two-pool model with decomposition rates for each pool as well as transfer
-    rates from one pool to another.
+"""Two Pool Linear Model with Feedback.
 
-Data: soil_carbon (upstream posterior: soil_carbon-soil_incubation)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/soil_carbon.json.zip
-    Archive SHA-256: 5d878e8153e01148c5dc01336cee802ce455c853213ef46ade327b5d98edf5eb
-    Local archive: data/posteriordb_soil_carbon.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/soil_carbon-soil_incubation.json
-References: sierra2014modeling (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/blob/master/knitr/soil-carbon/soil_incubation.stan
-
-Implementation notes:
-Two-pool carbon dynamics from the posteriordb soil_incubation model.
-
-The observation model uses cumulative carbon loss, not measurement error scales.
-Source: Sierra et al. (2014), as specified by posteriordb.
-
-Stan comparison:
-- A: Stan = -32.35121812756171; PyMC = -28.885478931878026.
-- B: Stan = -31.536547018749822; PyMC = -28.070807010787178.
-- Raw delta: Stan = 0.8146711088118863; PyMC = 0.8146719210908486.
-- Raw comparison: MATCH; residual = -8.122789623143944e-07.
-- Tolerance: 1.0081467192109083e-06
-- Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
-  is applied.
-- Original Stan SHA-256: 6c845fcee0e9e5a49508c5b3395bb09613495b2773d93dbeef9f72664ce10e57
-
-Benchmark results:
-- Original: logp = -42.8159, grad norm = 15.6056, 3636.9 us/call (5 evals).
-- Frozen: logp = -42.8159, grad norm = 15.6056, 4063.1 us/call (5 evals).
-- Local NUMBA validation, including object-mode ODE execution; short timings are indicative.
-- Environment: PyMC 6.4.0+9.gaf565aa28, PyTensor 3.3.8+30.g9a7f24ce0, Numba 0.68.0.
+Stan comparison: MATCH.
 """
 
 import json

@@ -1,39 +1,6 @@
-"""
-Model: Random Effect Logistic Regression for Seed Germination Proportion
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/seeds_centered_model.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/seeds_centered_model.py
-Authors: Martin J. Crowder (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/seeds_centered_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: The model is essentially a random effects logistic, allowing for over-dispersion.
-    Models the proportion of germination of different seeds in different root extracts. 'Stanified'
-    & centered: tau replaced by sigma, direct estimation using narrower semi-informative priors,
-    coefficients are centered
+"""Random Effect Logistic Regression for Seed Germination Proportion.
 
-Data: seeds_data (upstream posterior: seeds_data-seeds_centered_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/seeds_data.json.zip
-    Archive SHA-256: 06769b823f428e2713ecc67f9ebf0b670b19917038f8c4616e934cd647bb244c
-    Local archive: data/posteriordb_seeds_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/seeds_data-seeds_centered_model.json
-References: crowder1978beta (see posteriordb/source/bibliography/references.bib)
-Reference URL: http://www.mrc-bsu.cam.ac.uk/wp-content/uploads/WinBUGS_Vol1.pdf
-
-Implementation notes:
-Native centered seed effects from posteriordb seeds_centered_model.
-
-Stan comparison:
-- A: Stan = -128.6663088255901; PyMC = -127.97316164312568.
-- B: Stan = -123.39810550522995; PyMC = -122.70495832276539.
-- Raw delta: Stan = 5.268203320360158; PyMC = 5.268203320360286.
-- Raw comparison: MATCH; residual = -1.2789769243681803e-13.
-- Tolerance: 1.0526820332036028e-06
-- PyMC HalfCauchy(1) differs from Stan's positive Cauchy only by +log(2).
-- Original Stan SHA-256: 37512dcebf0e156a8c186637dbdbfd1fb9fee18bcda2a9c5a47be2d0fc2867eb
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

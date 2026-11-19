@@ -1,36 +1,6 @@
-"""
-Model: Normal Hierarchical Model to Model Rats' Weight Over Time
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/rats_model.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/rats_model.py
-Authors: Alan E. Gelfand and Susan E. Hills and Amy Racine-Poon and Adrian F. M. Smith (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/rats_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: The model is essentially a random effects linear growth curve.
+"""Normal Hierarchical Model to Model Rats' Weight Over Time.
 
-Data: rats_data (upstream posterior: rats_data-rats_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/rats_data.json.zip
-    Archive SHA-256: 10ceca35c2f65e56b442a4adc7c4e8e26be0edb7ad11e76cd3ddc28a22cb3789
-    Local archive: data/posteriordb_rats_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/rats_data-rats_model.json
-References: gelfand1990illustration (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/bugs_examples/vol1/rats
-
-Implementation notes:
-Native centered growth effects from posteriordb rats_model.
-
-Stan comparison:
-- A: Stan = -5468930.328995618; PyMC = -5468930.328995745.
-- B: Stan = -4398362.244870762; PyMC = -4398362.244870891.
-- Raw delta: Stan = 1070568.0841248557; PyMC = 1070568.0841248538.
-- Raw comparison: MATCH; residual = 1.862645149230957e-09.
-- Tolerance: 0.010706680841248557
-- PyMC indexes rats with rat_index=rat-1 (zero-based).
-- Original Stan SHA-256: c01395015d523c02784e538927b7c2b9cf36114d93729bd25a81d566e05eca19
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

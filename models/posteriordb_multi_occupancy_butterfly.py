@@ -1,46 +1,6 @@
-"""
-Model: Multiple Species-Site Occupancy Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/multi_occupancy.stan
-Authors: Dorazio, Robert M and Royle, J Andrew and Söderström, Bo and Glimsk{\"a}r, Anders (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/multi_occupancy.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: a hierarchical occupancy model for estimating species richness and accumulation by
-    forming these community-level attributes as functions of model-based estimators of species
-    occurence while accounting for imperfect detection of individual species.
+"""Multiple Species-Site Occupancy Model.
 
-Data: butterfly (upstream posterior: butterfly-multi_occupancy)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/butterfly.json.zip
-    Archive SHA-256: ff2caec8dbabf91867035a5c186cbbba6671f0f7702717f64a0b6639b124e853
-    Local archive: data/posteriordb_butterfly.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/butterfly-multi_occupancy.json
-References: dorazio2006estimating (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://mc-stan.org/users/documentation/case-studies/dorazio-royle-occupancy.html
-
-Implementation notes:
-Native multiple-species occupancy model from Dorazio and Royle.
-
-The likelihood marginalizes site occupancy and species availability exactly.
-Species effects use the centered bivariate Gaussian law.
-
-Stan comparison:
-- A: Stan = -2216.558948724705; PyMC = -2215.172654428967.
-- B: Stan = -2567.8440496981566; PyMC = -2566.457755402418.
-- Raw delta: Stan = -351.2851009734518; PyMC = -351.28510097345134.
-- Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- Tolerance: 4.512851009734518e-06
-- Map correlation_unit=(rho_uv+1)/2 and uv=column_stack(uv1,uv2). The PyMC Cholesky
-  factor induces the covariance with diagonals sigma_uv**2 and off-diagonal
-  sigma_uv[0]*sigma_uv[1]*rho_uv. Stan already evaluates Beta(2,2) at (rho_uv+1)/2
-  without a Jacobian; its value equals PyMC's Beta density at correlation_unit. The
-  coordinate determinant |d rho_uv/d correlation_unit|=2 is constant (log(2));
-  normalizing Stan's rho prior removes the same constant. The two positive Cauchy-to-
-  HalfCauchy normalizations add only 2*log(2) to raw PyMC logp.
-- Original Stan SHA-256: 2da8b97338d43107b8c9d97500ca3b9f526891ad6ace2eb11715c06c2c45b052
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

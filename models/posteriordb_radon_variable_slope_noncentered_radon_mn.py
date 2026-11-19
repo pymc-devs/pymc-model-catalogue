@@ -1,41 +1,6 @@
-"""
-Model: Variable slope hiearchical Radon model (non-centered)
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_variable_slope_noncentered.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/radon_variable_slope_noncentered.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A linear model with a global intercept and different regression coefficients using an
-    hiearchical prior. This model uses a non-centered parametrization.
+"""Variable slope hierarchical Radon model (non-centered).
 
-Data: radon_mn (upstream posterior: radon_mn-radon_variable_slope_noncentered)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/radon_mn.json.zip
-    Archive SHA-256: 70e5bacffb71955f1fc327f7c491b6bc59b09f40673830da306f1f9f9eb02bc0
-    Local archive: data/posteriordb_radon_mn.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/radon_mn-radon_variable_slope_noncentered.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Implementation notes:
-Native radon model from the posteriordb radon case study.
-
-Standard Normal effects define the noncentered county hierarchy.
-Source: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Stan comparison:
-- A: Stan = -2328.326864104121; PyMC = -2326.9405698069518.
-- B: Stan = -1947.6366663020056; PyMC = -1946.2503720048378.
-- Raw delta: Stan = 380.69019780211534; PyMC = 380.69019780211397.
-- Raw comparison: MATCH; residual = 1.3642420526593924e-12.
-- Tolerance: 4.806901978021154e-06
-- County labels are converted from Stan one-based to NumPy zero-based indices.
-- Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
-  the constant log(2).
-- Original Stan SHA-256: df643cc1f652bcd53376378e80a607e1e1622f8eb515f9ca67525b9fd4347891
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

@@ -1,35 +1,6 @@
-"""
-Model: Logistic Mixed Effects Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dogs.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/dogs.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/dogs.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: y ~ logistic(n_avoid + n_shock)
+"""Logistic Mixed Effects Model.
 
-Data: dogs (upstream posterior: dogs-dogs)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/dogs.json.zip
-    Archive SHA-256: afe0a4a0f7508de3edd7ac52db9370edc744fbfaf4ec857629912d20cb3ed75a
-    Local archive: data/posteriordb_dogs.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/dogs-dogs.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.24/dogs.stan
-
-Implementation notes:
-Native logistic shock model from posteriordb dogs.
-
-Stan comparison:
-- A: Stan = -628.7830399113662; PyMC = -628.783040103219.
-- B: Stan = -903.8250716435396; PyMC = -903.8250718353919.
-- Raw delta: Stan = -275.0420317321733; PyMC = -275.04203173217286.
-- Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- Tolerance: 3.750420317321733e-06
-- Original Stan SHA-256: bc4c096706d2bb0558cdd88f171ccafda252d7a62b3cd7d1210642c3508b613a
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

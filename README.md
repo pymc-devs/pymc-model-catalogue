@@ -57,8 +57,8 @@ explicit `posteriordb_<model>_<dataset>.py` file under `models/` or
 `models_discrete/`, with bundled source JSON archives. These ports target PyMC 6.4.
 
 See [`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md) for the source index.
-Each file records its upstream revision, model source, posterior and dataset
-identity, authors or contributor attribution, and translation notes.
+Model docstrings contain a short description, Stan comparison status, and a brief
+explanation for adjustments or unresolved mismatches.
 
 ```python
 from models.posteriordb_blr_sblri import build_model
@@ -76,8 +76,8 @@ See [benchmarking instructions](./BENCHMARKING.md) for selecting entries in ASV.
 ### Validation and intentional departures
 
 The benchmark helper checks finite PyMC logp and gradients. Model docstrings
-record two-point comparisons against the pinned Stan definitions, including
-logps, deltas, residuals, tolerances and any parameterization or prior adjustments.
+summarize the two-point Stan logp-delta checks as MATCH, MISMATCH, or NOT APPLICABLE.
+Adjusted matches are distinguished from raw matches.
 
 The recorded two-point outcomes are:
 
@@ -89,7 +89,6 @@ The recorded two-point outcomes are:
 | No Stan reference (discrete M0) | 1 |
 
 The remaining mismatches are `bones_model`, `lotka_volterra`, and `sir`.
-Their measured residuals and tolerances are recorded in the model docstrings.
 
 Comparisons use constrained densities with automatic support-transform Jacobians
 disabled, following
@@ -100,7 +99,7 @@ likelihood adjustment does not make the original targets equivalent.
 
 Measurements used BridgeStan 2.9.0 (Stan 2.39.0), PyMC 6.4.0 and PyTensor 3.3.7.
 The tolerance is `1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC))`, using the
-adjusted Stan delta where applicable. Each docstring gives its numerical tolerance.
+adjusted Stan delta where applicable.
 
 The seven adjusted cases include the five intentional departures below and two
 runtime prior discrepancies in `accel_gp` and `accel_splines`. Their docstrings
@@ -108,9 +107,9 @@ describe the integer-overflow issue affecting the measured HalfStudentT scale
 priors. Those adjustments need rechecking after engine upgrades.
 
 The following ports deliberately follow the stated model where it differs from
-the published implementation. Their model headers describe the departures and
-sources. Some changes affect priors: the dog-effects covariance changes their
-joint prior, and IRT covariate scaling changes the induced coefficient priors.
+the published implementation. Their docstrings briefly describe the departures.
+Some changes affect priors: the dog-effects covariance changes their joint prior,
+and IRT covariate scaling changes the induced coefficient priors.
 Comparisons must account for those changes explicitly, using a corresponding Stan
 reference or documented density adjustments.
 

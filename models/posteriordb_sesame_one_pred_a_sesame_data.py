@@ -1,37 +1,7 @@
-"""
-Model: Linear model for the effect of encouragement to watch on actually watching Sesame Street
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/sesame_one_pred_a.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/sesame_one_pred_a.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/sesame_one_pred_a.py
-Upstream catalogue contributor: Phil Clemson
-Description: A linear model with one predictor.
+"""Linear model for the effect of encouragement to watch on actually watching Sesame
+Street.
 
-Data: sesame_data (upstream posterior: sesame_data-sesame_one_pred_a)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/sesame_data.json.zip
-    Archive SHA-256: 948bb754f5297acd5b56524c07cfe7d96f9dfefa70e358d49012c59f4cbbea22
-    Local archive: data/posteriordb_sesame_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/sesame_data-sesame_one_pred_a.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/ARM/Ch.10
-
-Implementation notes:
-Native Gaussian regression for Sesame Street viewing and encouragement.
-
-Source: Gelman and Hill (2006), ARM.
-
-Stan comparison:
-- A: Stan = -335.9748676806489; PyMC = -335.97486768064965.
-- B: Stan = -337.3023539131388; PyMC = -337.30235391313954.
-- Raw delta: Stan = -1.327486232489889; PyMC = -1.327486232489889.
-- Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1.013274862324899e-06
-- Original Stan SHA-256: 8fa82cd7e6c4d1f23db8de2cd0f8a5eb6efedc8369ddccc5e4f3476a61d6fc73
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

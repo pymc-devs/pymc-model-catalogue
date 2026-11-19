@@ -1,38 +1,6 @@
-"""
-Model: Epidemic model v3 of Flaxman et al (2020)
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/covid19imperial_v3.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/covid19imperial_v3.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A Bayesian model for estimating intervetion effects in the 2020 covid-19 pandemic.
+"""Epidemic model v3.
 
-Data: ecdc0401 (upstream posterior: ecdc0401-covid19imperial_v3)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/ecdc0401.json.zip
-    Archive SHA-256: 68a300d04fbab1589ea42eba08cffb3592878320182c31fcb2ad4251b81597fe
-    Local archive: data/posteriordb_ecdc0401.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/ecdc0401-covid19imperial_v3.json
-Reference URL: https://github.com/ImperialCollegeLondon/covid19model
-
-Implementation notes:
-Flaxman et al. (2020) intervention renewal model, version 3.
-
-Stan comparison:
-- A: Stan = -152053.08150795815; PyMC = -152051.6952136253.
-- B: Stan = -143829.9426968772; PyMC = -143828.55640254423.
-- Raw delta: Stan = 8223.13881108095; PyMC = 8223.138811081066.
-- Raw comparison: MATCH; residual = -1.1641532182693481e-10.
-- Tolerance: 8.323138811081065e-05
-- Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature);
-  delay convolutions use lag-1 array indices.
-- The random-kappa truncation normalizer for positive mu is explicitly canceled by the
-  PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal
-  phi/kappa change only constants.
-- Original Stan SHA-256: ea0d293199edfe1f06a9bdece810686d9cc98a64bc50fd23da4760a9c0733216
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

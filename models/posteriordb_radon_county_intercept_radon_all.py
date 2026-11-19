@@ -1,40 +1,6 @@
-"""
-Model: A county intercept model (no pooling) for the Radon dataset
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_county_intercept.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/radon_county_intercept.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/radon_county_intercept.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A linear model with different intercepts per county.
+"""A county intercept model (no pooling) for the Radon dataset.
 
-Data: radon_all (upstream posterior: radon_all-radon_county_intercept)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/radon_all.json.zip
-    Archive SHA-256: 3f30c7909d530be01e70ab9e98f9f5d5e83371bb15c6dd168696aefd805b5672
-    Local archive: data/posteriordb_radon_all.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/radon_all-radon_county_intercept.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Implementation notes:
-Native radon model from the posteriordb radon case study.
-
-Source: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Stan comparison:
-- A: Stan = -25892.385171557788; PyMC = -25891.692036751774.
-- B: Stan = -26946.176203259132; PyMC = -26945.483068453053.
-- Raw delta: Stan = -1053.7910317013448; PyMC = -1053.7910317012793.
-- Raw comparison: MATCH; residual = -6.548361852765083e-11.
-- Tolerance: 1.1537910317013448e-05
-- County labels are converted from Stan one-based to NumPy zero-based indices.
-- Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
-  the constant log(2).
-- Original Stan SHA-256: 95b4c2b8aac6fb56de6d170f324e03cc37e8a87279e5ce9e48ce935dcb729a57
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

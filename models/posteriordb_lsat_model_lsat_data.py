@@ -1,42 +1,6 @@
-"""
-Model: Random Effects (Rasch) Model for True Difficulty of LSAT Questions
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/lsat_model.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/lsat_model.py
-Authors: MRC Biostatistics Unit (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/lsat_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: One-parameter 'Rasch Model' where the probability that a student responds correctly to
-    a question is assumed to follow a logistic function parameterized by 'item difficulty' and a
-    latent variable representing the students underlying ability.
+"""Random Effects (Rasch) Model for True Difficulty of LSAT Questions.
 
-Data: lsat_data (upstream posterior: lsat_data-lsat_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/lsat_data.json.zip
-    Archive SHA-256: 63a2ba05000665a5adf348c009a069a3a9914a394a1637a589fbe18889800060
-    Local archive: data/posteriordb_lsat_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/lsat_data-lsat_model.json
-References: mrc1winbugs (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/bugs_examples/vol1/lsat
-
-Implementation notes:
-Native LSAT item-response model from the BUGS example.
-
-Cumulative pattern counts expand to individual student responses.
-
-Stan comparison:
-- A: Stan = -4649.540355460236; PyMC = -4648.847208663369.
-- B: Stan = -4287.590745592309; PyMC = -4286.897598795441.
-- Raw delta: Stan = 361.9496098679274; PyMC = 361.9496098679283.
-- Raw comparison: MATCH; residual = -9.094947017729282e-13.
-- Tolerance: 4.619496098679283e-06
-- Stan's item/person matrix is transposed relative to PyMC's person/item likelihood,
-  without permuting theta. PyMC HalfNormal(100) for positive beta differs from Stan's
-  constrained Normal(0,100) only by the constant +log(2).
-- Original Stan SHA-256: 9f3d0abccfb55fcab634d81a19d74507409b836c549224b923b237ecf9f2c817
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

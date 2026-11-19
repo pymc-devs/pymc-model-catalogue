@@ -1,38 +1,6 @@
-"""
-Model: Poisson GLM for modeling a population of Peregrines
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/GLM_Poisson_model.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/GLM_Poisson_model.py
-Authors: M Kery, M Schaub (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/GLM_Poisson_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: Poisson Generalised Linear Model where the linear predictor is a cubic polynomial
-    function of time.
+"""Poisson GLM for modeling a population of Peregrines.
 
-Data: GLM_Poisson_Data (upstream posterior: GLM_Poisson_Data-GLM_Poisson_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/GLM_Poisson_Data.json.zip
-    Archive SHA-256: 8d4e396989e85a80b3294a72ff6654328e530f1e9f50de967dba281804bd124e
-    Local archive: data/posteriordb_GLM_Poisson_Data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/GLM_Poisson_Data-GLM_Poisson_model.json
-References: kery2011population (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/BPA/Ch.03
-
-Implementation notes:
-Native cubic Poisson model from posteriordb GLM_Poisson_model.
-
-Stan comparison:
-- A: Stan = -19247.726566493642; PyMC = -19260.402643382677.
-- B: Stan = -14928.78196329504; PyMC = -14941.458040184076.
-- Raw delta: Stan = 4318.944603198603; PyMC = 4318.944603198601.
-- Raw comparison: MATCH; residual = 1.8189894035458565e-12.
-- Tolerance: 4.4189446031986024e-05
-- Stan implicit bounded coefficients versus PyMC Uniform priors add only
-  -log(40)-3*log(20).
-- Original Stan SHA-256: 84186ad779e2add1b934a00e211d9e642ae29cba0e02caf3fedb5c1b29e54f85
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

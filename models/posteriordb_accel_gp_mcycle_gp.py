@@ -1,47 +1,7 @@
-"""
-Model: Gaussian Processes that model the mean and std of acceleration
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/accel_gp.stan
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/accel_gp.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: accel ~ gp(times, k=40, c=3/2, sigma ~ gp(times, k=20, c=3/2)
+"""Gaussian-process model for acceleration mean and standard deviation.
 
-Data: mcycle_gp (upstream posterior: mcycle_gp-accel_gp)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/mcycle_gp.json.zip
-    Archive SHA-256: 159ed1327b350374e5e299e94cc257f6b9b7428da90658a37233b24aedcf7f65
-    Local archive: data/posteriordb_mcycle_gp.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/mcycle_gp-accel_gp.json
-References: bales2019selecting (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/bbbales2/cmdstan-warmup/blob/develop/examples/accel_gp/
-
-Implementation notes:
-Finite-basis acceleration model from posteriordb and Bales (2019).
-
-The supplied eigenfunctions and frequencies define both finite Gaussian processes.
-The two processes control the mean and log standard deviation.
-
-Stan comparison:
-- A: Stan = -155371.18965842773; PyMC = -155366.87455612782.
-- B: Stan = -209414.58318585833; PyMC = -209410.2722747428.
-- Raw delta: Stan = -54043.3935274306; PyMC = -54043.397718614986.
-- Raw comparison: MISMATCH; residual = 0.004191184387309477.
-- Additive Stan adjustment changed_integer_scale_half_student_t_prior: A =
-  4.315102260010999; B = 4.310911075603358.
-- Adjusted Stan delta = -54043.39771861501.
-- Adjusted comparison: MATCH; residual = -2.1827872842550278e-11.
-- Tolerance: 0.0005414339771861502
-- In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT GP
-  amplitude priors has dtype int8: sigma**2 overflows to 16. Their native density is
-  therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The
-  named adjustment adds the two source-derived prior log-density differences to Stan.
-  Original targets differ; this runtime discrepancy is not a best-practice
-  reparameterization. Recheck this adjustment after engine upgrades.
-- Original Stan SHA-256: a65f0d579c6feb398e345ebe37dbb88017a7ecc00f199f6b07d3377cac419835
-
-Benchmark results:
-- Not measured.
+Stan comparison: MISMATCH; MATCH after prior adjustment.
+Integer overflow changed the HalfStudentT scale priors in the measured PyMC runtime.
 """
 
 import json

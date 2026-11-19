@@ -1,65 +1,7 @@
-"""
-Model: Two-parameter logistic item theory model with latent regression
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/2pl_latent_reg_irt.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/model_2pl_latent_reg_irt.py
-Upstream catalogue contributor: Keane Nguyen
-Description: The Rasch model (Rasch 1960) is an item response theory model for dichotomous items.
-    The two-parameter logistic model (2PL) (Swaminathan and Gifford 1985) is an item response theory
-    model that includes parameters for both the difficulty and discrimination of dichotomous items.
-    The version presented includes a latent regression. However, the latent regression part of the
-    model may be restricted to an intercept only, resulting in a regular 2PL.
+"""Two-parameter logistic item theory model with latent regression.
 
-Data: fims_Aus_Jpn_irt (upstream posterior: fims_Aus_Jpn_irt-2pl_latent_reg_irt)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/fims_Aus_Jpn_irt.json.zip
-    Archive SHA-256: c6860be3eb744cd9479a5ff4c653a6aeeb4a1dfd15b6b4dbb75ae7e50e06b425
-    Local archive: data/posteriordb_fims_Aus_Jpn_irt.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/fims_Aus_Jpn_irt-2pl_latent_reg_irt.json
-Reference URL: https://github.com/danielcfurr/edstan
-Reference URL: https://mc-stan.org/users/documentation/case-studies/rasch_and_2pl.html
-
-Changes from original:
-- Scale binary covariates by their range, changing the induced coefficient priors
-  on the original covariate scale; see the scaling notes below.
-
-Implementation notes:
-Native two-parameter logistic model with latent regression from edstan.
-Native item-response models from the edstan probability definitions.
-
-Covariate scaling follows Furr (2017), sections 1.1 and 1.3.
-Source: https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html
-
-Binary columns use their range.
-Continuous columns use twice their sample standard deviation, and the intercept stays unchanged.
-
-This corrects the published binary-column counter defect.
-It changes the induced coefficient priors for fims_Aus_Jpn_irt-2pl_latent_reg_irt and timssAusTwn_irt-gpcm_latent_reg_irt.
-The intercept-only science_irt-grsm_latent_reg_irt pair does not change.
-
-Stan comparison:
-- A: Stan = -5447.38105313543; PyMC = -5445.415477402245.
-- B: Stan = -5549.40077511055; PyMC = -5547.401838847258.
-- Raw delta: Stan = -102.01972197511986; PyMC = -101.98636144501234.
-- Raw comparison: MISMATCH; residual = -0.033360530107529485.
-- Additive Stan adjustment changed_student_t_coefficient_prior: A =
-  -0.05197484520454432; B = -0.01861431509717404.
-- Adjusted Stan delta = -101.98636144501249.
-- Adjusted comparison: MATCH; residual = -1.5631940186722204e-13.
-- Tolerance: 2.0198636144501246e-06
-- Append minus the sum to beta_free (and kappa_free when present) for ZeroSumNormal.
-  Fixed prior scale 3 makes the subspace-volume and normalization offsets constant.
-- Original targets differ: binary covariate scaling changes coefficient priors. Map
-  lambda_PyMC=lambda_Stan*scale_PyMC/scale_Stan to preserve physical slopes and latent
-  means; add the StudentT(3) prior difference. The Jacobian is data-only.
-- Original Stan SHA-256: 96c8f931ea6ff2569863cf1afa8b255aefe441516ab06705519b16ef1dc461b8
-
-Benchmark results:
-- Original: logp = -5361.5964, grad norm = 468.4698, 349.7 us/call (5 evals).
-- Frozen: logp = -5361.5964, grad norm = 468.4698, 282.4 us/call (5 evals).
-- Local NUMBA validation; short timings are indicative.
-- Environment: PyMC 6.4.0+9.gaf565aa28, PyTensor 3.3.8+30.g9a7f24ce0, Numba 0.68.0.
+Stan comparison: MISMATCH; MATCH after prior adjustment.
+Different scaling of binary covariates changes the coefficient priors.
 """
 
 import json

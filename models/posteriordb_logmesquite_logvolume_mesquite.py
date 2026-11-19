@@ -1,38 +1,6 @@
-"""
-Model: Log-Log Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logmesquite_logvolume.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/logmesquite_logvolume.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: log(weight) ~ log(canopy_volume) canopy_volume <- diam1 * diam2 * canopy_height
+"""Log-Log Model.
 
-Data: mesquite (upstream posterior: mesquite-logmesquite_logvolume)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/mesquite.json.zip
-    Archive SHA-256: ec9db3a2e390892473e6172d76386ba9b26c3633a9682532eb34217189dcb0ac
-    Local archive: data/posteriordb_mesquite.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/mesquite-logmesquite_logvolume.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/mesquite_volume.stan
-
-Implementation notes:
-Native Gaussian model for log mesquite weight with canopy volume.
-
-Source: Gelman and Hill (2006), ARM.
-
-The likelihood uses the transformed response, without a response Jacobian.
-
-Stan comparison:
-- A: Stan = -371.95733646573; PyMC = -371.9573364657301.
-- B: Stan = -741.7119178580231; PyMC = -741.711917858023.
-- Raw delta: Stan = -369.75458139229306; PyMC = -369.75458139229283.
-- Raw comparison: MATCH; residual = -2.2737367544323206e-13.
-- Tolerance: 4.697545813922931e-06
-- Original Stan SHA-256: 14615192a3579e2b9bdfd474389da63fbd32a0a5e1cd392c897560b8886b8aad
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

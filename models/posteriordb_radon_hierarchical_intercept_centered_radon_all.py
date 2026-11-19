@@ -1,42 +1,6 @@
-"""
-Model: A county intercept model with county level covariate for the Radon dataset
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_hierarchical_intercept_centered.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/radon_hierarchical_intercept_centered.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/radon_hierarchical_intercept_centered.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A linear model with different intercepts per county and county level log_uppm
-    covariate. This model is a centered parametrization.
+"""A county intercept model with county level covariate for the Radon dataset.
 
-Data: radon_all (upstream posterior: radon_all-radon_hierarchical_intercept_centered)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/radon_all.json.zip
-    Archive SHA-256: 3f30c7909d530be01e70ab9e98f9f5d5e83371bb15c6dd168696aefd805b5672
-    Local archive: data/posteriordb_radon_all.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/radon_all-radon_hierarchical_intercept_centered.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Implementation notes:
-Native radon model from the posteriordb radon case study.
-
-The county hierarchy uses centered Normal effects.
-Source: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Stan comparison:
-- A: Stan = -24190.418540994804; PyMC = -24189.03224672959.
-- B: Stan = -24760.12302505978; PyMC = -24758.736730794582.
-- Raw delta: Stan = -569.704484064976; PyMC = -569.7044840649942.
-- Raw comparison: MATCH; residual = 1.8189894035458565e-11.
-- Tolerance: 6.6970448406499415e-06
-- County labels are converted from Stan one-based to NumPy zero-based indices.
-- Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
-  the constant log(2).
-- Original Stan SHA-256: cab61c2340d2ba66b5f45f8b9a5ddf3bbe8e43ec19583661542f8e2a853dd14b
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

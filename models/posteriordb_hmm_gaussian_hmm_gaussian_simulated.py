@@ -1,52 +1,7 @@
-"""
-Model: HMM with Gaussian emission
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hmm_gaussian.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/hmm_gaussian.py
-Upstream catalogue contributor: Keane Nguyen
-Description: HMM with Gaussian emission
+"""HMM with Gaussian emission.
 
-Data: hmm_gaussian_simulated (upstream posterior: hmm_gaussian_simulated-hmm_gaussian)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/hmm_gaussian_simulated.json.zip
-    Archive SHA-256: af1e3e72f8d990ccaaa36517d5c1b1734d0fdadf5421de05a42d11937b63f66a
-    Local archive: data/posteriordb_hmm_gaussian_simulated.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/hmm_gaussian_simulated-hmm_gaussian.json
-Reference URL: https://github.com/luisdamiano/stancon18
-
-Changes from original:
-- Use state-specific first-observation emissions instead of the source scalar sum.
-
-Implementation notes:
-Native Gaussian hidden-state model from the Damiano example in posteriordb.
-
-The published model has flat ordered means and flat positive scales.
-The first observation uses its state-specific emission density.
-This corrects the published scalar sum across all initial emission densities.
-
-Evidence: the local-evidence definition and Bayesian update use one density per state.
-https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271
-Source model: https://github.com/luisdamiano/stancon18
-
-Stan comparison:
-- A: Stan = -87074.08921999834; PyMC = -86148.52959186646.
-- B: Stan = -60347.245630767924; PyMC = -59397.338385377116.
-- Raw delta: Stan = 26726.84358923041; PyMC = 26751.191206489348.
-- Raw comparison: MISMATCH; residual = -24.347617258936225.
-- Additive Stan adjustment changed_initial_emission_likelihood: A = 922.7870394095662; B
-  = 947.1346566686552.
-- Adjusted Stan delta = 26751.1912064895.
-- Adjusted comparison: MATCH; residual = 1.5279510989785194e-10.
-- Tolerance: 0.00026851191206489505
-- Original targets differ: Stan adds the sum of first-time state emissions to every
-  state; PyMC uses state-specific emissions. Adjustment is the difference of
-  independently computed forward likelihoods. Ordered means are tested on shared Stan-
-  valid support.
-- Original Stan SHA-256: 2f76768fec16648e6a49782166c8c70862d22fb72e12349906b25cf8e6e837d7
-
-Benchmark results:
-- Not measured.
+Stan comparison: MISMATCH; MATCH after likelihood adjustment.
+PyMC uses state-specific initial emissions; Stan sums them across states.
 """
 
 import json

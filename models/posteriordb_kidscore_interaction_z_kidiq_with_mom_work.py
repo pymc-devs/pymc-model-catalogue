@@ -1,38 +1,6 @@
-"""
-Model: Multiple Interacting Predictors Standardized Linear Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_interaction_z.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/kidscore_interaction_z.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/kidscore_interaction_z.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: kid_score ~ z_mom_hs + z_mom_iq + z_mom_hs:z_mom_iq
+"""Multiple Interacting Predictors Standardized Linear Model.
 
-Data: kidiq_with_mom_work (upstream posterior: kidiq_with_mom_work-kidscore_interaction_z)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/kidiq_with_mom_work.json.zip
-    Archive SHA-256: 0c82d40ace4c75bba4bc8824d4ece044e1d5f8700d479ea672001ab475254913
-    Local archive: data/posteriordb_kidiq_with_mom_work.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/kidiq_with_mom_work-kidscore_interaction_z.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/kidiq_interaction_z.stan
-
-Implementation notes:
-Native standardized child-score interaction regression from Gelman and Hill (2006), Chapter 4.
-
-Each predictor uses its sample mean and twice its sample standard deviation.
-All parameter densities are constant on their supports.
-
-Stan comparison:
-- A: Stan = -765529.1913012981; PyMC = -765529.1913012983.
-- B: Stan = -2005859.811291326; PyMC = -2005859.8112913256.
-- Raw delta: Stan = -1240330.619990028; PyMC = -1240330.6199900273.
-- Raw comparison: MATCH; residual = -6.984919309616089e-10.
-- Tolerance: 0.012404306199900279
-- Original Stan SHA-256: af2ebd6cd04a66deaf879899b548cb6401c7d250dd6cae7f55c726a8e7f734d6
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

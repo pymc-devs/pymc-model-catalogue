@@ -1,37 +1,6 @@
-"""
-Model: One Predictor Linear Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/earn_height.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/earn_height.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/earn_height.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: earn ~ height
+"""One Predictor Linear Model.
 
-Data: earnings (upstream posterior: earnings-earn_height)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/earnings.json.zip
-    Archive SHA-256: 06a67aa61a99d59aee057486dae51ffad6b4f887e7f8f17733739cf893af312f
-    Local archive: data/posteriordb_earnings.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/earnings-earn_height.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/earn_height.stan
-
-Implementation notes:
-Native Gaussian model for earnings and height.
-
-Source: Gelman and Hill (2006), ARM.
-
-Stan comparison:
-- A: Stan = -400986929008.98285; PyMC = -400986929008.98267.
-- B: Stan = -470226871825.1733; PyMC = -470226871825.1741.
-- Raw delta: Stan = -69239942816.19043; PyMC = -69239942816.1914.
-- Raw comparison: MATCH; residual = 0.0009765625.
-- Tolerance: 692.3994291619141
-- Original Stan SHA-256: cabef66313b5b1568716951892387134a46d92865a84710445970cc69bda163a
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

@@ -1,37 +1,6 @@
-"""
-Model: Autoregressive Moving Average
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/arma11.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/arma11.py
-Upstream catalogue contributor: Mans Magnusson
-Description: An ARMA(1, 1) time series model.
+"""Autoregressive Moving Average.
 
-Data: arma (upstream posterior: arma-arma11)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/arma.json.zip
-    Archive SHA-256: 354e7d7bb05ee08a3deeac45ce1d92ae11964a696b933ba82a3a0cfe134eb45a
-    Local archive: data/posteriordb_arma.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/arma-arma11.json
-Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/arma
-
-Implementation notes:
-Gaussian ARMA(1, 1) from the posteriordb arma11 probability model.
-
-The initial prediction uses mu + phi * mu and zero previous error.
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
-
-Stan comparison:
-- A: Stan = -201.58685607383327; PyMC = -200.8937089553195.
-- B: Stan = -270.99531028711385; PyMC = -270.3021631686002.
-- Raw delta: Stan = -69.40845421328058; PyMC = -69.40845421328069.
-- Raw comparison: MATCH; residual = 1.1368683772161603e-13.
-- Tolerance: 1.6940845421328068e-06
-- HalfCauchy versus a Cauchy density on positive sigma contributes only log(2).
-- Original Stan SHA-256: aa713e50a5154ab9efda30f2b5fe320d6a77510434ff73cef6708cbf72d1fae8
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

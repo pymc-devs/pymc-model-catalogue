@@ -1,37 +1,6 @@
-"""
-Model: Multiple Factor Level Predictors Linear Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_mom_work.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/kidscore_mom_work.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/kidscore_mom_work.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: kid_score ~ as.factor(mom_work)
+"""Multiple Factor Level Predictors Linear Model.
 
-Data: kidiq_with_mom_work (upstream posterior: kidiq_with_mom_work-kidscore_mom_work)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/kidiq_with_mom_work.json.zip
-    Archive SHA-256: 0c82d40ace4c75bba4bc8824d4ece044e1d5f8700d479ea672001ab475254913
-    Local archive: data/posteriordb_kidiq_with_mom_work.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/kidiq_with_mom_work-kidscore_mom_work.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/kidscore_momwork.stan
-
-Implementation notes:
-Native child-score work-category regression from Gelman and Hill (2006), Chapter 4.
-
-Work category one is the reference. The coefficients and positive noise scale have constant densities.
-
-Stan comparison:
-- A: Stan = -3489148.4822633765; PyMC = -3489148.4822633765.
-- B: Stan = -1357896.0004124728; PyMC = -1357896.0004124732.
-- Raw delta: Stan = 2131252.4818509035; PyMC = 2131252.4818509035.
-- Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 0.021313524818509035
-- Original Stan SHA-256: fe41ba28792cddf91df4f46e5b48c2bcf33c0f1a193148fc36b4a52483640d27
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

@@ -1,41 +1,6 @@
-"""
-Model: BYM2 model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/bym2_offset_only.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/bym2_offset_only.py
-Upstream catalogue contributor: Keane Nguyen
-Description: The BYM2 model was proposed by Riebler et al 2016, following Simpson 2014. Like the BYM
-    model, it includes two random effects components, and like the alternative Leroux (1999) model,
-    it places a single precision (scale) parameter on the combined components, and a mixing
-    parameter for the amount of spatial/non-spatial variation.
+"""BYM2 model.
 
-Data: traffic_accident_nyc (upstream posterior: traffic_accident_nyc-bym2_offset_only)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/traffic_accident_nyc.json.zip
-    Archive SHA-256: f63246ccbdaaf129fb20f27c0f65f5a32b87cda8e53dfb211bcc78618799bebc
-    Local archive: data/posteriordb_traffic_accident_nyc.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/traffic_accident_nyc-bym2_offset_only.json
-Reference URL: https://github.com/stan-dev/example-models/tree/master/knitr/car-iar-poisson
-Reference URL: https://mc-stan.org/users/documentation/case-studies/icar_stan.html
-
-Implementation notes:
-Native BYM2 Poisson model from the posteriordb spatial case study.
-
-The ICAR law retains the published soft sum constraint.
-Source: https://mc-stan.org/users/documentation/case-studies/icar_stan.html
-
-Stan comparison:
-- A: Stan = -6434575.605012348; PyMC = -6434574.9118651245.
-- B: Stan = -7250370.332527916; PyMC = -7250369.639380687.
-- Raw delta: Stan = -815794.727515568; PyMC = -815794.7275155624.
-- Raw comparison: MATCH; residual = -5.587935447692871e-09.
-- Tolerance: 0.00815894727515568
-- HalfNormal versus a Normal density on positive sigma contributes only log(2).
-- Original Stan SHA-256: 0137ba98292c5dfeeb4cefa006a740f6d362fcf87ca02aa7b668b3040147ead1
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

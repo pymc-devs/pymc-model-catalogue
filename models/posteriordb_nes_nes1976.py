@@ -1,37 +1,6 @@
-"""
-Model: Multiple Predictor Linear Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/nes.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/nes.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + gender +
-    income
+"""Multiple Predictor Linear Model.
 
-Data: nes1976 (upstream posterior: nes1976-nes)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/nes1976.json.zip
-    Archive SHA-256: 22198de6ae1a6f2f1002b7c25a2eb7bf1c78f473839b9e942e7b604c375fd1cf
-    Local archive: data/posteriordb_nes1976.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/nes1976-nes.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/nes.stan
-
-Implementation notes:
-Native Gaussian regression for National Election Study party identification.
-
-Source: Gelman and Hill (2006), ARM.
-
-Stan comparison:
-- A: Stan = -13661.767182168329; PyMC = -13661.767182168349.
-- B: Stan = -15645.227658532078; PyMC = -15645.22765853205.
-- Raw delta: Stan = -1983.460476363749; PyMC = -1983.4604763637017.
-- Raw comparison: MATCH; residual = -4.729372449219227e-11.
-- Tolerance: 2.083460476363749e-05
-- Original Stan SHA-256: 260e7acec9bef905cae306ff6defb97e525c116f018aba9c687af154c10c8e70
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

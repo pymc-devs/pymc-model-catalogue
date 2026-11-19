@@ -1,39 +1,6 @@
-"""
-Model: Generalized Linear Mixed Effects Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/election88_full.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/election88_full.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/election88_full.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: y ~ logistic(black + female + v_prev_full + (1 | age) + (1 | age_edu) + (1 | state) +
-    (1 | region_full))
+"""Generalized Linear Mixed Effects Model.
 
-Data: election88 (upstream posterior: election88-election88_full)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/election88.json.zip
-    Archive SHA-256: a25fb13eb7f8db80bfc519b5baecc5ecfa3c7efec9ba6912f156bf472aaa1c7c
-    Local archive: data/posteriordb_election88.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/election88-election88_full.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.14/election88_full.stan
-
-Implementation notes:
-Native crossed logistic effects from posteriordb election88_full.
-
-Stan comparison:
-- A: Stan = -8556.772621101387; PyMC = -8579.798472670835.
-- B: Stan = -8628.412684196437; PyMC = -8651.438535765885.
-- Raw delta: Stan = -71.64006309505021; PyMC = -71.64006309505021.
-- Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1.716400630950502e-06
-- Categorical indices are shifted from Stan one-based to NumPy zero-based.
-- The five Uniform(0,100) scale normalizers are parameter-independent relative to the
-  original Stan bounded scales.
-- Original Stan SHA-256: cc0cac4d2d729adf98d1b12d06db2fa53327e3fc3bc700a1e7f28b3690ef858d
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

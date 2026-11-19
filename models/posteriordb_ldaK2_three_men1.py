@@ -1,37 +1,6 @@
-"""
-Model: LDA with 2 topics
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/ldaK2.stan
-Authors: Blei, David M and Ng, Andrew Y and Jordan, Michael I (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/ldaK2.py
-Upstream catalogue contributor: Mans Magnusson
-Description: Latent Dirichlet Allocation (LDA) with token indicators marginalized out and 2 topics.
+"""LDA with 2 topics.
 
-Data: three_men1 (upstream posterior: three_men1-ldaK2)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/three_men1.json.zip
-    Archive SHA-256: ffbd94deb93edfb92291a5681749b12345fa398e6a599cded70c1d9dbc684d5a
-    Local archive: data/posteriordb_three_men1.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/three_men1-ldaK2.json
-References: blei2003latent (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://mc-stan.org/docs/2_18/stan-users-guide/latent-dirichlet-allocation.html
-
-Implementation notes:
-Latent Dirichlet allocation with two topics and uniform simplex densities.
-
-Source: Blei, Ng, and Jordan (2003), as specified by posteriordb.
-
-Stan comparison:
-- A: Stan = -25362.424083896924; PyMC = -25362.42408389695.
-- B: Stan = -25345.140012056734; PyMC = -25345.14001205677.
-- Raw delta: Stan = 17.284071840189426; PyMC = 17.284071840178513.
-- Raw comparison: MATCH; residual = 1.0913936421275139e-11.
-- Tolerance: 1.1728407184018942e-06
-- Document and word indices shift from one-based to zero-based.
-- Original Stan SHA-256: 2b943b45446d68148c94c9089ee17f45597eb839e0cd4f94410a817f787327d5
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

@@ -1,36 +1,6 @@
-"""
-Model: Mixed Model to Predict Population Size with Random Site and Year Effects
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/GLMM_Poisson_model.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/GLMM_Poisson_model.py
-Authors: M Kery, M Schaub (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/GLMM_Poisson_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: A GLMM for modeling peregrine population size with a random effect being the site and
-    year of observation using the Poisson distribution to model counts.
+"""Mixed Model to Predict Population Size with Random Site and Year Effects.
 
-Data: GLMM_Poisson_data (upstream posterior: GLMM_Poisson_data-GLMM_Poisson_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/GLMM_Poisson_data.json.zip
-    Archive SHA-256: d44a8283544156f540a3fa0240748977fa9ac7d8b6bdf895155da315f8508cd3
-    Local archive: data/posteriordb_GLMM_Poisson_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/GLMM_Poisson_data-GLMM_Poisson_model.json
-References: kery2011population (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/blob/master/BPA/Ch.04
-
-Implementation notes:
-Native cubic Poisson mixed model from posteriordb GLMM_Poisson_model.
-
-Stan comparison:
-- A: Stan = -26260.430777006368; PyMC = -26260.430777173864.
-- B: Stan = -22924.862764090765; PyMC = -22924.86276425826.
-- Raw delta: Stan = 3335.5680129156026; PyMC = 3335.5680129156026.
-- Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 3.435568012915602e-05
-- Original Stan SHA-256: bd3319630a41a6b52656e5e10c968efb89f21230576368defea971e87fd4f9be
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

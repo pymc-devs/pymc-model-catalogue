@@ -1,40 +1,6 @@
-"""
-Model: A pooled linear model for the Radon dataset
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_pooled.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/radon_pooled.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/radon_pooled.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A simple pooled linear model.
+"""A pooled linear model for the Radon dataset.
 
-Data: radon_mn (upstream posterior: radon_mn-radon_pooled)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/radon_mn.json.zip
-    Archive SHA-256: 70e5bacffb71955f1fc327f7c491b6bc59b09f40673830da306f1f9f9eb02bc0
-    Local archive: data/posteriordb_radon_mn.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/radon_mn-radon_pooled.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Implementation notes:
-Native radon model from the posteriordb radon case study.
-
-Source: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Stan comparison:
-- A: Stan = -2074.1853621070295; PyMC = -2073.49221499042.
-- B: Stan = -1725.9305325752941; PyMC = -1725.237385458685.
-- Raw delta: Stan = 348.25482953173537; PyMC = 348.25482953173514.
-- Raw comparison: MATCH; residual = 2.2737367544323206e-13.
-- Tolerance: 4.482548295317354e-06
-- County labels are converted from Stan one-based to NumPy zero-based indices.
-- Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
-  the constant log(2).
-- Original Stan SHA-256: 680277f397ca17ab3603fa8acb0042fe547cdedfd19d4bc22aedd40e3ae7d0de
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

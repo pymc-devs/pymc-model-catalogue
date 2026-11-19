@@ -1,41 +1,6 @@
-"""
-Model: Variable slope hiearchical Radon model (centered)
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_variable_slope_centered.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/radon_variable_slope_centered.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A linear model with a global intercept and different regression coefficients using an
-    hiearchical prior. This model uses a centered parametrization.
+"""Variable slope hierarchical Radon model (centered).
 
-Data: radon_mn (upstream posterior: radon_mn-radon_variable_slope_centered)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/radon_mn.json.zip
-    Archive SHA-256: 70e5bacffb71955f1fc327f7c491b6bc59b09f40673830da306f1f9f9eb02bc0
-    Local archive: data/posteriordb_radon_mn.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/radon_mn-radon_variable_slope_centered.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Implementation notes:
-Native radon model from the posteriordb radon case study.
-
-The county hierarchy uses centered Normal effects.
-Source: https://mc-stan.org/users/documentation/case-studies/radon.html
-
-Stan comparison:
-- A: Stan = -1655.5983458105893; PyMC = -1654.212051513419.
-- B: Stan = -1946.2232737183672; PyMC = -1944.836979421197.
-- Raw delta: Stan = -290.6249279077779; PyMC = -290.6249279077779.
-- Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 3.9062492790777785e-06
-- County labels are converted from Stan one-based to NumPy zero-based indices.
-- Each Stan positive-constrained Normal(0,1) SD becomes HalfNormal(1); each contributes
-  the constant log(2).
-- Original Stan SHA-256: 67b12c10b03d91e0e487ab7b072bfb2f9a6539bda62db0329e6e8220965506dc
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

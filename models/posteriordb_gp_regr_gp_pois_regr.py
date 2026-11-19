@@ -1,39 +1,6 @@
-"""
-Model: Gaussian Process regression
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/gp_regr.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/gp_regr.py
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/gp_regr.py
-Upstream catalogue contributor: Mans Magnusson
-Description: One-dimensional Gaussian process Regression using the exponential quadratic covariance
-    function.
+"""Gaussian Process regression.
 
-Data: gp_pois_regr (upstream posterior: gp_pois_regr-gp_regr)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/gp_pois_regr.json.zip
-    Archive SHA-256: 9aaaa9d5694b74e2aefa6d0bd2f0a48637fcb4d455a74b33985e58154f285da9
-    Local archive: data/posteriordb_gp_pois_regr.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/gp_pois_regr-gp_regr.json
-Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/gp_regr
-
-Implementation notes:
-Exact Gaussian-process regression from posteriordb.
-
-The sigma parameter adds variance, not standard deviation, to the diagonal.
-Source: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/gp_regr
-
-Stan comparison:
-- A: Stan = -76.2113812525413; PyMC = -74.82508545021304.
-- B: Stan = -80.3124765261045; PyMC = -78.92618072377616.
-- Raw delta: Stan = -4.101095273563203; PyMC = -4.101095273563118.
-- Raw comparison: MATCH; residual = -8.526512829121202e-14.
-- Tolerance: 1.041010952735632e-06
-- The two HalfNormal versus positive Normal density normalizers are constants.
-- Original Stan SHA-256: bfbba64339a06d6ca5e0619aa0e3bffee2865504ee00768dd999066182db9873
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

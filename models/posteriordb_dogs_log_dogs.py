@@ -1,37 +1,6 @@
-"""
-Model: Logarithmic Mixed Effects Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dogs_log.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/dogs_log.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: y ~ exp(n_avoid + n_shock)
+"""Logarithmic Mixed Effects Model.
 
-Data: dogs (upstream posterior: dogs-dogs_log)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/dogs.json.zip
-    Archive SHA-256: afe0a4a0f7508de3edd7ac52db9370edc744fbfaf4ec857629912d20cb3ed75a
-    Local archive: data/posteriordb_dogs.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/dogs-dogs_log.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.24/dogs_log.stan
-
-Implementation notes:
-Native constrained logistic model from posteriordb dogs_log.
-
-Stan comparison:
-- A: Stan = -730.8670110448141; PyMC = -730.867011044815.
-- B: Stan = -391.2564909183006; PyMC = -391.25649091830047.
-- Raw delta: Stan = 339.61052012651356; PyMC = 339.6105201265145.
-- Raw comparison: MATCH; residual = -9.094947017729282e-13.
-- Tolerance: 4.396105201265145e-06
-- Stan declares beta unconstrained, but the Uniform(-100,0) and Uniform(0,100) prior
-  supports still apply. The feasible center [-0.5,0.5] is chosen solely from support,
-  not engine agreement.
-- Original Stan SHA-256: f0257153c50d7ef91d9958607c159ae9097d622e3d5ed9778cd3be60fd91b56b
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

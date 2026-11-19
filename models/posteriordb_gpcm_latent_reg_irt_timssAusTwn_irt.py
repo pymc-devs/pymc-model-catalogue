@@ -1,60 +1,7 @@
-"""
-Model: Partial credit and generalized partial credit models with latent regression
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/gpcm_latent_reg_irt.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/gpcm_latent_reg_irt.py
-Upstream catalogue contributor: Keane Nguyen
-Description: The PCM (Masters 1982) is used for item response data that features more than two
-    ordered response categories for some or all items. This extends the PCM by including a
-    discrimination term.
+"""Partial credit and generalized partial credit models with latent regression.
 
-Data: timssAusTwn_irt (upstream posterior: timssAusTwn_irt-gpcm_latent_reg_irt)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/timssAusTwn_irt.json.zip
-    Archive SHA-256: c816b0dd6bf45a8522e5930efbfd49dac0f90c129db5232a055bb2ffba9fdcaf
-    Local archive: data/posteriordb_timssAusTwn_irt.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/timssAusTwn_irt-gpcm_latent_reg_irt.json
-Reference URL: https://github.com/danielcfurr/edstan
-Reference URL: https://mc-stan.org/users/documentation/case-studies/pcm_and_gpcm.html
-
-Changes from original:
-- Scale binary covariates by their range, changing the induced coefficient priors
-  on the original covariate scale; see the scaling notes below.
-
-Implementation notes:
-Native generalized partial-credit model with latent regression from edstan.
-Native item-response models from the edstan probability definitions.
-
-Covariate scaling follows Furr (2017), sections 1.1 and 1.3.
-Source: https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html
-
-Binary columns use their range.
-Continuous columns use twice their sample standard deviation, and the intercept stays unchanged.
-
-This corrects the published binary-column counter defect.
-It changes the induced coefficient priors for fims_Aus_Jpn_irt-2pl_latent_reg_irt and timssAusTwn_irt-gpcm_latent_reg_irt.
-The intercept-only science_irt-grsm_latent_reg_irt pair does not change.
-
-Stan comparison:
-- A: Stan = -5187.562842107589; PyMC = -5185.548142726041.
-- B: Stan = -5290.972236161646; PyMC = -5288.961746628744.
-- Raw delta: Stan = -103.40939405405697; PyMC = -103.41360390270256.
-- Raw comparison: MISMATCH; residual = 0.004209848645587044.
-- Additive Stan adjustment changed_student_t_coefficient_prior: A =
-  -0.0028511805874233964; B = -0.007061029243367489.
-- Adjusted Stan delta = -103.41360390271292.
-- Adjusted comparison: MATCH; residual = -1.035971308738226e-11.
-- Tolerance: 2.0341360390271293e-06
-- Append minus the sum to beta_free (and kappa_free when present) for ZeroSumNormal.
-  Fixed prior scale 3 makes the subspace-volume and normalization offsets constant.
-- Original targets differ: binary covariate scaling changes coefficient priors. Map
-  lambda_PyMC=lambda_Stan*scale_PyMC/scale_Stan to preserve physical slopes and latent
-  means; add the StudentT(3) prior difference. The Jacobian is data-only.
-- Original Stan SHA-256: b624e19f288c892778eabc80b4afde9f6822ac9622202787950adf4d5ba6d10b
-
-Benchmark results:
-- Not measured.
+Stan comparison: MISMATCH; MATCH after prior adjustment.
+Different scaling of binary covariates changes the coefficient priors.
 """
 
 import json

@@ -1,44 +1,7 @@
-"""
-Model: Simple SIR model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/sir.stan
-Authors: Grad, Yonatan H and Miller, Joel C and Lipsitch, Marc (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/sir.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A relatively simple susceptible-infected-recovered (SIR) model using the RK45 ODE
-    integrator.
+"""Waterborne susceptible-infected-recovered model.
 
-Data: sir (upstream posterior: sir-sir)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/sir.json.zip
-    Archive SHA-256: 76cb34e20302aa8d5db11804ad1cb5535012fc16a53b6e15915b80a1bb26471d
-    Local archive: data/posteriordb_sir.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/sir-sir.json
-References: grad2012cholera (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/sir
-
-Implementation notes:
-Waterborne SIR dynamics with Poisson incidence and lognormal bacteria counts.
-
-Source: posteriordb sir, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
-Initial compartment sizes and the water concentration constant remain fixed.
-Incidence counts measure susceptible losses between consecutive observation times.
-
-Stan comparison:
-- A: Stan = -9172.264842237479; PyMC = -9169.49208716104.
-- B: Stan = -8161.621032291843; PyMC = -8158.848429295431.
-- Raw delta: Stan = 1010.6438099456354; PyMC = 1010.6436578656085.
-- Raw comparison: MISMATCH; residual = 0.0001520800269645406.
-- Tolerance: 1.1106438099456355e-05
-- Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
-  is applied.
-- Original Stan SHA-256: 7d4cf584bf79ffec37b8adab67067bf544b1e8f62835e49859b2d423dbedb619
-
-Benchmark results:
-- Original: logp = -8849.2832, grad norm = 6315.5231, 14027.6 us/call (5 evals).
-- Frozen: logp = -8849.2832, grad norm = 6315.5231, 12936.7 us/call (5 evals).
-- Local NUMBA validation, including object-mode ODE execution; short timings are indicative.
-- Environment: PyMC 6.4.0+9.gaf565aa28, PyTensor 3.3.8+30.g9a7f24ce0, Numba 0.68.0.
+Stan comparison: MISMATCH.
+Different ODE solvers are a suspected cause; this is not confirmed.
 """
 
 import json

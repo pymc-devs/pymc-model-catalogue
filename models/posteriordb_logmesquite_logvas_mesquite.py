@@ -1,41 +1,6 @@
-"""
-Model: Log-Log Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logmesquite_logvas.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/logmesquite_logvas.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/logmesquite_logvas.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: log(weight) ~ log(canopy.volume) + log(canopy.area) + log(canopy.shape) +
-    log(total.height) + log(density) + group canopy_volume <- diam1 * diam2 * canopy_height
-    canopy_area <- diam1 * diam2 canopy_shape <- diam1 / diam2
+"""Log-Log Model.
 
-Data: mesquite (upstream posterior: mesquite-logmesquite_logvas)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/mesquite.json.zip
-    Archive SHA-256: ec9db3a2e390892473e6172d76386ba9b26c3633a9682532eb34217189dcb0ac
-    Local archive: data/posteriordb_mesquite.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/mesquite-logmesquite_logvas.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/mesquite_vas.stan
-
-Implementation notes:
-Native Gaussian model for log mesquite weight with canopy geometry, height, and density.
-
-Source: Gelman and Hill (2006), ARM.
-
-The likelihood uses the transformed response, without a response Jacobian.
-
-Stan comparison:
-- A: Stan = -888.1385657866779; PyMC = -888.1385657866781.
-- B: Stan = -839.6181961051307; PyMC = -839.6181961051307.
-- Raw delta: Stan = 48.52036968154721; PyMC = 48.520369681547436.
-- Raw comparison: MATCH; residual = -2.2737367544323206e-13.
-- Tolerance: 1.4852036968154742e-06
-- Original Stan SHA-256: e0fdd63267a96b0701b09bdddf7b54256ea0850569d380b158d5864f780bd311
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

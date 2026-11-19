@@ -1,40 +1,7 @@
-"""
-Model: Latent Trait Model for Multiple Ordered Categorical Responses
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/bones_model.stan
-Authors: Alex F. Roche and Howard Wainer and David Thissen (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/bones_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: Model to predict skeletal age by calibrating 34 indicators of skeletal maturity.
+"""Latent Trait Model for Multiple Ordered Categorical Responses.
 
-Data: bones_data (upstream posterior: bones_data-bones_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/bones_data.json.zip
-    Archive SHA-256: bbb0539b10740c5863fd2329e6496b38bb34f7a175b67ec7fb368fbfdb1ed62e
-    Local archive: data/posteriordb_bones_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/bones_data-bones_model.json
-References: roche1975rwt (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/bugs_examples/vol1/bones
-Reference URL: http://www.mrc-bsu.cam.ac.uk/wp-content/uploads/WinBUGS_Vol1.pdf
-
-Implementation notes:
-Native skeletal maturity model from the BUGS bones example.
-
-Missing grades do not contribute a likelihood factor.
-
-Stan comparison:
-- A: Stan = -1639.9838350060193; PyMC = -1639.9838353052326.
-- B: Stan = -1650.3197544900816; PyMC = -1650.319761646184.
-- Raw delta: Stan = -10.335919484062288; PyMC = -10.335926340951346.
-- Raw comparison: MISMATCH; residual = 6.8568890583264874e-06.
-- Tolerance: 1.1033592634095134e-06
-- Stan's categories 1..ncat become PyMC categories 0..ncat-1. PyMC OrderedLogistic
-  eta=delta*theta and cutpoints delta*gamma reproduce Stan's differences of
-  inv_logit(delta*(theta-gamma)).
-- Original Stan SHA-256: 0d478060e879cf4c26f5a5d8eafb2de3e166a1d9e581999c26c00d3a002cf2c4
-
-Benchmark results:
-- Not measured.
+Stan comparison: MISMATCH.
+The numerical discrepancy remains unexplained.
 """
 
 import json

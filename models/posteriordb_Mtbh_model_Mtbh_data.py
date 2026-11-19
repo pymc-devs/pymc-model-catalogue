@@ -1,39 +1,6 @@
-"""
-Model: Capture-recapture model where detection probability varies by occasion
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Mtbh_model.stan
-Authors: M Kery, M Schaub (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/Mtbh_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: The model Mtbh estimates the size of a closed population from capture-recapture data
-    which has additive effects of time, behavior, and individual heterogeneity on the detection
-    probability of a species
+"""Capture-recapture model with time, behavioral and individual detection effects.
 
-Data: Mtbh_data (upstream posterior: Mtbh_data-Mtbh_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/Mtbh_data.json.zip
-    Archive SHA-256: 5a81ee8ba4e3723f63b053e258a6762f89c4809b351cd133820abb4a46a9f273
-    Local archive: data/posteriordb_Mtbh_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/Mtbh_data-Mtbh_model.json
-References: kery2011population (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/blob/master/BPA/Ch.06
-
-Implementation notes:
-Detection has additive occasion, behavior, and individual effects on log odds.
-
-Source: Kéry and Schaub (2011), chapter 6.
-
-Stan comparison:
-- A: Stan = -348.2499600792822; PyMC = -349.3485724197596.
-- B: Stan = -343.17282999664394; PyMC = -344.27144233712136.
-- Raw delta: Stan = 5.077130082638234; PyMC = 5.077130082638234.
-- Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1.0507713008263823e-06
-- PyMC's sigma Uniform(0,3) contributes only the constant -log(3).
-- Original Stan SHA-256: 97c151a4cccca051c09de3dc1e66fe42980be9c850503db089e2bb8e7a16b451
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

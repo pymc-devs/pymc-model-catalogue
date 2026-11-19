@@ -1,39 +1,6 @@
-"""
-Model: A Two-Dimensional (unordered) Gaussian Mixture Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/low_dim_gauss_mix_collapse.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/low_dim_gauss_mix_collapse.py
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/low_dim_gauss_mix_collapse.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A Two-Dimensional Gaussian Mixture Model
+"""A Two-Dimensional (unordered) Gaussian Mixture Model.
 
-Data: low_dim_gauss_mix_collapse (upstream posterior: low_dim_gauss_mix_collapse-low_dim_gauss_mix_collapse)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/low_dim_gauss_mix_collapse.json.zip
-    Archive SHA-256: 13bed61589755ffd3824635189191a66d55647dad61942ca0441d8934506c860
-    Local archive: data/posteriordb_low_dim_gauss_mix_collapse.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/low_dim_gauss_mix_collapse-low_dim_gauss_mix_collapse.json
-Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/low_dim_gauss_mix_collapse
-
-Implementation notes:
-Two-component Gaussian mixture with unrestricted means.
-
-Source: posteriordb low_dim_gauss_mix_collapse model metadata at revision 91027f9.
-This named variant keeps both label permutations and does not order the means.
-
-Stan comparison:
-- A: Stan = -1789.561133899328; PyMC = -1788.1748396462788.
-- B: Stan = -1687.6652702311083; PyMC = -1686.2789759780596.
-- Raw delta: Stan = 101.89586366821982; PyMC = 101.89586366821914.
-- Raw comparison: MATCH; residual = 6.821210263296962e-13.
-- Tolerance: 2.018958636682198e-06
-- HalfNormal scale normalizers differ from positive Normal densities only by two log(2)
-  constants.
-- Original Stan SHA-256: 5aef8bff324b2c25497ef2920153ca6359d1cb846468552b1c9a40e9970b0d52
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

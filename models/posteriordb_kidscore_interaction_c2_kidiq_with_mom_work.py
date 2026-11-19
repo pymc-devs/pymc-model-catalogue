@@ -1,38 +1,6 @@
-"""
-Model: Multiple Interacting Predictors Conventionally Centered Linear Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_interaction_c2.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/kidscore_interaction_c2.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/kidscore_interaction_c2.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: kid_score ~ c2_mom_hs + c2_mom_iq + c2_mom_hs:c2_mom_iq, c2_mom_hs <- mom_hs - 0.5,
-    c2_mom_iq <- mom_iq - 100
+"""Multiple Interacting Predictors Conventionally Centered Linear Model.
 
-Data: kidiq_with_mom_work (upstream posterior: kidiq_with_mom_work-kidscore_interaction_c2)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/kidiq_with_mom_work.json.zip
-    Archive SHA-256: 0c82d40ace4c75bba4bc8824d4ece044e1d5f8700d479ea672001ab475254913
-    Local archive: data/posteriordb_kidiq_with_mom_work.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/kidiq_with_mom_work-kidscore_interaction_c2.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/kidiq_interaction_c2.stan
-
-Implementation notes:
-Native reference-centered child-score interaction regression from Gelman and Hill (2006), Chapter 4.
-
-Education centers at 0.5 and IQ centers at 100. The coefficients and positive noise scale have constant densities.
-
-Stan comparison:
-- A: Stan = -866198.4706636631; PyMC = -866198.4706636635.
-- B: Stan = -1876522.7716739054; PyMC = -1876522.7716739047.
-- Raw delta: Stan = -1010324.3010102423; PyMC = -1010324.3010102413.
-- Raw comparison: MATCH; residual = -1.0477378964424133e-09.
-- Tolerance: 0.010104243010102423
-- Original Stan SHA-256: f0e2de7b978b8ee263d3aa5fccdc4170e2f4d0678af5d6b8a0090162d084e9be
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

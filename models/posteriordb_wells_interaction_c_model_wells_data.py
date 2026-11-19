@@ -1,39 +1,7 @@
-"""
-Model: 2-Predictor logistic regression model with interactions and centered inputs for decision to switch wells
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/wells_interaction_c_model.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/wells_interaction_c_model.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/wells_interaction_c_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: Performs logistic regression using two predictors (distance from nearest safe well and
-    arsenic levels) and their interaction with centered input variables.
+"""2-Predictor logistic regression model with interactions and centered inputs for decision
+to switch wells.
 
-Data: wells_data (upstream posterior: wells_data-wells_interaction_c_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/wells_data.json.zip
-    Archive SHA-256: 0ecd7efe3e64c63d849c562e61658fe322509942a882bc515176e016cc57c969
-    Local archive: data/posteriordb_wells_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/wells_data-wells_interaction_c_model.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/ARM/Ch.5
-
-Implementation notes:
-Native well-switching logistic regression from Gelman and Hill (2006), Chapter 5.
-
-All coefficient densities are constant. Distance and arsenic use their sample means for centering.
-Distance uses hundreds of meters.
-
-Stan comparison:
-- A: Stan = -2175.192592127743; PyMC = -2175.1925921277434.
-- B: Stan = -2055.182483293224; PyMC = -2055.182483293224.
-- Raw delta: Stan = 120.01010883451909; PyMC = 120.01010883451954.
-- Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- Tolerance: 2.2001010883451956e-06
-- Original Stan SHA-256: 6e288f00a6d9acc05a2eaeb3f298797a3afd36800f8500928aaf3f23a1e6fee0
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

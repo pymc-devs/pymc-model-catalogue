@@ -1,39 +1,6 @@
-"""
-Model: Multiple Predictors Log-Log Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logearn_logheight_male.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/logearn_logheight_male.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/logearn_logheight_male.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: log(earn) ~ log(height) + male
+"""Multiple Predictors Log-Log Model.
 
-Data: earnings (upstream posterior: earnings-logearn_logheight_male)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/earnings.json.zip
-    Archive SHA-256: 06a67aa61a99d59aee057486dae51ffad6b4f887e7f8f17733739cf893af312f
-    Local archive: data/posteriordb_earnings.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/earnings-logearn_logheight_male.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/logearn_logheight.stan
-
-Implementation notes:
-Native Gaussian model for log earnings, log height, and sex.
-
-Source: Gelman and Hill (2006), ARM.
-
-The likelihood uses the transformed response, without a response Jacobian.
-
-Stan comparison:
-- A: Stan = -41526.19797084844; PyMC = -41526.19797084852.
-- B: Stan = -40580.409830456476; PyMC = -40580.40983045639.
-- Raw delta: Stan = 945.7881403919673; PyMC = 945.7881403921347.
-- Raw comparison: MATCH; residual = -1.673470251262188e-10.
-- Tolerance: 1.0457881403921347e-05
-- Original Stan SHA-256: 8855b00850ebc51d2ce10d58f0b8d212153e21f0b7c8bd5601e367282c798255
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

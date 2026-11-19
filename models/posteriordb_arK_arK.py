@@ -1,38 +1,6 @@
-"""
-Model: Autoregressive-5 model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/arK.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/arK.py
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/arK.py
-Upstream catalogue contributor: Mans Magnusson
-Description: An AR(5) time series model.
+"""Autoregressive-5 model.
 
-Data: arK (upstream posterior: arK-arK)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/arK.json.zip
-    Archive SHA-256: 6f2acbacb04655927bfc9173c42e51fc330bf08c6184242a62b7e39c22abe410
-    Local archive: data/posteriordb_arK.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/arK-arK.json
-Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/arK
-
-Implementation notes:
-Conditional autoregression from the posteriordb arK probability model.
-
-The first K observations condition the likelihood and have no density factor.
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
-
-Stan comparison:
-- A: Stan = -233.33159578143048; PyMC = -232.63844881898444.
-- B: Stan = -213.5590502472479; PyMC = -212.86590328480204.
-- Raw delta: Stan = 19.77254553418257; PyMC = 19.7725455341824.
-- Raw comparison: MATCH; residual = 1.7053025658242404e-13.
-- Tolerance: 1.1977254553418258e-06
-- HalfCauchy versus a Cauchy density on positive sigma contributes only log(2).
-- Original Stan SHA-256: fd5c71a891f648de3b9b65e2a65885c974fd9478b0a137b6b229f76ff4e01de6
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

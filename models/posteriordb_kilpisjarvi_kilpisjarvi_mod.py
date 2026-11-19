@@ -1,38 +1,6 @@
-"""
-Model: Multiple Highly Correlated Predictors Linear Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kilpisjarvi.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/kilpisjarvi.py
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/kilpisjarvi.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: y ~ x
+"""Multiple Highly Correlated Predictors Linear Model.
 
-Data: kilpisjarvi_mod (upstream posterior: kilpisjarvi_mod-kilpisjarvi)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/kilpisjarvi_mod.json.zip
-    Archive SHA-256: 232e8c55bbe5c07b79b0b28c92917f71711c713579292a2f40a50bda279d968e
-    Local archive: data/posteriordb_kilpisjarvi_mod.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/kilpisjarvi_mod-kilpisjarvi.json
-References: bales2019selecting (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/bbbales2/cmdstan-warmup/develop/examples/kilpisjarvi/kilpisjarvi.stan
-
-Implementation notes:
-Gaussian temperature regression from the posteriordb kilpisjarvi probability model.
-
-The observation scale has the source model's improper positive flat density.
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
-
-Stan comparison:
-- A: Stan = -381768.952124134; PyMC = -381768.95212419797.
-- B: Stan = -45519254.86296274; PyMC = -45519254.86296279.
-- Raw delta: Stan = -45137485.910838604; PyMC = -45137485.91083859.
-- Raw comparison: MATCH; residual = -1.4901161193847656e-08.
-- Tolerance: 0.451375859108386
-- Original Stan SHA-256: 49c1f6d1d7a12595957549ffac0159496c7216037dd07e7ff345e088394aba0a
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

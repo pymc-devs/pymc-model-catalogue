@@ -1,38 +1,6 @@
-"""
-Model: Inferring the Return Rate and Number of Surveys from Observed Returns
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Survey_model.stan
-Authors: M D Lee, E Wagenmakers (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/Survey_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: Inference for the joint probability distribution of the rate of return and the number
-    of surveys by observing the number of returned surveys.
+"""Inferring the Return Rate and Number of Surveys from Observed Returns.
 
-Data: Survey_data (upstream posterior: Survey_data-Survey_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/Survey_data.json.zip
-    Archive SHA-256: cd837313fec3609c673256cb74fe5b9786e4c3e08bb6cd827dc14b2574653757
-    Local archive: data/posteriordb_Survey_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/Survey_data-Survey_model.json
-References: lee2013cognitive (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/Bayesian_Cognitive_Modeling/ParameterEstimation/Binomial
-
-Implementation notes:
-The survey count has a discrete uniform distribution over one through nmax.
-
-Source: Lee and Wagenmakers (2013), binomial rate examples.
-Exact enumeration integrates the shared survey count across all observed returns.
-
-Stan comparison:
-- A: Stan = -18.464896079409947; PyMC = -18.46489607940993.
-- B: Stan = -18.92216108259801; PyMC = -18.92216108259803.
-- Raw delta: Stan = -0.45726500318806274; PyMC = -0.4572650031881018.
-- Raw comparison: MATCH; residual = 3.907985046680551e-14.
-- Tolerance: 1.004572650031881e-06
-- Original Stan SHA-256: 6253492299891332a7746d44976a161a2a557816ef177d68ddedaa703a144f87
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

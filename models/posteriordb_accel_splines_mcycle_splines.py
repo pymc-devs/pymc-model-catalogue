@@ -1,48 +1,7 @@
-"""
-Model: Splines for time-series data with varying mean and std
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/accel_splines.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/accel_splines.py
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/accel_splines.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: accel ~ s(times, k=40), sigma ~ s(times, k=40)
+"""Spline model for acceleration mean and standard deviation.
 
-Data: mcycle_splines (upstream posterior: mcycle_splines-accel_splines)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/mcycle_splines.json.zip
-    Archive SHA-256: bc53c050edd46b86d4a38e460427dbd7efb62d95eeaf08901c6ce2fc4b1d38c7
-    Local archive: data/posteriordb_mcycle_splines.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/mcycle_splines-accel_splines.json
-References: bales2019selecting (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/bbbales2/cmdstan-warmup/blob/develop/examples/accel_splines/
-
-Implementation notes:
-Acceleration spline model from posteriordb and Bales (2019).
-
-The supplied spline matrices define the fixed model basis.
-The unpenalized linear coefficients retain their improper flat priors.
-
-Stan comparison:
-- A: Stan = -161646.16470841187; PyMC = -161641.83664461042.
-- B: Stan = -129349.91842334527; PyMC = -129345.6220514148.
-- Raw delta: Stan = 32296.246285066605; PyMC = 32296.21459319562.
-- Raw comparison: MISMATCH; residual = 0.03169187098683324.
-- Additive Stan adjustment changed_integer_scale_half_student_t_prior: A =
-  4.328063761528535; B = 4.296371890539598.
-- Adjusted Stan delta = 32296.214593195615.
-- Adjusted comparison: MATCH; residual = -3.637978807091713e-12.
-- Tolerance: 0.0003239621459319562
-- In the measured installed PyMC/PyTensor, integer sigma=36 in both HalfStudentT spline-
-  scale priors has dtype int8: sigma**2 overflows to 16. Their native density is
-  therefore HalfStudentT(3,4), not Stan's normalized positive StudentT(3,0,36). The
-  named adjustment adds the two source-derived prior log-density differences to Stan.
-  Original targets differ; this runtime discrepancy is not a best-practice
-  reparameterization. Recheck this adjustment after engine upgrades.
-- Original Stan SHA-256: 9996e181a5d23d8c2a127adfa19c4c1e12051abf91539ce40a14249fc94d8bae
-
-Benchmark results:
-- Not measured.
+Stan comparison: MISMATCH; MATCH after prior adjustment.
+Integer overflow changed the HalfStudentT scale priors in the measured PyMC runtime.
 """
 
 import json

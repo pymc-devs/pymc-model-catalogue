@@ -1,36 +1,6 @@
-"""
-Model: Dugong Age and Length
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dugongs_model.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/dugongs_model.py
-Authors: MRC Biostatistics Unit (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/dugongs_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: Model of age and length data of dugongs using a nonlinear growth curve with no
-    inflection point.
+"""Dugong Age and Length.
 
-Data: dugongs_data (upstream posterior: dugongs_data-dugongs_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/dugongs_data.json.zip
-    Archive SHA-256: 44b80942203caca9546646d14d9adce3f898b5789ecbf4f023ed25790b757b5c
-    Local archive: data/posteriordb_dugongs_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/dugongs_data-dugongs_model.json
-References: mrc2winbugs (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/bugs_examples/vol2
-
-Implementation notes:
-Native growth curve from posteriordb dugongs_model.
-
-Stan comparison:
-- A: Stan = -131.96739041849747; PyMC = -131.96739060844538.
-- B: Stan = -109.4324822421098; PyMC = -109.43248243205778.
-- Raw delta: Stan = 22.534908176387674; PyMC = 22.534908176387603.
-- Raw comparison: MATCH; residual = 7.105427357601002e-14.
-- Tolerance: 1.2253490817638768e-06
-- Original Stan SHA-256: abdf86f018dc0b6e9213222648f3fafc14eae13629769e40cca7490877b05e6b
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

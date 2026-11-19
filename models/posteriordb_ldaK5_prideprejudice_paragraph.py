@@ -1,37 +1,6 @@
-"""
-Model: LDA with 5 topics
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/ldaK5.stan
-Authors: Blei, David M and Ng, Andrew Y and Jordan, Michael I (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/ldaK5.py
-Upstream catalogue contributor: Mans Magnusson
-Description: Latent Dirichlet Allocation (LDA) with token indicators marginalized out.
+"""LDA with 5 topics.
 
-Data: prideprejudice_paragraph (upstream posterior: prideprejudice_paragraph-ldaK5)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/prideprejudice_paragraph.json.zip
-    Archive SHA-256: 8ce84f0b08d2f015180f5521dbe6209a4e36218a64bb6737ffc5b3856fb72c06
-    Local archive: data/posteriordb_prideprejudice_paragraph.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/prideprejudice_paragraph-ldaK5.json
-References: blei2003latent (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://mc-stan.org/docs/2_18/stan-users-guide/latent-dirichlet-allocation.html
-
-Implementation notes:
-Latent Dirichlet allocation with five topics and dataset concentration parameters.
-
-Source: Blei, Ng, and Jordan (2003), as specified by posteriordb.
-
-Stan comparison:
-- A: Stan = -211921.01610942537; PyMC = -211921.01610942508.
-- B: Stan = -211895.96462831134; PyMC = -211895.96462831122.
-- Raw delta: Stan = 25.05148111403105; PyMC = 25.051481113856426.
-- Raw comparison: MATCH; residual = 1.7462298274040222e-10.
-- Tolerance: 1.2505148111403103e-06
-- Document and word indices shift from one-based to zero-based.
-- Original Stan SHA-256: 514ebdd2564b2cbb90f64ba59f252a2a8b4447a6008685b04141ddec820933a6
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

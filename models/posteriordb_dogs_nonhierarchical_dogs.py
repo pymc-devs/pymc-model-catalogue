@@ -1,52 +1,7 @@
-"""
-Model: Non-Hierarchical Logistic Mixed Effects Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/dogs_nonhierarchical.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/dogs_nonhierarchical.py
-Upstream catalogue contributor: Mans Magnusson
-Description: Logistic Mixed Effects Model.
+"""Non-Hierarchical Logistic Mixed Effects Model.
 
-Data: dogs (upstream posterior: dogs-dogs_nonhierarchical)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/dogs.json.zip
-    Archive SHA-256: afe0a4a0f7508de3edd7ac52db9370edc744fbfaf4ec857629912d20cb3ed75a
-    Local archive: data/posteriordb_dogs.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/dogs-dogs_nonhierarchical.json
-
-Changes from original:
-- Use the declared covariance diag(sigma) @ Omega @ diag(sigma), rather than the source row-factor product.
-  This changes the joint prior on the dog effects.
-
-Implementation notes:
-Native correlated dog effects from posteriordb dogs_nonhierarchical.
-
-The covariance is diag(sigma) @ Omega @ diag(sigma), as defined by the source Sigma_logit_ab.
-The source row-factor product does not give that covariance. This model uses the declared covariance.
-Evidence: posterior_database/models/stan/dogs_nonhierarchical.stan, lines 27-32, upstream revision 91027f9.
-
-Stan comparison:
-- A: Stan = -964.1082378541431; PyMC = -962.0262129394036.
-- B: Stan = -871.1298048632541; PyMC = -869.0412251422583.
-- Raw delta: Stan = 92.97843299088902; PyMC = 92.98498779714532.
-- Raw comparison: MISMATCH; residual = -0.006554806256303891.
-- Additive Stan adjustment changed_standard_normal_effect_prior: A =
-  0.002583351320819993; B = 0.009138157577196493.
-- Adjusted Stan delta = 92.9849877971454.
-- Adjusted comparison: MATCH; residual = 7.105427357601002e-14.
-- Tolerance: 1.9298498779714537e-06
-- Original targets differ: Stan uses z @ A, PyMC z @ A.T. Map
-  z_PyMC=solve(A,(z_Stan@A).T).T to preserve dog effects; add the independently computed
-  standard-Normal prior difference.
-- This z mapping has unit Jacobian. rho_unit=(L[1,0]+1)/2 has a constant Jacobian;
-  LKJ(2) and Beta(2,2) then agree up to constants, as do Normal and HalfNormal factors.
-- Original Stan SHA-256: 69dc8063e69d0451f54c5223edbb34e316742f5001a630f251bbab2be074109d
-
-Benchmark results:
-- Original: logp = -922.6830, grad norm = 482.4855, 45.7 us/call (5 evals).
-- Frozen: logp = -922.6830, grad norm = 482.4855, 43.2 us/call (5 evals).
-- Local NUMBA validation; short timings are indicative.
-- Environment: PyMC 6.4.0+9.gaf565aa28, PyTensor 3.3.8+30.g9a7f24ce0, Numba 0.68.0.
+Stan comparison: MISMATCH; MATCH after prior adjustment.
+PyMC's Cholesky orientation changes the dog-effects covariance and joint prior.
 """
 
 import json

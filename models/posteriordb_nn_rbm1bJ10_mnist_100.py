@@ -1,41 +1,6 @@
-"""
-Model: A One Layer Restricted Boltzman Machine Neural Network
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/nn_rbm1bJ10.stan
-Authors: Lampinen, Jouko and Vehtari, Aki (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/nn_rbm1bJ10.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A One Layer Restricted Boltzman Machine Neural Network with added bias and 10 hidden
-    units. The implementation follows that of Lampainen and Vehtari (2001).
+"""A One Layer Restricted Boltzmann Machine Neural Network.
 
-Data: mnist_100 (upstream posterior: mnist_100-nn_rbm1bJ10)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/mnist_100.json.zip
-    Archive SHA-256: b97ac7132c297b47a4976dd5324674de1d57cbc13a259c6390d20c4604c5d37e
-    Local archive: data/posteriordb_mnist_100.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/mnist_100-nn_rbm1bJ10.json
-References: lampinen2001bayesian (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/knitr/neural-nets
-
-Implementation notes:
-One-hidden-layer classification network with ten hidden units.
-
-Source: Lampinen and Vehtari (2001), as specified by posteriordb.
-
-Stan comparison:
-- A: Stan = -6984.3954375624235; PyMC = -6984.395437549347.
-- B: Stan = -6277.298990779531; PyMC = -6277.298990766442.
-- Raw delta: Stan = 707.0964467828926; PyMC = 707.0964467829044.
-- Raw comparison: MATCH; residual = -1.1823431123048067e-11.
-- Tolerance: 8.070964467829044e-06
-- Observed labels shift from 1..K to 0..K-1.
-- Original Stan SHA-256: 2ef44b6ba9b893dadcdcb3f95befe897f492e2f4d67f554307e444beed2f872c
-
-Benchmark results:
-- Original: logp = 127507.2551, grad norm = 3919.2566, 249.2 us/call (5 evals).
-- Frozen: logp = 127507.2551, grad norm = 3919.2566, 272.1 us/call (5 evals).
-- Local NUMBA validation; short timings are indicative.
-- Environment: PyMC 6.4.0+9.gaf565aa28, PyTensor 3.3.8+30.g9a7f24ce0, Numba 0.68.0.
+Stan comparison: MATCH.
 """
 
 import json

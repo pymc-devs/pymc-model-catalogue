@@ -1,38 +1,6 @@
-"""
-Model: Multiple Highly Correlated Predictors Log-Log Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/diamonds.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/diamonds.py
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/diamonds.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: log(price) ~ carat * (log(x) + log(y) + log(z)) + cut + color + clarity
+"""Multiple Highly Correlated Predictors Log-Log Model.
 
-Data: diamonds (upstream posterior: diamonds-diamonds)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/diamonds.json.zip
-    Archive SHA-256: 127d44a642f954b707bec2d82725e168d57a412d59487708794d4a17097f26ba
-    Local archive: data/posteriordb_diamonds.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/diamonds-diamonds.json
-References: bales2019selecting (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/bbbales2/cmdstan-warmup/blob/develop/examples/diamonds
-
-Implementation notes:
-Native Gaussian regression for diamond prices.
-
-Source: Bales et al. (2019), with the ggplot2 diamonds data.
-The intercept has its density at the centered predictor origin.
-
-Stan comparison:
-- A: Stan = -217519.159394572; PyMC = -217519.15939455116.
-- B: Stan = -182886.15666732893; PyMC = -182886.15666730888.
-- Raw delta: Stan = 34633.00272724306; PyMC = 34633.002727242274.
-- Raw comparison: MATCH; residual = 7.8580342233181e-10.
-- Tolerance: 0.00034733002727243065
-- Original Stan SHA-256: b499b08e74598f65a5db338ea31cb9db868d1d56a6f580ddf28280dbe7425657
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

@@ -1,37 +1,6 @@
-"""
-Model: A centered hiearchical model for 8 schools
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/eight_schools_centered.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/eight_schools_centered.py
-Authors: Rubin, Donald B; Gelman, Andrew and Carlin, John B and Stern, Hal S and Dunson, David B and Vehtari, Aki and Rubin, Donald B (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/eight_schools_centered.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A centered hiearchical model for the 8 schools example of Rubin (1981)
+"""A centered hierarchical model for 8 schools.
 
-Data: eight_schools (upstream posterior: eight_schools-eight_schools_centered)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/eight_schools.json.zip
-    Archive SHA-256: 8e37cc01fe05b0e1779255e9bd386261f3d61daf7f75f02f72f38cdc9750531c
-    Local archive: data/posteriordb_eight_schools.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/eight_schools-eight_schools_centered.json
-References: rubin1981estimation, gelman2013bayesian (see posteriordb/source/bibliography/references.bib)
-Reference URL: http://www.stat.columbia.edu/~gelman/arm/examples/schools
-
-Implementation notes:
-Native centered school effects from posteriordb eight_schools_centered.
-
-Stan comparison:
-- A: Stan = -46.57206565751112; PyMC = -45.87891853518809.
-- B: Stan = -43.81356876639853; PyMC = -43.12042164407549.
-- Raw delta: Stan = 2.7584968911125856; PyMC = 2.7584968911125998.
-- Raw comparison: MATCH; residual = -1.4210854715202004e-14.
-- Tolerance: 1.027584968911126e-06
-- Stan tau>0 with Cauchy(0,5) versus PyMC HalfCauchy(5) differs only by the constant
-  log(2).
-- Original Stan SHA-256: ccaf2d7beed22602f62f276cd4096194ab5de5b5c1d6bb2bae9a3655a3845c05
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

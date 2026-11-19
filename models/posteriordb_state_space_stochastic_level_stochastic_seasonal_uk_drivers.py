@@ -1,46 +1,6 @@
-"""
-Model: Structured Time Series model with stochastic level and stochastic seasonal
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/state_space_stochastic_level_stochastic_seasonal.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/state_space_stochastic_level_stochastic_seasonal.py
-Upstream catalogue contributor: Keane Nguyen
-Description: Structured Time Series model with stochastic level and stochastic seasonal
+"""Structured Time Series model with stochastic level and stochastic seasonal.
 
-Data: uk_drivers (upstream posterior: uk_drivers-state_space_stochastic_level_stochastic_seasonal)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/uk_drivers.json.zip
-    Archive SHA-256: fc7459d061bf739debec146026d693c6780adba9baa2fec3f01bcf545ed6fc4b
-    Local archive: data/posteriordb_uk_drivers.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/uk_drivers-state_space_stochastic_level_stochastic_seasonal.json
-Reference URL: https://github.com/sinhrks/stan-statespace/blob/master/models/fig07_02.stan
-
-Implementation notes:
-Seasonal state model from the posteriordb stochastic level model.
-
-The initial eleven seasonal states and regression coefficients have flat densities.
-The level bounds apply to every time point without transition normalization.
-Source: sinhrks/stan-statespace, fig07_02, as specified by posteriordb.
-
-Stan comparison:
-- A: Stan = -890.3549543316059; PyMC = -893.569279107265.
-- B: Stan = -897.3775675171354; PyMC = -900.591892292794.
-- Raw delta: Stan = -7.022613185529508; PyMC = -7.022613185529053.
-- Raw comparison: MATCH; residual = -4.547473508864641e-13.
-- Tolerance: 1.070226131855295e-06
-- Native AR rho=-ones(11) with flat initial eleven states replaces Stan's
-  seasonal[t]~Normal(-sum(previous eleven),sigma[0]); level transitions remain
-  unnormalized Normal factors inside the fixed mean(y)+/-3*sample_sd(y) level bounds.
-- Uniform level normalizers and three HalfStudentT versus positive Student-t scale
-  normalizers are parameter-independent.
-- Shared-support limitation: original Stan points enforce all ordered or positive-
-  ordered constraints. PyMC ordering supplied only by a transform is not separately
-  enforced after transforms are removed. These evaluations compare points on the shared
-  Stan-valid support, not global support or model equivalence.
-- Original Stan SHA-256: f0103754c910380b24d6a6619053eb04fb7ee9f74f4acfa301b6f6234e9b8dec
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

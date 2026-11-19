@@ -1,39 +1,6 @@
-"""
-Model: Interacting Linear Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/kidscore_interaction.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/kidscore_interaction.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/kidscore_interaction.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq
+"""Interacting Linear Model.
 
-Data: kidiq (upstream posterior: kidiq-kidscore_interaction)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/kidiq.json.zip
-    Archive SHA-256: 16d341a99ec8178231eab660d8fda084a44145f6a241daf35276d0192d13b92d
-    Local archive: data/posteriordb_kidiq.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/kidiq-kidscore_interaction.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.3/kidiq_interaction.stan
-
-Implementation notes:
-Native child-score interaction regression from Gelman and Hill (2006), Chapter 3.
-
-The coefficient density is constant. The positive noise scale follows a half-Cauchy law.
-
-Stan comparison:
-- A: Stan = -1265544.0744717761; PyMC = -1265543.381324622.
-- B: Stan = -1672581.928865948; PyMC = -1672581.235718796.
-- Raw delta: Stan = -407037.85439417185; PyMC = -407037.85439417395.
-- Raw comparison: MATCH; residual = 2.0954757928848267e-09.
-- Tolerance: 0.004071378543941739
-- Stan sigma>0 with Cauchy(0,2.5) versus PyMC HalfCauchy(2.5): PyMC-Stan is the constant
-  log(2).
-- Original Stan SHA-256: da69847f12b07ca3e1e77a7e9aa349497dbbe2f0251b94b46c24c51b5309ad91
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

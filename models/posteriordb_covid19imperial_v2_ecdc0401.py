@@ -1,39 +1,6 @@
-"""
-Model: Epidemic model v2 of Flaxman et al (2020)
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/covid19imperial_v2.stan
-Authors: Flaxman, Seth and Mishra, Swapnil and Gandy, Axel and Unwin, H and Coupland, H and Mellan, T and Zhu, H and Berah, T and Eaton, J and Perez Guzman, P and others (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/covid19imperial_v2.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A Bayesian model for estimating intervetion effects in the 2020 covid-19 pandemic.
+"""Epidemic model v2.
 
-Data: ecdc0401 (upstream posterior: ecdc0401-covid19imperial_v2)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/ecdc0401.json.zip
-    Archive SHA-256: 68a300d04fbab1589ea42eba08cffb3592878320182c31fcb2ad4251b81597fe
-    Local archive: data/posteriordb_ecdc0401.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/ecdc0401-covid19imperial_v2.json
-References: flaxman2020report (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/ImperialCollegeLondon/covid19model
-
-Implementation notes:
-Flaxman et al. (2020) intervention renewal model, version 2.
-
-Stan comparison:
-- A: Stan = -149542.47281955343; PyMC = -149541.08652522057.
-- B: Stan = -161867.29561338143; PyMC = -161865.9093190484.
-- Raw delta: Stan = -12324.822793828003; PyMC = -12324.822793827829.
-- Raw comparison: MATCH; residual = -1.7462298274040222e-10.
-- Tolerance: 0.00012424822793828002
-- Stan X[country,day,feature] is transposed only as data to PyMC (day,country,feature);
-  delay convolutions use lag-1 array indices.
-- The random-kappa truncation normalizer for positive mu is explicitly canceled by the
-  PyMC mu_constraint_normalization potential. ifr_noise truncation and HalfNormal
-  phi/kappa change only constants.
-- Original Stan SHA-256: ea0d293199edfe1f06a9bdece810686d9cc98a64bc50fd23da4760a9c0733216
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

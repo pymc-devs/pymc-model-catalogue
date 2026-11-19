@@ -1,39 +1,7 @@
-"""
-Model: Capture-recapture model where detection probability varies by occasion and heterogeneity
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Mth_model.stan
-Authors: M Kery, M Schaub (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/Mth_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: A capture-recapture sampling model where that assumes detection probability p varies by
-    an additive effect of the occasion and heterogeneity of individuals in a capture-history matrix
-    with columns representing time, and rows representing individuals.
+"""Capture-recapture model where detection probability varies by occasion and
+heterogeneity.
 
-Data: Mth_data (upstream posterior: Mth_data-Mth_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/Mth_data.json.zip
-    Archive SHA-256: f011b3a2f88659e8a8850c926b70a7bf0fde98d43d214e3ffdc52e796aafd063
-    Local archive: data/posteriordb_Mth_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/Mth_data-Mth_model.json
-References: kery2011population (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/blob/master/BPA/Ch.06
-
-Implementation notes:
-Detection has additive occasion and individual effects on log odds.
-
-Source: Kéry and Schaub (2011), chapter 6.
-
-Stan comparison:
-- A: Stan = -906.2858929392463; PyMC = -907.8953308817512.
-- B: Stan = -911.5362897761099; PyMC = -913.1457277186146.
-- Raw delta: Stan = -5.250396836863615; PyMC = -5.250396836863388.
-- Raw comparison: MATCH; residual = -2.2737367544323206e-13.
-- Tolerance: 1.052503968368636e-06
-- PyMC's sigma Uniform(0,5) contributes only the constant -log(5).
-- Original Stan SHA-256: 2e84d69443c0961fe478423206d7ce37ed0688640ce4f48e4725f7be74fc1e92
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

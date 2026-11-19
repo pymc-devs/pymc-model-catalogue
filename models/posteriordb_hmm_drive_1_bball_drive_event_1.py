@@ -1,41 +1,6 @@
-"""
-Model: Hidden Markov Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hmm_drive_1.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/hmm_drive_1.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: A Hidden Markov Model with normal distribution for emission probabilities
+"""Hidden Markov Model.
 
-Data: bball_drive_event_1 (upstream posterior: bball_drive_event_1-hmm_drive_1)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/bball_drive_event_1.json.zip
-    Archive SHA-256: 5b4332702c475f94b2d1c651e9ae1bebf155e761f2cc6683879db50129c70f4d
-    Local archive: data/posteriordb_bball_drive_event_1.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/bball_drive_event_1-hmm_drive_1.json
-Reference URL: https://github.com/imadmali/bball-hmm/blob/master/models/drive_1.stan
-
-Implementation notes:
-Native Gaussian drive model from the posteriordb basketball example.
-
-Source: https://github.com/imadmali/bball-hmm
-The initial state weights equal one, as in the published target.
-Ordered transforms preserve the joint support of the emission means.
-
-Stan comparison:
-- A: Stan = -215339.99545139476; PyMC = -215339.99545139473.
-- B: Stan = -239662.78143514544; PyMC = -239662.78143514533.
-- Raw delta: Stan = -24322.785983750684; PyMC = -24322.785983750597.
-- Raw comparison: MATCH; residual = -8.731149137020111e-11.
-- Tolerance: 0.0002442278598375069
-- Shared-support limitation: original Stan points enforce all ordered or positive-
-  ordered constraints. PyMC ordering supplied only by a transform is not separately
-  enforced after transforms are removed. These evaluations compare points on the shared
-  Stan-valid support, not global support or model equivalence.
-- Original Stan SHA-256: 295e47fe6cf70adb9c16af0697fb6f3803aad993c3ee800a34e9b437883abb75
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

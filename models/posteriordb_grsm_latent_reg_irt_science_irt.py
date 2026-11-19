@@ -1,51 +1,6 @@
-"""
-Model: Rating scale and generalized rating scale models with latent regression
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/grsm_latent_reg_irt.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/grsm_latent_reg_irt.py
-Upstream catalogue contributor: Keane Nguyen
-Description: The rating scale model (Andrich 1978) is used for item response data that involves
-    Likert scale responses. This model extends the RSM by including a discrimination term
+"""Rating scale and generalized rating scale models with latent regression.
 
-Data: science_irt (upstream posterior: science_irt-grsm_latent_reg_irt)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/science_irt.json.zip
-    Archive SHA-256: bf16e6dde8512ac993be8d8ebc2bf151f36dbe5524ec6a91dafed58f3cb7c7c7
-    Local archive: data/posteriordb_science_irt.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/science_irt-grsm_latent_reg_irt.json
-Reference URL: https://github.com/danielcfurr/edstan
-Reference URL: https://mc-stan.org/users/documentation/case-studies/rsm_and_grsm.html
-
-Changes from original:
-- Use the documented covariate scaling; the bundled intercept-only dataset is unaffected.
-
-Implementation notes:
-Native generalized rating-scale model with latent regression from edstan.
-Native item-response models from the edstan probability definitions.
-
-Covariate scaling follows Furr (2017), sections 1.1 and 1.3.
-Source: https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html
-
-Binary columns use their range.
-Continuous columns use twice their sample standard deviation, and the intercept stays unchanged.
-
-This corrects the published binary-column counter defect.
-It changes the induced coefficient priors for fims_Aus_Jpn_irt-2pl_latent_reg_irt and timssAusTwn_irt-gpcm_latent_reg_irt.
-The intercept-only science_irt-grsm_latent_reg_irt pair does not change.
-
-Stan comparison:
-- A: Stan = -4234.376571594136; PyMC = -4230.3414701054735.
-- B: Stan = -4284.753997951464; PyMC = -4280.718896462794.
-- Raw delta: Stan = -50.37742635732775; PyMC = -50.37742635732047.
-- Raw comparison: MATCH; residual = -7.275957614183426e-12.
-- Tolerance: 1.5037742635732774e-06
-- Append minus the sum to beta_free (and kappa_free when present) for ZeroSumNormal.
-  Fixed prior scale 3 makes the subspace-volume and normalization offsets constant.
-- Original Stan SHA-256: 88399731bf82063c69f6b0bead80a3fba0966e6d85ade9729fde54e853b459e5
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

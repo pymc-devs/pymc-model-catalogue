@@ -1,36 +1,6 @@
-"""
-Model: Hierarchical Loss Curve Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/losscurve_sislob.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/losscurve_sislob.py
-Upstream catalogue contributor: Keane Nguyen
-Description: Hierarchical Loss Curve Model
+"""Hierarchical Loss Curve Model.
 
-Data: loss_curves (upstream posterior: loss_curves-losscurve_sislob)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/loss_curves.json.zip
-    Archive SHA-256: 6ebe3be18c1e0459d1b3487bcf770116ea0ec2d59229e0e4604c29b4a2df7d0f
-    Local archive: data/posteriordb_loss_curves.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/loss_curves-losscurve_sislob.json
-Reference URL: https://mc-stan.org/users/documentation/case-studies/losscurves_casestudy.html
-
-Implementation notes:
-Hierarchical loss development from the posteriordb losscurve_sislob model.
-
-The data select Weibull or log-logistic cumulative growth.
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
-
-Stan comparison:
-- A: Stan = -574.1474428807884; PyMC = -574.1474428731698.
-- B: Stan = -556.634734886495; PyMC = -556.6347348788763.
-- Raw delta: Stan = 17.51270799429335; PyMC = 17.512707994293464.
-- Raw comparison: MATCH; residual = -1.1368683772161603e-13.
-- Tolerance: 1.1751270799429345e-06
-- Original Stan SHA-256: b7e3d55e53d230a391b87e03fc9eec6007322a79ddec748ac1a4dee1741bc4b4
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

@@ -1,40 +1,6 @@
-"""
-Model: Inferring population size considering immediate trap-response
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/Mb_model.stan
-Authors: M Kery, M Schaub (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/Mb_model.py
-Upstream catalogue contributor: Kane Lindsay
-Description: Capture-recapture population model where capture probability is modeled by a different
-    parameter for p depending on whether an animal was caught immediately before or not.
+"""Inferring population size considering immediate trap-response.
 
-Data: Mb_data (upstream posterior: Mb_data-Mb_model)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/Mb_data.json.zip
-    Archive SHA-256: b660877ec0e637f0bbabdafced903e814c4d3f4aca765185c23dae9c4f6bdcfd
-    Local archive: data/posteriordb_Mb_data.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/Mb_data-Mb_model.json
-References: kery2011population (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/blob/master/BPA/Ch.06
-
-Implementation notes:
-Detection depends on capture at the previous occasion.
-
-Source: Kéry and Schaub (2011), chapter 6.
-
-Stan comparison:
-- A: Stan = -801.2928365793337; PyMC = -801.2928365793337.
-- B: Stan = -785.5224343593771; PyMC = -785.5224343593771.
-- Raw delta: Stan = 15.770402219956509; PyMC = 15.770402219956509.
-- Raw comparison: MATCH; residual = 0.0.
-- Tolerance: 1.1577040221995651e-06
-- Original Stan SHA-256: fd8975a0bd29c338066cee715a3aeda704382daef4f4db30ffc4deb9f018b43f
-
-Benchmark results:
-- Original: logp = -802.2076, grad norm = 84.2924, 38.5 us/call (5 evals).
-- Frozen: logp = -802.2076, grad norm = 84.2924, 63.3 us/call (5 evals).
-- Local NUMBA validation; short timings are indicative.
-- Environment: PyMC 6.4.0+9.gaf565aa28, PyTensor 3.3.8+30.g9a7f24ce0, Numba 0.68.0.
+Stan comparison: MATCH.
 """
 
 import json

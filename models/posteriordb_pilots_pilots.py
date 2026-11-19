@@ -1,40 +1,6 @@
-"""
-Model: Linear Mixed Effects Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/pilots.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/pilots.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/pilots.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: y ~ 1 + (1 | group) + (1 | scenario))
+"""Linear Mixed Effects Model.
 
-Data: pilots (upstream posterior: pilots-pilots)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/pilots.json.zip
-    Archive SHA-256: b596d205c5393b61e923bb6d920c3a39f1c22b3968f7e86925a931c9006cc6f9
-    Local archive: data/posteriordb_pilots.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/pilots-pilots.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.14/pilots.stan
-
-Implementation notes:
-Native crossed Gaussian effects for pilot groups and scenarios.
-
-Source: Gelman and Hill (2006).
-The group and scenario effects retain their centered parameterization.
-
-Stan comparison:
-- A: Stan = -255.80167956170123; PyMC = -269.6171903115181.
-- B: Stan = -259.8135650165997; PyMC = -273.6290757664166.
-- Raw delta: Stan = -4.011885454898447; PyMC = -4.011885454898504.
-- Raw comparison: MATCH; residual = 5.684341886080802e-14.
-- Tolerance: 1.040118854548985e-06
-- One-based group/scenario indices become zero-based. Implicit Stan (0,100) priors
-  versus three PyMC Uniforms add only -3*log(100).
-- Original Stan SHA-256: 4bf2c1e00ab66ce90a014b1f48ee7d129601b93783f0cb850b5dacc5109fae19
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

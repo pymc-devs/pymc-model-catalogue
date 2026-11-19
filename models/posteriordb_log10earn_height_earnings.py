@@ -1,39 +1,6 @@
-"""
-Model: One Predictor Log10-linear Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/log10earn_height.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/log10earn_height.py
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/log10earn_height.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: log10(earn) ~ height
+"""One Predictor Log10-linear Model.
 
-Data: earnings (upstream posterior: earnings-log10earn_height)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/earnings.json.zip
-    Archive SHA-256: 06a67aa61a99d59aee057486dae51ffad6b4f887e7f8f17733739cf893af312f
-    Local archive: data/posteriordb_earnings.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/earnings-log10earn_height.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/log10earn_height.stan
-
-Implementation notes:
-Native Gaussian model for base-ten log earnings and height.
-
-Source: Gelman and Hill (2006), ARM.
-
-The likelihood uses the transformed response, without a response Jacobian.
-
-Stan comparison:
-- A: Stan = -6910.397305276828; PyMC = -6910.397305276836.
-- B: Stan = -185649.29039842458; PyMC = -185649.2903984243.
-- Raw delta: Stan = -178738.89309314775; PyMC = -178738.89309314746.
-- Raw comparison: MATCH; residual = -2.9103830456733704e-10.
-- Tolerance: 0.0017883889309314774
-- Original Stan SHA-256: 69df8e51be53f4e4ac8a2756927a3b7dc2ca61cbaf4c6a65d790298287a049c2
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

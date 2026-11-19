@@ -1,40 +1,6 @@
-"""
-Model: Hierarchical Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/radon_county.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/radon_county.py
-Authors: Bales, Ben and Pourzanjani, Arya and Vehtari, Aki and Petzold, Linda (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/radon_county.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: y ~ (1|county)
+"""Hierarchical Model.
 
-Data: radon_mod (upstream posterior: radon_mod-radon_county)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/radon_mod.json.zip
-    Archive SHA-256: 341aa024485b6a7b1d7bf1ec1ae50124a59b38387e47a88db620ae37848aac66
-    Local archive: data/posteriordb_radon_mod.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/radon_mod-radon_county.json
-References: bales2019selecting (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/bbbales2/cmdstan-warmup/develop/examples/radon/radon.stan
-
-Implementation notes:
-Native county radon hierarchy from posteriordb, Bales et al. (2019).
-
-The county model uses bounded uniform scale distributions.
-
-Stan comparison:
-- A: Stan = -62822.486080068884; PyMC = -62831.69642056915.
-- B: Stan = -62947.435689867634; PyMC = -62956.6460303676.
-- Raw delta: Stan = -124.94960979875032; PyMC = -124.949609798452.
-- Raw comparison: MATCH; residual = -2.9831426218152046e-10.
-- Tolerance: 2.249496097987503e-06
-- County labels are converted from Stan one-based to NumPy zero-based indices.
-- Stan implicit SD priors on (0,100) versus PyMC Uniform(0,100) contribute only
-  -2*log(100).
-- Original Stan SHA-256: a198eede373add8ab481a34eee83fc23410299b5c5982dd0bcbb738eb21ffd55
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

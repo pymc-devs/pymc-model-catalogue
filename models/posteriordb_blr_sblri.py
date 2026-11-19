@@ -1,37 +1,6 @@
-"""
-Model: A Bayesian linear regression model with vague priors
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/blr.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/blr.py
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/blr.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A Bayesian linear regression model with vague priors.
+"""A Bayesian linear regression model with vague priors.
 
-Data: sblri (upstream posterior: sblri-blr)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/sblri.json.zip
-    Archive SHA-256: e975f6641b5e08d65cb1e3519f1d0370939afbc82bfbeb3c1f5a07e5bbd717a7
-    Local archive: data/posteriordb_sblri.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/sblri-blr.json
-
-Implementation notes:
-Native Gaussian linear regression from posteriordb blr.
-
-Stan comparison:
-- A: Stan = -3244257.0094579956; PyMC = -3244256.3163110074.
-- B: Stan = -6068280.409912163; PyMC = -6068279.716765175.
-- Raw delta: Stan = -2824023.4004541677; PyMC = -2824023.4004541673.
-- Raw comparison: MATCH; residual = -4.656612873077393e-10.
-- Tolerance: 0.02824123400454168
-- Stan sigma>0 with Normal(0,10) versus PyMC HalfNormal(10) adds the constant log(2).
-- Original Stan SHA-256: e6407c4391ab11c0b59f17f3a04132df87aa69b7dae459e173036f16f9e8b161
-
-Benchmark results:
-- Original: logp = -26110.0910, grad norm = 56791.0468, 9.6 us/call (5 evals).
-- Frozen: logp = -26110.0910, grad norm = 56791.0468, 9.1 us/call (5 evals).
-- Local NUMBA validation; short timings are indicative.
-- Environment: PyMC 6.4.0+9.gaf565aa28, PyTensor 3.3.8+30.g9a7f24ce0, Numba 0.68.0.
+Stan comparison: MATCH.
 """
 
 import json

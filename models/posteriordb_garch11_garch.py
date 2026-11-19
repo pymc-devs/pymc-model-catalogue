@@ -1,39 +1,6 @@
-"""
-Model: Generalized Autoregressive Conditional Heteroscedastic Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/garch11.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/garch11.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A GARCH(1, 1) time series model.
+"""Generalized Autoregressive Conditional Heteroscedastic Model.
 
-Data: garch (upstream posterior: garch-garch11)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/garch.json.zip
-    Archive SHA-256: 056100504a96a72ee6be6af80228d26189dea7343a30df6ecfefac70cc9b3957
-    Local archive: data/posteriordb_garch.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/garch-garch11.json
-Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/garch
-
-Implementation notes:
-GARCH(1, 1) from the posteriordb garch11 probability model.
-
-The coefficient pair has a flat joint density on its triangular support.
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
-
-Stan comparison:
-- A: Stan = -752.9671745691298; PyMC = -752.96717456913.
-- B: Stan = -761.0105067059353; PyMC = -761.0105067059361.
-- Raw delta: Stan = -8.043332136805475; PyMC = -8.043332136806157.
-- Raw comparison: MATCH; residual = 6.821210263296962e-13.
-- Tolerance: 1.0804333213680616e-06
-- The PyMC log1p(-alpha1) potential cancels its conditional Uniform beta1 normalizer,
-  leaving the flat joint density on the triangle alpha1>0, beta1>0, alpha1+beta1<1 that
-  Stan declares.
-- Original Stan SHA-256: bbfe1929a9dbf6f5a4066f6099d90fc8c3e1bf1c65e1072b47af19534c60a679
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

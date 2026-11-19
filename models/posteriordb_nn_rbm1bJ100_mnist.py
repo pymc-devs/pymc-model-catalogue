@@ -1,38 +1,6 @@
-"""
-Model: A One Layer Restricted Boltzman Machine Neural Network (100 hidden units)
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/nn_rbm1bJ100.stan
-Authors: Lampinen, Jouko and Vehtari, Aki (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/nn_rbm1bJ100.py
-Upstream catalogue contributor: Mans Magnusson
-Description: A One Layer Restricted Boltzman Machine Neural Network with added bias and 100 hidden
-    units. The implementation follows that of Lampainen and Vehtari (2001).
+"""A One Layer Restricted Boltzmann Machine Neural Network (100 hidden units).
 
-Data: mnist (upstream posterior: mnist-nn_rbm1bJ100)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/mnist.json.zip
-    Archive SHA-256: 9248453fb3d7bb927a21a3088dc74e9af6e2764083065a6b1bf799163bfc2968
-    Local archive: data/posteriordb_mnist.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/mnist-nn_rbm1bJ100.json
-References: lampinen2001bayesian (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://github.com/stan-dev/example-models/tree/master/knitr/neural-nets
-
-Implementation notes:
-One-hidden-layer classification network with one hundred hidden units.
-
-Source: Lampinen and Vehtari (2001), as specified by posteriordb.
-
-Stan comparison:
-- A: Stan = -271514.2967306021; PyMC = -271514.29673058644.
-- B: Stan = -274624.68105277163; PyMC = -274624.6810527595.
-- Raw delta: Stan = -3110.384322169528; PyMC = -3110.3843221730785.
-- Raw comparison: MATCH; residual = 3.550667315721512e-09.
-- Tolerance: 3.210384322173078e-05
-- Observed labels shift from 1..K to 0..K-1.
-- Original Stan SHA-256: 810f47fa99f782219c6b16fdb23e719e126dfb678997c0ae0f4b3498a0cdc801
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

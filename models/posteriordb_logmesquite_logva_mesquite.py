@@ -1,39 +1,6 @@
-"""
-Model: Log-Log Model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logmesquite_logva.stan
-Authors: Gelman, Andrew and Hill, Jennifer (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/logmesquite_logva.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: log(weight) ~ log(canopy.volume) + log(canopy.area) + group canopy_volume <- diam1 *
-    diam2 * canopy_height canopy_area <- diam1 * diam2
+"""Log-Log Model.
 
-Data: mesquite (upstream posterior: mesquite-logmesquite_logva)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/mesquite.json.zip
-    Archive SHA-256: ec9db3a2e390892473e6172d76386ba9b26c3633a9682532eb34217189dcb0ac
-    Local archive: data/posteriordb_mesquite.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/mesquite-logmesquite_logva.json
-References: gelman2006data (see posteriordb/source/bibliography/references.bib)
-Reference URL: https://raw.githubusercontent.com/stan-dev/example-models/master/ARM/Ch.4/mesquite_va.stan
-
-Implementation notes:
-Native Gaussian model for log mesquite weight with canopy volume and area.
-
-Source: Gelman and Hill (2006), ARM.
-
-The likelihood uses the transformed response, without a response Jacobian.
-
-Stan comparison:
-- A: Stan = -704.8164216957422; PyMC = -704.816421695742.
-- B: Stan = -881.2893371061535; PyMC = -881.2893371061538.
-- Raw delta: Stan = -176.47291541041136; PyMC = -176.47291541041182.
-- Raw comparison: MATCH; residual = 4.547473508864641e-13.
-- Tolerance: 2.764729154104118e-06
-- Original Stan SHA-256: f21fbceb941f04848fe7a1385e5b5f331e08a259db0fa8655fc724e91f94f7fb
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

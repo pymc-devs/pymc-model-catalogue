@@ -1,39 +1,6 @@
-"""
-Model: Logistic Regression with Regularized Horseshoe Prior
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/logistic_regression_rhs.stan
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/pymc/logistic_regression_rhs.py
-Authors: Piironen, Juho and Vehtari, Aki and others (cited work)
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/logistic_regression_rhs.py
-Upstream catalogue contributor: Oliver Järnefelt
-Description: y ~ Ber(x)
+"""Logistic Regression with Regularized Horseshoe Prior.
 
-Data: prostate (upstream posterior: prostate-logistic_regression_rhs)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/prostate.json.zip
-    Archive SHA-256: 52c35477f06a84cf0d8475e4a4aae09b448ec9a3fc1739b3f7bf0969c37cd8a4
-    Local archive: data/posteriordb_prostate.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/prostate-logistic_regression_rhs.json
-References: piironen2017sparsity (see posteriordb/source/bibliography/references.bib)
-Reference URL:
-
-Implementation notes:
-Regularized horseshoe logistic regression from Piironen and Vehtari (2017).
-
-The global half-Student-t scale equals twice the dataset scale_global value.
-
-Stan comparison:
-- A: Stan = -17073.680040363008; PyMC = -12937.670709589542.
-- B: Stan = -16703.512666603085; PyMC = -12567.503335829655.
-- Raw delta: Stan = 370.16737375992307; PyMC = 370.1673737598867.
-- Raw comparison: MATCH; residual = 3.637978807091713e-11.
-- Tolerance: 4.701673737599231e-06
-- PyMC's positive half-t normalizations for tau and lambda add only (d+1)*log(2) with
-  d=5966.
-- Original Stan SHA-256: b5c3167d819c155b81558c8889295c7bd1b1d4a7d137ce1bcd04783825c7b00b
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

@@ -1,37 +1,6 @@
-"""
-Model: Hierarchical Gaussian Process
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/hierarchical_gp.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/hierarchical_gp.py
-Upstream catalogue contributor: Keane Nguyen
-Description: Hierarchical Gaussian Process
+"""Hierarchical Gaussian Process.
 
-Data: state_wide_presidential_votes (upstream posterior: state_wide_presidential_votes-hierarchical_gp)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/state_wide_presidential_votes.json.zip
-    Archive SHA-256: fe67ff6de8983a1eedf4b4e6c10ceae8b13c3fd265d3cd498a6c7b344a777dfe
-    Local archive: data/posteriordb_state_wide_presidential_votes.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/state_wide_presidential_votes-hierarchical_gp.json
-Reference URL: https://mc-stan.org/events/stancon2017-notebooks/stancon2017-trangucci-hierarchical-gps.pdf
-
-Implementation notes:
-Hierarchical election Gaussian process from posteriordb and Trangucci (2017).
-
-A shared variance allocation controls independent year, state, region, and GP effects.
-Each temporal kernel sums long-scale and short-scale squared-exponential components.
-
-Stan comparison:
-- A: Stan = -1662.31697645036; PyMC = -1662.3169761462036.
-- B: Stan = -1656.476995724634; PyMC = -1656.4769953795421.
-- Raw delta: Stan = 5.839980725726036; PyMC = 5.839980766661483.
-- Raw comparison: MATCH; residual = -4.093544703209773e-08.
-- Tolerance: 1.0583998076666149e-06
-- State-region and observation indices shift from one-based to zero-based.
-- Original Stan SHA-256: f97e9de5153301188473b3e0ac922d3891c5de133d0b4172bf40bb0f75b1376e
-
-Benchmark results:
-- Not measured.
+Stan comparison: MATCH.
 """
 
 import json

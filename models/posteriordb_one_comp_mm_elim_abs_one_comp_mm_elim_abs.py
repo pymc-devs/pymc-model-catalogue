@@ -1,42 +1,6 @@
-"""
-Model: A one compartment model
-Source: posteriordb, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/models/stan/one_comp_mm_elim_abs.stan
-Authors: Not specified in upstream model metadata.
-PyMC port source: pymc-model-catalogue commit a481aaf8be79760a413e1a7cc6fd9c04b55aad5e
-    models/posteriordb/one_comp_mm_elim_abs.py
-Upstream catalogue contributor: Mans Magnusson
-Description: Note that the model in the database currently hardcodes C0.
+"""A one compartment model.
 
-Data: one_comp_mm_elim_abs (upstream posterior: one_comp_mm_elim_abs-one_comp_mm_elim_abs)
-    https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/data/data/one_comp_mm_elim_abs.json.zip
-    Archive SHA-256: 67f9ae02f88a9fb73c7ae38fc9b3e245f776d0bd2d34169cc96fbdfe6e93be68
-    Local archive: data/posteriordb_one_comp_mm_elim_abs.json.zip
-Metadata: https://github.com/stan-dev/posteriordb/blob/91027f9cdd13b7e76283fec3f2898f59d4b83ec4/posterior_database/posteriors/one_comp_mm_elim_abs-one_comp_mm_elim_abs.json
-Reference URL: https://github.com/stan-dev/stat_comp_benchmarks/tree/master/benchmarks/pkpd
-
-Implementation notes:
-One-compartment absorption with Michaelis-Menten elimination.
-
-Source: posteriordb one_comp_mm_elim_abs, revision 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
-The initial concentration is zero, as specified by the published database model.
-Native ODE integration separates the concentration dynamics from lognormal measurement errors.
-
-Stan comparison:
-- A: Stan = -47.953679678651916; PyMC = -45.18109126320565.
-- B: Stan = -44.48394585873322; PyMC = -41.71135715146996.
-- Raw delta: Stan = 3.4697338199186945; PyMC = 3.46973411173569.
-- Raw comparison: MATCH; residual = -2.918169954568839e-07.
-- Tolerance: 1.0346973411173568e-06
-- Stan ODE integration and PyMC LSODA differ numerically; no solver-residual correction
-  is applied.
-- Original Stan SHA-256: dbb2bdf39dd21bdf83f062b59a2d5f210b5ccd372d93631302d723a5b5f57d9c
-
-Benchmark results:
-- Original: logp = -44.3001, grad norm = 13.5193, 7444.0 us/call (5 evals).
-- Frozen: logp = -44.3001, grad norm = 13.5193, 7692.5 us/call (5 evals).
-- Local NUMBA validation, including object-mode ODE execution; short timings are indicative.
-- Environment: PyMC 6.4.0+9.gaf565aa28, PyTensor 3.3.8+30.g9a7f24ce0, Numba 0.68.0.
+Stan comparison: MATCH.
 """
 
 import json
