@@ -95,12 +95,14 @@ The recorded two-point outcomes are:
 
 | Outcome | Model/data pairs |
 | --- | ---: |
-| Raw deltas agree | 137 |
-| Agree only after explicit prior or likelihood adjustments | 7 |
+| Raw deltas agree | 139 |
+| Agree only after explicit prior or likelihood adjustments | 5 |
 | Numerical mismatch remains | 3 |
 | No Stan reference (discrete M0) | 1 |
 
-The remaining mismatches are `bones_model`, `lotka_volterra`, and `sir`.
+`bones_model` misses tolerance because `OrderedLogistic` subtracts nearly equal
+CDF values. The `lotka_volterra` and `sir` discrepancies remain unexplained;
+their Stan and PyMC ports use different ODE solvers.
 
 Comparisons use constrained densities with automatic support-transform Jacobians
 disabled, following
@@ -113,11 +115,6 @@ likelihood adjustment does not make the original targets equivalent.
 Measurements used BridgeStan 2.9.0 (Stan 2.39.0), PyMC 6.4.0 and PyTensor 3.3.7.
 The tolerance is `1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC))`, using the
 adjusted Stan delta where applicable.
-
-The seven adjusted cases include the five intentional departures below and two
-runtime prior discrepancies in `accel_gp` and `accel_splines`. Their docstrings
-describe the integer-overflow issue affecting the measured HalfStudentT scale
-priors. Those adjustments need rechecking after engine upgrades.
 
 The following ports deliberately follow the stated model where it differs from
 the published implementation. Their docstrings briefly describe the departures.

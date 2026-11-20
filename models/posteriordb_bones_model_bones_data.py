@@ -15,7 +15,8 @@ Stan comparison:
 - Raw delta: Stan = -10.335919484062288; PyMC = -10.335926340951346.
 - Raw comparison: MISMATCH; residual = 6.8568890583264874e-06.
 - Tolerance: 1.1033592634095134e-06
-- The numerical discrepancy remains unexplained.
+- OrderedLogistic loses precision when subtracting nearly equal CDF values.
+  Evaluating the same likelihood in log space reduces the A/B residual to about 2.3e-13.
 """
 
 import json

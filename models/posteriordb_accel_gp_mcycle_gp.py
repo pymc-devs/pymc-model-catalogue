@@ -5,15 +5,11 @@ Authors: Ben Bales, Arya Pourzanjani, Aki Vehtari, Linda Petzold
 Description: Finite-basis Gaussian processes model acceleration mean and log standard deviation.
 
 Stan comparison:
-- A: Stan = -155371.18965842773; PyMC = -155366.87455612782.
-- B: Stan = -209414.58318585833; PyMC = -209410.2722747428.
-- Raw delta: Stan = -54043.3935274306; PyMC = -54043.397718614986.
-- Raw comparison: MISMATCH; residual = 0.004191184387309477.
-- Additive Stan adjustment: A = 4.315102260010999; B = 4.310911075603358.
-- Adjusted Stan delta = -54043.39771861501.
-- Adjusted comparison: MATCH; residual = -2.1827872842550278e-11.
-- Tolerance: 0.0005414339771861502
-- Integer overflow changed the HalfStudentT scale priors in the measured PyMC runtime.
+- A: Stan = -155371.18965842773; PyMC = -155371.18965838786.
+- B: Stan = -209414.58318585833; PyMC = -209414.58318581842.
+- Raw delta: Stan = -54043.3935274306; PyMC = -54043.39352743057.
+- Raw comparison: MATCH; residual = -2.9103830456733704e-11.
+- Tolerance: 0.000541433935274306
 """
 
 import json
@@ -57,13 +53,9 @@ def build_model():
         intercept_sigma = pm.StudentT(
             "Intercept_sigma", nu=3, mu=0, sigma=10, initval=0
         )
-        # Runtime discrepancy in the measured PyMC/PyTensor: integer sigma=36
-        # is int8, so HalfStudentT's sigma**2 becomes 16. These native priors
-        # therefore have scale 4 rather than Stan's 36. The comparison
-        # explicitly accounts for that changed prior; this builder is left
-        # unchanged so the measured discrepancy remains reproducible.
-        sdgp = pm.HalfStudentT("sdgp_1", nu=3, sigma=36, initval=36)
-        sdgp_sigma = pm.HalfStudentT("sdgp_sigma_1", nu=3, sigma=36, initval=1)
+        # A float keeps sigma**2 from overflowing an integer tensor.
+        sdgp = pm.HalfStudentT("sdgp_1", nu=3, sigma=36.0, initval=36)
+        sdgp_sigma = pm.HalfStudentT("sdgp_sigma_1", nu=3, sigma=36.0, initval=1)
         length = pm.InverseGamma("lscale_1", alpha=1.124909, beta=0.0177, initval=0.1)
         length_sigma = pm.InverseGamma(
             "lscale_sigma_1", alpha=1.124909, beta=0.0177, initval=0.1

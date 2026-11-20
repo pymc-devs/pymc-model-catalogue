@@ -5,15 +5,11 @@ Authors: Ben Bales, Arya Pourzanjani, Aki Vehtari, Linda Petzold
 Description: Splines model time-varying acceleration mean and standard deviation.
 
 Stan comparison:
-- A: Stan = -161646.16470841187; PyMC = -161641.83664461042.
-- B: Stan = -129349.91842334527; PyMC = -129345.6220514148.
-- Raw delta: Stan = 32296.246285066605; PyMC = 32296.21459319562.
-- Raw comparison: MISMATCH; residual = 0.03169187098683324.
-- Additive Stan adjustment: A = 4.328063761528535; B = 4.296371890539598.
-- Adjusted Stan delta = 32296.214593195615.
-- Adjusted comparison: MATCH; residual = -3.637978807091713e-12.
-- Tolerance: 0.0003239621459319562
-- Integer overflow changed the HalfStudentT scale priors in the measured PyMC runtime.
+- A: Stan = -161646.16470841187; PyMC = -161646.16470837194.
+- B: Stan = -129349.91842334527; PyMC = -129349.91842330534.
+- Raw delta: Stan = 32296.246285066605; PyMC = 32296.246285066605.
+- Raw comparison: MATCH; residual = 0.0.
+- Tolerance: 0.00032396246285066606
 """
 
 import json
@@ -69,13 +65,9 @@ def build_model():
         bs_sigma = pm.Flat("bs_sigma", dims="scale_linear")
         z = pm.Normal("zs_1_1", 0, 1, dims="mean_spline")
         z_sigma = pm.Normal("zs_sigma_1_1", 0, 1, dims="scale_spline")
-        # Runtime discrepancy in the measured PyMC/PyTensor: integer sigma=36
-        # is int8, so HalfStudentT's sigma**2 becomes 16. These native priors
-        # therefore have scale 4 rather than Stan's 36. The comparison
-        # explicitly accounts for that changed prior; this builder is left
-        # unchanged so the measured discrepancy remains reproducible.
-        sd = pm.HalfStudentT("sds_1_1", nu=3, sigma=36, initval=36)
-        sd_sigma = pm.HalfStudentT("sds_sigma_1_1", nu=3, sigma=36, initval=1)
+        # A float keeps sigma**2 from overflowing an integer tensor.
+        sd = pm.HalfStudentT("sds_1_1", nu=3, sigma=36.0, initval=36)
+        sd_sigma = pm.HalfStudentT("sds_sigma_1_1", nu=3, sigma=36.0, initval=1)
         coefficients = pm.Deterministic("s_1_1", sd * z, dims="mean_spline")
         coefficients_sigma = pm.Deterministic(
             "s_sigma_1_1", sd_sigma * z_sigma, dims="scale_spline"
