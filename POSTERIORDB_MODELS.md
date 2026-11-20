@@ -62,12 +62,7 @@ Measurements used BridgeStan 2.9.0 (Stan 2.39.0), PyMC 6.4.0 and PyTensor 3.3.7.
 The tolerance is `1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC))`, using the
 adjusted Stan delta where applicable.
 
-The following ports deliberately follow the stated model where it differs from
-the published implementation. Their docstrings briefly describe the departures.
-Some changes affect priors: the dog-effects covariance changes their joint prior,
-and IRT covariate scaling changes the induced coefficient priors.
-Comparisons must account for those changes explicitly, using a corresponding Stan
-reference or documented density adjustments.
+These ports follow the stated model where it differs from the published implementation:
 
 | Models | Effect | Intentional departure | Evidence |
 | --- | --- | --- | --- |

@@ -15,11 +15,13 @@ can be inlined. Share data files between models that use the same dataset.
 Each file's docstring should identify:
 
 - The model, authors, description, and model/data identity.
-- The source repository, revision permalink, model source, and dataset source.
+- A link to the source model. For posteriordb, the shared index records the revision and dataset.
 - Changes from the source, with equations or parameter mappings where needed.
   Explicitly identify prior changes, including changes induced by scaling or
   reparameterization, and explain why they were made.
-- Stan comparison evidence for Stan ports, or an explicit unvalidated status.
+- For Stan ports, the two-point logp results and any model-specific adjustments,
+  following the [comparison protocol](./POSTERIORDB_MODELS.md#validation-and-intentional-departures).
+  If no comparison is available, say why.
 - Benchmark results and the environment used for those measurements.
 
 Capture the initial point before clearing initial-value overrides:
@@ -33,12 +35,3 @@ return model, ip
 Use the shared `run_benchmark` helper under `if __name__ == "__main__":`, passing
 `discrete=True` for the logp-only path. Check finite logp and, where applicable,
 gradients in NUMBA mode for original and frozen graphs at the same point.
-
-For Stan ports, compare logp at several matched parameter points. Align parameter
-mapping, transforms, and Jacobian settings. Compare changes in logp when the
-implementations omit different parameter-independent constants. Account explicitly
-for intentional density changes using the corresponding reference model or
-documented adjustments. Record the source revision, parameter points, comparison
-conventions, results, and numerical tolerances in the model file. See
-[A Rosetta stone for PyMC and Stan](https://gist.github.com/ricardoV94/c421ddacb3ba7a19ac46efa253ea466c)
-for examples.

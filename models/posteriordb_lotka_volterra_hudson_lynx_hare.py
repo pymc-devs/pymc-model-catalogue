@@ -16,7 +16,7 @@ Stan comparison:
 Benchmark results:
 - Original:  logp = -148.2680, grad norm = 62.0095, 26068.9 us/call (5 evals).
 - Frozen:    logp = -148.2680, grad norm = 62.0095, 32025.4 us/call (5 evals).
-- Local NUMBA validation, including object-mode ODE execution; short timings are indicative.
+- The ODE solver ran in object mode.
 """
 
 import json

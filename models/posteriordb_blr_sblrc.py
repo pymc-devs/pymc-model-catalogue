@@ -13,7 +13,6 @@ Stan comparison:
 Benchmark results:
 - Original:  logp = -6873.0122, grad norm = 14663.6951, 10.5 us/call (5 evals).
 - Frozen:    logp = -6873.0122, grad norm = 14663.6951, 13.1 us/call (5 evals).
-- Local NUMBA validation; short timings are indicative.
 """
 
 import json

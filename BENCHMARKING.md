@@ -159,6 +159,7 @@ python scripts/run_benchmarks.py --bench "$(python scripts/core_models.py)" \
 ## Posteriordb model/data pairs
 
 See [`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md) for the model/data index.
+Timings in model docstrings come from short local NUMBA runs. Use ASV for performance comparisons.
 
 ```bash
 # Check the original and frozen graphs for one fixed pair.

@@ -3,11 +3,6 @@ Model: Hidden Markov Model
 Source: posteriordb/posterior_database/models/stan/hmm_drive_0.stan
 Description: A Hidden Markov Model with exponential distribution for emission probabilities
 
-Limitations:
-- Positive-ordered transforms constrain inference, not random draws. pm.draw
-  and prior predictive sampling can return negative or unordered phi/lambda
-  rates; those draws do not implement the Stan priors.
-
 Stan comparison:
 - A: Stan = -12878.145767652091; PyMC = -12878.145767652126.
 - B: Stan = -11384.378617039532; PyMC = -11384.37861703954.

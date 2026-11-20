@@ -15,7 +15,6 @@ Stan comparison:
 Benchmark results:
 - Original:  logp = -802.2076, grad norm = 84.2924, 38.5 us/call (5 evals).
 - Frozen:    logp = -802.2076, grad norm = 84.2924, 63.3 us/call (5 evals).
-- Local NUMBA validation; short timings are indicative.
 """
 
 import json
