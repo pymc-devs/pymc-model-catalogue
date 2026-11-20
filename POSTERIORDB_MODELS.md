@@ -30,11 +30,6 @@ The MNIST ports accept new prediction batches through `x`; update the
 Run a pair with `python models/posteriordb_blr_sblri.py`.
 See [benchmarking instructions](./BENCHMARKING.md) for selecting entries in ASV.
 
-Transforms such as `Ordered` constrain inference coordinates, but do not
-constrain `pm.draw` or prior predictive draws. Where a port relies on a transform
-to enforce Stan's positivity or ordering constraints, these draws do not follow
-the constrained Stan prior.
-
 ## Validation and intentional departures
 
 Each model docstring reports how much the log probability changed between the
