@@ -57,7 +57,7 @@ NUMBA mode, version-robust across old pymc releases) reuse
 
 ## Posteriordb models
 
-The catalogue also includes 148 model/data pairs ported from
+The catalogue includes all 148 model/data pairs in
 [posteriordb](https://github.com/stan-dev/posteriordb) at
 [revision 91027f9](https://github.com/stan-dev/posteriordb/tree/91027f9cdd13b7e76283fec3f2898f59d4b83ec4),
 covering 121 model definitions and 91 datasets. Each pair has an
