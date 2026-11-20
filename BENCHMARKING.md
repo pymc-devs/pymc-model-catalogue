@@ -156,6 +156,26 @@ python scripts/run_benchmarks.py --bench "$(python scripts/core_models.py)" \
   --set-commit-hash $(git rev-parse HEAD)
 ```
 
+## Posteriordb model/data pairs
+
+See [`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md) for the model/data index.
+Timings in model docstrings come from short local NUMBA runs. Use ASV for performance comparisons.
+
+```bash
+# Check the original and frozen graphs for one fixed pair.
+python models/posteriordb_blr_sblri.py
+
+# Select one pair in ASV.
+python scripts/run_benchmarks.py --launch-method=spawn --environment="existing:$(command -v python)" \
+  --set-commit-hash "$(git rev-parse HEAD)" \
+  --bench 'ModelBench(?:Build|Eval)_models_posteriordb_blr_sblri\.'
+
+# Select every posteriordb pair, including the discrete entry.
+python scripts/run_benchmarks.py --launch-method=spawn --environment="existing:$(command -v python)" \
+  --set-commit-hash "$(git rev-parse HEAD)" \
+  --bench 'ModelBench(?:Build|Eval)_models(?:_discrete)?_posteriordb_'
+```
+
 ## Branches
 
 - **`main`** — source of truth: asv infra (`asv_bench/`), the model set

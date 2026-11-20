@@ -1,0 +1,17 @@
+Posteriordb source materials
+
+The processed data, bibliography, citation file, and upstream license notice come from posteriordb.
+The source revision is 91027f9cdd13b7e76283fec3f2898f59d4b83ec4.
+The source repository is https://github.com/stan-dev/posteriordb.
+
+The processed JSON archives are bundled unchanged in models/data and
+models_discrete/data.
+Each standalone model header identifies the original archive and SHA-256 digest,
+model implementation paths, posterior metadata, and the exact source revision.
+The copied materials retain the upstream BSD 3-Clause notice in LICENCE.md.
+
+Source URLs, references, and author or contributor attribution are recorded in
+the individual model headers. The bibliography supplies the cited-work authors;
+catalogue contributors are identified separately from implementation authors.
+
+No Stan implementation source, raw source dataset, or reference posterior draws are bundled.

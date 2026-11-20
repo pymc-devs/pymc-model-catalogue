@@ -1,11 +1,8 @@
 # pymc-model-catalogue
 
-A database of around 200 [PyMC](https://github.com/pymc-devs/pymc) models,
-collected for research on the PyMC / [PyTensor](https://github.com/pymc-devs/pytensor)
-stack. Each model is packaged as a `build_model()` function with the same
-signature, so you can load and run them in bulk — to test work on rewrites,
-compilation, sampling, or logp/grad performance against many models at once
-instead of a few hand-picked ones.
+This catalogue contains [PyMC](https://github.com/pymc-devs/pymc) models for
+research on the PyMC and [PyTensor](https://github.com/pymc-devs/pytensor) stack.
+Each model builder returns a model and its initial point.
 
 The same model set also backs an ASV benchmark suite that tracks PyMC/PyTensor
 performance across releases (see
@@ -13,8 +10,8 @@ performance across releases (see
 
 ## How the models are packaged
 
-Every file under `models/` and `models_discrete/` defines one `build_model()`
-that returns a PyMC model and a matching initial point:
+The top-level files under `models/` and `models_discrete/` define
+`build_model()` and return a PyMC model with its initial point:
 
 ```python
 def build_model() -> tuple[pm.Model, dict]:
@@ -22,8 +19,8 @@ def build_model() -> tuple[pm.Model, dict]:
     return model, initial_point
 ```
 
-Data is either inlined or loaded from a bundled `.npz`, so importing a file is
-enough to build the model: there are no notebooks to run and nothing is fetched
+Data is either inlined or loaded from bundled `.npz` or JSON data. Importing a
+file is enough to build the model: there are no notebooks to run and nothing is fetched
 over the network. Each model is checked to give a finite logp and gradient at
 its initial point, both as written and after `freeze_dims_and_data` bakes in the
 dims and shapes. Models keep the form the original author used (`pm.Data`,
@@ -68,7 +65,7 @@ NUMBA mode, version-robust across old pymc releases) reuse
 
 ## What's inside
 
-~200 model files, grouped roughly by area:
+The catalogue contains about 350 model files across these areas.
 
 - **GLMs & regression** — logistic, Poisson, negative-binomial, ordinal, robust,
   truncated/censored, discrete-choice, rolling.
@@ -95,25 +92,25 @@ Layout:
 - `models_discrete/` — models with discrete free variables (logp-only path).
   Observed discrete likelihoods stay in `models/`, since the continuous latents
   still have well-defined gradients.
-- `models/data/`, `models_discrete/data/` — bundled `.npz` datasets.
+- `models/data/`, `models_discrete/data/` — bundled `.npz` datasets and JSON archives.
 
-Most models are extracted from
-[pymc-examples](https://github.com/pymc-devs/pymc-examples); the rest come from
-Statistical Rethinking and from papers (provenance is in each file's docstring).
-Authoring conventions and the extraction template live in
-[`PLAN.md`](./PLAN.md); extraction status in [`PROGRESS.md`](./PROGRESS.md).
+Sources include [pymc-examples](https://github.com/pymc-devs/pymc-examples),
+Statistical Rethinking, and research papers. The catalogue also includes
+[all 148 posteriordb model/data pairs](./POSTERIORDB_MODELS.md).
 
 ## Benchmarking & the timeline
 
-The catalogue backs an ASV suite that tracks four metrics — `rewrite_time`,
-`compile_time`, `n_rewrites`, `time_eval` — on a curated 26-model core
-([`BENCHMARK_CORE.md`](./BENCHMARK_CORE.md)) across every pymc release, published
+The catalogue backs an ASV suite that tracks five metrics — `rewrite_time`,
+`compile_time`, `n_rewrites`, `peak_rss`, `time_eval` — on a curated core subset
+([`BENCHMARK_CORE.md`](./BENCHMARK_CORE.md)) across PyMC releases, published
 to a [dashboard](https://pymc-devs.github.io/pymc-model-catalogue/dashboard.html).
 A separate [experiments](https://pymc-devs.github.io/pymc-model-catalogue/experiments.html)
 track runs the models against patched pymc/pytensor to A/B specific changes.
 
 Full details — metrics, the branch/CI layout, running asv locally, and adding an
 experiment — are in [`BENCHMARKING.md`](./BENCHMARKING.md).
+
+See [`PLAN.md`](./PLAN.md) for adding or adapting model examples.
 
 ## Requirements
 
