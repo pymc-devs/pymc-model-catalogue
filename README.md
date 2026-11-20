@@ -35,16 +35,13 @@ from models.eight_schools_centered import build_model
 model, ip = build_model()        # a pm.Model + a valid initial point dict
 
 with model:
-    idata = pm.sample(initvals=ip, nuts_sampler="pymc")
+    idata = pm.sample()          # ...or compile model.logp(), inspect the graph, etc.
 
 # Frozen form (dims/data baked in), e.g. for rewrite/compile studies:
 from pymc.model.transform.optimization import freeze_dims_and_data
 frozen, _ = build_model()
 frozen = freeze_dims_and_data(frozen)
 ```
-
-Pass `ip` explicitly: initialization overrides are cleared for freezing, so a
-model's default point need not be valid (for example, ordered mixture means).
 
 Transforms such as `Ordered` constrain inference coordinates, but do not
 constrain `pm.draw` or prior predictive draws. Where a port relies on a transform
