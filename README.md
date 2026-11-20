@@ -43,94 +43,9 @@ frozen, _ = build_model()
 frozen = freeze_dims_and_data(frozen)
 ```
 
-Transforms such as `Ordered` constrain inference coordinates, but do not
-constrain `pm.draw` or prior predictive draws. Where a port relies on a transform
-to enforce Stan's positivity or ordering constraints, these draws do not follow
-the constrained Stan prior.
-
 For the exact logp/dlogp compilation used by the benchmarks (raveled input,
 NUMBA mode, version-robust across old pymc releases) reuse
 `models/_benchmark.py:build_logp_fn`.
-
-## Posteriordb models
-
-The catalogue includes all 148 model/data pairs in
-[posteriordb](https://github.com/stan-dev/posteriordb) at
-[revision 91027f9](https://github.com/stan-dev/posteriordb/tree/91027f9cdd13b7e76283fec3f2898f59d4b83ec4),
-covering 121 model definitions and 91 datasets. Each pair has an
-explicit `posteriordb_<model>_<dataset>.py` file under `models/` or
-`models_discrete/`, with bundled source JSON archives.
-
-See [`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md) for the source index.
-Model docstrings contain a short description, measured Stan/PyMC logps and delta
-comparisons, adjustments or unresolved mismatches, and model-specific limitations.
-
-```python
-from models.posteriordb_blr_sblri import build_model
-
-model, ip = build_model()
-
-# The source namespace re-exports the same builders for convenience.
-from models.posteriordb import blr_sblrc
-other_model, other_ip = blr_sblrc()
-```
-
-The ARMA/GARCH ports accept same-length data updates through `observations`.
-The MNIST ports accept new prediction batches through `x`; update the
-`observation` coordinates when the batch length changes.
-
-Run a pair with `python models/posteriordb_blr_sblri.py`.
-See [benchmarking instructions](./BENCHMARKING.md) for selecting entries in ASV.
-
-### Validation and intentional departures
-
-The benchmark helper checks finite PyMC logp and gradients. Model docstrings
-record Stan and PyMC logps at two points, their deltas, residuals, tolerances and
-MATCH/MISMATCH status. Adjusted matches include the additive corrections to Stan.
-
-The recorded two-point outcomes are:
-
-| Outcome | Model/data pairs |
-| --- | ---: |
-| Raw deltas agree | 139 |
-| Agree only after explicit prior or likelihood adjustments | 5 |
-| Numerical mismatch remains | 3 |
-| No Stan reference (discrete M0) | 1 |
-
-`bones_model` misses tolerance because `OrderedLogistic` subtracts nearly equal
-CDF values. The `lotka_volterra` and `sir` discrepancies remain unexplained;
-their Stan and PyMC ports use different ODE solvers.
-
-Comparisons use constrained densities with automatic support-transform Jacobians
-disabled, following
-[A Rosetta stone for PyMC and Stan](https://gist.github.com/ricardoV94/c421ddacb3ba7a19ac46efa253ea466c).
-Parameter-independent constants cancel in `delta = logp(B) - logp(A)`.
-Residuals are Stan delta minus PyMC delta; adjustments are added to Stan logp.
-Two points do not establish global equivalence, and agreement after a prior or
-likelihood adjustment does not make the original targets equivalent.
-
-Measurements used BridgeStan 2.9.0 (Stan 2.39.0), PyMC 6.4.0 and PyTensor 3.3.7.
-The tolerance is `1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC))`, using the
-adjusted Stan delta where applicable.
-
-The following ports deliberately follow the stated model where it differs from
-the published implementation. Their docstrings briefly describe the departures.
-Some changes affect priors: the dog-effects covariance changes their joint prior,
-and IRT covariate scaling changes the induced coefficient priors.
-Comparisons must account for those changes explicitly, using a corresponding Stan
-reference or documented density adjustments.
-
-| Models | Effect | Intentional departure | Evidence |
-| --- | --- | --- | --- |
-| `hmm_gaussian` | Likelihood | Use the first observation's state-specific emission density. | [Original HMM definition](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271) |
-| `iohmm_reg` | Likelihood | Use destination-state gating weights. Native Gaussian mixtures eliminate the conditionally independent states. | [Original description and generator](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L840-L875) |
-| `dogs_nonhierarchical` | Prior | Use the declared covariance `diag(sigma) @ Omega @ diag(sigma)`. | [PyMC implementation](models/posteriordb_dogs_nonhierarchical_dogs.py) |
-| `2pl_latent_reg_irt`, `gpcm_latent_reg_irt` | Induced prior | Scale binary covariates by their range, not twice their sample standard deviation. | [Furr's model description, sections 1.1 and 1.3](https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html) |
-
-The shared scaling correction also covers `grsm_latent_reg_irt`. Its bundled intercept-only dataset does not change.
-Canonical identifiers retain the source model/data identity. See the
-[source index](./POSTERIORDB_MODELS.md) for references and model docstrings for
-the numerical comparisons.
 
 ## What it's useful for
 
@@ -178,12 +93,10 @@ Layout:
   Observed discrete likelihoods stay in `models/`, since the continuous latents
   still have well-defined gradients.
 - `models/data/`, `models_discrete/data/` — bundled `.npz` datasets and JSON archives.
-- `models/posteriordb/` — convenience exports and source attribution for the posteriordb entries.
 
-Most models are extracted from
-[pymc-examples](https://github.com/pymc-devs/pymc-examples); the rest come from
-Statistical Rethinking and from papers. For posteriordb source information, see
-[`POSTERIORDB_MODELS.md`](./POSTERIORDB_MODELS.md).
+Sources include [pymc-examples](https://github.com/pymc-devs/pymc-examples),
+Statistical Rethinking, and research papers. The catalogue also includes
+[all 148 posteriordb model/data pairs](./POSTERIORDB_MODELS.md).
 
 ## Benchmarking & the timeline
 

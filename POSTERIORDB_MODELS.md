@@ -1,12 +1,87 @@
 # Posteriordb models
 
-121 model definitions, 148 model/data pairs, and 91 bundled JSON datasets.
+The catalogue includes all 148 model/data pairs in
+[posteriordb](https://github.com/stan-dev/posteriordb) at
+[revision 91027f9](https://github.com/stan-dev/posteriordb/tree/91027f9cdd13b7e76283fec3f2898f59d4b83ec4),
+covering 121 model definitions and 91 datasets. Each pair has an
+explicit `posteriordb_<model>_<dataset>.py` file under `models/` or
+`models_discrete/`, with bundled source JSON archives.
 
-Source: https://github.com/stan-dev/posteriordb/tree/91027f9cdd13b7e76283fec3f2898f59d4b83ec4
+See the [model index](#modeldata-pairs) for individual ports and
+[`models/posteriordb/source/`](models/posteriordb/source/) for source references
+and attribution.
 
-Full source paths, authors or contributor attribution, dataset identity, source archive
-hashes, and translation notes are recorded in each model header. Source references
-and attribution notices are in [`models/posteriordb/source/`](models/posteriordb/source/).
+## Using the models
+
+```python
+from models.posteriordb_blr_sblri import build_model
+
+model, ip = build_model()
+
+# The source namespace re-exports the same builders for convenience.
+from models.posteriordb import blr_sblrc
+other_model, other_ip = blr_sblrc()
+```
+
+The ARMA/GARCH ports accept same-length data updates through `observations`.
+The MNIST ports accept new prediction batches through `x`; update the
+`observation` coordinates when the batch length changes.
+
+Run a pair with `python models/posteriordb_blr_sblri.py`.
+See [benchmarking instructions](./BENCHMARKING.md) for selecting entries in ASV.
+
+Transforms such as `Ordered` constrain inference coordinates, but do not
+constrain `pm.draw` or prior predictive draws. Where a port relies on a transform
+to enforce Stan's positivity or ordering constraints, these draws do not follow
+the constrained Stan prior.
+
+## Validation and intentional departures
+
+Each model docstring reports how much the log probability changed between the
+same two points in Stan and PyMC, where a Stan reference exists. It gives the
+log probabilities at both points, the difference between the two changes, and
+the tolerance used to decide whether they agree.
+
+The recorded two-point outcomes are:
+
+| Outcome | Model/data pairs |
+| --- | ---: |
+| Raw deltas agree | 139 |
+| Agree only after explicit prior or likelihood adjustments | 5 |
+| Numerical mismatch remains | 3 |
+| No Stan reference (discrete M0) | 1 |
+
+`bones_model` misses tolerance because `OrderedLogistic` subtracts nearly equal
+CDF values. The `lotka_volterra` and `sir` discrepancies remain unexplained;
+their Stan and PyMC ports use different ODE solvers.
+
+Comparisons use constrained densities with automatic support-transform Jacobians
+disabled, following
+[A Rosetta stone for PyMC and Stan](https://gist.github.com/ricardoV94/c421ddacb3ba7a19ac46efa253ea466c).
+Parameter-independent constants cancel in `delta = logp(B) - logp(A)`.
+Residuals are Stan delta minus PyMC delta; adjustments are added to Stan logp.
+Two points do not establish global equivalence, and agreement after a prior or
+likelihood adjustment does not make the original targets equivalent.
+
+Measurements used BridgeStan 2.9.0 (Stan 2.39.0), PyMC 6.4.0 and PyTensor 3.3.7.
+The tolerance is `1e-6 + 1e-8 * max(abs(delta_Stan), abs(delta_PyMC))`, using the
+adjusted Stan delta where applicable.
+
+The following ports deliberately follow the stated model where it differs from
+the published implementation. Their docstrings briefly describe the departures.
+Some changes affect priors: the dog-effects covariance changes their joint prior,
+and IRT covariate scaling changes the induced coefficient priors.
+Comparisons must account for those changes explicitly, using a corresponding Stan
+reference or documented density adjustments.
+
+| Models | Effect | Intentional departure | Evidence |
+| --- | --- | --- | --- |
+| `hmm_gaussian` | Likelihood | Use the first observation's state-specific emission density. | [Original HMM definition](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L239-L271) |
+| `iohmm_reg` | Likelihood | Use destination-state gating weights. Native Gaussian mixtures eliminate the conditionally independent states. | [Original description and generator](https://github.com/luisdamiano/stancon18/blob/master/main.Rmd#L840-L875) |
+| `dogs_nonhierarchical` | Prior | Use the declared covariance `diag(sigma) @ Omega @ diag(sigma)`. | [PyMC implementation](models/posteriordb_dogs_nonhierarchical_dogs.py) |
+| `2pl_latent_reg_irt`, `gpcm_latent_reg_irt` | Induced prior | Scale binary covariates by their range, not twice their sample standard deviation. | [Furr's model description, sections 1.1 and 1.3](https://mc-stan.org/learn-stan/case-studies/rasch_and_2pl.html) |
+
+The shared scaling correction also covers `grsm_latent_reg_irt`. Its bundled intercept-only dataset does not change.
 
 ## Model/data pairs
 
