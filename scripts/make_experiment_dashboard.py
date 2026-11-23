@@ -22,6 +22,11 @@ import re
 import sys
 from pathlib import Path
 
+if __package__:
+    from .make_dashboard import parse_benchmark_name
+else:
+    from make_dashboard import parse_benchmark_name
+
 
 METRIC_ORDER = [
     ("track_rewrite_time", "rewrite_time", "seconds"),
@@ -35,22 +40,6 @@ METRIC_ORDER = [
 def _extract_exp_name(python_path: str) -> str | None:
     m = re.search(r"\.builds/([^/]+)/venv", python_path)
     return m.group(1) if m else None
-
-
-def _parse_benchmark_name(stem: str) -> tuple[str, str] | None:
-    m = re.match(
-        r"bench_models\.ModelBench(?:Build|Eval)_(.+?)\.(track_\w+|time_\w+)",
-        stem,
-    )
-    if not m:
-        return None
-    sanitized_model, metric = m.groups()
-    model = sanitized_model
-    for prefix in ("models_discrete_", "models_"):
-        if sanitized_model.startswith(prefix):
-            model = prefix.rstrip("_") + "." + sanitized_model[len(prefix) :]
-            break
-    return model, metric
 
 
 def load_experiments(src: Path) -> dict:
@@ -109,7 +98,7 @@ def load_experiments(src: Path) -> dict:
                     continue
 
                 for gf in sorted(graph_dir.glob("*.json")):
-                    parsed = _parse_benchmark_name(gf.stem)
+                    parsed = parse_benchmark_name(gf.stem)
                     if not parsed:
                         continue
                     model, metric = parsed
@@ -318,7 +307,7 @@ function formatValue(metric, v) {
     return (v / 1024).toFixed(0) + ' KB';
   }
   if (v < 1e-3) return (v * 1e6).toFixed(1) + ' µs';
-  if (v < 1) return (v * 1e3).toFixed(0) + ' ms';
+  if (v < 1) return (v * 1e3).toFixed(2) + ' ms';
   return v.toFixed(3) + ' s';
 }
 
