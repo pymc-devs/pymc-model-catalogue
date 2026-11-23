@@ -6,7 +6,9 @@ import os
 import re
 import subprocess
 import uuid
+from pathlib import Path
 
+from asv_bench._measure import metric_names
 from asv_bench._model_results import rows, valid_result
 
 
@@ -19,13 +21,21 @@ DEPENDENCY_METADATA_UPGRADE = (
 )
 
 
-def benchmark_fingerprint(root, *, legacy=False):
+def benchmark_sources(root):
     paths = [root / "asv.conf.json", root / "scripts/core_models.py",
              root / "scripts/run_benchmarks.py"]
     for directory in ("asv_bench", "models", "models_discrete"):
         paths.extend((root / directory).rglob("*.py"))
-    checkpoint_path = root / "asv_bench/_rerun.py"
-    sources = {path: path.read_text() for path in paths if path != checkpoint_path}
+    return {path: path.read_text() for path in paths if path != root / "asv_bench/_rerun.py"}
+
+
+def fingerprint_sources(root, sources):
+    inputs = [(str(path.relative_to(root)), sources[path]) for path in sorted(sources)]
+    return hashlib.sha256(json.dumps(inputs).encode()).hexdigest()
+
+
+def benchmark_fingerprint(root, *, legacy=False):
+    sources = benchmark_sources(root)
     if legacy:
         # The original format included the checkpoint code in the fingerprint.
         # Use its original revision to verify the rest of the sources exactly.
@@ -35,9 +45,37 @@ def benchmark_fingerprint(root, *, legacy=False):
         )
         if previous.returncode:
             return None
-        sources[checkpoint_path] = previous.stdout
-    inputs = [(str(path.relative_to(root)), sources[path]) for path in sorted(sources)]
-    return hashlib.sha256(json.dumps(inputs).encode()).hexdigest()
+        sources[root / "asv_bench/_rerun.py"] = previous.stdout
+    return fingerprint_sources(root, sources)
+
+
+def model_module(relative_path):
+    path = Path(relative_path)
+    if (len(path.parts) == 2 and path.parts[0] in ("models", "models_discrete")
+            and path.suffix == ".py" and not path.name.startswith("_")):
+        return f"{path.parts[0]}.{path.stem}"
+    return None
+
+
+def selected_metrics(bench, source_hashes):
+    return {
+        name
+        for path in source_hashes
+        if (model := model_module(path)) is not None
+        for name in metric_names(model).values()
+        if re.search(bench, name)
+    }
+
+
+def can_extend(saved, source_hashes, metrics):
+    """Keep campaign progress when measurement sources and metrics only grow."""
+    previous = saved.get("source_hashes")
+    return (
+        previous is not None
+        and previous.items() <= source_hashes.items()
+        and all(model_module(path) for path in source_hashes.keys() - previous.keys())
+        and selected_metrics(saved["bench"], previous) <= metrics
+    )
 
 
 class RerunCheckpoint:
@@ -47,25 +85,35 @@ class RerunCheckpoint:
         self.path = results_dir / "rerun-state"
         self.bench = bench
         saved = json.loads(self.path.read_text()) if self.path.exists() else {}
-        fingerprint = benchmark_fingerprint(root)
+        sources = benchmark_sources(root)
+        fingerprint = fingerprint_sources(root, sources)
+        # Selection changes are checked against the actual metric names below.
+        source_hashes = {
+            str(path.relative_to(root)): hashlib.sha256(text.encode()).hexdigest()
+            for path, text in sources.items() if path != root / "scripts/core_models.py"
+        }
+        self.metrics = selected_metrics(bench, source_hashes)
         resume = saved and (saved["id"] == rerun_id if rerun_id else saved["status"] == "active")
         if resume:
-            resume = saved["bench"] == bench and (
+            same_suite = saved["bench"] == bench and (
                 saved["fingerprint"] == fingerprint
                 or (saved["fingerprint"], fingerprint) == DEPENDENCY_METADATA_UPGRADE
                 or saved["fingerprint"] == benchmark_fingerprint(root, legacy=True)
             )
-            if not resume and (rerun_id or not rerun):
+            resume = same_suite or can_extend(saved, source_hashes, self.metrics)
+            if not resume and rerun_id:
                 raise RuntimeError("Campaign uses different benchmark code; choose a new rerun_id")
         if resume:
             self.state = saved
-            self.state.update(status="active", fingerprint=fingerprint)
+            self.state.update(status="active", bench=bench, fingerprint=fingerprint,
+                              source_hashes=source_hashes)
             action = "Resuming"
         elif rerun:
             self.state = {
                 "version": 1,
                 "id": rerun_id or os.environ.get("GITHUB_RUN_ID") or uuid.uuid4().hex,
                 "status": "active", "bench": bench, "fingerprint": fingerprint,
+                "source_hashes": source_hashes,
                 "known_environments": saved.get("known_environments", {}) | saved.get("environments", {}),
                 "environments": {}, "completed": {},
             }
@@ -103,7 +151,8 @@ class RerunCheckpoint:
 
     def pending(self, commit, python, regex):
         metadata = self.metadata()
-        names = sorted(name for name in metadata if re.search(regex, name))
+        expected = self.metrics | metadata.keys()
+        names = sorted(name for name in expected if re.search(regex, name))
         if not names:
             return None  # Let ASV discover the suite when metadata is unavailable.
         rows = self.rows(commit, python)
@@ -113,6 +162,7 @@ class RerunCheckpoint:
         # models, so a hash of the entire saved row is not a stable identity.
         return [name for name in names if not completed.get(name)
                 or not valid_result(rows.get(name, {}))
+                or name not in metadata
                 or rows[name].get("version") != metadata[name].get("version")]
 
     def record(self, commit, python, regex, before):
