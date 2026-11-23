@@ -74,7 +74,9 @@ def build_logp_fn(model, ip, *, mode: str = "NUMBA", with_grad: bool = True):
 
     if with_grad:
         grads = pt.grad(logp, value_vars)
-        dlogp = pt.join(0, *(g.ravel() for g in grads))
+        dlogp = pt.join(
+            0, *(pt.as_tensor_variable(g, allow_xtensor_conversion=True).ravel() for g in grads)
+        )
         outputs = [logp, dlogp]
     else:
         outputs = [logp]
