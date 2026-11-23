@@ -35,6 +35,8 @@ import sys
 from pathlib import Path
 
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 METRIC_ORDER = [
     ("track_rewrite_time", "rewrite_time", "seconds"),
     ("track_compile_time", "compile_time", "seconds"),
@@ -45,7 +47,7 @@ METRIC_ORDER = [
 
 
 def load_dependencies(src: Path) -> dict:
-    path = Path(__file__).resolve().parents[1] / "versions" / "benchmark_dependencies.json"
+    path = REPO_ROOT / "versions" / "benchmark_dependencies.json"
     known = json.loads(path.read_text())
     dependencies = {}
     for path in (src / "results" / "ci").glob("*-virtualenv-py*.json"):
@@ -65,6 +67,28 @@ def load_dependencies(src: Path) -> dict:
             if started_at is not None and known["started_at_min"] <= started_at <= known["started_at_max"]:
                 dependencies.setdefault((sha, environment, name), historical)
     return dependencies
+
+
+def parse_benchmark_name(stem: str) -> tuple[str, str] | None:
+    match = re.fullmatch(
+        r"bench_models\.ModelBench(?:Build|Eval)_(.+?)\.(track_\w+|time_\w+)",
+        stem,
+    )
+    if not match:
+        return None
+    sanitized, metric = match.groups()
+    fallback = None
+    # Both models/discrete_x.py and models_discrete/x.py flatten to the same name.
+    for directory in ("models_discrete", "models"):
+        prefix = f"{directory}_"
+        if sanitized.startswith(prefix):
+            module = sanitized[len(prefix):]
+            name = f"{directory}.{module}"
+            if (REPO_ROOT / directory / f"{module}.py").is_file():
+                return name, metric
+            if fallback is None:
+                fallback = name
+    return fallback or sanitized, metric
 
 
 def load_data(src: Path) -> tuple[dict, dict]:
@@ -87,18 +111,10 @@ def load_data(src: Path) -> tuple[dict, dict]:
         name = gf.stem
         if name == "summary":
             continue
-        m = re.match(
-            r"bench_models\.ModelBench(?:Build|Eval)_(.+?)\.(track_\w+|time_\w+)",
-            name,
-        )
-        if not m:
+        parsed = parse_benchmark_name(name)
+        if parsed is None:
             continue
-        sanitized_model, metric = m.groups()
-        model = sanitized_model
-        for prefix in ("models_discrete_", "models_"):
-            if sanitized_model.startswith(prefix):
-                model = prefix.rstrip("_") + "." + sanitized_model[len(prefix):]
-                break
+        model, metric = parsed
         series = json.loads(gf.read_text())
         environment = " · ".join(
             "Python " + part.removeprefix("python-")
@@ -275,7 +291,7 @@ function formatValue(metric, v) {
     return (v / 1024).toFixed(0) + ' KB';
   }
   if (v < 1e-3) return (v * 1e6).toFixed(1) + ' μs';
-  if (v < 1) return (v * 1e3).toFixed(0) + ' ms';
+  if (v < 1) return (v * 1e3).toFixed(2) + ' ms';
   return v.toFixed(2) + ' s';
 }
 
