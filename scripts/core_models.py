@@ -8,18 +8,15 @@ here rather than hardcoding a duplicate regex.
 from __future__ import annotations
 
 CORE_MODELS: tuple[str, ...] = (
-    # Trimmed to 11 diverse models, picked to keep broad coverage
-    # across the catalogue described in BENCHMARK_CORE.md while keeping
-    # a single backfill dispatch cheap enough to finish in reasonable
-    # time on a 2-vCPU runner. One per category:
-    # tiny/hierarchical/linalg/time-series/GP/mixture/survey/discrete.
+    # Keep a timeline backfill practical on a 2-vCPU runner.
     "models.eight_schools_noncentered",                     # tiny hierarchical
     "models.BEST",                                          # trivial two-group
     "models.GLM_hierarchical_binomial_rat_tumor",           # hierarchical binomial
     "models.multilevel_varying_intercept_slope_noncentered",# classic radon varying-slopes
     "models.lkj_cholesky_cov_mvnormal",                     # LKJ + Cholesky
     "models.frailty_coxph_individual",                      # per-individual Gamma frailty (survival)
-    "models.bayesian_var_ireland",                          # VAR (scan + linalg)
+    "models.bayesian_var_ireland",                          # vectorized VAR
+    "models.discrete_choice_scan",                         # scan + counts
     "models.gp_marginal_matern52",                          # small marginal GP
     "models.marginalized_gaussian_mixture_model",           # mixture
     "models.irt_survey_zerosum_categorical",                # zero-sum tables + categorical

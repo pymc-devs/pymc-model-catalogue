@@ -51,9 +51,8 @@ spawned. `tracemalloc` is no help either way: the spike is LLVM/numba native
 memory, not Python allocations. On non-Linux there is no sampler and
 `ru_maxrss` is used alone.
 
-The five metrics are tracked on a curated subset of 26 models listed in
-[`BENCHMARK_CORE.md`](./BENCHMARK_CORE.md), chosen to give broad coverage
-(hierarchical, GP, scan, linear algebra, survival, ODE, mixtures, discrete).
+The timeline tracks these five metrics for the models in
+[`scripts/core_models.py`](./scripts/core_models.py).
 
 **Dashboard:** https://pymc-devs.github.io/pymc-model-catalogue/dashboard.html
 **Experiments:** https://pymc-devs.github.io/pymc-model-catalogue/experiments.html

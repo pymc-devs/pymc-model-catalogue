@@ -1,4 +1,4 @@
-# Benchmark Core (26 models)
+# Benchmark Core (27 models)
 
 A curated subset of the catalogue chosen to give diverse coverage for
 benchmarking and optimization research: small ↔ large, centered ↔ noncentered
@@ -26,29 +26,30 @@ discrete-vars model so the logp-only codepath is exercised.
 11. `models/stochastic_volatility.py` — large GRW, classic perf target
 12. `models/ar2.py` — small AR baseline
 13. `models/time_series_generative_graph_ar2.py` — explicit scan-built AR
-14. `models/bayesian_var_ireland.py` — multivariate VAR (scan + linalg)
+14. `models/bayesian_var_ireland.py` — vectorized multivariate VAR
 15. `models/euler_maruyama_linear_sde.py` — SDE via scan
+16. `models/discrete_choice_scan.py` — discrete choice via scan
 
 ## Gaussian processes
-16. `models/gp_marginal_matern52.py` — small marginal GP
-17. `models/gp_births_hsgp.py` — HSGP, medium
-18. `models/malaria_hsgp.py` — larger HSGP with covariates
+17. `models/gp_marginal_matern52.py` — small marginal GP
+18. `models/gp_births_hsgp.py` — HSGP, medium
+19. `models/malaria_hsgp.py` — larger HSGP with covariates
 
 ## Mixtures
-19. `models/marginalized_gaussian_mixture_model.py` — marginalized mixture
-20. `models/dirichlet_mixture_of_multinomials.py` — Dirichlet-multinomial mixture
+20. `models/marginalized_gaussian_mixture_model.py` — marginalized mixture
+21. `models/dirichlet_mixture_of_multinomials.py` — Dirichlet-multinomial mixture
 
 ## Survival / ODE / spatial / large real-data
-21. `models/frailty_coxph.py` — survival with frailty
-22. `models/ode_lotka_volterra_pytensor_scan.py` — ODE through scan
-23. `models/nyc_bym_traffic.py` — CAR/BYM spatial, large
-24. `models/excess_deaths.py` — larger real dataset, structural model
+22. `models/frailty_coxph.py` — survival with frailty
+23. `models/ode_lotka_volterra_pytensor_scan.py` — ODE through scan
+24. `models/nyc_bym_traffic.py` — CAR/BYM spatial, large
+25. `models/excess_deaths.py` — larger real dataset, structural model
 
 ## Survey / categorical
-25. `models/irt_survey_zerosum_categorical.py` — explanatory IRT: many *scaled* zero-sum
+26. `models/irt_survey_zerosum_categorical.py` — explanatory IRT: many *scaled* zero-sum
     effect tables gathered per respondent, a latent factor, stereotype-ordinal Categorical
     likelihood over an (N, G, K) logit array; sized as a numba compile-cost sentinel
     (the cost is superlinear in table count)
 
 ## Discrete free variables
-26. `models_discrete/occupancy_crossbill.py` — exercises the logp-only path
+27. `models_discrete/occupancy_crossbill.py` — exercises the logp-only path
